@@ -1,20 +1,18 @@
+window._ = require('lodash');
+window.$ = window.jQuery = require('jquery');
+require('bootstrap-sass');
+require('angular');
+require('angular-ui-router');
+require('satellizer');
 
-/**
- * First we will load all of this project's JavaScript dependencies which
- * include Vue and Vue Resource. This gives a great starting point for
- * building robust, powerful web applications using Vue and Laravel.
- */
+angular.module('app', [
+  'ui.router',
+  'satellizer',
+])
+.config(require('./routes.js'))
+.config(function($authProvider) {
+	$authProvider.loginUrl = '/login';
+})
+.service('UserService', require('./users/UserService'))
 
-require('./bootstrap');
 
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the body of the page. From here, you may begin adding components to
- * the application, or feel free to tweak this setup for your needs.
- */
-
-Vue.component('example', require('./components/Example.vue'));
-
-const app = new Vue({
-    el: 'body'
-});
