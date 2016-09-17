@@ -13,7 +13,8 @@
         ]); ?>
     </script>
 </head>
-<body>
+<body ng-app='app' class='ng-cloak'>
+
     <nav class="navbar navbar-default navbar-static-top">
         <div class="container">
             <div class="navbar-header">
@@ -39,38 +40,32 @@
                 </ul>
 
                 <!-- Right Side Of Navbar -->
-                <ul class="nav navbar-nav navbar-right">
+                <ul ng-controller="NavBarController" class="nav navbar-nav navbar-right">
+
                     <!-- Authentication Links -->
-                    @if (Auth::guest())
-                        <li><a href="{{ url('/login') }}">Login</a></li>
-                        <li><a href="{{ url('/register') }}">Register</a></li>
-                    @else
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                {{ Auth::user()->name }} <span class="caret"></span>
-                            </a>
+                    <li ng-hide="isAuthenticated()">
+                        <a ui-sref="login">Login</a>
+                    </li>
+                    <li ng-hide="isAuthenticated()">
+                        <a ui-sref="register">Register</a>
+                    </li>
+                    <li ng-if="isAuthenticated()" class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                            {{ 'rodri' }} <span class="caret"></span>
+                        </a>
 
-                            <ul class="dropdown-menu" role="menu">
-                                <li>
-                                    <a href="{{ url('/logout') }}"
-                                        onclick="event.preventDefault();
-                                                 document.getElementById('logout-form').submit();">
-                                        Logout
-                                    </a>
-
-                                    <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-                                        {{ csrf_field() }}
-                                    </form>
-                                </li>
-                            </ul>
-                        </li>
-                    @endif
+                        <ul class="dropdown-menu" role="menu">
+                            <li>
+                                <a ui-sref="logout"> Logout</a>
+                            </li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <div ng-app='app'>
+    <div>
         <div ui-view></div>
     </div>
 

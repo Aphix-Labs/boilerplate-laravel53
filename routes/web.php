@@ -4,8 +4,6 @@ Route::get('/', function () {
     return view('app');
 });
 
-Route::get('/home', 'HomeController@index');
-
-/* Auth::routes(); */
-
+Route::post('register', 'Auth\RegisterController@register');
 Route::post('login', 'Auth\LoginController@login');
+/* Auth::routes(); */

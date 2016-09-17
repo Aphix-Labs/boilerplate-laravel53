@@ -3,11 +3,12 @@ module.exports = function ($auth, $http, $state, toastr) {
   vm.user = {};
   vm.errors = {};
 
-  vm.login = () => {
-    $auth.login(vm.user)
+  vm.submit = () => {
+    $auth.signup(vm.user)
       .then((response) => {
-        toastr.success('Has iniciado sesión exitosamente!');
+        $auth.setToken(response);
         $state.go('home');
+        toastr.info('Se ha creado tu cuenta exitosamente y se ha iniciado sesión');
       })
       .catch((response) => {
         vm.errors = response.data;

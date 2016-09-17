@@ -15,19 +15,13 @@ class RegisterController extends Controller
 
     protected $redirectTo = '/home';
 
-    /* public function __construct() */
-    /* { */
-    /*     $this->middleware('guest'); */
-    /* } */
-
     public function register(Request $request)
     {
         $this->validator($request->all())->validate();
 
-        return $this->create($request->all());
-        /* $this->guard()->login($this->create($request->all())); */
-
-        /* return redirect($this->redirectPath()); */
+        return response()->json([
+            'token' => $this->create($request->all())->api_token
+        ]);
     }
 
     protected function validator(array $data)
