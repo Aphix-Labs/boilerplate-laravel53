@@ -12,6 +12,9 @@ elixir(mix => {
       loaders: [{
         test: /\.html$/,
         loader: 'html'
+      }, {
+        test: /\.js$/,
+        loaders: ['ng-annotate']
       }]
     }
   })

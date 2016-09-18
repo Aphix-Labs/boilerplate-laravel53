@@ -1,4 +1,6 @@
 module.exports = function($state, $auth, toastr) {
+  'ngInject';
+
 	if (!$auth.isAuthenticated()) {
 		return;
 	}

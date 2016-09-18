@@ -13,7 +13,7 @@
         ]); ?>
     </script>
 </head>
-<body ng-app='app' class='ng-cloak'>
+<body ng-app='app' ng-strict-di class='ng-cloak'>
 
     <nav class="navbar navbar-default navbar-static-top">
         <div class="container">

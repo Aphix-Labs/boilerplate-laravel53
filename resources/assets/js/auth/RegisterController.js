@@ -1,4 +1,6 @@
 module.exports = function ($auth, $http, $state, toastr) {
+  'ngInject';
+
   var vm = this;
   vm.user = {};
   vm.errors = {};
