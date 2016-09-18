@@ -7,5 +7,14 @@ elixir(mix => {
     './node_modules/angular-loading-bar/build/loading-bar.min.css'
   ])
 
-  mix.browserify('app.js');
+  elixir.webpack.mergeConfig({
+    module: {
+      loaders: [{
+        test: /\.html$/,
+        loader: 'html'
+      }]
+    }
+  })
+
+  mix.webpack('app.js');
 });
