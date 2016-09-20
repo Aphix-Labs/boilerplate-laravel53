@@ -17,7 +17,13 @@ elixir(mix => {
   mix.sass([
     'admin.scss',
     './node_modules/angular-toastr/dist/angular-toastr.min.css',
-    './node_modules/angular-loading-bar/build/loading-bar.min.css'
+    './node_modules/angular-loading-bar/build/loading-bar.min.css',
+  ], './resources/assets/temp/css/admin.css')
+
+  mix.styles([
+    '../temp/css/admin.css',
+    '../sass/vendor/smartadmin-production.min.css',
+    '../sass/vendor/smartadmin-skins.min.css',
   ], 'public/css/admin.css')
 
   mix.webpack('/admin/app.js', 'public/js/admin.js')
