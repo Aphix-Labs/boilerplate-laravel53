@@ -1,7 +1,11 @@
 <?php
 
 Route::get('/', function () {
-    return view('app');
+    return view('public');
+});
+
+Route::get('/admin', function () {
+    return view('admin');
 });
 
 Route::post('register', 'Auth\RegisterController@register');
