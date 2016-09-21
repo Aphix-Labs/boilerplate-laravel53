@@ -7,6 +7,6 @@ module.exports = function($state, $auth, toastr) {
 
 	$auth.logout().then(() => {
 		toastr.info('Ha sido cerrada tu sesión');
-		$state.go('home');
+		$state.go('login');
 	});
 };

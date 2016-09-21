@@ -9,7 +9,7 @@ module.exports = function ($auth, $http, $state, toastr) {
     $auth.login(vm.user)
       .then((response) => {
         toastr.success('Has iniciado sesión exitosamente!');
-        $state.go('home');
+        $state.go('app.home');
       })
       .catch((response) => {
         vm.errors = response.data;

@@ -9,7 +9,7 @@ module.exports = function ($auth, $http, $state, toastr) {
     $auth.signup(vm.user)
       .then((response) => {
         $auth.setToken(response);
-        $state.go('home');
+        $state.go('app.home');
         toastr.info('Se ha creado tu cuenta exitosamente y se ha iniciado sesión');
       })
       .catch((response) => {

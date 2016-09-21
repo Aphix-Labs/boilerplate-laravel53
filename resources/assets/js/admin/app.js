@@ -1,5 +1,6 @@
 window._ = require('lodash');
 window.$ = window.jQuery = require('jquery');
+require('./layout/nav.js')
 require('angular');
 require('bootstrap-sass');
 require('angular-animate');

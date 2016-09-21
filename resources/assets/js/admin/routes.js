@@ -2,13 +2,7 @@ module.exports = function OnConfig($stateProvider, $locationProvider, $urlRouter
   'ngInject';
 
   $stateProvider
-  .state('home', {
-    url: '/home',
-    controller: function($auth) { this.isAuthenticated = $auth.isAuthenticated },
-    controllerAs: 'vm',
-    template: require('./app/index.html')
-  })
-
+  // auth
   .state('login', {
     url: '/login',
     controller: require('./auth/LoginController'),
@@ -29,18 +23,31 @@ module.exports = function OnConfig($stateProvider, $locationProvider, $urlRouter
     template: require('./auth/register.html')
   })
 
-  .state('dashboard', {
-    url: '/dashboard',
+  // application
+  .state('app', {
+    abstract: true,
+    template: require('./layout/layout.html'),
     controller: function(user) { this.user = user },
     controllerAs: 'vm',
-    template: require('./app/dashboard.html'),
 		resolve: {
 			user: function(UserService, $auth) {
 				return UserService.get().then((data) => {
 					return data.data;
 				});
 			}
-		}
+		},
+  })
+
+  .state('app.home', {
+    url: '/home',
+    controller: function($auth) { this.isAuthenticated = $auth.isAuthenticated },
+    controllerAs: 'vm',
+    template: require('./app/index.html')
+  })
+
+  .state('app.dashboard', {
+    url: '/dashboard',
+    template: require('./app/dashboard.html'),
   })
 
 	$urlRouterProvider.otherwise('/home');

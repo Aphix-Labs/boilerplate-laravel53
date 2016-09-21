@@ -22,6 +22,7 @@ elixir(mix => {
 
   mix.styles([
     '../temp/css/admin.css',
+    '../sass/vendor/smartadmin-production-plugins.min.css',
     '../sass/vendor/smartadmin-production.min.css',
     '../sass/vendor/smartadmin-skins.min.css',
   ], 'public/css/admin.css')
