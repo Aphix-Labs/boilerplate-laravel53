@@ -48,6 +48,9 @@ module.exports = function OnConfig($stateProvider, $locationProvider, $urlRouter
   .state('app.dashboard', {
     url: '/dashboard',
     template: require('./app/dashboard.html'),
+    data: {
+      title: 'dashboard'
+    }
   })
 
 	$urlRouterProvider.otherwise('/home');

@@ -27,6 +27,7 @@ angular.module('app', [
 	$authProvider.loginUrl = '/login';
   $authProvider.signupUrl = '/register';
 })
+.directive('stateBreadcrumbs', require('./directives/stateBreadcrumbs'))
 .controller('NavBarController', require('./app/NavBarController'))
 .service('UserService', require('./users/UserService'))
 

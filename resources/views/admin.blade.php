@@ -15,7 +15,7 @@
             ]); ?>
         </script>
     </head>
-    <body ng-app='app' ng-strict-di class='ng-cloak'>
+    <body ng-app='app' ng-strict-di class='smart-style-2 ng-cloak'>
         <div ui-view></div>
         <script src="{{ elixir('js/admin.js') }}"></script>
     </body>
