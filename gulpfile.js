@@ -31,10 +31,10 @@ elixir(mix => {
 
   mix.webpack('/admin/app.js', 'public/js/admin.js')
 
-  // if (elixir.config.production) {
+  if (elixir.config.production) {
     mix.version([
       'css/admin.css',
       'js/admin.js',
     ])
-  // }
+  }
 });
