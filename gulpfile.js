@@ -1,5 +1,7 @@
 const elixir = require('laravel-elixir');
 
+elixir.config.sourcemaps = false;
+
 elixir(mix => {
 
   elixir.webpack.mergeConfig({
@@ -29,8 +31,10 @@ elixir(mix => {
 
   mix.webpack('/admin/app.js', 'public/js/admin.js')
 
-  mix.version([
-    'css/admin.css',
-    'js/admin.js',
-  ])
+  // if (elixir.config.production) {
+    mix.version([
+      'css/admin.css',
+      'js/admin.js',
+    ])
+  // }
 });
