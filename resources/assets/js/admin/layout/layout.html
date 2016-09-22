@@ -112,12 +112,20 @@
     </div>
 
     <nav>
-        <ul>
-            <li class="">
+        <ul data-smart-menu>
+            <li ui-sref-active="active">
                 <a ui-sref="app.home"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">Home</span></a>
             </li>
-            <li class="">
+            <li ui-sref-active="active">
                 <a ui-sref="app.dashboard"><i class="fa fa-lg fa-fw fa-dashboard"></i> <span class="menu-item-parent">Dashboard</span></a>
+            </li>
+            <li data-menu-collapse ui-sref-active="active">
+                <a href="#"><i class="fa fa-lg fa-fw fa-cogs"></i> <span class="menu-item-parent">Administración</span></a>
+                <ul>
+                    <li>
+                        <a data-ui-sref="app.users"><i class="fa fa-users"></i> Usuarios</a>
+                    </li>
+                </ul>
             </li>
         </ul>
     </nav>

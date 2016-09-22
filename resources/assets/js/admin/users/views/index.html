@@ -1,0 +1,61 @@
+<ui-view>
+    <div class='row'>
+        <div class='pull-right'>
+            <a ui-sref='app.users.create' class='btn btn-primary'>Nuevo Usuario</a>
+        </div>
+    </div>
+    <br>
+
+    <div class='row'>
+        <div class="panel panel-default">
+            <div class="panel-heading">Usuarios</div>
+
+            <div class="panel-body">
+                <table class='table'>
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Email</th>
+                            <th>Roles</th>
+                            <th class='action-column'>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td> <input ng-model="vm.search.name" ng-blur="vm.filter()" ng-enter="vm.filter()" type="text" class="form-control" placeholder="nombre"></input> </td>
+                            <td> <input ng-model="vm.search.email" ng-blur="vm.filter()" ng-enter="vm.filter()" type="text" class="form-control" placeholder="email"></input> </td>
+                            <td> <input ng-model="vm.search.roles" ng-blur="vm.filter()" ng-enter="vm.filter()" type="text" class="form-control" placeholder="rol"></input> </td>
+                            <td></td>
+                        </tr>
+                        <tr ng-repeat="user in vm.users">
+                            <td>{{ ::user.name }}</td>
+                            <td>{{ ::user.email }}</td>
+                            <td>
+                                <span ng-repeat="role in user.roles">
+                                    <span class='label label-primary'>{{ ::role.label }}</span>
+                                </span>
+                            </td>
+                            <td>
+                                <a ui-sref="app.users.edit({id: user.id})" class="btn btn-success btn-sm">Editar</a>
+                                <a ng-click="vm.destroy(user.id, $index)" class='btn btn-danger btn-sm'>Eliminar</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div ng-if='vm.reload' class='text-center'>
+                    <i class="fa fa-2x fa-spinner fa-spin"></i>
+                </div>
+
+                <div ng-hide="vm.reload" ng-if="vm.users | isEmpty" class='text-center'>
+                    Sin resultados
+                </div>
+
+                <div ng-hide="vm.reload" ng-if="! (vm.users | isEmpty)" class='text-center'>
+                    <uib-pagination items-per-page="vm.itemsPerPage" total-items="vm.totalItems" ng-model="vm.search.page" ng-change="vm.filter()"></uib-pagination>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</ui-view>

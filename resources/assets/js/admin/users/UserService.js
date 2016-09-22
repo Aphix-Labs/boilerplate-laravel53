@@ -1,8 +1,9 @@
-module.exports = function ($http) {
+module.exports = function (ApiService, $http) {
   'ngInject';
+  angular.extend(this, ApiService);
+  this.resource = 'users';
 
-  this.get = () => {
-    return $http.get('/api/user');
+  this.me = () => {
+    return $http.get('/api/me');
   };
-
 };
