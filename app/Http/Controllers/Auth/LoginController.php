@@ -27,6 +27,8 @@ class LoginController extends Controller
         ]);
 
         if (Auth::once($request->except('_token'))) {
+            Auth::user()->updateToken()->save();
+
             return response()->json(['token' => Auth::user()->api_token]);
         }
 
