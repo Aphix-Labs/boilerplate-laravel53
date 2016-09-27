@@ -2,9 +2,6 @@
     <div class="panel panel-default">
         <div class="panel-heading">{{ vm.action }} Rol</div>
         <div class="panel-body">
-
-            {{ vm.data | json }}
-
             <form class="form-horizontal" role="form" method="POST">
                 <div class="form-group" ng-class="{'has-error': vm.hasError('name')}">
                     <label class="col-md-4 control-label">Name</label>

@@ -64,7 +64,7 @@
                             <ui-select-match placeholder="Selecciona roles...">
                                 {{$item.label}}
                             </ui-select-match>
-                            <ui-select-choices repeat="role.id as role in (vm.roles | filter: $select.search) track by $index">
+                            <ui-select-choices repeat="role.name as role in (vm.roles | filter: $select.search) track by $index">
                                 <span ng-bind="role.label "></span>
                             </ui-select-choices>
                         </ui-select>

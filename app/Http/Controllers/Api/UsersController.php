@@ -12,11 +12,13 @@ class UsersController extends ApiController
 {
     public function index()
     {
-        return User::paginate();
+        return User::with('roles')->paginate();
     }
 
     public function show(User $user)
     {
+        $user->roles = $user->roles->pluck('name');
+
         return $user;
     }
 
@@ -27,10 +29,10 @@ class UsersController extends ApiController
             'email'    => 'required|email|max:255|unique:users',
             'password' => 'required|confirmed|min:6',
             'roles'    => 'present|array',
-            'roles.*'  => 'exists:roles,id'
+            'roles.*'  => 'exists:roles,name'
         ]);
 
-        User::create($request->all());
+        User::create($request->all())->syncRoles($request->roles);
 
         return $this->respondStore();
     }
@@ -41,12 +43,14 @@ class UsersController extends ApiController
             'name'     => 'sometimes|required|max:255',
             'email'    => 'sometimes|required|email|max:255|unique:users,email,' . $user->id,
             'password' => 'sometimes|required|confirmed|min:6',
-            'roles.*'  => 'exists:roles,id'
+            'roles.*'  => 'exists:roles,name'
         ]);
 
         $user->fill($request->all());
 
         $user->save();
+
+        $user->syncRoles($request->roles);
 
         return $this->respondUpdate();
     }

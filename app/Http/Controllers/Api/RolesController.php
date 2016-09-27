@@ -49,7 +49,9 @@ class RolesController extends ApiController
 
         $role->save();
 
-        $role->syncPermissions($request['permissions']);
+        $role->syncPermissions(
+            Permission::whereIn('id', $request->permissions)->pluck('name')
+        );
 
         return $this->respondUpdate();
     }
