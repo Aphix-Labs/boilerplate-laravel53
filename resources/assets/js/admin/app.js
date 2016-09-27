@@ -7,6 +7,7 @@ require('angular-animate');
 require('angular-loading-bar');
 require('angular-sanitize');
 require('angular-sweetalert');
+require('angular-ui-bootstrap');
 require('angular-ui-router');
 require('angular-toastr');
 require('satellizer');
@@ -20,6 +21,7 @@ angular.module('app', [
   'oitozero.ngSweetAlert',
   'satellizer',
   'toastr',
+  'ui.bootstrap',
   'ui.router',
   'ui.select',
 ])
@@ -30,9 +32,11 @@ angular.module('app', [
 		});
 })
 .config(require('./routes.js'))
-.config(function($authProvider) {
+.config(function($authProvider, uibPaginationConfig) {
 	$authProvider.loginUrl = '/login';
   $authProvider.signupUrl = '/register';
+  uibPaginationConfig.previousText = 'Previo';
+  uibPaginationConfig.nextText = 'Siguiente';
 })
 .directive('smartMenu', require('./directives/smartMenu'))
 .directive('stateBreadcrumbs', require('./directives/stateBreadcrumbs'))

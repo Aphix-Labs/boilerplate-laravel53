@@ -18,7 +18,7 @@ class RolesController extends ApiController
 
     public function show(Role $role)
     {
-        $role->permissions = $role->permissions->pluck('id');
+        $role->permissions = $role->permissions()->pluck('id');
 
         return $role;
     }
@@ -45,9 +45,7 @@ class RolesController extends ApiController
             'label' => 'sometimes|required|max:255',
         ]);
 
-        $role->fill($request->only(['name', 'label']));
-
-        $role->save();
+        $role->fill($request->only(['name', 'label']))->save();
 
         $role->syncPermissions(
             Permission::whereIn('id', $request->permissions)->pluck('name')

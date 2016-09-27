@@ -20,6 +20,7 @@ elixir(mix => {
     'admin.scss',
     './node_modules/angular-toastr/dist/angular-toastr.min.css',
     './node_modules/angular-loading-bar/build/loading-bar.min.css',
+    './node_modules/ui-select/dist/select.min.css',
   ], './resources/assets/temp/css/admin.css')
 
   mix.styles([

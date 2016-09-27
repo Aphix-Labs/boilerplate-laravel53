@@ -1,61 +1,71 @@
 <ui-view>
     <div class='row'>
-        <div class='pull-right'>
-            <a ui-sref='app.users.create' class='btn btn-primary'>Nuevo Usuario</a>
+        <div class="col-sm-12 col-md-12 col-lg-12">
+            <div class='pull-right'>
+                <a ui-sref='app.users.create' class='btn btn-primary'>Nuevo Usuario</a>
+            </div>
         </div>
     </div>
+
     <br>
 
     <div class='row'>
-        <div class="panel panel-default">
-            <div class="panel-heading">Usuarios</div>
+        <article class="col-sm-12 col-md-12 col-lg-12">
+            <div class="jarviswidget jarviswidget-color-blueDark" id="users-table">
+                <header>
+                    <span class="widget-icon"> <i class="fa fa-table"></i> </span>
+                    <h2>Listado usuarios</h2>
+                </header>
 
-            <div class="panel-body">
-                <table class='table'>
-                    <thead>
-                        <tr>
-                            <th>Nombre</th>
-                            <th>Email</th>
-                            <th>Roles</th>
-                            <th class='action-column'>Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td> <input ng-model="vm.search.name" ng-blur="vm.filter()" ng-enter="vm.filter()" type="text" class="form-control" placeholder="nombre"></input> </td>
-                            <td> <input ng-model="vm.search.email" ng-blur="vm.filter()" ng-enter="vm.filter()" type="text" class="form-control" placeholder="email"></input> </td>
-                            <td> <input ng-model="vm.search.roles" ng-blur="vm.filter()" ng-enter="vm.filter()" type="text" class="form-control" placeholder="rol"></input> </td>
-                            <td></td>
-                        </tr>
-                        <tr ng-repeat="user in vm.users">
-                            <td>{{ ::user.name }}</td>
-                            <td>{{ ::user.email }}</td>
-                            <td>
-                                <span ng-repeat="role in user.roles">
-                                    <span class='label label-primary'>{{ ::role.label }}</span>
-                                </span>
-                            </td>
-                            <td>
-                                <a ui-sref="app.users.edit({id: user.id})" class="btn btn-success btn-sm">Editar</a>
-                                <a ng-click="vm.destroy(user.id, $index)" class='btn btn-danger btn-sm'>Eliminar</a>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div>
+                    <div class="widget-body">
+                        <table class='table table-bordered'>
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Email</th>
+                                    <th>Roles</th>
+                                    <th class='action-column'>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td> <input ng-model="vm.search.name" ng-blur="vm.filter()" ng-enter="vm.filter()" type="text" class="form-control" placeholder="nombre"></input> </td>
+                                    <td> <input ng-model="vm.search.email" ng-blur="vm.filter()" ng-enter="vm.filter()" type="text" class="form-control" placeholder="email"></input> </td>
+                                    <td> <input ng-model="vm.search.roles" ng-blur="vm.filter()" ng-enter="vm.filter()" type="text" class="form-control" placeholder="rol"></input> </td>
+                                    <td></td>
+                                </tr>
+                                <tr ng-repeat="user in vm.users">
+                                    <td>{{ ::user.name }}</td>
+                                    <td>{{ ::user.email }}</td>
+                                    <td>
+                                        <span ng-repeat="role in user.roles">
+                                            <span class='label label-primary'>{{ ::role.label }}</span>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <a ui-sref="app.users.edit({id: user.id})" class="btn btn-warning btn-xs"><i class='fa fa-pencil'></i></a>
+                                        <a ng-click="vm.destroy(user.id, $index)" class='btn btn-danger btn-xs'><i class='fa fa-trash'></i></a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
 
-                <div ng-if='vm.reload' class='text-center'>
-                    <i class="fa fa-2x fa-spinner fa-spin"></i>
+                        <div ng-if='vm.reload' class='text-center'>
+                            <i class="fa fa-2x fa-spinner fa-spin"></i>
+                        </div>
+
+                        <div ng-hide="vm.reload" ng-if="vm.users | isEmpty" class='text-center'>
+                            Sin resultados
+                        </div>
+
+                        <div ng-hide="vm.reload" ng-if="! (vm.users | isEmpty)" class='text-center'>
+                            <ul uib-pagination items-per-page="vm.itemsPerPage" total-items="vm.totalItems" ng-model="vm.search.page" ng-change="vm.filter()"></ul>
+                        </div>
+
+                    </div>
                 </div>
-
-                <div ng-hide="vm.reload" ng-if="vm.users | isEmpty" class='text-center'>
-                    Sin resultados
-                </div>
-
-                <div ng-hide="vm.reload" ng-if="! (vm.users | isEmpty)" class='text-center'>
-                    <uib-pagination items-per-page="vm.itemsPerPage" total-items="vm.totalItems" ng-model="vm.search.page" ng-change="vm.filter()"></uib-pagination>
-                </div>
-
             </div>
-        </div>
+        </article>
     </div>
 </ui-view>

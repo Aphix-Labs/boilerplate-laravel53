@@ -17,7 +17,7 @@ class UsersController extends ApiController
 
     public function show(User $user)
     {
-        $user->roles = $user->roles->pluck('name');
+        $user->roles = $user->roles()->pluck('name');
 
         return $user;
     }
@@ -46,9 +46,7 @@ class UsersController extends ApiController
             'roles.*'  => 'exists:roles,name'
         ]);
 
-        $user->fill($request->all());
-
-        $user->save();
+        $user->fill($request->all())->save();
 
         $user->syncRoles($request->roles);
 
