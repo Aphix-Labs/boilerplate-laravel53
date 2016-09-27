@@ -61,7 +61,7 @@
 /******/ 	__webpack_require__.p = "";
 
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 52);
+/******/ 	return __webpack_require__(__webpack_require__.s = 63);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -286,7 +286,7 @@ var _defaultParams2 = _interopRequireWildcard(_defaultParams);
  * Add modal + overlay to DOM
  */
 
-var _injectedHTML = __webpack_require__(37);
+var _injectedHTML = __webpack_require__(43);
 
 var _injectedHTML2 = _interopRequireWildcard(_injectedHTML);
 
@@ -10630,9 +10630,9 @@ return jQuery;
 
 'use strict'
 
-var base64 = __webpack_require__(32)
-var ieee754 = __webpack_require__(34)
-var isArray = __webpack_require__(33)
+var base64 = __webpack_require__(38)
+var ieee754 = __webpack_require__(40)
+var isArray = __webpack_require__(39)
 
 exports.Buffer = Buffer
 exports.SlowBuffer = SlowBuffer
@@ -12511,26 +12511,40 @@ module.exports = g;
 /* 7 */
 /***/ function(module, exports) {
 
-module.exports = "<div class='row'>\n    <div class=\"panel panel-default\">\n        <div class=\"panel-heading\">{{ vm.action }} Usuario</div>\n\n        <div class=\"panel-body\">\n\n            <form class=\"form-horizontal\" role=\"form\" method=\"POST\" novalidate>\n\n                <div class=\"form-group\" ng-class=\"{'has-error': vm.hasError('name')}\">\n                    <label class=\"col-md-4 control-label\">Name</label>\n\n                    <div class=\"col-md-6\">\n                        <input type=\"text\" class=\"form-control\" ng-model=\"vm.data.name\">\n\n                        <span ng-if=\"vm.hasError('name')\" class=\"help-block\">\n                            <strong>{{ vm.errors.name[0] }}</strong>\n                        </span>\n                    </div>\n\n                </div>\n\n                <div class=\"form-group\" ng-class=\"{'has-error': vm.hasError('email')}\">\n                    <label class=\"col-md-4 control-label\">E-Mail Address</label>\n\n                    <div class=\"col-md-6\">\n                        <input type=\"text\" class=\"form-control\" ng-model=\"vm.data.email\">\n\n                        <span ng-if=\"vm.hasError('email')\" class=\"help-block\">\n                            <strong>{{ vm.errors.email[0] }}</strong>\n                        </span>\n                    </div>\n                </div>\n\n                <div class=\"form-group\" ng-class=\"{'has-error': vm.hasError('password')}\">\n                    <label class=\"col-md-4 control-label\">Password</label>\n\n                    <div class=\"col-md-6\">\n                        <input type=\"password\" class=\"form-control\" ng-model=\"vm.data.password\">\n\n                        <span ng-if=\"vm.hasError('password')\" class=\"help-block\">\n                            <strong>{{ vm.errors.password[0] }}</strong>\n                        </span>\n                    </div>\n                </div>\n\n                <div class=\"form-group\" ng-class=\"{'has-error': vm.hasError('password_confirmation')}\">\n                    <label class=\"col-md-4 control-label\">Confirm Password</label>\n\n                    <div class=\"col-md-6\">\n                        <input type=\"password\" class=\"form-control\" ng-model=\"vm.data.password_confirmation\">\n\n                        <span ng-if=\"vm.hasError('password_confirmation')\" class=\"help-block\">\n                            <strong>{{ vm.errors.password_confirmation[0] }}</strong>\n                        </span>\n                    </div>\n                </div>\n\n                <div class=\"form-group\" ng-class=\"{'has-error': vm.hasError('roles')}\">\n                    <label class=\"col-md-4 control-label\">Roles</label>\n\n                    <div class=\"col-md-6\">\n\n                        <ui-select multiple ng-model=\"vm.data.roles\">\n                            <ui-select-match placeholder=\"Selecciona roles...\">\n                                {{$item.label}}\n                            </ui-select-match>\n                            <ui-select-choices repeat=\"role.id as role in (vm.roles | filter: $select.search) track by $index\">\n                                <span ng-bind=\"role.label \"></span>\n                            </ui-select-choices>\n                        </ui-select>\n\n                        <span ng-if=\"vm.hasError('roles')\" class=\"help-block\">\n                            <strong>{{ vm.errors.roles[0] }}</strong>\n                        </span>\n                    </div>\n                </div>\n\n                <div class=\"form-group\">\n                    <div class=\"col-md-6 col-md-offset-4\">\n                        <button ng-click=\"vm.submitForm()\" class=\"btn btn-primary\">\n                            <i ng-class=\"{'fa-user': !vm.formIsSubmit, 'fa-spinner fa-spin': vm.formIsSubmit }\" class=\"fa fa-btn \"></i> {{ vm.action }}\n                        </button>\n                    </div>\n                </div>\n            </form>\n\n        </div>\n    </div>\n</div>\n";
+module.exports = "<div class='row'>\n    <div class=\"panel panel-default\">\n        <div class=\"panel-heading\">{{ vm.action }} Rol</div>\n        <div class=\"panel-body\">\n\n            {{ vm.data | json }}\n\n            <form class=\"form-horizontal\" role=\"form\" method=\"POST\">\n                <div class=\"form-group\" ng-class=\"{'has-error': vm.hasError('name')}\">\n                    <label class=\"col-md-4 control-label\">Name</label>\n\n                    <div class=\"col-md-6\">\n                        <input type=\"text\" class=\"form-control\" ng-model=\"vm.data.name\">\n\n                        <span ng-if=\"vm.hasError('name')\" class=\"help-block\">\n                            <strong>{{ vm.errors.name[0] }}</strong>\n                        </span>\n                    </div>\n                </div>\n\n                <div class=\"form-group\" ng-class=\"{'has-error': vm.hasError('label')}\">\n                    <label class=\"col-md-4 control-label\">Nombre legible</label>\n\n                    <div class=\"col-md-6\">\n                        <input type=\"text\" class=\"form-control\" ng-model=\"vm.data.label\">\n\n                        <span ng-if=\"vm.hasError('label')\" class=\"help-block\">\n                            <strong>{{ vm.errors.label[0] }}</strong>\n                        </span>\n                    </div>\n\n                </div>\n\n                <div class=\"form-group\" ng-class=\"{'has-error': vm.hasError('permissions')}\">\n                    <label class=\"col-md-4 control-label\">Permisos</label>\n\n                    <div class=\"col-md-6\">\n\n                        <ui-select multiple ng-model=\"vm.data.permissions\">\n                            <ui-select-match placeholder=\"Selecciona permisos...\">\n                                {{$item.label}}\n                            </ui-select-match>\n                            <ui-select-choices repeat=\"permission.id as permission in (vm.permissions | filter: $select.search) track by $index\">\n                                <span ng-bind=\"permission.label \"></span>\n                            </ui-select-choices>\n                        </ui-select>\n\n                        <span ng-if=\"vm.hasError('permissions')\" class=\"help-block\">\n                            <strong>{{ vm.errors.permissions[0] }}</strong>\n                        </span>\n                    </div>\n\n                </div>\n\n                <div class=\"form-group\">\n                    <div class=\"col-md-6 col-md-offset-4\">\n                        <button ng-click=\"vm.submitForm()\" class=\"btn btn-primary\">\n                            <i ng-class=\"{'fa-key': !vm.formIsSubmit, 'fa-spinner fa-spin': vm.formIsSubmit }\" class=\"fa fa-btn \"></i> {{vm.action}}\n                        </button>\n                    </div>\n                </div>\n            </form>\n        </div>\n    </div>\n</div>\n";
 
 /***/ },
 /* 8 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
-__webpack_require__(28);
-module.exports = 'ngAnimate';
-
+module.exports = "<div class='row'>\n    <div class=\"panel panel-default\">\n        <div class=\"panel-heading\">{{ vm.action }} Usuario</div>\n\n        <div class=\"panel-body\">\n\n            <form class=\"form-horizontal\" role=\"form\" method=\"POST\" novalidate>\n\n                <div class=\"form-group\" ng-class=\"{'has-error': vm.hasError('name')}\">\n                    <label class=\"col-md-4 control-label\">Name</label>\n\n                    <div class=\"col-md-6\">\n                        <input type=\"text\" class=\"form-control\" ng-model=\"vm.data.name\">\n\n                        <span ng-if=\"vm.hasError('name')\" class=\"help-block\">\n                            <strong>{{ vm.errors.name[0] }}</strong>\n                        </span>\n                    </div>\n\n                </div>\n\n                <div class=\"form-group\" ng-class=\"{'has-error': vm.hasError('email')}\">\n                    <label class=\"col-md-4 control-label\">E-Mail Address</label>\n\n                    <div class=\"col-md-6\">\n                        <input type=\"text\" class=\"form-control\" ng-model=\"vm.data.email\">\n\n                        <span ng-if=\"vm.hasError('email')\" class=\"help-block\">\n                            <strong>{{ vm.errors.email[0] }}</strong>\n                        </span>\n                    </div>\n                </div>\n\n                <div class=\"form-group\" ng-class=\"{'has-error': vm.hasError('password')}\">\n                    <label class=\"col-md-4 control-label\">Password</label>\n\n                    <div class=\"col-md-6\">\n                        <input type=\"password\" class=\"form-control\" ng-model=\"vm.data.password\">\n\n                        <span ng-if=\"vm.hasError('password')\" class=\"help-block\">\n                            <strong>{{ vm.errors.password[0] }}</strong>\n                        </span>\n                    </div>\n                </div>\n\n                <div class=\"form-group\" ng-class=\"{'has-error': vm.hasError('password_confirmation')}\">\n                    <label class=\"col-md-4 control-label\">Confirm Password</label>\n\n                    <div class=\"col-md-6\">\n                        <input type=\"password\" class=\"form-control\" ng-model=\"vm.data.password_confirmation\">\n\n                        <span ng-if=\"vm.hasError('password_confirmation')\" class=\"help-block\">\n                            <strong>{{ vm.errors.password_confirmation[0] }}</strong>\n                        </span>\n                    </div>\n                </div>\n\n                <div class=\"form-group\" ng-class=\"{'has-error': vm.hasError('roles')}\">\n                    <label class=\"col-md-4 control-label\">Roles</label>\n\n                    <div class=\"col-md-6\">\n\n                        <ui-select multiple ng-model=\"vm.data.roles\">\n                            <ui-select-match placeholder=\"Selecciona roles...\">\n                                {{$item.label}}\n                            </ui-select-match>\n                            <ui-select-choices repeat=\"role.id as role in (vm.roles | filter: $select.search) track by $index\">\n                                <span ng-bind=\"role.label \"></span>\n                            </ui-select-choices>\n                        </ui-select>\n\n                        <span ng-if=\"vm.hasError('roles')\" class=\"help-block\">\n                            <strong>{{ vm.errors.roles[0] }}</strong>\n                        </span>\n                    </div>\n                </div>\n\n                <div class=\"form-group\">\n                    <div class=\"col-md-6 col-md-offset-4\">\n                        <button ng-click=\"vm.submitForm()\" class=\"btn btn-primary\">\n                            <i ng-class=\"{'fa-user': !vm.formIsSubmit, 'fa-spinner fa-spin': vm.formIsSubmit }\" class=\"fa fa-btn \"></i> {{ vm.action }}\n                        </button>\n                    </div>\n                </div>\n            </form>\n\n        </div>\n    </div>\n</div>\n";
 
 /***/ },
 /* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
-__webpack_require__(29);
-module.exports = 'angular-loading-bar';
+__webpack_require__(33);
+module.exports = 'ngAnimate';
 
 
 /***/ },
 /* 10 */
+/***/ function(module, exports, __webpack_require__) {
+
+__webpack_require__(34);
+module.exports = 'angular-loading-bar';
+
+
+/***/ },
+/* 11 */
+/***/ function(module, exports, __webpack_require__) {
+
+__webpack_require__(35);
+module.exports = 'ngSanitize';
+
+
+/***/ },
+/* 12 */
 /***/ function(module, exports) {
 
 "use strict";
@@ -12601,16 +12615,16 @@ angular.module('oitozero.ngSweetAlert', [])
 
 
 /***/ },
-/* 11 */
+/* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
-__webpack_require__(30);
+__webpack_require__(36);
 module.exports = 'toastr';
 
 
 
 /***/ },
-/* 12 */
+/* 14 */
 /***/ function(module, exports) {
 
 /**
@@ -17197,15 +17211,15 @@ angular.module('ui.router.state')
 })(window, window.angular);
 
 /***/ },
-/* 13 */
+/* 15 */
 /***/ function(module, exports, __webpack_require__) {
 
-__webpack_require__(31);
+__webpack_require__(37);
 module.exports = angular;
 
 
 /***/ },
-/* 14 */
+/* 16 */
 /***/ function(module, exports) {
 
 /*!
@@ -19594,7 +19608,7 @@ if (typeof jQuery === 'undefined') {
 
 
 /***/ },
-/* 15 */
+/* 17 */
 /***/ function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, module) {var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -19611,7 +19625,7 @@ if (typeof jQuery === 'undefined') {
   var undefined;
 
   /** Used as the semantic version number. */
-  var VERSION = '4.15.0';
+  var VERSION = '4.16.1';
 
   /** Used as the size to enable large array optimizations. */
   var LARGE_ARRAY_SIZE = 200;
@@ -19621,6 +19635,9 @@ if (typeof jQuery === 'undefined') {
 
   /** Used to stand-in for `undefined` hash values. */
   var HASH_UNDEFINED = '__lodash_hash_undefined__';
+
+  /** Used as the maximum memoize cache size. */
+  var MAX_MEMOIZE_SIZE = 500;
 
   /** Used as the internal argument placeholder. */
   var PLACEHOLDER = '__lodash_placeholder__';
@@ -19646,7 +19663,7 @@ if (typeof jQuery === 'undefined') {
       DEFAULT_TRUNC_OMISSION = '...';
 
   /** Used to detect hot functions by number of calls within a span of milliseconds. */
-  var HOT_COUNT = 150,
+  var HOT_COUNT = 500,
       HOT_SPAN = 16;
 
   /** Used to indicate the type of lazy iteratees. */
@@ -19715,8 +19732,8 @@ if (typeof jQuery === 'undefined') {
       reEmptyStringTrailing = /(__e\(.*?\)|\b__t\)) \+\n'';/g;
 
   /** Used to match HTML entities and HTML characters. */
-  var reEscapedHtml = /&(?:amp|lt|gt|quot|#39|#96);/g,
-      reUnescapedHtml = /[&<>"'`]/g,
+  var reEscapedHtml = /&(?:amp|lt|gt|quot|#39);/g,
+      reUnescapedHtml = /[&<>"']/g,
       reHasEscapedHtml = RegExp(reEscapedHtml.source),
       reHasUnescapedHtml = RegExp(reUnescapedHtml.source);
 
@@ -19762,9 +19779,6 @@ if (typeof jQuery === 'undefined') {
 
   /** Used to match `RegExp` flags from their coerced string values. */
   var reFlags = /\w*$/;
-
-  /** Used to detect hexadecimal string values. */
-  var reHasHexPrefix = /^0x/i;
 
   /** Used to detect bad signed hexadecimal string values. */
   var reIsBadHex = /^[-+]0x[0-9a-f]+$/i;
@@ -19960,7 +19974,7 @@ if (typeof jQuery === 'undefined') {
     '\u017a': 'z',  '\u017c': 'z', '\u017e': 'z',
     '\u0132': 'IJ', '\u0133': 'ij',
     '\u0152': 'Oe', '\u0153': 'oe',
-    '\u0149': "'n", '\u017f': 'ss'
+    '\u0149': "'n", '\u017f': 's'
   };
 
   /** Used to map characters to HTML entities. */
@@ -19969,8 +19983,7 @@ if (typeof jQuery === 'undefined') {
     '<': '&lt;',
     '>': '&gt;',
     '"': '&quot;',
-    "'": '&#39;',
-    '`': '&#96;'
+    "'": '&#39;'
   };
 
   /** Used to map HTML entities to characters. */
@@ -19979,8 +19992,7 @@ if (typeof jQuery === 'undefined') {
     '&lt;': '<',
     '&gt;': '>',
     '&quot;': '"',
-    '&#39;': "'",
-    '&#96;': '`'
+    '&#39;': "'"
   };
 
   /** Used to escape characters for inclusion in compiled string literals. */
@@ -20421,18 +20433,9 @@ if (typeof jQuery === 'undefined') {
    * @returns {number} Returns the index of the matched value, else `-1`.
    */
   function baseIndexOf(array, value, fromIndex) {
-    if (value !== value) {
-      return baseFindIndex(array, baseIsNaN, fromIndex);
-    }
-    var index = fromIndex - 1,
-        length = array.length;
-
-    while (++index < length) {
-      if (array[index] === value) {
-        return index;
-      }
-    }
-    return -1;
+    return value === value
+      ? strictIndexOf(array, value, fromIndex)
+      : baseFindIndex(array, baseIsNaN, fromIndex);
   }
 
   /**
@@ -20637,7 +20640,7 @@ if (typeof jQuery === 'undefined') {
   }
 
   /**
-   * Checks if a cache value for `key` exists.
+   * Checks if a `cache` value for `key` exists.
    *
    * @private
    * @param {Object} cache The cache to query.
@@ -20695,7 +20698,7 @@ if (typeof jQuery === 'undefined') {
 
     while (length--) {
       if (array[length] === placeholder) {
-        result++;
+        ++result;
       }
     }
     return result;
@@ -20763,25 +20766,6 @@ if (typeof jQuery === 'undefined') {
    */
   function hasUnicodeWord(string) {
     return reHasUnicodeWord.test(string);
-  }
-
-  /**
-   * Checks if `value` is a host object in IE < 9.
-   *
-   * @private
-   * @param {*} value The value to check.
-   * @returns {boolean} Returns `true` if `value` is a host object, else `false`.
-   */
-  function isHostObject(value) {
-    // Many host objects are `Object` objects that can coerce to strings
-    // despite having improperly defined `toString` methods.
-    var result = false;
-    if (value != null && typeof value.toString != 'function') {
-      try {
-        result = !!(value + '');
-      } catch (e) {}
-    }
-    return result;
   }
 
   /**
@@ -20892,6 +20876,48 @@ if (typeof jQuery === 'undefined') {
   }
 
   /**
+   * A specialized version of `_.indexOf` which performs strict equality
+   * comparisons of values, i.e. `===`.
+   *
+   * @private
+   * @param {Array} array The array to inspect.
+   * @param {*} value The value to search for.
+   * @param {number} fromIndex The index to search from.
+   * @returns {number} Returns the index of the matched value, else `-1`.
+   */
+  function strictIndexOf(array, value, fromIndex) {
+    var index = fromIndex - 1,
+        length = array.length;
+
+    while (++index < length) {
+      if (array[index] === value) {
+        return index;
+      }
+    }
+    return -1;
+  }
+
+  /**
+   * A specialized version of `_.lastIndexOf` which performs strict equality
+   * comparisons of values, i.e. `===`.
+   *
+   * @private
+   * @param {Array} array The array to inspect.
+   * @param {*} value The value to search for.
+   * @param {number} fromIndex The index to search from.
+   * @returns {number} Returns the index of the matched value, else `-1`.
+   */
+  function strictLastIndexOf(array, value, fromIndex) {
+    var index = fromIndex + 1;
+    while (index--) {
+      if (array[index] === value) {
+        return index;
+      }
+    }
+    return index;
+  }
+
+  /**
    * Gets the number of symbols in `string`.
    *
    * @private
@@ -20936,7 +20962,7 @@ if (typeof jQuery === 'undefined') {
   function unicodeSize(string) {
     var result = reUnicode.lastIndex = 0;
     while (reUnicode.test(string)) {
-      result++;
+      ++result;
     }
     return result;
   }
@@ -20991,17 +21017,10 @@ if (typeof jQuery === 'undefined') {
    * lodash.isFunction(lodash.bar);
    * // => true
    *
-   * // Use `context` to stub `Date#getTime` use in `_.now`.
-   * var stubbed = _.runInContext({
-   *   'Date': function() {
-   *     return { 'getTime': stubGetTime };
-   *   }
-   * });
-   *
    * // Create a suped-up `defer` in Node.js.
    * var defer = _.runInContext({ 'setTimeout': setImmediate }).defer;
    */
-  function runInContext(context) {
+  var runInContext = (function runInContext(context) {
     context = context ? _.defaults(root.Object(), context, _.pick(root, contextProps)) : root;
 
     /** Built-in constructor references. */
@@ -21061,6 +21080,7 @@ if (typeof jQuery === 'undefined') {
     var Buffer = moduleExports ? context.Buffer : undefined,
         Symbol = context.Symbol,
         Uint8Array = context.Uint8Array,
+        defineProperty = Object.defineProperty,
         getPrototype = overArg(Object.getPrototypeOf, Object),
         iteratorSymbol = Symbol ? Symbol.iterator : undefined,
         objectCreate = Object.create,
@@ -21083,6 +21103,7 @@ if (typeof jQuery === 'undefined') {
         nativeKeys = overArg(Object.keys, Object),
         nativeMax = Math.max,
         nativeMin = Math.min,
+        nativeNow = Date.now,
         nativeParseInt = context.parseInt,
         nativeRandom = Math.random,
         nativeReverse = arrayProto.reverse;
@@ -21093,21 +21114,11 @@ if (typeof jQuery === 'undefined') {
         Promise = getNative(context, 'Promise'),
         Set = getNative(context, 'Set'),
         WeakMap = getNative(context, 'WeakMap'),
-        nativeCreate = getNative(Object, 'create');
-
-    /* Used to set `toString` methods. */
-    var defineProperty = (function() {
-      var func = getNative(Object, 'defineProperty'),
-          name = getNative.name;
-
-      return (name && name.length > 2) ? func : undefined;
-    }());
+        nativeCreate = getNative(Object, 'create'),
+        nativeDefineProperty = getNative(Object, 'defineProperty');
 
     /** Used to store function metadata. */
     var metaMap = WeakMap && new WeakMap;
-
-    /** Detect if properties shadowing those on `Object.prototype` are non-enumerable. */
-    var nonEnumShadows = !propertyIsEnumerable.call({ 'valueOf': 1 }, 'valueOf');
 
     /** Used to lookup unminified function names. */
     var realNames = {};
@@ -21498,6 +21509,7 @@ if (typeof jQuery === 'undefined') {
      */
     function hashClear() {
       this.__data__ = nativeCreate ? nativeCreate(null) : {};
+      this.size = 0;
     }
 
     /**
@@ -21511,7 +21523,9 @@ if (typeof jQuery === 'undefined') {
      * @returns {boolean} Returns `true` if the entry was removed, else `false`.
      */
     function hashDelete(key) {
-      return this.has(key) && delete this.__data__[key];
+      var result = this.has(key) && delete this.__data__[key];
+      this.size -= result ? 1 : 0;
+      return result;
     }
 
     /**
@@ -21558,6 +21572,7 @@ if (typeof jQuery === 'undefined') {
      */
     function hashSet(key, value) {
       var data = this.__data__;
+      this.size += this.has(key) ? 0 : 1;
       data[key] = (nativeCreate && value === undefined) ? HASH_UNDEFINED : value;
       return this;
     }
@@ -21600,6 +21615,7 @@ if (typeof jQuery === 'undefined') {
      */
     function listCacheClear() {
       this.__data__ = [];
+      this.size = 0;
     }
 
     /**
@@ -21624,6 +21640,7 @@ if (typeof jQuery === 'undefined') {
       } else {
         splice.call(data, index, 1);
       }
+      --this.size;
       return true;
     }
 
@@ -21671,6 +21688,7 @@ if (typeof jQuery === 'undefined') {
           index = assocIndexOf(data, key);
 
       if (index < 0) {
+        ++this.size;
         data.push([key, value]);
       } else {
         data[index][1] = value;
@@ -21715,6 +21733,7 @@ if (typeof jQuery === 'undefined') {
      * @memberOf MapCache
      */
     function mapCacheClear() {
+      this.size = 0;
       this.__data__ = {
         'hash': new Hash,
         'map': new (Map || ListCache),
@@ -21732,7 +21751,9 @@ if (typeof jQuery === 'undefined') {
      * @returns {boolean} Returns `true` if the entry was removed, else `false`.
      */
     function mapCacheDelete(key) {
-      return getMapData(this, key)['delete'](key);
+      var result = getMapData(this, key)['delete'](key);
+      this.size -= result ? 1 : 0;
+      return result;
     }
 
     /**
@@ -21772,7 +21793,11 @@ if (typeof jQuery === 'undefined') {
      * @returns {Object} Returns the map cache instance.
      */
     function mapCacheSet(key, value) {
-      getMapData(this, key).set(key, value);
+      var data = getMapData(this, key),
+          size = data.size;
+
+      data.set(key, value);
+      this.size += data.size == size ? 0 : 1;
       return this;
     }
 
@@ -21847,7 +21872,8 @@ if (typeof jQuery === 'undefined') {
      * @param {Array} [entries] The key-value pairs to cache.
      */
     function Stack(entries) {
-      this.__data__ = new ListCache(entries);
+      var data = this.__data__ = new ListCache(entries);
+      this.size = data.size;
     }
 
     /**
@@ -21859,6 +21885,7 @@ if (typeof jQuery === 'undefined') {
      */
     function stackClear() {
       this.__data__ = new ListCache;
+      this.size = 0;
     }
 
     /**
@@ -21871,7 +21898,11 @@ if (typeof jQuery === 'undefined') {
      * @returns {boolean} Returns `true` if the entry was removed, else `false`.
      */
     function stackDelete(key) {
-      return this.__data__['delete'](key);
+      var data = this.__data__,
+          result = data['delete'](key);
+
+      this.size = data.size;
+      return result;
     }
 
     /**
@@ -21911,16 +21942,18 @@ if (typeof jQuery === 'undefined') {
      * @returns {Object} Returns the stack cache instance.
      */
     function stackSet(key, value) {
-      var cache = this.__data__;
-      if (cache instanceof ListCache) {
-        var pairs = cache.__data__;
+      var data = this.__data__;
+      if (data instanceof ListCache) {
+        var pairs = data.__data__;
         if (!Map || (pairs.length < LARGE_ARRAY_SIZE - 1)) {
           pairs.push([key, value]);
+          this.size = ++data.size;
           return this;
         }
-        cache = this.__data__ = new MapCache(pairs);
+        data = this.__data__ = new MapCache(pairs);
       }
-      cache.set(key, value);
+      data.set(key, value);
+      this.size = data.size;
       return this;
     }
 
@@ -21961,6 +21994,44 @@ if (typeof jQuery === 'undefined') {
     }
 
     /**
+     * A specialized version of `_.sample` for arrays without support for iteratee
+     * shorthands.
+     *
+     * @private
+     * @param {Array} array The array to sample.
+     * @returns {*} Returns the random element.
+     */
+    function arraySample(array) {
+      var length = array.length;
+      return length ? array[baseRandom(0, length - 1)] : undefined;
+    }
+
+    /**
+     * A specialized version of `_.sampleSize` for arrays.
+     *
+     * @private
+     * @param {Array} array The array to sample.
+     * @param {number} n The number of elements to sample.
+     * @returns {Array} Returns the random elements.
+     */
+    function arraySampleSize(array, n) {
+      var result = arrayShuffle(array);
+      result.length = baseClamp(n, 0, result.length);
+      return result;
+    }
+
+    /**
+     * A specialized version of `_.shuffle` for arrays.
+     *
+     * @private
+     * @param {Array} array The array to shuffle.
+     * @returns {Array} Returns the new shuffled array.
+     */
+    function arrayShuffle(array) {
+      return shuffleSelf(copyArray(array));
+    }
+
+    /**
      * Used by `_.defaults` to customize its `_.assignIn` use.
      *
      * @private
@@ -21990,7 +22061,7 @@ if (typeof jQuery === 'undefined') {
     function assignMergeValue(object, key, value) {
       if ((value !== undefined && !eq(object[key], value)) ||
           (typeof key == 'number' && value === undefined && !(key in object))) {
-        object[key] = value;
+        baseAssignValue(object, key, value);
       }
     }
 
@@ -22008,7 +22079,7 @@ if (typeof jQuery === 'undefined') {
       var objValue = object[key];
       if (!(hasOwnProperty.call(object, key) && eq(objValue, value)) ||
           (value === undefined && !(key in object))) {
-        object[key] = value;
+        baseAssignValue(object, key, value);
       }
     }
 
@@ -22059,6 +22130,28 @@ if (typeof jQuery === 'undefined') {
      */
     function baseAssign(object, source) {
       return object && copyObject(source, keys(source), object);
+    }
+
+    /**
+     * The base implementation of `assignValue` and `assignMergeValue` without
+     * value checks.
+     *
+     * @private
+     * @param {Object} object The object to modify.
+     * @param {string} key The key of the property to assign.
+     * @param {*} value The value to assign.
+     */
+    function baseAssignValue(object, key, value) {
+      if (key == '__proto__' && defineProperty) {
+        defineProperty(object, key, {
+          'configurable': true,
+          'enumerable': true,
+          'value': value,
+          'writable': true
+        });
+      } else {
+        object[key] = value;
+      }
     }
 
     /**
@@ -22141,9 +22234,6 @@ if (typeof jQuery === 'undefined') {
           return cloneBuffer(value, isDeep);
         }
         if (tag == objectTag || tag == argsTag || (isFunc && !object)) {
-          if (isHostObject(value)) {
-            return object ? value : {};
-          }
           result = initCloneObject(isFunc ? {} : value);
           if (!isDeep) {
             return copySymbols(value, baseAssign(result, value));
@@ -22787,8 +22877,8 @@ if (typeof jQuery === 'undefined') {
         othTag = getTag(other);
         othTag = othTag == argsTag ? objectTag : othTag;
       }
-      var objIsObj = objTag == objectTag && !isHostObject(object),
-          othIsObj = othTag == objectTag && !isHostObject(other),
+      var objIsObj = objTag == objectTag,
+          othIsObj = othTag == objectTag,
           isSameTag = objTag == othTag;
 
       if (isSameTag && !objIsObj) {
@@ -22893,7 +22983,7 @@ if (typeof jQuery === 'undefined') {
       if (!isObject(value) || isMasked(value)) {
         return false;
       }
-      var pattern = (isFunction(value) || isHostObject(value)) ? reIsNative : reIsHostCtor;
+      var pattern = isFunction(value) ? reIsNative : reIsHostCtor;
       return pattern.test(toSource(value));
     }
 
@@ -23251,7 +23341,7 @@ if (typeof jQuery === 'undefined') {
             value = object[key];
 
         if (predicate(value, key)) {
-          result[key] = value;
+          baseAssignValue(result, key, value);
         }
       }
       return result;
@@ -23417,24 +23507,7 @@ if (typeof jQuery === 'undefined') {
      * @returns {Function} Returns the new function.
      */
     function baseRest(func, start) {
-      start = nativeMax(start === undefined ? (func.length - 1) : start, 0);
-      return function() {
-        var args = arguments,
-            index = -1,
-            length = nativeMax(args.length - start, 0),
-            array = Array(length);
-
-        while (++index < length) {
-          array[index] = args[start + index];
-        }
-        index = -1;
-        var otherArgs = Array(start + 1);
-        while (++index < start) {
-          otherArgs[index] = args[index];
-        }
-        otherArgs[start] = array;
-        return apply(func, this, otherArgs);
-      };
+      return setToString(overRest(func, start, identity), func + '');
     }
 
     /**
@@ -23478,7 +23551,7 @@ if (typeof jQuery === 'undefined') {
     }
 
     /**
-     * The base implementation of `setData` without support for hot loop detection.
+     * The base implementation of `setData` without support for hot loop shorting.
      *
      * @private
      * @param {Function} func The function to associate metadata with.
@@ -23488,6 +23561,23 @@ if (typeof jQuery === 'undefined') {
     var baseSetData = !metaMap ? identity : function(func, data) {
       metaMap.set(func, data);
       return func;
+    };
+
+    /**
+     * The base implementation of `setToString` without support for hot loop shorting.
+     *
+     * @private
+     * @param {Function} func The function to modify.
+     * @param {Function} string The `toString` result.
+     * @returns {Function} Returns `func`.
+     */
+    var baseSetToString = !nativeDefineProperty ? identity : function(func, string) {
+      return nativeDefineProperty(func, 'toString', {
+        'configurable': true,
+        'enumerable': false,
+        'value': constant(string),
+        'writable': true
+      });
     };
 
     /**
@@ -23905,6 +23995,17 @@ if (typeof jQuery === 'undefined') {
     }
 
     /**
+     * A `baseRest` alias which can be replaced with `identity` by module
+     * replacement plugins.
+     *
+     * @private
+     * @type {Function}
+     * @param {Function} func The function to apply a rest parameter to.
+     * @returns {Function} Returns the new function.
+     */
+    var castRest = baseRest;
+
+    /**
      * Casts `array` to a slice if it's needed.
      *
      * @private
@@ -24218,6 +24319,7 @@ if (typeof jQuery === 'undefined') {
      * @returns {Object} Returns `object`.
      */
     function copyObject(source, props, object, customizer) {
+      var isNew = !object;
       object || (object = {});
 
       var index = -1,
@@ -24230,7 +24332,14 @@ if (typeof jQuery === 'undefined') {
           ? customizer(object[key], source[key], key, object, source)
           : undefined;
 
-        assignValue(object, key, newValue === undefined ? source[key] : newValue);
+        if (newValue === undefined) {
+          newValue = source[key];
+        }
+        if (isNew) {
+          baseAssignValue(object, key, newValue);
+        } else {
+          assignValue(object, key, newValue);
+        }
       }
       return object;
     }
@@ -24511,9 +24620,7 @@ if (typeof jQuery === 'undefined') {
      * @returns {Function} Returns the new flow function.
      */
     function createFlow(fromRight) {
-      return baseRest(function(funcs) {
-        funcs = baseFlatten(funcs, 1);
-
+      return flatRest(function(funcs) {
         var length = funcs.length,
             index = length,
             prereq = LodashWrapper.prototype.thru;
@@ -24700,11 +24807,8 @@ if (typeof jQuery === 'undefined') {
      * @returns {Function} Returns the new over function.
      */
     function createOver(arrayFunc) {
-      return baseRest(function(iteratees) {
-        iteratees = (iteratees.length == 1 && isArray(iteratees[0]))
-          ? arrayMap(iteratees[0], baseUnary(getIteratee()))
-          : arrayMap(baseFlatten(iteratees, 1), baseUnary(getIteratee()));
-
+      return flatRest(function(iteratees) {
+        iteratees = arrayMap(iteratees, baseUnary(getIteratee()));
         return baseRest(function(args) {
           var thisArg = this;
           return arrayFunc(iteratees, function(iteratee) {
@@ -25049,9 +25153,9 @@ if (typeof jQuery === 'undefined') {
         // Recursively compare arrays (susceptible to call stack limits).
         if (seen) {
           if (!arraySome(other, function(othValue, othIndex) {
-                if (!seen.has(othIndex) &&
+                if (!cacheHas(seen, othIndex) &&
                     (arrValue === othValue || equalFunc(arrValue, othValue, customizer, bitmask, stack))) {
-                  return seen.add(othIndex);
+                  return seen.push(othIndex);
                 }
               })) {
             result = false;
@@ -25232,6 +25336,17 @@ if (typeof jQuery === 'undefined') {
     }
 
     /**
+     * A specialized version of `baseRest` which flattens the rest array.
+     *
+     * @private
+     * @param {Function} func The function to apply a rest parameter to.
+     * @returns {Function} Returns the new function.
+     */
+    function flatRest(func) {
+      return setToString(overRest(func, undefined, flatten), func + '');
+    }
+
+    /**
      * Creates an array of own enumerable property names and symbols of `object`.
      *
      * @private
@@ -25399,8 +25514,7 @@ if (typeof jQuery === 'undefined') {
      */
     var getTag = baseGetTag;
 
-    // Fallback for data views, maps, sets, and weak maps in IE 11,
-    // for data views in Edge < 14, and promises in Node.js.
+    // Fallback for data views, maps, sets, and weak maps in IE 11 and promises in Node.js < 6.
     if ((DataView && getTag(new DataView(new ArrayBuffer(1))) != dataViewTag) ||
         (Map && getTag(new Map) != mapTag) ||
         (Promise && getTag(Promise.resolve()) != promiseTag) ||
@@ -25476,9 +25590,9 @@ if (typeof jQuery === 'undefined') {
     function hasPath(object, path, hasFunc) {
       path = isKey(path, object) ? [path] : castPath(path);
 
-      var result,
-          index = -1,
-          length = path.length;
+      var index = -1,
+          length = path.length,
+          result = false;
 
       while (++index < length) {
         var key = toKey(path[index]);
@@ -25487,10 +25601,10 @@ if (typeof jQuery === 'undefined') {
         }
         object = object[key];
       }
-      if (result) {
+      if (result || ++index != length) {
         return result;
       }
-      var length = object ? object.length : 0;
+      length = object ? object.length : 0;
       return !!length && isLength(length) && isIndex(key, length) &&
         (isArray(object) || isArguments(object));
     }
@@ -25585,9 +25699,11 @@ if (typeof jQuery === 'undefined') {
      * @returns {string} Returns the modified source.
      */
     function insertWrapDetails(source, details) {
-      var length = details.length,
-          lastIndex = length - 1;
-
+      var length = details.length;
+      if (!length) {
+        return source;
+      }
+      var lastIndex = length - 1;
       details[lastIndex] = (length > 1 ? '& ' : '') + details[lastIndex];
       details = details.join(length > 2 ? ', ' : ' ');
       return source.replace(reWrapComment, '{\n/* [wrapped with ' + details + '] */\n');
@@ -25767,6 +25883,26 @@ if (typeof jQuery === 'undefined') {
     }
 
     /**
+     * A specialized version of `_.memoize` which clears the memoized function's
+     * cache when it exceeds `MAX_MEMOIZE_SIZE`.
+     *
+     * @private
+     * @param {Function} func The function to have its output memoized.
+     * @returns {Function} Returns the new memoized function.
+     */
+    function memoizeCapped(func) {
+      var result = memoize(func, function(key) {
+        if (cache.size === MAX_MEMOIZE_SIZE) {
+          cache.clear();
+        }
+        return key;
+      });
+
+      var cache = result.cache;
+      return result;
+    }
+
+    /**
      * Merges the function metadata of `source` into `data`.
      *
      * Merging metadata reduces the number of wrappers used to invoke a function.
@@ -25880,6 +26016,36 @@ if (typeof jQuery === 'undefined') {
     }
 
     /**
+     * A specialized version of `baseRest` which transforms the rest array.
+     *
+     * @private
+     * @param {Function} func The function to apply a rest parameter to.
+     * @param {number} [start=func.length-1] The start position of the rest parameter.
+     * @param {Function} transform The rest array transform.
+     * @returns {Function} Returns the new function.
+     */
+    function overRest(func, start, transform) {
+      start = nativeMax(start === undefined ? (func.length - 1) : start, 0);
+      return function() {
+        var args = arguments,
+            index = -1,
+            length = nativeMax(args.length - start, 0),
+            array = Array(length);
+
+        while (++index < length) {
+          array[index] = args[start + index];
+        }
+        index = -1;
+        var otherArgs = Array(start + 1);
+        while (++index < start) {
+          otherArgs[index] = args[index];
+        }
+        otherArgs[start] = transform(array);
+        return apply(func, this, otherArgs);
+      };
+    }
+
+    /**
      * Gets the parent value at `path` of `object`.
      *
      * @private
@@ -25927,25 +26093,7 @@ if (typeof jQuery === 'undefined') {
      * @param {*} data The metadata.
      * @returns {Function} Returns `func`.
      */
-    var setData = (function() {
-      var count = 0,
-          lastCalled = 0;
-
-      return function(key, value) {
-        var stamp = now(),
-            remaining = HOT_SPAN - (stamp - lastCalled);
-
-        lastCalled = stamp;
-        if (remaining > 0) {
-          if (++count >= HOT_COUNT) {
-            return key;
-          }
-        } else {
-          count = 0;
-        }
-        return baseSetData(key, value);
-      };
-    }());
+    var setData = shortOut(baseSetData);
 
     /**
      * A simple wrapper around the global [`setTimeout`](https://mdn.io/setTimeout).
@@ -25960,6 +26108,16 @@ if (typeof jQuery === 'undefined') {
     };
 
     /**
+     * Sets the `toString` method of `func` to return `string`.
+     *
+     * @private
+     * @param {Function} func The function to modify.
+     * @param {Function} string The `toString` result.
+     * @returns {Function} Returns `func`.
+     */
+    var setToString = shortOut(baseSetToString);
+
+    /**
      * Sets the `toString` method of `wrapper` to mimic the source of `reference`
      * with wrapper details in a comment at the top of the source body.
      *
@@ -25969,14 +26127,61 @@ if (typeof jQuery === 'undefined') {
      * @param {number} bitmask The bitmask flags. See `createWrap` for more details.
      * @returns {Function} Returns `wrapper`.
      */
-    var setWrapToString = !defineProperty ? identity : function(wrapper, reference, bitmask) {
+    function setWrapToString(wrapper, reference, bitmask) {
       var source = (reference + '');
-      return defineProperty(wrapper, 'toString', {
-        'configurable': true,
-        'enumerable': false,
-        'value': constant(insertWrapDetails(source, updateWrapDetails(getWrapDetails(source), bitmask)))
-      });
-    };
+      return setToString(wrapper, insertWrapDetails(source, updateWrapDetails(getWrapDetails(source), bitmask)));
+    }
+
+    /**
+     * Creates a function that'll short out and invoke `identity` instead
+     * of `func` when it's called `HOT_COUNT` or more times in `HOT_SPAN`
+     * milliseconds.
+     *
+     * @private
+     * @param {Function} func The function to restrict.
+     * @returns {Function} Returns the new shortable function.
+     */
+    function shortOut(func) {
+      var count = 0,
+          lastCalled = 0;
+
+      return function() {
+        var stamp = nativeNow(),
+            remaining = HOT_SPAN - (stamp - lastCalled);
+
+        lastCalled = stamp;
+        if (remaining > 0) {
+          if (++count >= HOT_COUNT) {
+            return arguments[0];
+          }
+        } else {
+          count = 0;
+        }
+        return func.apply(undefined, arguments);
+      };
+    }
+
+    /**
+     * A specialized version of `arrayShuffle` which mutates `array`.
+     *
+     * @private
+     * @param {Array} array The array to shuffle.
+     * @returns {Array} Returns `array`.
+     */
+    function shuffleSelf(array) {
+      var index = -1,
+          length = array.length,
+          lastIndex = length - 1;
+
+      while (++index < length) {
+        var rand = baseRandom(index, lastIndex),
+            value = array[rand];
+
+        array[rand] = array[index];
+        array[index] = value;
+      }
+      return array;
+    }
 
     /**
      * Converts `string` to a property path array.
@@ -25985,7 +26190,7 @@ if (typeof jQuery === 'undefined') {
      * @param {string} string The string to convert.
      * @returns {Array} Returns the property path array.
      */
-    var stringToPath = memoize(function(string) {
+    var stringToPath = memoizeCapped(function(string) {
       string = toString(string);
 
       var result = [];
@@ -26166,24 +26371,25 @@ if (typeof jQuery === 'undefined') {
     function concat() {
       var arguments$1 = arguments;
 
-      var length = arguments.length,
-          args = Array(length ? length - 1 : 0),
+      var length = arguments.length;
+      if (!length) {
+        return [];
+      }
+      var args = Array(length - 1),
           array = arguments[0],
           index = length;
 
       while (index--) {
         args[index - 1] = arguments$1[index];
       }
-      return length
-        ? arrayPush(isArray(array) ? copyArray(array) : [array], baseFlatten(args, 1))
-        : [];
+      return arrayPush(isArray(array) ? copyArray(array) : [array], baseFlatten(args, 1));
     }
 
     /**
      * Creates an array of `array` values not included in the other given arrays
      * using [`SameValueZero`](http://ecma-international.org/ecma-262/7.0/#sec-samevaluezero)
-     * for equality comparisons. The order of result values is determined by the
-     * order they occur in the first array.
+     * for equality comparisons. The order and references of result values are
+     * determined by the first array.
      *
      * **Note:** Unlike `_.pullAll`, this method returns a new array.
      *
@@ -26209,8 +26415,9 @@ if (typeof jQuery === 'undefined') {
     /**
      * This method is like `_.difference` except that it accepts `iteratee` which
      * is invoked for each element of `array` and `values` to generate the criterion
-     * by which they're compared. Result values are chosen from the first array.
-     * The iteratee is invoked with one argument: (value).
+     * by which they're compared. The order and references of result values are
+     * determined by the first array. The iteratee is invoked with one argument:
+     * (value).
      *
      * **Note:** Unlike `_.pullAllBy`, this method returns a new array.
      *
@@ -26243,9 +26450,9 @@ if (typeof jQuery === 'undefined') {
 
     /**
      * This method is like `_.difference` except that it accepts `comparator`
-     * which is invoked to compare elements of `array` to `values`. Result values
-     * are chosen from the first array. The comparator is invoked with two arguments:
-     * (arrVal, othVal).
+     * which is invoked to compare elements of `array` to `values`. The order and
+     * references of result values are determined by the first array. The comparator
+     * is invoked with two arguments: (arrVal, othVal).
      *
      * **Note:** Unlike `_.pullAllWith`, this method returns a new array.
      *
@@ -26739,8 +26946,8 @@ if (typeof jQuery === 'undefined') {
     /**
      * Creates an array of unique values that are included in all given arrays
      * using [`SameValueZero`](http://ecma-international.org/ecma-262/7.0/#sec-samevaluezero)
-     * for equality comparisons. The order of result values is determined by the
-     * order they occur in the first array.
+     * for equality comparisons. The order and references of result values are
+     * determined by the first array.
      *
      * @static
      * @memberOf _
@@ -26763,8 +26970,9 @@ if (typeof jQuery === 'undefined') {
     /**
      * This method is like `_.intersection` except that it accepts `iteratee`
      * which is invoked for each element of each `arrays` to generate the criterion
-     * by which they're compared. Result values are chosen from the first array.
-     * The iteratee is invoked with one argument: (value).
+     * by which they're compared. The order and references of result values are
+     * determined by the first array. The iteratee is invoked with one argument:
+     * (value).
      *
      * @static
      * @memberOf _
@@ -26798,9 +27006,9 @@ if (typeof jQuery === 'undefined') {
 
     /**
      * This method is like `_.intersection` except that it accepts `comparator`
-     * which is invoked to compare elements of `arrays`. Result values are chosen
-     * from the first array. The comparator is invoked with two arguments:
-     * (arrVal, othVal).
+     * which is invoked to compare elements of `arrays`. The order and references
+     * of result values are determined by the first array. The comparator is
+     * invoked with two arguments: (arrVal, othVal).
      *
      * @static
      * @memberOf _
@@ -26898,21 +27106,11 @@ if (typeof jQuery === 'undefined') {
       var index = length;
       if (fromIndex !== undefined) {
         index = toInteger(fromIndex);
-        index = (
-          index < 0
-            ? nativeMax(length + index, 0)
-            : nativeMin(index, length - 1)
-        ) + 1;
+        index = index < 0 ? nativeMax(length + index, 0) : nativeMin(index, length - 1);
       }
-      if (value !== value) {
-        return baseFindIndex(array, baseIsNaN, index - 1, true);
-      }
-      while (index--) {
-        if (array[index] === value) {
-          return index;
-        }
-      }
-      return -1;
+      return value === value
+        ? strictLastIndexOf(array, value, index)
+        : baseFindIndex(array, baseIsNaN, index, true);
     }
 
     /**
@@ -27074,9 +27272,7 @@ if (typeof jQuery === 'undefined') {
      * console.log(pulled);
      * // => ['b', 'd']
      */
-    var pullAt = baseRest(function(array, indexes) {
-      indexes = baseFlatten(indexes, 1);
-
+    var pullAt = flatRest(function(array, indexes) {
       var length = array ? array.length : 0,
           result = baseAt(array, indexes);
 
@@ -27651,8 +27847,9 @@ if (typeof jQuery === 'undefined') {
     /**
      * Creates a duplicate-free version of an array, using
      * [`SameValueZero`](http://ecma-international.org/ecma-262/7.0/#sec-samevaluezero)
-     * for equality comparisons, in which only the first occurrence of each
-     * element is kept.
+     * for equality comparisons, in which only the first occurrence of each element
+     * is kept. The order of result values is determined by the order they occur
+     * in the array.
      *
      * @static
      * @memberOf _
@@ -27674,7 +27871,9 @@ if (typeof jQuery === 'undefined') {
     /**
      * This method is like `_.uniq` except that it accepts `iteratee` which is
      * invoked for each element in `array` to generate the criterion by which
-     * uniqueness is computed. The iteratee is invoked with one argument: (value).
+     * uniqueness is computed. The order of result values is determined by the
+     * order they occur in the array. The iteratee is invoked with one argument:
+     * (value).
      *
      * @static
      * @memberOf _
@@ -27701,8 +27900,9 @@ if (typeof jQuery === 'undefined') {
 
     /**
      * This method is like `_.uniq` except that it accepts `comparator` which
-     * is invoked to compare elements of `array`. The comparator is invoked with
-     * two arguments: (arrVal, othVal).
+     * is invoked to compare elements of `array`. The order of result values is
+     * determined by the order they occur in the array.The comparator is invoked
+     * with two arguments: (arrVal, othVal).
      *
      * @static
      * @memberOf _
@@ -27844,8 +28044,9 @@ if (typeof jQuery === 'undefined') {
     /**
      * This method is like `_.xor` except that it accepts `iteratee` which is
      * invoked for each element of each `arrays` to generate the criterion by
-     * which by which they're compared. The iteratee is invoked with one argument:
-     * (value).
+     * which by which they're compared. The order of result values is determined
+     * by the order they occur in the arrays. The iteratee is invoked with one
+     * argument: (value).
      *
      * @static
      * @memberOf _
@@ -27874,8 +28075,9 @@ if (typeof jQuery === 'undefined') {
 
     /**
      * This method is like `_.xor` except that it accepts `comparator` which is
-     * invoked to compare elements of `arrays`. The comparator is invoked with
-     * two arguments: (arrVal, othVal).
+     * invoked to compare elements of `arrays`. The order of result values is
+     * determined by the order they occur in the arrays. The comparator is invoked
+     * with two arguments: (arrVal, othVal).
      *
      * @static
      * @memberOf _
@@ -28092,8 +28294,7 @@ if (typeof jQuery === 'undefined') {
      * _(object).at(['a[0].b.c', 'a[1]']).value();
      * // => [3, 4]
      */
-    var wrapperAt = baseRest(function(paths) {
-      paths = baseFlatten(paths, 1);
+    var wrapperAt = flatRest(function(paths) {
       var length = paths.length,
           start = length ? paths[0] : 0,
           value = this.__wrapped__,
@@ -28358,7 +28559,11 @@ if (typeof jQuery === 'undefined') {
      * // => { '3': 2, '5': 1 }
      */
     var countBy = createAggregator(function(result, value, key) {
-      hasOwnProperty.call(result, key) ? ++result[key] : (result[key] = 1);
+      if (hasOwnProperty.call(result, key)) {
+        ++result[key];
+      } else {
+        baseAssignValue(result, key, 1);
+      }
     });
 
     /**
@@ -28613,7 +28818,7 @@ if (typeof jQuery === 'undefined') {
      * @see _.forEachRight
      * @example
      *
-     * _([1, 2]).forEach(function(value) {
+     * _.forEach([1, 2], function(value) {
      *   console.log(value);
      * });
      * // => Logs `1` then `2`.
@@ -28681,7 +28886,7 @@ if (typeof jQuery === 'undefined') {
       if (hasOwnProperty.call(result, key)) {
         result[key].push(value);
       } else {
-        result[key] = [value];
+        baseAssignValue(result, key, [value]);
       }
     });
 
@@ -28794,7 +28999,7 @@ if (typeof jQuery === 'undefined') {
      * // => { 'left': { 'dir': 'left', 'code': 97 }, 'right': { 'dir': 'right', 'code': 100 } }
      */
     var keyBy = createAggregator(function(result, value, key) {
-      result[key] = value;
+      baseAssignValue(result, key, value);
     });
 
     /**
@@ -29054,10 +29259,7 @@ if (typeof jQuery === 'undefined') {
      * // => 2
      */
     function sample(collection) {
-      var array = isArrayLike(collection) ? collection : values(collection),
-          length = array.length;
-
-      return length > 0 ? array[baseRandom(0, length - 1)] : undefined;
+      return arraySample(isArrayLike(collection) ? collection : values(collection));
     }
 
     /**
@@ -29081,25 +29283,12 @@ if (typeof jQuery === 'undefined') {
      * // => [2, 3, 1]
      */
     function sampleSize(collection, n, guard) {
-      var index = -1,
-          result = toArray(collection),
-          length = result.length,
-          lastIndex = length - 1;
-
       if ((guard ? isIterateeCall(collection, n, guard) : n === undefined)) {
         n = 1;
       } else {
-        n = baseClamp(toInteger(n), 0, length);
+        n = toInteger(n);
       }
-      while (++index < n) {
-        var rand = baseRandom(index, lastIndex),
-            value = result[rand];
-
-        result[rand] = result[index];
-        result[index] = value;
-      }
-      result.length = n;
-      return result;
+      return arraySampleSize(isArrayLike(collection) ? collection : values(collection), n);
     }
 
     /**
@@ -29118,7 +29307,10 @@ if (typeof jQuery === 'undefined') {
      * // => [4, 1, 3, 2]
      */
     function shuffle(collection) {
-      return sampleSize(collection, MAX_ARRAY_LENGTH);
+      return shuffleSelf(isArrayLike(collection)
+        ? copyArray(collection)
+        : values(collection)
+      );
     }
 
     /**
@@ -29223,16 +29415,11 @@ if (typeof jQuery === 'undefined') {
      *   { 'user': 'barney', 'age': 34 }
      * ];
      *
-     * _.sortBy(users, function(o) { return o.user; });
+     * _.sortBy(users, [function(o) { return o.user; }]);
      * // => objects for [['barney', 36], ['barney', 34], ['fred', 48], ['fred', 40]]
      *
      * _.sortBy(users, ['user', 'age']);
      * // => objects for [['barney', 34], ['barney', 36], ['fred', 40], ['fred', 48]]
-     *
-     * _.sortBy(users, 'user', function(o) {
-     *   return Math.floor(o.age / 10);
-     * });
-     * // => objects for [['barney', 36], ['barney', 34], ['fred', 48], ['fred', 40]]
      */
     var sortBy = baseRest(function(collection, iteratees) {
       if (collection == null) {
@@ -29747,7 +29934,7 @@ if (typeof jQuery === 'undefined') {
      * _.defer(function(text) {
      *   console.log(text);
      * }, 'deferred');
-     * // => Logs 'deferred' after one or more milliseconds.
+     * // => Logs 'deferred' after one millisecond.
      */
     var defer = baseRest(function(func, args) {
       return baseDelay(func, 1, args);
@@ -29855,14 +30042,14 @@ if (typeof jQuery === 'undefined') {
           return cache.get(key);
         }
         var result = func.apply(this, args);
-        memoized.cache = cache.set(key, result);
+        memoized.cache = cache.set(key, result) || cache;
         return result;
       };
       memoized.cache = new (memoize.Cache || MapCache);
       return memoized;
     }
 
-    // Assign cache to `_.memoize`.
+    // Expose `MapCache`.
     memoize.Cache = MapCache;
 
     /**
@@ -29954,7 +30141,7 @@ if (typeof jQuery === 'undefined') {
      * func(10, 5);
      * // => [100, 10]
      */
-    var overArgs = baseRest(function(func, transforms) {
+    var overArgs = castRest(function(func, transforms) {
       transforms = (transforms.length == 1 && isArray(transforms[0]))
         ? arrayMap(transforms[0], baseUnary(getIteratee()))
         : arrayMap(baseFlatten(transforms, 1), baseUnary(getIteratee()));
@@ -30070,8 +30257,8 @@ if (typeof jQuery === 'undefined') {
      * rearged('b', 'c', 'a')
      * // => ['a', 'b', 'c']
      */
-    var rearg = baseRest(function(func, indexes) {
-      return createWrap(func, REARG_FLAG, undefined, undefined, undefined, baseFlatten(indexes, 1));
+    var rearg = flatRest(function(func, indexes) {
+      return createWrap(func, REARG_FLAG, undefined, undefined, undefined, indexes);
     });
 
     /**
@@ -30747,7 +30934,7 @@ if (typeof jQuery === 'undefined') {
      * // => false
      */
     function isElement(value) {
-      return !!value && value.nodeType === 1 && isObjectLike(value) && !isPlainObject(value);
+      return value != null && value.nodeType === 1 && isObjectLike(value) && !isPlainObject(value);
     }
 
     /**
@@ -30793,7 +30980,7 @@ if (typeof jQuery === 'undefined') {
       if (tag == mapTag || tag == setTag) {
         return !value.size;
       }
-      if (nonEnumShadows || isPrototype(value)) {
+      if (isPrototype(value)) {
         return !nativeKeys(value).length;
       }
       for (var key in value) {
@@ -31042,7 +31229,7 @@ if (typeof jQuery === 'undefined') {
      */
     function isObject(value) {
       var type = typeof value;
-      return !!value && (type == 'object' || type == 'function');
+      return value != null && (type == 'object' || type == 'function');
     }
 
     /**
@@ -31070,7 +31257,7 @@ if (typeof jQuery === 'undefined') {
      * // => false
      */
     function isObjectLike(value) {
-      return !!value && typeof value == 'object';
+      return value != null && typeof value == 'object';
     }
 
     /**
@@ -31334,8 +31521,7 @@ if (typeof jQuery === 'undefined') {
      * // => true
      */
     function isPlainObject(value) {
-      if (!isObjectLike(value) ||
-          objectToString.call(value) != objectTag || isHostObject(value)) {
+      if (!isObjectLike(value) || objectToString.call(value) != objectTag) {
         return false;
       }
       var proto = getPrototype(value);
@@ -31892,7 +32078,7 @@ if (typeof jQuery === 'undefined') {
      * // => { 'a': 1, 'c': 3 }
      */
     var assign = createAssigner(function(object, source) {
-      if (nonEnumShadows || isPrototype(source) || isArrayLike(source)) {
+      if (isPrototype(source) || isArrayLike(source)) {
         copyObject(source, keys(source), object);
         return;
       }
@@ -32020,9 +32206,7 @@ if (typeof jQuery === 'undefined') {
      * _.at(object, ['a[0].b.c', 'a[1]']);
      * // => [3, 4]
      */
-    var at = baseRest(function(object, paths) {
-      return baseAt(object, baseFlatten(paths, 1));
-    });
+    var at = flatRest(baseAt);
 
     /**
      * Creates an object that inherits from the `prototype` object. If a
@@ -32625,7 +32809,7 @@ if (typeof jQuery === 'undefined') {
       iteratee = getIteratee(iteratee, 3);
 
       baseForOwn(object, function(value, key, object) {
-        result[iteratee(value, key, object)] = value;
+        baseAssignValue(result, iteratee(value, key, object), value);
       });
       return result;
     }
@@ -32663,7 +32847,7 @@ if (typeof jQuery === 'undefined') {
       iteratee = getIteratee(iteratee, 3);
 
       baseForOwn(object, function(value, key, object) {
-        result[key] = iteratee(value, key, object);
+        baseAssignValue(result, key, iteratee(value, key, object));
       });
       return result;
     }
@@ -32707,7 +32891,7 @@ if (typeof jQuery === 'undefined') {
      * This method is like `_.merge` except that it accepts `customizer` which
      * is invoked to produce the merged values of the destination and source
      * properties. If `customizer` returns `undefined`, merging is handled by the
-     * method instead. The `customizer` is invoked with seven arguments:
+     * method instead. The `customizer` is invoked with six arguments:
      * (objValue, srcValue, key, object, source, stack).
      *
      * **Note:** This method mutates `object`.
@@ -32757,11 +32941,11 @@ if (typeof jQuery === 'undefined') {
      * _.omit(object, ['a', 'c']);
      * // => { 'b': '2' }
      */
-    var omit = baseRest(function(object, props) {
+    var omit = flatRest(function(object, props) {
       if (object == null) {
         return {};
       }
-      props = arrayMap(baseFlatten(props, 1), toKey);
+      props = arrayMap(props, toKey);
       return basePick(object, baseDifference(getAllKeysIn(object), props));
     });
 
@@ -32806,8 +32990,8 @@ if (typeof jQuery === 'undefined') {
      * _.pick(object, ['a', 'c']);
      * // => { 'a': 1, 'c': 3 }
      */
-    var pick = baseRest(function(object, props) {
-      return object == null ? {} : basePick(object, arrayMap(baseFlatten(props, 1), toKey));
+    var pick = flatRest(function(object, props) {
+      return object == null ? {} : basePick(object, arrayMap(props, toKey));
     });
 
     /**
@@ -33461,8 +33645,8 @@ if (typeof jQuery === 'undefined') {
     }
 
     /**
-     * Converts the characters "&", "<", ">", '"', "'", and "\`" in `string` to
-     * their corresponding HTML entities.
+     * Converts the characters "&", "<", ">", '"', and "'" in `string` to their
+     * corresponding HTML entities.
      *
      * **Note:** No other characters are escaped. To escape additional
      * characters use a third-party library like [_he_](https://mths.be/he).
@@ -33472,12 +33656,6 @@ if (typeof jQuery === 'undefined') {
      * unless they're part of a tag or unquoted attribute value. See
      * [Mathias Bynens's article](https://mathiasbynens.be/notes/ambiguous-ampersands)
      * (under "semi-related fun fact") for more details.
-     *
-     * Backticks are escaped because in IE < 9, they can break out of
-     * attribute values or HTML comments. See [#59](https://html5sec.org/#59),
-     * [#102](https://html5sec.org/#102), [#108](https://html5sec.org/#108), and
-     * [#133](https://html5sec.org/#133) of the
-     * [HTML5 Security Cheatsheet](https://html5sec.org/) for more details.
      *
      * When working with HTML you should always
      * [quote attribute values](http://wonko.com/post/html-escaping) to reduce
@@ -33721,15 +33899,12 @@ if (typeof jQuery === 'undefined') {
      * // => [6, 8, 10]
      */
     function parseInt(string, radix, guard) {
-      // Chrome fails to trim leading <BOM> whitespace characters.
-      // See https://bugs.chromium.org/p/v8/issues/detail?id=3109 for more details.
       if (guard || radix == null) {
         radix = 0;
       } else if (radix) {
         radix = +radix;
       }
-      string = toString(string).replace(reTrim, '');
-      return nativeParseInt(string, radix || (reHasHexPrefix.test(string) ? 16 : 10));
+      return nativeParseInt(toString(string), radix || 0);
     }
 
     /**
@@ -33968,7 +34143,8 @@ if (typeof jQuery === 'undefined') {
      * compiled({ 'user': 'barney' });
      * // => 'hello barney!'
      *
-     * // Use the ES delimiter as an alternative to the default "interpolate" delimiter.
+     * // Use the ES template literal delimiter as an "interpolate" delimiter.
+     * // Disable support by replacing the "interpolate" delimiter.
      * var compiled = _.template('hello ${ user }!');
      * compiled({ 'user': 'pebbles' });
      * // => 'hello pebbles!'
@@ -34369,7 +34545,7 @@ if (typeof jQuery === 'undefined') {
 
     /**
      * The inverse of `_.escape`; this method converts the HTML entities
-     * `&amp;`, `&lt;`, `&gt;`, `&quot;`, `&#39;`, and `&#96;` in `string` to
+     * `&amp;`, `&lt;`, `&gt;`, `&quot;`, and `&#39;` in `string` to
      * their corresponding characters.
      *
      * **Note:** No other HTML entities are unescaped. To unescape additional
@@ -34523,10 +34699,10 @@ if (typeof jQuery === 'undefined') {
      * jQuery(element).on('click', view.click);
      * // => Logs 'clicked docs' when clicked.
      */
-    var bindAll = baseRest(function(object, methodNames) {
-      arrayEach(baseFlatten(methodNames, 1), function(key) {
+    var bindAll = flatRest(function(object, methodNames) {
+      arrayEach(methodNames, function(key) {
         key = toKey(key);
-        object[key] = bind(object[key], object);
+        baseAssignValue(object, key, bind(object[key], object));
       });
       return object;
     });
@@ -36319,7 +36495,7 @@ if (typeof jQuery === 'undefined') {
       lodash.prototype[iteratorSymbol] = wrapperToIterator;
     }
     return lodash;
-  }
+  });
 
   /*--------------------------------------------------------------------------*/
 
@@ -36353,10 +36529,10 @@ if (typeof jQuery === 'undefined') {
   }
 }.call(this));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6), __webpack_require__(39)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6), __webpack_require__(46)(module)))
 
 /***/ },
-/* 16 */
+/* 18 */
 /***/ function(module, exports, __webpack_require__) {
 
 /**
@@ -37321,7 +37497,7 @@ if (typeof jQuery === 'undefined') {
 
 
 /***/ },
-/* 17 */
+/* 19 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37356,9 +37532,9 @@ var _sweetAlertInitialize$getModal$getOverlay$getInput$setFocusStyle$openModal$r
 
 // Handle button events and keyboard events
 
-var _handleButton$handleConfirm$handleCancel = __webpack_require__(35);
+var _handleButton$handleConfirm$handleCancel = __webpack_require__(41);
 
-var _handleKeyDown = __webpack_require__(36);
+var _handleKeyDown = __webpack_require__(42);
 
 var _handleKeyDown2 = _interopRequireWildcard(_handleKeyDown);
 
@@ -37368,7 +37544,7 @@ var _defaultParams = __webpack_require__(5);
 
 var _defaultParams2 = _interopRequireWildcard(_defaultParams);
 
-var _setParameters = __webpack_require__(38);
+var _setParameters = __webpack_require__(44);
 
 var _setParameters2 = _interopRequireWildcard(_setParameters);
 
@@ -37630,7 +37806,15 @@ if (typeof window !== 'undefined') {
 module.exports = exports['default'];
 
 /***/ },
-/* 18 */
+/* 20 */
+/***/ function(module, exports, __webpack_require__) {
+
+__webpack_require__(45);
+module.exports = 'ui.select';
+
+
+/***/ },
+/* 21 */
 /***/ function(module, exports) {
 
 module.exports = ["$scope", "$auth", function($scope, $auth) {
@@ -37644,7 +37828,7 @@ module.exports = ["$scope", "$auth", function($scope, $auth) {
 
 
 /***/ },
-/* 19 */
+/* 22 */
 /***/ function(module, exports) {
 
 module.exports = function () {
@@ -37663,7 +37847,7 @@ module.exports = function () {
 
 
 /***/ },
-/* 20 */
+/* 23 */
 /***/ function(module, exports, __webpack_require__) {
 
 module.exports = ["$state", "$rootScope", function ($state, $rootScope) {
@@ -37766,7 +37950,7 @@ module.exports = ["$state", "$rootScope", function ($state, $rootScope) {
 
 
 /***/ },
-/* 21 */
+/* 24 */
 /***/ function(module, exports) {
 
 module.exports =  ["$rootScope", "$state", function ($rootScope, $state) {
@@ -37823,7 +38007,7 @@ module.exports =  ["$rootScope", "$state", function ($rootScope, $state) {
 
 
 /***/ },
-/* 22 */
+/* 25 */
 /***/ function(module, exports) {
 
 module.exports = function() {
@@ -37841,7 +38025,7 @@ module.exports = function() {
 
 
 /***/ },
-/* 23 */
+/* 26 */
 /***/ function(module, exports) {
 
 $.root_ = $('body');
@@ -37880,7 +38064,33 @@ function minifyMenu($this) {
 
 
 /***/ },
-/* 24 */
+/* 27 */
+/***/ function(module, exports) {
+
+module.exports = ["$http", "$q", function ($http, $q) {
+  'ngInject';
+
+  this.all = function () {
+    return $http.get('/api/permissions');
+  };
+}];
+
+
+/***/ },
+/* 28 */
+/***/ function(module, exports) {
+
+module.exports = ["ApiService", function (ApiService) {
+  'ngInject';
+
+  angular.extend(this, ApiService);
+
+  this.resource = 'roles';
+}];
+
+
+/***/ },
+/* 29 */
 /***/ function(module, exports, __webpack_require__) {
 
 module.exports = ["$stateProvider", "$locationProvider", "$urlRouterProvider", function OnConfig($stateProvider, $locationProvider, $urlRouterProvider) {
@@ -37890,28 +38100,28 @@ module.exports = ["$stateProvider", "$locationProvider", "$urlRouterProvider", f
   // auth
     .state('login', {
       url: '/login',
-      controller: __webpack_require__(40),
+      controller: __webpack_require__(47),
       controllerAs: 'vm',
-      template: __webpack_require__(48)
+      template: __webpack_require__(58)
     })
 
     .state('logout', {
       url: '/logout',
-      controller: __webpack_require__(41),
+      controller: __webpack_require__(48),
       template: '<div></div>'
     })
 
     .state('register', {
       url: '/register',
-      controller: __webpack_require__(42),
+      controller: __webpack_require__(49),
       controllerAs: 'vm',
-      template: __webpack_require__(49)
+      template: __webpack_require__(59)
     })
 
   // application
     .state('app', {
       abstract: true,
-      template: __webpack_require__(50),
+      template: __webpack_require__(60),
       controller: ["user", function(user) { this.user = user }],
       controllerAs: 'vm',
       resolve: {
@@ -37927,12 +38137,12 @@ module.exports = ["$stateProvider", "$locationProvider", "$urlRouterProvider", f
       url: '/home',
       controller: ["$auth", function($auth) { this.isAuthenticated = $auth.isAuthenticated }],
       controllerAs: 'vm',
-      template: __webpack_require__(47)
+      template: __webpack_require__(57)
     })
 
     .state('app.dashboard', {
       url: '/dashboard',
-      template: __webpack_require__(46),
+      template: __webpack_require__(56),
       data: {
         title: 'dashboard'
       }
@@ -37940,9 +38150,9 @@ module.exports = ["$stateProvider", "$locationProvider", "$urlRouterProvider", f
 
     .state('app.users', {
       url: '/users?page&name&roles',
-      controller: __webpack_require__(45),
+      controller: __webpack_require__(55),
       controllerAs: 'vm',
-      template: __webpack_require__(51),
+      template: __webpack_require__(62),
       resolve: {
         users: ["UserService", "$stateParams", function(UserService, $stateParams) {
           return UserService.filterResources($stateParams).then(function(data) {
@@ -37954,9 +38164,9 @@ module.exports = ["$stateProvider", "$locationProvider", "$urlRouterProvider", f
 
     .state('app.users.create', {
       url: '/create',
-      controller: __webpack_require__(43),
+      controller: __webpack_require__(53),
       controllerAs: 'vm',
-      template: __webpack_require__(7),
+      template: __webpack_require__(8),
       resolve : {
         roles: ["RoleService", function(RoleService) {
           return RoleService.getResources().then(function(data) {
@@ -37968,9 +38178,9 @@ module.exports = ["$stateProvider", "$locationProvider", "$urlRouterProvider", f
 
     .state('app.users.edit', {
       url: '/edit/:id',
-      controller: __webpack_require__(44),
+      controller: __webpack_require__(54),
       controllerAs: 'vm',
-      template: __webpack_require__(7),
+      template: __webpack_require__(8),
       resolve: {
         data: ["UserService", "$stateParams", function(UserService, $stateParams) {
           return UserService.getResource($stateParams.id).then(function(data) {
@@ -37983,14 +38193,61 @@ module.exports = ["$stateProvider", "$locationProvider", "$urlRouterProvider", f
           });
         }]
       },
+    })
+
+    .state('app.roles', {
+      url: '/roles?page&name&label&permissions',
+      controller: __webpack_require__(52),
+      controllerAs: 'vm',
+      template: __webpack_require__(61),
+      resolve: {
+        roles: ["RoleService", "$stateParams", function(RoleService, $stateParams) {
+          return RoleService.filterResources($stateParams).then(function(data) {
+            return data.data;
+          });
+        }]
+      }
+    })
+
+    .state('app.roles.create', {
+      url: '/create',
+      controller: __webpack_require__(50),
+      controllerAs: 'vm',
+      template: __webpack_require__(7),
+      resolve: {
+        permissions: ["PermissionService", function(PermissionService) {
+          return PermissionService.all().then(function(data) {
+            return data.data;
+          });
+        }]
+      }
+    })
+
+    .state('app.roles.edit', {
+      url: '/edit/:id',
+      controllerAs: 'vm',
+      controller: __webpack_require__(51),
+      template: __webpack_require__(7),
+      resolve: {
+        role: ["RoleService", "$stateParams", function(RoleService, $stateParams) {
+          return RoleService.getResource($stateParams.id).then(function(data) {
+            return data.data;
+          });
+        }],
+        permissions: ["PermissionService", function(PermissionService) {
+          return PermissionService.all().then(function(data) {
+            return data.data;
+          });
+        }]
+      }
     });
 
-  $urlRouterProvider.otherwise('/home');
+  $urlRouterProvider.otherwise('/login');
 }];
 
 
 /***/ },
-/* 25 */
+/* 30 */
 /***/ function(module, exports) {
 
 module.exports = ["$http", function($http) {
@@ -38037,7 +38294,7 @@ module.exports = ["$http", function($http) {
 
 
 /***/ },
-/* 26 */
+/* 31 */
 /***/ function(module, exports) {
 
 module.exports = ["SweetAlert", function (SweetAlert) {
@@ -38064,7 +38321,7 @@ module.exports = ["SweetAlert", function (SweetAlert) {
 
 
 /***/ },
-/* 27 */
+/* 32 */
 /***/ function(module, exports) {
 
 module.exports = ["ApiService", "$http", function (ApiService, $http) {
@@ -38079,7 +38336,7 @@ module.exports = ["ApiService", "$http", function (ApiService, $http) {
 
 
 /***/ },
-/* 28 */
+/* 33 */
 /***/ function(module, exports) {
 
 /**
@@ -42224,7 +42481,7 @@ angular.module('ngAnimate', [], function initAngularHelpers() {
 
 
 /***/ },
-/* 29 */
+/* 34 */
 /***/ function(module, exports) {
 
 /*! 
@@ -42571,7 +42828,751 @@ angular.module('cfp.loadingBar', [])
 
 
 /***/ },
-/* 30 */
+/* 35 */
+/***/ function(module, exports) {
+
+/**
+ * @license AngularJS v1.5.8
+ * (c) 2010-2016 Google, Inc. http://angularjs.org
+ * License: MIT
+ */
+(function(window, angular) {'use strict';
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ *     Any commits to this file should be reviewed with security in mind.  *
+ *   Changes to this file can potentially create security vulnerabilities. *
+ *          An approval from 2 Core members with history of modifying      *
+ *                         this file is required.                          *
+ *                                                                         *
+ *  Does the change somehow allow for arbitrary javascript to be executed? *
+ *    Or allows for someone to change the prototype of built-in objects?   *
+ *     Or gives undesired access to variables likes document or window?    *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+var $sanitizeMinErr = angular.$$minErr('$sanitize');
+var bind;
+var extend;
+var forEach;
+var isDefined;
+var lowercase;
+var noop;
+var htmlParser;
+var htmlSanitizeWriter;
+
+/**
+ * @ngdoc module
+ * @name ngSanitize
+ * @description
+ *
+ * # ngSanitize
+ *
+ * The `ngSanitize` module provides functionality to sanitize HTML.
+ *
+ *
+ * <div doc-module-components="ngSanitize"></div>
+ *
+ * See {@link ngSanitize.$sanitize `$sanitize`} for usage.
+ */
+
+/**
+ * @ngdoc service
+ * @name $sanitize
+ * @kind function
+ *
+ * @description
+ *   Sanitizes an html string by stripping all potentially dangerous tokens.
+ *
+ *   The input is sanitized by parsing the HTML into tokens. All safe tokens (from a whitelist) are
+ *   then serialized back to properly escaped html string. This means that no unsafe input can make
+ *   it into the returned string.
+ *
+ *   The whitelist for URL sanitization of attribute values is configured using the functions
+ *   `aHrefSanitizationWhitelist` and `imgSrcSanitizationWhitelist` of {@link ng.$compileProvider
+ *   `$compileProvider`}.
+ *
+ *   The input may also contain SVG markup if this is enabled via {@link $sanitizeProvider}.
+ *
+ * @param {string} html HTML input.
+ * @returns {string} Sanitized HTML.
+ *
+ * @example
+   <example module="sanitizeExample" deps="angular-sanitize.js">
+   <file name="index.html">
+     <script>
+         angular.module('sanitizeExample', ['ngSanitize'])
+           .controller('ExampleController', ['$scope', '$sce', function($scope, $sce) {
+             $scope.snippet =
+               '<p style="color:blue">an html\n' +
+               '<em onmouseover="this.textContent=\'PWN3D!\'">click here</em>\n' +
+               'snippet</p>';
+             $scope.deliberatelyTrustDangerousSnippet = function() {
+               return $sce.trustAsHtml($scope.snippet);
+             };
+           }]);
+     </script>
+     <div ng-controller="ExampleController">
+        Snippet: <textarea ng-model="snippet" cols="60" rows="3"></textarea>
+       <table>
+         <tr>
+           <td>Directive</td>
+           <td>How</td>
+           <td>Source</td>
+           <td>Rendered</td>
+         </tr>
+         <tr id="bind-html-with-sanitize">
+           <td>ng-bind-html</td>
+           <td>Automatically uses $sanitize</td>
+           <td><pre>&lt;div ng-bind-html="snippet"&gt;<br/>&lt;/div&gt;</pre></td>
+           <td><div ng-bind-html="snippet"></div></td>
+         </tr>
+         <tr id="bind-html-with-trust">
+           <td>ng-bind-html</td>
+           <td>Bypass $sanitize by explicitly trusting the dangerous value</td>
+           <td>
+           <pre>&lt;div ng-bind-html="deliberatelyTrustDangerousSnippet()"&gt;
+&lt;/div&gt;</pre>
+           </td>
+           <td><div ng-bind-html="deliberatelyTrustDangerousSnippet()"></div></td>
+         </tr>
+         <tr id="bind-default">
+           <td>ng-bind</td>
+           <td>Automatically escapes</td>
+           <td><pre>&lt;div ng-bind="snippet"&gt;<br/>&lt;/div&gt;</pre></td>
+           <td><div ng-bind="snippet"></div></td>
+         </tr>
+       </table>
+       </div>
+   </file>
+   <file name="protractor.js" type="protractor">
+     it('should sanitize the html snippet by default', function() {
+       expect(element(by.css('#bind-html-with-sanitize div')).getInnerHtml()).
+         toBe('<p>an html\n<em>click here</em>\nsnippet</p>');
+     });
+
+     it('should inline raw snippet if bound to a trusted value', function() {
+       expect(element(by.css('#bind-html-with-trust div')).getInnerHtml()).
+         toBe("<p style=\"color:blue\">an html\n" +
+              "<em onmouseover=\"this.textContent='PWN3D!'\">click here</em>\n" +
+              "snippet</p>");
+     });
+
+     it('should escape snippet without any filter', function() {
+       expect(element(by.css('#bind-default div')).getInnerHtml()).
+         toBe("&lt;p style=\"color:blue\"&gt;an html\n" +
+              "&lt;em onmouseover=\"this.textContent='PWN3D!'\"&gt;click here&lt;/em&gt;\n" +
+              "snippet&lt;/p&gt;");
+     });
+
+     it('should update', function() {
+       element(by.model('snippet')).clear();
+       element(by.model('snippet')).sendKeys('new <b onclick="alert(1)">text</b>');
+       expect(element(by.css('#bind-html-with-sanitize div')).getInnerHtml()).
+         toBe('new <b>text</b>');
+       expect(element(by.css('#bind-html-with-trust div')).getInnerHtml()).toBe(
+         'new <b onclick="alert(1)">text</b>');
+       expect(element(by.css('#bind-default div')).getInnerHtml()).toBe(
+         "new &lt;b onclick=\"alert(1)\"&gt;text&lt;/b&gt;");
+     });
+   </file>
+   </example>
+ */
+
+
+/**
+ * @ngdoc provider
+ * @name $sanitizeProvider
+ *
+ * @description
+ * Creates and configures {@link $sanitize} instance.
+ */
+function $SanitizeProvider() {
+  var svgEnabled = false;
+
+  this.$get = ['$$sanitizeUri', function($$sanitizeUri) {
+    if (svgEnabled) {
+      extend(validElements, svgElements);
+    }
+    return function(html) {
+      var buf = [];
+      htmlParser(html, htmlSanitizeWriter(buf, function(uri, isImage) {
+        return !/^unsafe:/.test($$sanitizeUri(uri, isImage));
+      }));
+      return buf.join('');
+    };
+  }];
+
+
+  /**
+   * @ngdoc method
+   * @name $sanitizeProvider#enableSvg
+   * @kind function
+   *
+   * @description
+   * Enables a subset of svg to be supported by the sanitizer.
+   *
+   * <div class="alert alert-warning">
+   *   <p>By enabling this setting without taking other precautions, you might expose your
+   *   application to click-hijacking attacks. In these attacks, sanitized svg elements could be positioned
+   *   outside of the containing element and be rendered over other elements on the page (e.g. a login
+   *   link). Such behavior can then result in phishing incidents.</p>
+   *
+   *   <p>To protect against these, explicitly setup `overflow: hidden` css rule for all potential svg
+   *   tags within the sanitized content:</p>
+   *
+   *   <br>
+   *
+   *   <pre><code>
+   *   .rootOfTheIncludedContent svg {
+   *     overflow: hidden !important;
+   *   }
+   *   </code></pre>
+   * </div>
+   *
+   * @param {boolean=} flag Enable or disable SVG support in the sanitizer.
+   * @returns {boolean|ng.$sanitizeProvider} Returns the currently configured value if called
+   *    without an argument or self for chaining otherwise.
+   */
+  this.enableSvg = function(enableSvg) {
+    if (isDefined(enableSvg)) {
+      svgEnabled = enableSvg;
+      return this;
+    } else {
+      return svgEnabled;
+    }
+  };
+
+  //////////////////////////////////////////////////////////////////////////////////////////////////
+  // Private stuff
+  //////////////////////////////////////////////////////////////////////////////////////////////////
+
+  bind = angular.bind;
+  extend = angular.extend;
+  forEach = angular.forEach;
+  isDefined = angular.isDefined;
+  lowercase = angular.lowercase;
+  noop = angular.noop;
+
+  htmlParser = htmlParserImpl;
+  htmlSanitizeWriter = htmlSanitizeWriterImpl;
+
+  // Regular Expressions for parsing tags and attributes
+  var SURROGATE_PAIR_REGEXP = /[\uD800-\uDBFF][\uDC00-\uDFFF]/g,
+    // Match everything outside of normal chars and " (quote character)
+    NON_ALPHANUMERIC_REGEXP = /([^\#-~ |!])/g;
+
+
+  // Good source of info about elements and attributes
+  // http://dev.w3.org/html5/spec/Overview.html#semantics
+  // http://simon.html5.org/html-elements
+
+  // Safe Void Elements - HTML5
+  // http://dev.w3.org/html5/spec/Overview.html#void-elements
+  var voidElements = toMap("area,br,col,hr,img,wbr");
+
+  // Elements that you can, intentionally, leave open (and which close themselves)
+  // http://dev.w3.org/html5/spec/Overview.html#optional-tags
+  var optionalEndTagBlockElements = toMap("colgroup,dd,dt,li,p,tbody,td,tfoot,th,thead,tr"),
+      optionalEndTagInlineElements = toMap("rp,rt"),
+      optionalEndTagElements = extend({},
+                                              optionalEndTagInlineElements,
+                                              optionalEndTagBlockElements);
+
+  // Safe Block Elements - HTML5
+  var blockElements = extend({}, optionalEndTagBlockElements, toMap("address,article," +
+          "aside,blockquote,caption,center,del,dir,div,dl,figure,figcaption,footer,h1,h2,h3,h4,h5," +
+          "h6,header,hgroup,hr,ins,map,menu,nav,ol,pre,section,table,ul"));
+
+  // Inline Elements - HTML5
+  var inlineElements = extend({}, optionalEndTagInlineElements, toMap("a,abbr,acronym,b," +
+          "bdi,bdo,big,br,cite,code,del,dfn,em,font,i,img,ins,kbd,label,map,mark,q,ruby,rp,rt,s," +
+          "samp,small,span,strike,strong,sub,sup,time,tt,u,var"));
+
+  // SVG Elements
+  // https://wiki.whatwg.org/wiki/Sanitization_rules#svg_Elements
+  // Note: the elements animate,animateColor,animateMotion,animateTransform,set are intentionally omitted.
+  // They can potentially allow for arbitrary javascript to be executed. See #11290
+  var svgElements = toMap("circle,defs,desc,ellipse,font-face,font-face-name,font-face-src,g,glyph," +
+          "hkern,image,linearGradient,line,marker,metadata,missing-glyph,mpath,path,polygon,polyline," +
+          "radialGradient,rect,stop,svg,switch,text,title,tspan");
+
+  // Blocked Elements (will be stripped)
+  var blockedElements = toMap("script,style");
+
+  var validElements = extend({},
+                                     voidElements,
+                                     blockElements,
+                                     inlineElements,
+                                     optionalEndTagElements);
+
+  //Attributes that have href and hence need to be sanitized
+  var uriAttrs = toMap("background,cite,href,longdesc,src,xlink:href");
+
+  var htmlAttrs = toMap('abbr,align,alt,axis,bgcolor,border,cellpadding,cellspacing,class,clear,' +
+      'color,cols,colspan,compact,coords,dir,face,headers,height,hreflang,hspace,' +
+      'ismap,lang,language,nohref,nowrap,rel,rev,rows,rowspan,rules,' +
+      'scope,scrolling,shape,size,span,start,summary,tabindex,target,title,type,' +
+      'valign,value,vspace,width');
+
+  // SVG attributes (without "id" and "name" attributes)
+  // https://wiki.whatwg.org/wiki/Sanitization_rules#svg_Attributes
+  var svgAttrs = toMap('accent-height,accumulate,additive,alphabetic,arabic-form,ascent,' +
+      'baseProfile,bbox,begin,by,calcMode,cap-height,class,color,color-rendering,content,' +
+      'cx,cy,d,dx,dy,descent,display,dur,end,fill,fill-rule,font-family,font-size,font-stretch,' +
+      'font-style,font-variant,font-weight,from,fx,fy,g1,g2,glyph-name,gradientUnits,hanging,' +
+      'height,horiz-adv-x,horiz-origin-x,ideographic,k,keyPoints,keySplines,keyTimes,lang,' +
+      'marker-end,marker-mid,marker-start,markerHeight,markerUnits,markerWidth,mathematical,' +
+      'max,min,offset,opacity,orient,origin,overline-position,overline-thickness,panose-1,' +
+      'path,pathLength,points,preserveAspectRatio,r,refX,refY,repeatCount,repeatDur,' +
+      'requiredExtensions,requiredFeatures,restart,rotate,rx,ry,slope,stemh,stemv,stop-color,' +
+      'stop-opacity,strikethrough-position,strikethrough-thickness,stroke,stroke-dasharray,' +
+      'stroke-dashoffset,stroke-linecap,stroke-linejoin,stroke-miterlimit,stroke-opacity,' +
+      'stroke-width,systemLanguage,target,text-anchor,to,transform,type,u1,u2,underline-position,' +
+      'underline-thickness,unicode,unicode-range,units-per-em,values,version,viewBox,visibility,' +
+      'width,widths,x,x-height,x1,x2,xlink:actuate,xlink:arcrole,xlink:role,xlink:show,xlink:title,' +
+      'xlink:type,xml:base,xml:lang,xml:space,xmlns,xmlns:xlink,y,y1,y2,zoomAndPan', true);
+
+  var validAttrs = extend({},
+                                  uriAttrs,
+                                  svgAttrs,
+                                  htmlAttrs);
+
+  function toMap(str, lowercaseKeys) {
+    var obj = {}, items = str.split(','), i;
+    for (i = 0; i < items.length; i++) {
+      obj[lowercaseKeys ? lowercase(items[i]) : items[i]] = true;
+    }
+    return obj;
+  }
+
+  var inertBodyElement;
+  (function(window) {
+    var doc;
+    if (window.document && window.document.implementation) {
+      doc = window.document.implementation.createHTMLDocument("inert");
+    } else {
+      throw $sanitizeMinErr('noinert', "Can't create an inert html document");
+    }
+    var docElement = doc.documentElement || doc.getDocumentElement();
+    var bodyElements = docElement.getElementsByTagName('body');
+
+    // usually there should be only one body element in the document, but IE doesn't have any, so we need to create one
+    if (bodyElements.length === 1) {
+      inertBodyElement = bodyElements[0];
+    } else {
+      var html = doc.createElement('html');
+      inertBodyElement = doc.createElement('body');
+      html.appendChild(inertBodyElement);
+      doc.appendChild(html);
+    }
+  })(window);
+
+  /**
+   * @example
+   * htmlParser(htmlString, {
+   *     start: function(tag, attrs) {},
+   *     end: function(tag) {},
+   *     chars: function(text) {},
+   *     comment: function(text) {}
+   * });
+   *
+   * @param {string} html string
+   * @param {object} handler
+   */
+  function htmlParserImpl(html, handler) {
+    if (html === null || html === undefined) {
+      html = '';
+    } else if (typeof html !== 'string') {
+      html = '' + html;
+    }
+    inertBodyElement.innerHTML = html;
+
+    //mXSS protection
+    var mXSSAttempts = 5;
+    do {
+      if (mXSSAttempts === 0) {
+        throw $sanitizeMinErr('uinput', "Failed to sanitize html because the input is unstable");
+      }
+      mXSSAttempts--;
+
+      // strip custom-namespaced attributes on IE<=11
+      if (window.document.documentMode) {
+        stripCustomNsAttrs(inertBodyElement);
+      }
+      html = inertBodyElement.innerHTML; //trigger mXSS
+      inertBodyElement.innerHTML = html;
+    } while (html !== inertBodyElement.innerHTML);
+
+    var node = inertBodyElement.firstChild;
+    while (node) {
+      switch (node.nodeType) {
+        case 1: // ELEMENT_NODE
+          handler.start(node.nodeName.toLowerCase(), attrToMap(node.attributes));
+          break;
+        case 3: // TEXT NODE
+          handler.chars(node.textContent);
+          break;
+      }
+
+      var nextNode;
+      if (!(nextNode = node.firstChild)) {
+      if (node.nodeType == 1) {
+          handler.end(node.nodeName.toLowerCase());
+        }
+        nextNode = node.nextSibling;
+        if (!nextNode) {
+          while (nextNode == null) {
+            node = node.parentNode;
+            if (node === inertBodyElement) break;
+            nextNode = node.nextSibling;
+          if (node.nodeType == 1) {
+              handler.end(node.nodeName.toLowerCase());
+            }
+          }
+        }
+      }
+      node = nextNode;
+    }
+
+    while (node = inertBodyElement.firstChild) {
+      inertBodyElement.removeChild(node);
+    }
+  }
+
+  function attrToMap(attrs) {
+    var map = {};
+    for (var i = 0, ii = attrs.length; i < ii; i++) {
+      var attr = attrs[i];
+      map[attr.name] = attr.value;
+    }
+    return map;
+  }
+
+
+  /**
+   * Escapes all potentially dangerous characters, so that the
+   * resulting string can be safely inserted into attribute or
+   * element text.
+   * @param value
+   * @returns {string} escaped text
+   */
+  function encodeEntities(value) {
+    return value.
+      replace(/&/g, '&amp;').
+      replace(SURROGATE_PAIR_REGEXP, function(value) {
+        var hi = value.charCodeAt(0);
+        var low = value.charCodeAt(1);
+        return '&#' + (((hi - 0xD800) * 0x400) + (low - 0xDC00) + 0x10000) + ';';
+      }).
+      replace(NON_ALPHANUMERIC_REGEXP, function(value) {
+        return '&#' + value.charCodeAt(0) + ';';
+      }).
+      replace(/</g, '&lt;').
+      replace(/>/g, '&gt;');
+  }
+
+  /**
+   * create an HTML/XML writer which writes to buffer
+   * @param {Array} buf use buf.join('') to get out sanitized html string
+   * @returns {object} in the form of {
+   *     start: function(tag, attrs) {},
+   *     end: function(tag) {},
+   *     chars: function(text) {},
+   *     comment: function(text) {}
+   * }
+   */
+  function htmlSanitizeWriterImpl(buf, uriValidator) {
+    var ignoreCurrentElement = false;
+    var out = bind(buf, buf.push);
+    return {
+      start: function(tag, attrs) {
+        tag = lowercase(tag);
+        if (!ignoreCurrentElement && blockedElements[tag]) {
+          ignoreCurrentElement = tag;
+        }
+        if (!ignoreCurrentElement && validElements[tag] === true) {
+          out('<');
+          out(tag);
+          forEach(attrs, function(value, key) {
+            var lkey = lowercase(key);
+            var isImage = (tag === 'img' && lkey === 'src') || (lkey === 'background');
+            if (validAttrs[lkey] === true &&
+              (uriAttrs[lkey] !== true || uriValidator(value, isImage))) {
+              out(' ');
+              out(key);
+              out('="');
+              out(encodeEntities(value));
+              out('"');
+            }
+          });
+          out('>');
+        }
+      },
+      end: function(tag) {
+        tag = lowercase(tag);
+        if (!ignoreCurrentElement && validElements[tag] === true && voidElements[tag] !== true) {
+          out('</');
+          out(tag);
+          out('>');
+        }
+        if (tag == ignoreCurrentElement) {
+          ignoreCurrentElement = false;
+        }
+      },
+      chars: function(chars) {
+        if (!ignoreCurrentElement) {
+          out(encodeEntities(chars));
+        }
+      }
+    };
+  }
+
+
+  /**
+   * When IE9-11 comes across an unknown namespaced attribute e.g. 'xlink:foo' it adds 'xmlns:ns1' attribute to declare
+   * ns1 namespace and prefixes the attribute with 'ns1' (e.g. 'ns1:xlink:foo'). This is undesirable since we don't want
+   * to allow any of these custom attributes. This method strips them all.
+   *
+   * @param node Root element to process
+   */
+  function stripCustomNsAttrs(node) {
+    if (node.nodeType === window.Node.ELEMENT_NODE) {
+      var attrs = node.attributes;
+      for (var i = 0, l = attrs.length; i < l; i++) {
+        var attrNode = attrs[i];
+        var attrName = attrNode.name.toLowerCase();
+        if (attrName === 'xmlns:ns1' || attrName.lastIndexOf('ns1:', 0) === 0) {
+          node.removeAttributeNode(attrNode);
+          i--;
+          l--;
+        }
+      }
+    }
+
+    var nextNode = node.firstChild;
+    if (nextNode) {
+      stripCustomNsAttrs(nextNode);
+    }
+
+    nextNode = node.nextSibling;
+    if (nextNode) {
+      stripCustomNsAttrs(nextNode);
+    }
+  }
+}
+
+function sanitizeText(chars) {
+  var buf = [];
+  var writer = htmlSanitizeWriter(buf, noop);
+  writer.chars(chars);
+  return buf.join('');
+}
+
+
+// define ngSanitize module and register $sanitize service
+angular.module('ngSanitize', []).provider('$sanitize', $SanitizeProvider);
+
+/**
+ * @ngdoc filter
+ * @name linky
+ * @kind function
+ *
+ * @description
+ * Finds links in text input and turns them into html links. Supports `http/https/ftp/mailto` and
+ * plain email address links.
+ *
+ * Requires the {@link ngSanitize `ngSanitize`} module to be installed.
+ *
+ * @param {string} text Input text.
+ * @param {string} target Window (`_blank|_self|_parent|_top`) or named frame to open links in.
+ * @param {object|function(url)} [attributes] Add custom attributes to the link element.
+ *
+ *    Can be one of:
+ *
+ *    - `object`: A map of attributes
+ *    - `function`: Takes the url as a parameter and returns a map of attributes
+ *
+ *    If the map of attributes contains a value for `target`, it overrides the value of
+ *    the target parameter.
+ *
+ *
+ * @returns {string} Html-linkified and {@link $sanitize sanitized} text.
+ *
+ * @usage
+   <span ng-bind-html="linky_expression | linky"></span>
+ *
+ * @example
+   <example module="linkyExample" deps="angular-sanitize.js">
+     <file name="index.html">
+       <div ng-controller="ExampleController">
+       Snippet: <textarea ng-model="snippet" cols="60" rows="3"></textarea>
+       <table>
+         <tr>
+           <th>Filter</th>
+           <th>Source</th>
+           <th>Rendered</th>
+         </tr>
+         <tr id="linky-filter">
+           <td>linky filter</td>
+           <td>
+             <pre>&lt;div ng-bind-html="snippet | linky"&gt;<br>&lt;/div&gt;</pre>
+           </td>
+           <td>
+             <div ng-bind-html="snippet | linky"></div>
+           </td>
+         </tr>
+         <tr id="linky-target">
+          <td>linky target</td>
+          <td>
+            <pre>&lt;div ng-bind-html="snippetWithSingleURL | linky:'_blank'"&gt;<br>&lt;/div&gt;</pre>
+          </td>
+          <td>
+            <div ng-bind-html="snippetWithSingleURL | linky:'_blank'"></div>
+          </td>
+         </tr>
+         <tr id="linky-custom-attributes">
+          <td>linky custom attributes</td>
+          <td>
+            <pre>&lt;div ng-bind-html="snippetWithSingleURL | linky:'_self':{rel: 'nofollow'}"&gt;<br>&lt;/div&gt;</pre>
+          </td>
+          <td>
+            <div ng-bind-html="snippetWithSingleURL | linky:'_self':{rel: 'nofollow'}"></div>
+          </td>
+         </tr>
+         <tr id="escaped-html">
+           <td>no filter</td>
+           <td><pre>&lt;div ng-bind="snippet"&gt;<br>&lt;/div&gt;</pre></td>
+           <td><div ng-bind="snippet"></div></td>
+         </tr>
+       </table>
+     </file>
+     <file name="script.js">
+       angular.module('linkyExample', ['ngSanitize'])
+         .controller('ExampleController', ['$scope', function($scope) {
+           $scope.snippet =
+             'Pretty text with some links:\n'+
+             'http://angularjs.org/,\n'+
+             'mailto:us@somewhere.org,\n'+
+             'another@somewhere.org,\n'+
+             'and one more: ftp://127.0.0.1/.';
+           $scope.snippetWithSingleURL = 'http://angularjs.org/';
+         }]);
+     </file>
+     <file name="protractor.js" type="protractor">
+       it('should linkify the snippet with urls', function() {
+         expect(element(by.id('linky-filter')).element(by.binding('snippet | linky')).getText()).
+             toBe('Pretty text with some links: http://angularjs.org/, us@somewhere.org, ' +
+                  'another@somewhere.org, and one more: ftp://127.0.0.1/.');
+         expect(element.all(by.css('#linky-filter a')).count()).toEqual(4);
+       });
+
+       it('should not linkify snippet without the linky filter', function() {
+         expect(element(by.id('escaped-html')).element(by.binding('snippet')).getText()).
+             toBe('Pretty text with some links: http://angularjs.org/, mailto:us@somewhere.org, ' +
+                  'another@somewhere.org, and one more: ftp://127.0.0.1/.');
+         expect(element.all(by.css('#escaped-html a')).count()).toEqual(0);
+       });
+
+       it('should update', function() {
+         element(by.model('snippet')).clear();
+         element(by.model('snippet')).sendKeys('new http://link.');
+         expect(element(by.id('linky-filter')).element(by.binding('snippet | linky')).getText()).
+             toBe('new http://link.');
+         expect(element.all(by.css('#linky-filter a')).count()).toEqual(1);
+         expect(element(by.id('escaped-html')).element(by.binding('snippet')).getText())
+             .toBe('new http://link.');
+       });
+
+       it('should work with the target property', function() {
+        expect(element(by.id('linky-target')).
+            element(by.binding("snippetWithSingleURL | linky:'_blank'")).getText()).
+            toBe('http://angularjs.org/');
+        expect(element(by.css('#linky-target a')).getAttribute('target')).toEqual('_blank');
+       });
+
+       it('should optionally add custom attributes', function() {
+        expect(element(by.id('linky-custom-attributes')).
+            element(by.binding("snippetWithSingleURL | linky:'_self':{rel: 'nofollow'}")).getText()).
+            toBe('http://angularjs.org/');
+        expect(element(by.css('#linky-custom-attributes a')).getAttribute('rel')).toEqual('nofollow');
+       });
+     </file>
+   </example>
+ */
+angular.module('ngSanitize').filter('linky', ['$sanitize', function($sanitize) {
+  var LINKY_URL_REGEXP =
+        /((ftp|https?):\/\/|(www\.)|(mailto:)?[A-Za-z0-9._%+-]+@)\S*[^\s.;,(){}<>"\u201d\u2019]/i,
+      MAILTO_REGEXP = /^mailto:/i;
+
+  var linkyMinErr = angular.$$minErr('linky');
+  var isDefined = angular.isDefined;
+  var isFunction = angular.isFunction;
+  var isObject = angular.isObject;
+  var isString = angular.isString;
+
+  return function(text, target, attributes) {
+    if (text == null || text === '') return text;
+    if (!isString(text)) throw linkyMinErr('notstring', 'Expected string but received: {0}', text);
+
+    var attributesFn =
+      isFunction(attributes) ? attributes :
+      isObject(attributes) ? function getAttributesObject() {return attributes;} :
+      function getEmptyAttributesObject() {return {};};
+
+    var match;
+    var raw = text;
+    var html = [];
+    var url;
+    var i;
+    while ((match = raw.match(LINKY_URL_REGEXP))) {
+      // We can not end in these as they are sometimes found at the end of the sentence
+      url = match[0];
+      // if we did not match ftp/http/www/mailto then assume mailto
+      if (!match[2] && !match[4]) {
+        url = (match[3] ? 'http://' : 'mailto:') + url;
+      }
+      i = match.index;
+      addText(raw.substr(0, i));
+      addLink(url, match[0].replace(MAILTO_REGEXP, ''));
+      raw = raw.substring(i + match[0].length);
+    }
+    addText(raw);
+    return $sanitize(html.join(''));
+
+    function addText(text) {
+      if (!text) {
+        return;
+      }
+      html.push(sanitizeText(text));
+    }
+
+    function addLink(url, text) {
+      var key, linkAttributes = attributesFn(url);
+      html.push('<a ');
+
+      for (key in linkAttributes) {
+        html.push(key + '="' + linkAttributes[key] + '" ');
+      }
+
+      if (isDefined(target) && !('target' in linkAttributes)) {
+        html.push('target="',
+                  target,
+                  '" ');
+      }
+      html.push('href="',
+                url.replace(/"/g, '&quot;'),
+                '">');
+      addText(text);
+      html.push('</a>');
+    }
+  };
+}]);
+
+
+})(window, window.angular);
+
+
+/***/ },
+/* 36 */
 /***/ function(module, exports) {
 
 (function() {
@@ -43085,7 +44086,7 @@ angular.module("toastr").run(["$templateCache", function($templateCache) {$templ
 $templateCache.put("directives/toast/toast.html","<div class=\"{{toastClass}} {{toastType}}\" ng-click=\"tapToast()\">\n  <div ng-switch on=\"allowHtml\">\n    <div ng-switch-default ng-if=\"title\" class=\"{{titleClass}}\" aria-label=\"{{title}}\">{{title}}</div>\n    <div ng-switch-default class=\"{{messageClass}}\" aria-label=\"{{message}}\">{{message}}</div>\n    <div ng-switch-when=\"true\" ng-if=\"title\" class=\"{{titleClass}}\" ng-bind-html=\"title\"></div>\n    <div ng-switch-when=\"true\" class=\"{{messageClass}}\" ng-bind-html=\"message\"></div>\n  </div>\n  <progress-bar ng-if=\"progressBar\"></progress-bar>\n</div>\n");}]);
 
 /***/ },
-/* 31 */
+/* 37 */
 /***/ function(module, exports) {
 
 /**
@@ -74900,7 +75901,7 @@ $provide.value("$locale", {
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
 
 /***/ },
-/* 32 */
+/* 38 */
 /***/ function(module, exports) {
 
 "use strict";
@@ -75016,7 +76017,7 @@ function fromByteArray (uint8) {
 
 
 /***/ },
-/* 33 */
+/* 39 */
 /***/ function(module, exports) {
 
 var toString = {}.toString;
@@ -75027,7 +76028,7 @@ module.exports = Array.isArray || function (arr) {
 
 
 /***/ },
-/* 34 */
+/* 40 */
 /***/ function(module, exports) {
 
 exports.read = function (buffer, offset, isLE, mLen, nBytes) {
@@ -75117,7 +76118,7 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
 
 
 /***/ },
-/* 35 */
+/* 41 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -75258,7 +76259,7 @@ exports['default'] = {
 module.exports = exports['default'];
 
 /***/ },
-/* 36 */
+/* 42 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -75343,7 +76344,7 @@ exports['default'] = handleKeyDown;
 module.exports = exports['default'];
 
 /***/ },
-/* 37 */
+/* 43 */
 /***/ function(module, exports) {
 
 "use strict";
@@ -75391,7 +76392,7 @@ exports["default"] = injectedHTML;
 module.exports = exports["default"];
 
 /***/ },
-/* 38 */
+/* 44 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -75622,344 +76623,7 @@ exports['default'] = setParameters;
 module.exports = exports['default'];
 
 /***/ },
-/* 39 */
-/***/ function(module, exports) {
-
-module.exports = function(module) {
-	if(!module.webpackPolyfill) {
-		module.deprecate = function() {};
-		module.paths = [];
-		// module.parent = undefined by default
-		if(!module.children) module.children = [];
-		Object.defineProperty(module, "loaded", {
-			enumerable: true,
-			configurable: false,
-			get: function() { return module.l; }
-		});
-		Object.defineProperty(module, "id", {
-			enumerable: true,
-			configurable: false,
-			get: function() { return module.i; }
-		});
-		module.webpackPolyfill = 1;
-	}
-	return module;
-}
-
-
-/***/ },
-/* 40 */
-/***/ function(module, exports) {
-
-module.exports = ["$auth", "$http", "$state", "toastr", function ($auth, $http, $state, toastr) {
-  'ngInject';
-
-  var vm = this;
-  vm.user = {};
-  vm.errors = {};
-
-  vm.login = function () {
-    $auth.login(vm.user)
-      .then(function (response) {
-        toastr.success('Has iniciado sesión exitosamente!');
-        $state.go('app.home');
-      })
-      .catch(function (response) {
-        vm.errors = response.data;
-      });
-  }
-
-  this.hasError = function (property) {
-    return vm.errors.hasOwnProperty(property) ? true : false;
-  };
-
-}];
-
-
-/***/ },
-/* 41 */
-/***/ function(module, exports) {
-
-module.exports = ["$state", "$auth", "toastr", function($state, $auth, toastr) {
-  'ngInject';
-
-	if (!$auth.isAuthenticated()) {
-		return;
-	}
-
-	$auth.logout().then(function () {
-		toastr.info('Ha sido cerrada tu sesión');
-		$state.go('login');
-	});
-}];
-
-
-/***/ },
-/* 42 */
-/***/ function(module, exports) {
-
-module.exports = ["$auth", "$http", "$state", "toastr", function ($auth, $http, $state, toastr) {
-  'ngInject';
-
-  var vm = this;
-  vm.user = {};
-  vm.errors = {};
-
-  vm.submit = function () {
-    $auth.signup(vm.user)
-      .then(function (response) {
-        $auth.setToken(response);
-        $state.go('app.home');
-        toastr.info('Se ha creado tu cuenta exitosamente y se ha iniciado sesión');
-      })
-      .catch(function (response) {
-        vm.errors = response.data;
-      });
-  }
-
-  this.hasError = function (property) {
-    return vm.errors.hasOwnProperty(property) ? true : false;
-  };
-
-}];
-
-
-/***/ },
-/* 43 */
-/***/ function(module, exports) {
-
-module.exports = ["roles", "UserService", "$state", "toastr", function (roles, UserService, $state, toastr) {
-  'ngInject';
-  var vm = this;
-  vm.action = 'Crear';
-  vm.roles = roles;
-  vm.errors = {};
-  vm.formIsSubmit = false;
-  vm.data = {
-    name:  '',
-    email: '',
-    password: '',
-    password_confirmation: '',
-    roles: []
-  };
-
-  this.hasError = function(property) {
-    if (vm.errors.hasOwnProperty(property)) {
-      return true;
-    }
-    return false;
-  };
-
-  this.submitForm = function () {
-    vm.formIsSubmit = true;
-
-    UserService.createResource(vm.data)
-      .then(function(data) {
-        toastr.success(data.data.message, 'Estado!');
-        $state.go('app.users', {}, {reload: true});
-      })
-      .catch(function(errors) {
-        vm.errors = errors.data;
-      }).finally(function() {
-        vm.formIsSubmit = false;
-      });
-  };
-}];
-
-
-/***/ },
-/* 44 */
-/***/ function(module, exports) {
-
-module.exports = ["data", "roles", "UserService", "$state", "$stateParams", "toastr", function (data, roles, UserService, $state, $stateParams, toastr) {
-  'ngInject';
-  var vm = this;
-  vm.action = 'Editar';
-  vm.data =  data;
-  vm.roles = roles;
-  vm.errors = {};
-  vm.formIsSubmit = false;
-
-  this.hasError = function(property) {
-    if (vm.errors.hasOwnProperty(property)) {
-      return true;
-    }
-    return false;
-  };
-
-  this.submitForm = function () {
-    vm.formIsSubmit = true;
-
-    UserService.updateResource(vm.getId(), vm.data)
-      .then(function(data) {
-        toastr.success(data.data.message, 'Estado!');
-        $state.go('app.users', {}, {reload: true});
-      })
-      .catch(function(errors) {
-        vm.errors = errors.data;
-      }).finally(function() {
-        vm.formIsSubmit = false;
-      });
-  };
-
-  this.getId = function () {
-    return $stateParams.id;
-  };
-}];
-
-
-/***/ },
 /* 45 */
-/***/ function(module, exports) {
-
-module.exports = ["users", "UserService", "toastr", "Confirm", "$state", "$stateParams", function (users, UserService, toastr, Confirm, $state, $stateParams) {
-  'ngInject';
-  var vm = this;
-  vm.users = users.data;
-  vm.totalItems = users.total;
-  vm.itemsPerPage = users.per_page;
-  vm.search = $stateParams;
-  vm.search.page = users.current_page;
-  vm.reload = false;
-
-  vm.filter = function () {
-    $state.go('.', vm.search, {reload: true});
-    vm.reload = true;
-  };
-
-  vm.destroy = function (id, index) {
-    Confirm.destroy(function() {
-      vm.deleteUser(id, index);
-    });
-  };
-
-  vm.deleteUser = function (id, index) {
-    UserService.deleteResource(id)
-      .then(function(data) {
-        toastr.success(data.data.message, 'Estado!');
-        vm.removeFromUsers(index);
-      })
-      .catch(function(errors) {
-        vm.errors = errors.data;
-      });
-  };
-
-  vm.removeFromUsers = function (index) {
-    vm.users.splice(index, 1);
-  };
-}];
-
-
-/***/ },
-/* 46 */
-/***/ function(module, exports) {
-
-module.exports = "<ui-view>\n    <div class=\"row\">\n        <div class=\"col-xs-12 col-sm-7 col-md-7 col-lg-4\">\n            <h1 class=\"page-title txt-color-blueDark\">\n                <i class=\"fa-fw fa fa-home\"></i>\n                Dashboard\n            </h1>\n        </div>\n    </div>\n</ui-view>\n";
-
-/***/ },
-/* 47 */
-/***/ function(module, exports) {
-
-module.exports = "<ui-view>\n    <div class=\"row\">\n        <div class=\"col-xs-12 col-sm-7 col-md-7 col-lg-4\">\n            <h1 class=\"page-title txt-color-blueDark\">\n                <i class=\"fa-fw fa fa-home\"></i>\n                Home\n            </h1>\n\t\t</div>\n\t</div>\n\n\t<section id=\"widget-grid\" class=\"\">\n\t\t<div class=\"row\">\n\t\t\t<article class=\"col-xs-12 col-sm-12 col-md-12 col-lg-12\">\n\t\t\t\t<div class=\"jarviswidget\" id=\"wid-id-0\">\n\t\t\t\t\t<header>\n\t\t\t\t\t\t<span class=\"widget-icon\"> <i class=\"fa fa-cogs\"></i> </span>\n\t\t\t\t\t\t<h2>Widget de ejemplo</h2>\n\t\t\t\t\t</header>\n\t\t\t\t\t<div>\n\t\t\t\t\t\t<div class=\"jarviswidget-editbox\">\n\t\t\t\t\t\t\t<input class=\"form-control\" type=\"text\">\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div class=\"widget-body\">\n\t\t\t\t\t\t\tContenido de ejemplo\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</article>\n\t\t</div>\n\t\t<div class=\"row\">\n\t\t\t<div class=\"col-sm-12\">\n\t\t\t</div>\n\t\t</div>\n\t</section>\n</ui-view>\n";
-
-/***/ },
-/* 48 */
-/***/ function(module, exports) {
-
-module.exports = "<ui-view>\n    <section class=\"\" style=\"padding-top: 100px;\">\n        <div class=\"row\">\n            <article class=\"col-md-4 col-md-offset-4\">\n                <div class=\"jarviswidget jarviswidget-color-darken\" id=\"wid-id-0\">\n                    <header>\n                        <span class=\"widget-icon\"> <i class=\"fa fa-key\"></i> </span>\n                        <h2>Login</h2>\n                    </header>\n                    <div>\n                        <div class=\"jarviswidget-editbox\">\n                            <input class=\"form-control\" type=\"text\">\n                        </div>\n                        <div class=\"widget-body no-padding\">\n\n\n                            <form role=\"form\" method=\"POST\" novalidate class=\"smart-form client-form\">\n\n                                <fieldset>\n                                    \n                                    <section>\n                                        <label class=\"label control-label\" for=\"email\">E-mail Address</label>\n                                        <label class=\"input\" ng-class=\"{'state-error': vm.hasError('email')}\"> <i class=\"icon-append fa fa-user\"></i>\n                                            <input ng-model=\"vm.user.email\" id=\"email\" type=\"email\" name=\"email\">\n                                            <b class=\"tooltip tooltip-top-right\"><i class=\"fa fa-user txt-color-teal\"></i> Ingresar correo/usuario</b>\n                                        </label>\n                                        <em ng-if=\"vm.hasError('email')\" class=\"help-block\">\n                                            {{ vm.errors.email[0] }}\n                                        </em>\n                                    </section>\n\n                                    <section>\n                                        <label class=\"label control-label\">Password</label>\n                                        <label class=\"input\" ng-class=\"{'state-error': vm.hasError('email')}\"> <i class=\"icon-append fa fa-lock\"></i>\n                                            <input ng-model=\"vm.user.password\" id=\"password\" type=\"password\" name=\"password\">\n                                            <b class=\"tooltip tooltip-top-right\"><i class=\"fa fa-lock txt-color-teal\"></i> Ingresa tu password</b> \n                                        </label>\n                                        <em ng-if=\"vm.hasError('password')\" class=\"help-block\">\n                                            {{ vm.errors.password[0] }}\n                                        </em>\n                                        \n                                        <div class=\"note\">\n                                            <a href=\"\">Olvidó password?</a>\n                                        </div>\n                                    </section>\n\n                                    <section>\n                                        <label class=\"checkbox\">\n                                            <input type=\"checkbox\" name=\"remember\" checked=\"\">\n                                            <i></i>Recordarme</label>\n                                    </section>\n\n\n                                </fieldset>\n                                <footer>\n                                    <button ng-click=\"vm.login()\" type=\"submit\" class=\"btn btn-primary\">\n                                        Enviar\n                                    </button>\n                                </footer>\n                            </form>\n                        </div>\n                    </div>\n                </div>\n            </article>\n        </div>\n        <div class=\"row\">\n            <div class=\"col-sm-12\">\n            </div>\n        </div>\n    </section>\n<!--     <div class=\"container\">\n        <div class=\"row\">\n            <div class=\"col-md-8 col-md-offset-2\">\n                <div class=\"panel panel-default\">\n                    <div class=\"panel-heading\">Login prueba</div>\n                    <div class=\"panel-body\">\n                        <form class=\"form-horizontal\" role=\"form\" method=\"POST\" novalidate>\n\n                            <div class=\"form-group\" ng-class=\"{'has-error': vm.hasError('email')}\">\n                                <label for=\"email\" class=\"col-md-4 control-label\">E-Mail Address</label>\n\n                                <div class=\"col-md-6\">\n                                    <input ng-model=\"vm.user.email\" id=\"email\" type=\"email\" class=\"form-control\" name=\"email\">\n                                    <span ng-if=\"vm.hasError('email')\" class=\"help-block\">\n                                        <strong>{{ vm.errors.email[0] }}</strong>\n                                    </span>\n                                </div>\n                            </div>\n\n                            <div class=\"form-group\"  ng-class=\"{'has-error': vm.hasError('password')}\">\n                                <label for=\"password\" class=\"col-md-4 control-label\">Password</label>\n\n                                <div class=\"col-md-6\">\n                                    <input ng-model=\"vm.user.password\" id=\"password\" type=\"password\" class=\"form-control\" name=\"password\">\n                                    <span ng-if=\"vm.hasError('password')\" class=\"help-block\">\n                                        <strong>{{ vm.errors.password[0] }}</strong>\n                                    </span>\n                                </div>\n                            </div>\n\n                            <div class=\"form-group\">\n                                <div class=\"col-md-8 col-md-offset-4\">\n                                    <button ng-click=\"vm.login()\" type=\"submit\" class=\"btn btn-primary\">\n                                        Login\n                                    </button>\n                                </div>\n                            </div>\n\n                        </form>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div> -->\n</ui-view>\n";
-
-/***/ },
-/* 49 */
-/***/ function(module, exports) {
-
-module.exports = "<ui-view>\n    <div class=\"container\">\n        <div class=\"row\">\n            <div class=\"col-md-8 col-md-offset-2\">\n                <div class=\"panel panel-default\">\n                    <div class=\"panel-heading\">Registrar</div>\n                    <div class=\"panel-body\">\n                        <form class=\"form-horizontal\" role=\"form\" novalidate>\n\n                            <div class=\"form-group\" ng-class=\"{'has-error': vm.hasError('name')}\">\n                                <label for=\"name\" class=\"col-md-4 control-label\">Name</label>\n                                <div class=\"col-md-6\">\n                                    <input ng-model=\"vm.user.name\" type=\"text\" class=\"form-control\" name=\"name\">\n                                    <span ng-if=\"vm.hasError('name')\" class=\"help-block\">\n                                        <strong>{{ vm.errors.name[0] }}</strong>\n                                    </span>\n                                </div>\n                            </div>\n\n                            <div class=\"form-group\" ng-class=\"{'has-error': vm.hasError('email')}\">\n                                <label for=\"email\" class=\"col-md-4 control-label\">E-Mail Address</label>\n                                <div class=\"col-md-6\">\n                                    <input ng-model=\"vm.user.email\" id=\"email\" type=\"email\" class=\"form-control\" name=\"email\">\n                                    <span ng-if=\"vm.hasError('email')\" class=\"help-block\">\n                                        <strong>{{ vm.errors.email[0] }}</strong>\n                                    </span>\n                                </div>\n                            </div>\n\n                            <div class=\"form-group\" ng-class=\"{'has-error': vm.hasError('password')}\">\n                                <label for=\"password\" class=\"col-md-4 control-label\">Password</label>\n                                <div class=\"col-md-6\">\n                                    <input ng-model=\"vm.user.password\" type=\"password\" class=\"form-control\" name=\"password\">\n                                    <span ng-if=\"vm.hasError('password')\" class=\"help-block\">\n                                        <strong>{{ vm.errors.password[0] }}</strong>\n                                    </span>\n                                </div>\n                            </div>\n\n                            <div class=\"form-group\" ng-class=\"{'has-error': vm.hasError('password_confirmation')}\">\n                                <label for=\"password\" class=\"col-md-4 control-label\">Confirma Password</label>\n                                <div class=\"col-md-6\">\n                                    <input ng-model=\"vm.user.password_confirmation\" type=\"password\" class=\"form-control\" name=\"password\">\n                                    <span ng-if=\"vm.hasError('password_confirmation')\" class=\"help-block\">\n                                        <strong>{{ vm.errors.password_confirmation[0] }}</strong>\n                                    </span>\n                                </div>\n                            </div>\n\n\n                            <div class=\"form-group\">\n                                <div class=\"col-md-8 col-md-offset-4\">\n                                    <button ng-click=\"vm.submit()\" type=\"submit\" class=\"btn btn-primary\">\n                                        Login\n                                    </button>\n                                </div>\n                            </div>\n\n                        </form>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n</ui-view>\n";
-
-/***/ },
-/* 50 */
-/***/ function(module, exports) {
-
-module.exports = "<!-- #HEADER -->\n<header id=\"header\">\n    <div id=\"logo-group\">\n\n        <span id=\"logo\"> <img src=\"/img/logo1.png\" alt=\"SmartAdmin\"> </span>\n\n        <!-- Note: The activity badge color changes when clicked and resets the number to 0\n        Suggestion: You may want to set a flag when this happens to tick off all checked messages / notifications -->\n        <span id=\"activity\" class=\"activity-dropdown\"> <i class=\"fa fa-user\"></i> <b class=\"badge\"> 0 </b> </span>\n\n        <!-- AJAX-DROPDOWN : control this dropdown height, look and feel from the LESS variable file -->\n        <div class=\"ajax-dropdown\">\n\n            <!-- the ID links are fetched via AJAX to the ajax container \"ajax-notifications\" -->\n            <div class=\"btn-group btn-group-justified\" data-toggle=\"buttons\">\n                <label class=\"btn btn-default\">\n                    <input type=\"radio\" name=\"activity\" id=\"ajax/notify/mail.html\">\n                    Msgs (14) </label>\n                <label class=\"btn btn-default\">\n                    <input type=\"radio\" name=\"activity\" id=\"ajax/notify/notifications.html\">\n                    notify (3) </label>\n                <label class=\"btn btn-default\">\n                    <input type=\"radio\" name=\"activity\" id=\"ajax/notify/tasks.html\">\n                    Tasks (4) </label>\n            </div>\n\n            <!-- notification content -->\n            <div class=\"ajax-notifications custom-scroll\">\n\n                <div class=\"alert alert-transparent\">\n                    <h4>Click a button to show messages here</h4>\n                    This blank page message helps protect your privacy, or you can show the first message here automatically.\n                </div>\n\n                <i class=\"fa fa-lock fa-4x fa-border\"></i>\n\n            </div>\n            <!-- end notification content -->\n\n            <!-- footer: refresh area -->\n            <span> Last updated on: 12/12/2013 9:43AM\n                <button type=\"button\" data-loading-text=\"<i class='fa fa-refresh fa-spin'></i> Loading...\" class=\"btn btn-xs btn-default pull-right\">\n                    <i class=\"fa fa-refresh\"></i>\n            </button> </span>\n            <!-- end footer -->\n\n        </div>\n        <!-- END AJAX-DROPDOWN -->\n    </div>\n\n    <div class=\"pull-right\">\n\n        <div id=\"hide-menu\" class=\"btn-header pull-right\">\n            <span> <a href=\"javascript:void(0);\" data-action=\"toggleMenu\" title=\"Collapse Menu\"><i class=\"fa fa-reorder\"></i></a> </span>\n        </div>\n\n        <!-- #MOBILE -->\n        <!-- Top menu profile link : this shows only when top menu is active -->\n        <ul id=\"mobile-profile-img\" class=\"header-dropdown-list hidden-xs padding-5\">\n            <li class=\"\">\n                <a href=\"#\" class=\"dropdown-toggle no-margin userdropdown\" data-toggle=\"dropdown\">\n                    <img src=\"/img/avatars/sunny.png\" class=\"online\" />\n                </a>\n                <ul class=\"dropdown-menu pull-right\">\n                    <li>\n                        <a href=\"javascript:void(0);\" class=\"padding-10 padding-top-0 padding-bottom-0\"><i class=\"fa fa-cog\"></i> Setting</a>\n                    </li>\n                    <li class=\"divider\"></li>\n                    <li>\n                        <a href=\"#ajax/profile.html\" class=\"padding-10 padding-top-0 padding-bottom-0\"> <i class=\"fa fa-user\"></i> <u>P</u>rofile</a>\n                    </li>\n                    <li class=\"divider\"></li>\n                    <li>\n                        <a href=\"javascript:void(0);\" class=\"padding-10 padding-top-0 padding-bottom-0\" data-action=\"toggleShortcut\"><i class=\"fa fa-arrow-down\"></i> <u>S</u>hortcut</a>\n                    </li>\n                    <li class=\"divider\"></li>\n                    <li>\n                        <a href=\"javascript:void(0);\" class=\"padding-10 padding-top-0 padding-bottom-0\" data-action=\"launchFullscreen\"><i class=\"fa fa-arrows-alt\"></i> Full <u>S</u>creen</a>\n                    </li>\n                    <li class=\"divider\"></li>\n                    <li>\n                        <a ui-sref=\"logout\" class=\"padding-10 padding-top-5 padding-bottom-5\" data-action=\"userLogout\"><i class=\"fa fa-sign-out fa-lg\"></i> <strong><u>L</u>ogout</strong></a>\n                    </li>\n                </ul>\n            </li>\n        </ul>\n\n        <!-- logout button -->\n        <div id=\"logout\" class=\"btn-header transparent pull-right\">\n            <span> <a ui-sref=\"logout\" title=\"Sign Out\" data-action=\"userLogout\" data-logout-msg=\"You can improve your security further after logging out by closing this opened browser\"><i class=\"fa fa-sign-out\"></i></a> </span>\n        </div>\n    </div>\n\n</header>\n\n<!-- Note: This width of the aside area can be adjusted through LESS/SASS variables -->\n<aside id=\"left-panel\">\n\n    <!-- User info -->\n    <div class=\"login-info\">\n        <span>\n\n            <a href=\"javascript:void(0);\" id=\"show-shortcut\" data-action=\"toggleShortcut\">\n                <img src=\"/img/avatars/sunny.png\" class=\"online\" />\n                <span>\n                    {{ vm.user.name }}\n                </span>\n                <i class=\"fa fa-angle-down\"></i>\n            </a>\n\n        </span>\n    </div>\n\n    <nav>\n        <ul data-smart-menu>\n            <li ui-sref-active=\"active\">\n                <a ui-sref=\"app.home\"><i class=\"fa fa-lg fa-fw fa-home\"></i> <span class=\"menu-item-parent\">Home</span></a>\n            </li>\n            <li ui-sref-active=\"active\">\n                <a ui-sref=\"app.dashboard\"><i class=\"fa fa-lg fa-fw fa-dashboard\"></i> <span class=\"menu-item-parent\">Dashboard</span></a>\n            </li>\n            <li data-menu-collapse ui-sref-active=\"active\">\n                <a href=\"#\"><i class=\"fa fa-lg fa-fw fa-cogs\"></i> <span class=\"menu-item-parent\">Administración</span></a>\n                <ul>\n                    <li>\n                        <a data-ui-sref=\"app.users\"><i class=\"fa fa-users\"></i> Usuarios</a>\n                    </li>\n                </ul>\n            </li>\n        </ul>\n    </nav>\n\n    <span class=\"minifyme\" data-action=\"minifyMenu\"> <i class=\"fa fa-arrow-circle-left hit\"></i> </span>\n</aside>\n\n<!-- #MAIN PANEL -->\n<div id=\"main\" role=\"main\">\n\n    <!-- RIBBON -->\n    <div id=\"ribbon\">\n         <state-breadcrumbs></state-breadcrumbs>\n    </div>\n\n    <div id=\"content\">\n        <div ui-view></div>\n    </div>\n\n</div>\n\n<div class=\"page-footer\">\n    <div class=\"row\">\n        <div class=\"col-xs-12 col-sm-6\">\n            <span class=\"txt-color-white\">Boilerplate <span class=\"hidden-xs\"> - {{ config('app.name', 'Laravel') }}</span> ©2016</span>\n        </div>\n    </div>\n</div>\n";
-
-/***/ },
-/* 51 */
-/***/ function(module, exports) {
-
-module.exports = "<ui-view>\n    <div class='row'>\n        <div class='pull-right'>\n            <a ui-sref='app.users.create' class='btn btn-primary'>Nuevo Usuario</a>\n        </div>\n    </div>\n    <br>\n\n    <div class='row'>\n        <div class=\"panel panel-default\">\n            <div class=\"panel-heading\">Usuarios</div>\n\n            <div class=\"panel-body\">\n                <table class='table'>\n                    <thead>\n                        <tr>\n                            <th>Nombre</th>\n                            <th>Email</th>\n                            <th>Roles</th>\n                            <th class='action-column'>Acciones</th>\n                        </tr>\n                    </thead>\n                    <tbody>\n                        <tr>\n                            <td> <input ng-model=\"vm.search.name\" ng-blur=\"vm.filter()\" ng-enter=\"vm.filter()\" type=\"text\" class=\"form-control\" placeholder=\"nombre\"></input> </td>\n                            <td> <input ng-model=\"vm.search.email\" ng-blur=\"vm.filter()\" ng-enter=\"vm.filter()\" type=\"text\" class=\"form-control\" placeholder=\"email\"></input> </td>\n                            <td> <input ng-model=\"vm.search.roles\" ng-blur=\"vm.filter()\" ng-enter=\"vm.filter()\" type=\"text\" class=\"form-control\" placeholder=\"rol\"></input> </td>\n                            <td></td>\n                        </tr>\n                        <tr ng-repeat=\"user in vm.users\">\n                            <td>{{ ::user.name }}</td>\n                            <td>{{ ::user.email }}</td>\n                            <td>\n                                <span ng-repeat=\"role in user.roles\">\n                                    <span class='label label-primary'>{{ ::role.label }}</span>\n                                </span>\n                            </td>\n                            <td>\n                                <a ui-sref=\"app.users.edit({id: user.id})\" class=\"btn btn-success btn-sm\">Editar</a>\n                                <a ng-click=\"vm.destroy(user.id, $index)\" class='btn btn-danger btn-sm'>Eliminar</a>\n                            </td>\n                        </tr>\n                    </tbody>\n                </table>\n\n                <div ng-if='vm.reload' class='text-center'>\n                    <i class=\"fa fa-2x fa-spinner fa-spin\"></i>\n                </div>\n\n                <div ng-hide=\"vm.reload\" ng-if=\"vm.users | isEmpty\" class='text-center'>\n                    Sin resultados\n                </div>\n\n                <div ng-hide=\"vm.reload\" ng-if=\"! (vm.users | isEmpty)\" class='text-center'>\n                    <uib-pagination items-per-page=\"vm.itemsPerPage\" total-items=\"vm.totalItems\" ng-model=\"vm.search.page\" ng-change=\"vm.filter()\"></uib-pagination>\n                </div>\n\n            </div>\n        </div>\n    </div>\n</ui-view>\n";
-
-/***/ },
-/* 52 */
-/***/ function(module, exports, __webpack_require__) {
-
-window._ = __webpack_require__(15);
-window.$ = window.jQuery = __webpack_require__(3);
-__webpack_require__(23)
-__webpack_require__(13);
-__webpack_require__(14);
-__webpack_require__(8);
-__webpack_require__(9);
-__webpack_require__(56);
-__webpack_require__(10);
-__webpack_require__(12);
-__webpack_require__(11);
-__webpack_require__(16);
-__webpack_require__(17);
-__webpack_require__(54);
-
-angular.module('app', [
-  'angular-loading-bar',
-  'ngAnimate',
-  'ngSanitize',
-  'oitozero.ngSweetAlert',
-  'satellizer',
-  'toastr',
-  'ui.router',
-  'ui.select',
-])
-.run(["$rootScope", "$log", function($rootScope, $log) {
-	$rootScope.$on('$stateChangeError',
-		function(event, toState, toParams, fromState, fromParams, error) {
-			$log.error('error', error);
-		});
-}])
-.config(__webpack_require__(24))
-.config(["$authProvider", function($authProvider) {
-	$authProvider.loginUrl = '/login';
-  $authProvider.signupUrl = '/register';
-}])
-.directive('smartMenu', __webpack_require__(20))
-.directive('stateBreadcrumbs', __webpack_require__(21))
-.directive('ngEnter', __webpack_require__(19))
-.filter('isEmpty', __webpack_require__(22))
-.controller('NavBarController', __webpack_require__(18))
-.service('ApiService', __webpack_require__(25))
-.service('Confirm', __webpack_require__(26))
-.service('UserService', __webpack_require__(27))
-.service('RoleService', __webpack_require__(53))
-
-
-/***/ },
-/* 53 */
-/***/ function(module, exports) {
-
-module.exports = ["ApiService", function (ApiService) {
-  'ngInject';
-
-  angular.extend(this, ApiService);
-
-  this.resource = 'roles';
-}];
-
-
-/***/ },
-/* 54 */
-/***/ function(module, exports, __webpack_require__) {
-
-__webpack_require__(55);
-module.exports = 'ui.select';
-
-
-/***/ },
-/* 55 */
 /***/ function(module, exports) {
 
 /*!
@@ -78320,755 +78984,460 @@ $templateCache.put("selectize/no-choice.tpl.html","<div class=\"ui-select-no-cho
 $templateCache.put("selectize/select.tpl.html","<div class=\"ui-select-container selectize-control single\" ng-class=\"{\'open\': $select.open}\"><div class=\"selectize-input\" ng-class=\"{\'focus\': $select.open, \'disabled\': $select.disabled, \'selectize-focus\' : $select.focus}\" ng-click=\"$select.open && !$select.searchEnabled ? $select.toggle($event) : $select.activate()\"><div class=\"ui-select-match\"></div><input type=\"search\" autocomplete=\"off\" tabindex=\"-1\" class=\"ui-select-search ui-select-toggle\" ng-class=\"{\'ui-select-search-hidden\':!$select.searchEnabled}\" ng-click=\"$select.toggle($event)\" placeholder=\"{{$select.placeholder}}\" ng-model=\"$select.search\" ng-hide=\"!$select.isEmpty() && !$select.open\" ng-disabled=\"$select.disabled\" aria-label=\"{{ $select.baseTitle }}\"></div><div class=\"ui-select-choices\"></div><div class=\"ui-select-no-choice\"></div></div>");}]);
 
 /***/ },
+/* 46 */
+/***/ function(module, exports) {
+
+module.exports = function(module) {
+	if(!module.webpackPolyfill) {
+		module.deprecate = function() {};
+		module.paths = [];
+		// module.parent = undefined by default
+		if(!module.children) module.children = [];
+		Object.defineProperty(module, "loaded", {
+			enumerable: true,
+			configurable: false,
+			get: function() { return module.l; }
+		});
+		Object.defineProperty(module, "id", {
+			enumerable: true,
+			configurable: false,
+			get: function() { return module.i; }
+		});
+		module.webpackPolyfill = 1;
+	}
+	return module;
+}
+
+
+/***/ },
+/* 47 */
+/***/ function(module, exports) {
+
+module.exports = ["$auth", "$http", "$state", "toastr", function ($auth, $http, $state, toastr) {
+  'ngInject';
+
+  var vm = this;
+  vm.user = {};
+  vm.errors = {};
+
+  vm.login = function () {
+    $auth.login(vm.user)
+      .then(function (response) {
+        toastr.success('Has iniciado sesión exitosamente!');
+        $state.go('app.home');
+      })
+      .catch(function (response) {
+        vm.errors = response.data;
+      });
+  }
+
+  this.hasError = function (property) {
+    return vm.errors.hasOwnProperty(property) ? true : false;
+  };
+
+}];
+
+
+/***/ },
+/* 48 */
+/***/ function(module, exports) {
+
+module.exports = ["$state", "$auth", "toastr", function($state, $auth, toastr) {
+  'ngInject';
+
+	if (!$auth.isAuthenticated()) {
+		return;
+	}
+
+	$auth.logout().then(function () {
+		toastr.info('Ha sido cerrada tu sesión');
+		$state.go('login');
+	});
+}];
+
+
+/***/ },
+/* 49 */
+/***/ function(module, exports) {
+
+module.exports = ["$auth", "$http", "$state", "toastr", function ($auth, $http, $state, toastr) {
+  'ngInject';
+
+  var vm = this;
+  vm.user = {};
+  vm.errors = {};
+
+  vm.submit = function () {
+    $auth.signup(vm.user)
+      .then(function (response) {
+        $auth.setToken(response);
+        $state.go('app.home');
+        toastr.info('Se ha creado tu cuenta exitosamente y se ha iniciado sesión');
+      })
+      .catch(function (response) {
+        vm.errors = response.data;
+      });
+  }
+
+  this.hasError = function (property) {
+    return vm.errors.hasOwnProperty(property) ? true : false;
+  };
+
+}];
+
+
+/***/ },
+/* 50 */
+/***/ function(module, exports) {
+
+module.exports = ["RoleService", "$state", "toastr", "permissions", function (RoleService, $state, toastr, permissions) {
+  'ngInject';
+  var vm = this;
+
+  vm.action = 'Crear';
+
+  vm.data = {
+    name:  '',
+    label: '',
+    permissions: []
+  };
+
+  vm.permissions = permissions;
+
+  vm.errors = {};
+
+  vm.formIsSubmit = false;
+
+  this.hasError = function(property) {
+    if (vm.errors.hasOwnProperty(property)) {
+      return true;
+    }
+    return false;
+  };
+
+  this.submitForm = function () {
+    vm.formIsSubmit = true;
+
+    RoleService.createResource(vm.data)
+    .then(function(data) {
+      toastr.success(data.data.message, 'Estado!');
+      $state.go('app.roles', {}, {reload: true});
+    })
+    .catch(function(errors) {
+      vm.errors = errors.data;
+    }).finally(function() {
+      vm.formIsSubmit = false;
+    });
+  };
+}];
+
+
+/***/ },
+/* 51 */
+/***/ function(module, exports) {
+
+module.exports = ["role", "permissions", "RoleService", "$state", "$stateParams", "toastr", function (role, permissions, RoleService, $state, $stateParams, toastr) {
+  'ngInject';
+  var vm = this;
+
+  vm.action = 'Editar';
+
+  vm.data =  role;
+
+  vm.permissions = permissions;
+
+  vm.errors = {};
+
+  vm.formIsSubmit = false;
+
+  this.hasError = function(property) {
+    if (vm.errors.hasOwnProperty(property)) {
+      return true;
+    }
+    return false;
+  };
+
+  this.submitForm = function () {
+    vm.formIsSubmit = true;
+
+    RoleService.updateResource(vm.getId(), vm.data)
+      .then(function(role) {
+        toastr.success(role.data.message, 'Estado!');
+        $state.go('app.roles', {}, {reload: true});
+      })
+      .catch(function(errors) {
+        vm.errors = errors.data;
+      }).finally(function() {
+        vm.formIsSubmit = false;
+      });
+  };
+
+  this.getId = function () {
+    return $stateParams.id;
+  };
+}];
+
+
+/***/ },
+/* 52 */
+/***/ function(module, exports) {
+
+module.exports = ["roles", "RoleService", "toastr", "Confirm", "$state", "$stateParams", function (roles, RoleService, toastr, Confirm, $state, $stateParams) {
+  'ngInject';
+  var vm = this;
+  vm.roles = roles.data;
+  vm.totalItems = roles.total;
+  vm.itemsPerPage = roles.per_page;
+  vm.search = $stateParams;
+  vm.search.page = roles.current_page;
+  vm.reload = false;
+
+  vm.filter = function() {
+    $state.go('.', vm.search, {reload: true});
+    vm.reload = true;
+  };
+
+  vm.destroy = function (data, index) {
+    Confirm.destroy(function() {
+      vm.deleteRole(data, index);
+    });
+  };
+
+  vm.deleteRole = function (id, index) {
+    RoleService.deleteResource(id)
+    .then(function(data) {
+      toastr.success(data.data.message, 'Estado!');
+      vm.removeFromRoles(index);
+    })
+    .catch(function(errors) {
+      vm.errors = errors.data;
+    });
+  };
+
+  vm.removeFromRoles = function (index) {
+    vm.roles.splice(index, 1);
+  };
+}];
+
+
+/***/ },
+/* 53 */
+/***/ function(module, exports) {
+
+module.exports = ["roles", "UserService", "$state", "toastr", function (roles, UserService, $state, toastr) {
+  'ngInject';
+  var vm = this;
+  vm.action = 'Crear';
+  vm.roles = roles;
+  vm.errors = {};
+  vm.formIsSubmit = false;
+  vm.data = {
+    name:  '',
+    email: '',
+    password: '',
+    password_confirmation: '',
+    roles: []
+  };
+
+  this.hasError = function(property) {
+    if (vm.errors.hasOwnProperty(property)) {
+      return true;
+    }
+    return false;
+  };
+
+  this.submitForm = function () {
+    vm.formIsSubmit = true;
+
+    UserService.createResource(vm.data)
+      .then(function(data) {
+        toastr.success(data.data.message, 'Estado!');
+        $state.go('app.users', {}, {reload: true});
+      })
+      .catch(function(errors) {
+        vm.errors = errors.data;
+      }).finally(function() {
+        vm.formIsSubmit = false;
+      });
+  };
+}];
+
+
+/***/ },
+/* 54 */
+/***/ function(module, exports) {
+
+module.exports = ["data", "roles", "UserService", "$state", "$stateParams", "toastr", function (data, roles, UserService, $state, $stateParams, toastr) {
+  'ngInject';
+  var vm = this;
+  vm.action = 'Editar';
+  vm.data =  data;
+  vm.roles = roles;
+  vm.errors = {};
+  vm.formIsSubmit = false;
+
+  this.hasError = function(property) {
+    if (vm.errors.hasOwnProperty(property)) {
+      return true;
+    }
+    return false;
+  };
+
+  this.submitForm = function () {
+    vm.formIsSubmit = true;
+
+    UserService.updateResource(vm.getId(), vm.data)
+      .then(function(data) {
+        toastr.success(data.data.message, 'Estado!');
+        $state.go('app.users', {}, {reload: true});
+      })
+      .catch(function(errors) {
+        vm.errors = errors.data;
+      }).finally(function() {
+        vm.formIsSubmit = false;
+      });
+  };
+
+  this.getId = function () {
+    return $stateParams.id;
+  };
+}];
+
+
+/***/ },
+/* 55 */
+/***/ function(module, exports) {
+
+module.exports = ["users", "UserService", "toastr", "Confirm", "$state", "$stateParams", function (users, UserService, toastr, Confirm, $state, $stateParams) {
+  'ngInject';
+  var vm = this;
+  vm.users = users.data;
+  vm.totalItems = users.total;
+  vm.itemsPerPage = users.per_page;
+  vm.search = $stateParams;
+  vm.search.page = users.current_page;
+  vm.reload = false;
+
+  vm.filter = function () {
+    $state.go('.', vm.search, {reload: true});
+    vm.reload = true;
+  };
+
+  vm.destroy = function (id, index) {
+    Confirm.destroy(function() {
+      vm.deleteUser(id, index);
+    });
+  };
+
+  vm.deleteUser = function (id, index) {
+    UserService.deleteResource(id)
+      .then(function(data) {
+        toastr.success(data.data.message, 'Estado!');
+        vm.removeFromUsers(index);
+      })
+      .catch(function(errors) {
+        vm.errors = errors.data;
+      });
+  };
+
+  vm.removeFromUsers = function (index) {
+    vm.users.splice(index, 1);
+  };
+}];
+
+
+/***/ },
 /* 56 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
-__webpack_require__(57);
-module.exports = 'ngSanitize';
-
+module.exports = "<ui-view>\n    <div class=\"row\">\n        <div class=\"col-xs-12 col-sm-7 col-md-7 col-lg-4\">\n            <h1 class=\"page-title txt-color-blueDark\">\n                <i class=\"fa-fw fa fa-home\"></i>\n                Dashboard\n            </h1>\n        </div>\n    </div>\n</ui-view>\n";
 
 /***/ },
 /* 57 */
 /***/ function(module, exports) {
 
-/**
- * @license AngularJS v1.5.8
- * (c) 2010-2016 Google, Inc. http://angularjs.org
- * License: MIT
- */
-(function(window, angular) {'use strict';
-
-/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- *     Any commits to this file should be reviewed with security in mind.  *
- *   Changes to this file can potentially create security vulnerabilities. *
- *          An approval from 2 Core members with history of modifying      *
- *                         this file is required.                          *
- *                                                                         *
- *  Does the change somehow allow for arbitrary javascript to be executed? *
- *    Or allows for someone to change the prototype of built-in objects?   *
- *     Or gives undesired access to variables likes document or window?    *
- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-
-var $sanitizeMinErr = angular.$$minErr('$sanitize');
-var bind;
-var extend;
-var forEach;
-var isDefined;
-var lowercase;
-var noop;
-var htmlParser;
-var htmlSanitizeWriter;
-
-/**
- * @ngdoc module
- * @name ngSanitize
- * @description
- *
- * # ngSanitize
- *
- * The `ngSanitize` module provides functionality to sanitize HTML.
- *
- *
- * <div doc-module-components="ngSanitize"></div>
- *
- * See {@link ngSanitize.$sanitize `$sanitize`} for usage.
- */
-
-/**
- * @ngdoc service
- * @name $sanitize
- * @kind function
- *
- * @description
- *   Sanitizes an html string by stripping all potentially dangerous tokens.
- *
- *   The input is sanitized by parsing the HTML into tokens. All safe tokens (from a whitelist) are
- *   then serialized back to properly escaped html string. This means that no unsafe input can make
- *   it into the returned string.
- *
- *   The whitelist for URL sanitization of attribute values is configured using the functions
- *   `aHrefSanitizationWhitelist` and `imgSrcSanitizationWhitelist` of {@link ng.$compileProvider
- *   `$compileProvider`}.
- *
- *   The input may also contain SVG markup if this is enabled via {@link $sanitizeProvider}.
- *
- * @param {string} html HTML input.
- * @returns {string} Sanitized HTML.
- *
- * @example
-   <example module="sanitizeExample" deps="angular-sanitize.js">
-   <file name="index.html">
-     <script>
-         angular.module('sanitizeExample', ['ngSanitize'])
-           .controller('ExampleController', ['$scope', '$sce', function($scope, $sce) {
-             $scope.snippet =
-               '<p style="color:blue">an html\n' +
-               '<em onmouseover="this.textContent=\'PWN3D!\'">click here</em>\n' +
-               'snippet</p>';
-             $scope.deliberatelyTrustDangerousSnippet = function() {
-               return $sce.trustAsHtml($scope.snippet);
-             };
-           }]);
-     </script>
-     <div ng-controller="ExampleController">
-        Snippet: <textarea ng-model="snippet" cols="60" rows="3"></textarea>
-       <table>
-         <tr>
-           <td>Directive</td>
-           <td>How</td>
-           <td>Source</td>
-           <td>Rendered</td>
-         </tr>
-         <tr id="bind-html-with-sanitize">
-           <td>ng-bind-html</td>
-           <td>Automatically uses $sanitize</td>
-           <td><pre>&lt;div ng-bind-html="snippet"&gt;<br/>&lt;/div&gt;</pre></td>
-           <td><div ng-bind-html="snippet"></div></td>
-         </tr>
-         <tr id="bind-html-with-trust">
-           <td>ng-bind-html</td>
-           <td>Bypass $sanitize by explicitly trusting the dangerous value</td>
-           <td>
-           <pre>&lt;div ng-bind-html="deliberatelyTrustDangerousSnippet()"&gt;
-&lt;/div&gt;</pre>
-           </td>
-           <td><div ng-bind-html="deliberatelyTrustDangerousSnippet()"></div></td>
-         </tr>
-         <tr id="bind-default">
-           <td>ng-bind</td>
-           <td>Automatically escapes</td>
-           <td><pre>&lt;div ng-bind="snippet"&gt;<br/>&lt;/div&gt;</pre></td>
-           <td><div ng-bind="snippet"></div></td>
-         </tr>
-       </table>
-       </div>
-   </file>
-   <file name="protractor.js" type="protractor">
-     it('should sanitize the html snippet by default', function() {
-       expect(element(by.css('#bind-html-with-sanitize div')).getInnerHtml()).
-         toBe('<p>an html\n<em>click here</em>\nsnippet</p>');
-     });
-
-     it('should inline raw snippet if bound to a trusted value', function() {
-       expect(element(by.css('#bind-html-with-trust div')).getInnerHtml()).
-         toBe("<p style=\"color:blue\">an html\n" +
-              "<em onmouseover=\"this.textContent='PWN3D!'\">click here</em>\n" +
-              "snippet</p>");
-     });
-
-     it('should escape snippet without any filter', function() {
-       expect(element(by.css('#bind-default div')).getInnerHtml()).
-         toBe("&lt;p style=\"color:blue\"&gt;an html\n" +
-              "&lt;em onmouseover=\"this.textContent='PWN3D!'\"&gt;click here&lt;/em&gt;\n" +
-              "snippet&lt;/p&gt;");
-     });
-
-     it('should update', function() {
-       element(by.model('snippet')).clear();
-       element(by.model('snippet')).sendKeys('new <b onclick="alert(1)">text</b>');
-       expect(element(by.css('#bind-html-with-sanitize div')).getInnerHtml()).
-         toBe('new <b>text</b>');
-       expect(element(by.css('#bind-html-with-trust div')).getInnerHtml()).toBe(
-         'new <b onclick="alert(1)">text</b>');
-       expect(element(by.css('#bind-default div')).getInnerHtml()).toBe(
-         "new &lt;b onclick=\"alert(1)\"&gt;text&lt;/b&gt;");
-     });
-   </file>
-   </example>
- */
-
-
-/**
- * @ngdoc provider
- * @name $sanitizeProvider
- *
- * @description
- * Creates and configures {@link $sanitize} instance.
- */
-function $SanitizeProvider() {
-  var svgEnabled = false;
-
-  this.$get = ['$$sanitizeUri', function($$sanitizeUri) {
-    if (svgEnabled) {
-      extend(validElements, svgElements);
-    }
-    return function(html) {
-      var buf = [];
-      htmlParser(html, htmlSanitizeWriter(buf, function(uri, isImage) {
-        return !/^unsafe:/.test($$sanitizeUri(uri, isImage));
-      }));
-      return buf.join('');
-    };
-  }];
-
-
-  /**
-   * @ngdoc method
-   * @name $sanitizeProvider#enableSvg
-   * @kind function
-   *
-   * @description
-   * Enables a subset of svg to be supported by the sanitizer.
-   *
-   * <div class="alert alert-warning">
-   *   <p>By enabling this setting without taking other precautions, you might expose your
-   *   application to click-hijacking attacks. In these attacks, sanitized svg elements could be positioned
-   *   outside of the containing element and be rendered over other elements on the page (e.g. a login
-   *   link). Such behavior can then result in phishing incidents.</p>
-   *
-   *   <p>To protect against these, explicitly setup `overflow: hidden` css rule for all potential svg
-   *   tags within the sanitized content:</p>
-   *
-   *   <br>
-   *
-   *   <pre><code>
-   *   .rootOfTheIncludedContent svg {
-   *     overflow: hidden !important;
-   *   }
-   *   </code></pre>
-   * </div>
-   *
-   * @param {boolean=} flag Enable or disable SVG support in the sanitizer.
-   * @returns {boolean|ng.$sanitizeProvider} Returns the currently configured value if called
-   *    without an argument or self for chaining otherwise.
-   */
-  this.enableSvg = function(enableSvg) {
-    if (isDefined(enableSvg)) {
-      svgEnabled = enableSvg;
-      return this;
-    } else {
-      return svgEnabled;
-    }
-  };
-
-  //////////////////////////////////////////////////////////////////////////////////////////////////
-  // Private stuff
-  //////////////////////////////////////////////////////////////////////////////////////////////////
-
-  bind = angular.bind;
-  extend = angular.extend;
-  forEach = angular.forEach;
-  isDefined = angular.isDefined;
-  lowercase = angular.lowercase;
-  noop = angular.noop;
-
-  htmlParser = htmlParserImpl;
-  htmlSanitizeWriter = htmlSanitizeWriterImpl;
-
-  // Regular Expressions for parsing tags and attributes
-  var SURROGATE_PAIR_REGEXP = /[\uD800-\uDBFF][\uDC00-\uDFFF]/g,
-    // Match everything outside of normal chars and " (quote character)
-    NON_ALPHANUMERIC_REGEXP = /([^\#-~ |!])/g;
-
-
-  // Good source of info about elements and attributes
-  // http://dev.w3.org/html5/spec/Overview.html#semantics
-  // http://simon.html5.org/html-elements
-
-  // Safe Void Elements - HTML5
-  // http://dev.w3.org/html5/spec/Overview.html#void-elements
-  var voidElements = toMap("area,br,col,hr,img,wbr");
-
-  // Elements that you can, intentionally, leave open (and which close themselves)
-  // http://dev.w3.org/html5/spec/Overview.html#optional-tags
-  var optionalEndTagBlockElements = toMap("colgroup,dd,dt,li,p,tbody,td,tfoot,th,thead,tr"),
-      optionalEndTagInlineElements = toMap("rp,rt"),
-      optionalEndTagElements = extend({},
-                                              optionalEndTagInlineElements,
-                                              optionalEndTagBlockElements);
-
-  // Safe Block Elements - HTML5
-  var blockElements = extend({}, optionalEndTagBlockElements, toMap("address,article," +
-          "aside,blockquote,caption,center,del,dir,div,dl,figure,figcaption,footer,h1,h2,h3,h4,h5," +
-          "h6,header,hgroup,hr,ins,map,menu,nav,ol,pre,section,table,ul"));
-
-  // Inline Elements - HTML5
-  var inlineElements = extend({}, optionalEndTagInlineElements, toMap("a,abbr,acronym,b," +
-          "bdi,bdo,big,br,cite,code,del,dfn,em,font,i,img,ins,kbd,label,map,mark,q,ruby,rp,rt,s," +
-          "samp,small,span,strike,strong,sub,sup,time,tt,u,var"));
-
-  // SVG Elements
-  // https://wiki.whatwg.org/wiki/Sanitization_rules#svg_Elements
-  // Note: the elements animate,animateColor,animateMotion,animateTransform,set are intentionally omitted.
-  // They can potentially allow for arbitrary javascript to be executed. See #11290
-  var svgElements = toMap("circle,defs,desc,ellipse,font-face,font-face-name,font-face-src,g,glyph," +
-          "hkern,image,linearGradient,line,marker,metadata,missing-glyph,mpath,path,polygon,polyline," +
-          "radialGradient,rect,stop,svg,switch,text,title,tspan");
-
-  // Blocked Elements (will be stripped)
-  var blockedElements = toMap("script,style");
-
-  var validElements = extend({},
-                                     voidElements,
-                                     blockElements,
-                                     inlineElements,
-                                     optionalEndTagElements);
-
-  //Attributes that have href and hence need to be sanitized
-  var uriAttrs = toMap("background,cite,href,longdesc,src,xlink:href");
-
-  var htmlAttrs = toMap('abbr,align,alt,axis,bgcolor,border,cellpadding,cellspacing,class,clear,' +
-      'color,cols,colspan,compact,coords,dir,face,headers,height,hreflang,hspace,' +
-      'ismap,lang,language,nohref,nowrap,rel,rev,rows,rowspan,rules,' +
-      'scope,scrolling,shape,size,span,start,summary,tabindex,target,title,type,' +
-      'valign,value,vspace,width');
-
-  // SVG attributes (without "id" and "name" attributes)
-  // https://wiki.whatwg.org/wiki/Sanitization_rules#svg_Attributes
-  var svgAttrs = toMap('accent-height,accumulate,additive,alphabetic,arabic-form,ascent,' +
-      'baseProfile,bbox,begin,by,calcMode,cap-height,class,color,color-rendering,content,' +
-      'cx,cy,d,dx,dy,descent,display,dur,end,fill,fill-rule,font-family,font-size,font-stretch,' +
-      'font-style,font-variant,font-weight,from,fx,fy,g1,g2,glyph-name,gradientUnits,hanging,' +
-      'height,horiz-adv-x,horiz-origin-x,ideographic,k,keyPoints,keySplines,keyTimes,lang,' +
-      'marker-end,marker-mid,marker-start,markerHeight,markerUnits,markerWidth,mathematical,' +
-      'max,min,offset,opacity,orient,origin,overline-position,overline-thickness,panose-1,' +
-      'path,pathLength,points,preserveAspectRatio,r,refX,refY,repeatCount,repeatDur,' +
-      'requiredExtensions,requiredFeatures,restart,rotate,rx,ry,slope,stemh,stemv,stop-color,' +
-      'stop-opacity,strikethrough-position,strikethrough-thickness,stroke,stroke-dasharray,' +
-      'stroke-dashoffset,stroke-linecap,stroke-linejoin,stroke-miterlimit,stroke-opacity,' +
-      'stroke-width,systemLanguage,target,text-anchor,to,transform,type,u1,u2,underline-position,' +
-      'underline-thickness,unicode,unicode-range,units-per-em,values,version,viewBox,visibility,' +
-      'width,widths,x,x-height,x1,x2,xlink:actuate,xlink:arcrole,xlink:role,xlink:show,xlink:title,' +
-      'xlink:type,xml:base,xml:lang,xml:space,xmlns,xmlns:xlink,y,y1,y2,zoomAndPan', true);
-
-  var validAttrs = extend({},
-                                  uriAttrs,
-                                  svgAttrs,
-                                  htmlAttrs);
-
-  function toMap(str, lowercaseKeys) {
-    var obj = {}, items = str.split(','), i;
-    for (i = 0; i < items.length; i++) {
-      obj[lowercaseKeys ? lowercase(items[i]) : items[i]] = true;
-    }
-    return obj;
-  }
-
-  var inertBodyElement;
-  (function(window) {
-    var doc;
-    if (window.document && window.document.implementation) {
-      doc = window.document.implementation.createHTMLDocument("inert");
-    } else {
-      throw $sanitizeMinErr('noinert', "Can't create an inert html document");
-    }
-    var docElement = doc.documentElement || doc.getDocumentElement();
-    var bodyElements = docElement.getElementsByTagName('body');
-
-    // usually there should be only one body element in the document, but IE doesn't have any, so we need to create one
-    if (bodyElements.length === 1) {
-      inertBodyElement = bodyElements[0];
-    } else {
-      var html = doc.createElement('html');
-      inertBodyElement = doc.createElement('body');
-      html.appendChild(inertBodyElement);
-      doc.appendChild(html);
-    }
-  })(window);
-
-  /**
-   * @example
-   * htmlParser(htmlString, {
-   *     start: function(tag, attrs) {},
-   *     end: function(tag) {},
-   *     chars: function(text) {},
-   *     comment: function(text) {}
-   * });
-   *
-   * @param {string} html string
-   * @param {object} handler
-   */
-  function htmlParserImpl(html, handler) {
-    if (html === null || html === undefined) {
-      html = '';
-    } else if (typeof html !== 'string') {
-      html = '' + html;
-    }
-    inertBodyElement.innerHTML = html;
-
-    //mXSS protection
-    var mXSSAttempts = 5;
-    do {
-      if (mXSSAttempts === 0) {
-        throw $sanitizeMinErr('uinput', "Failed to sanitize html because the input is unstable");
-      }
-      mXSSAttempts--;
-
-      // strip custom-namespaced attributes on IE<=11
-      if (window.document.documentMode) {
-        stripCustomNsAttrs(inertBodyElement);
-      }
-      html = inertBodyElement.innerHTML; //trigger mXSS
-      inertBodyElement.innerHTML = html;
-    } while (html !== inertBodyElement.innerHTML);
-
-    var node = inertBodyElement.firstChild;
-    while (node) {
-      switch (node.nodeType) {
-        case 1: // ELEMENT_NODE
-          handler.start(node.nodeName.toLowerCase(), attrToMap(node.attributes));
-          break;
-        case 3: // TEXT NODE
-          handler.chars(node.textContent);
-          break;
-      }
-
-      var nextNode;
-      if (!(nextNode = node.firstChild)) {
-      if (node.nodeType == 1) {
-          handler.end(node.nodeName.toLowerCase());
-        }
-        nextNode = node.nextSibling;
-        if (!nextNode) {
-          while (nextNode == null) {
-            node = node.parentNode;
-            if (node === inertBodyElement) break;
-            nextNode = node.nextSibling;
-          if (node.nodeType == 1) {
-              handler.end(node.nodeName.toLowerCase());
-            }
-          }
-        }
-      }
-      node = nextNode;
-    }
-
-    while (node = inertBodyElement.firstChild) {
-      inertBodyElement.removeChild(node);
-    }
-  }
-
-  function attrToMap(attrs) {
-    var map = {};
-    for (var i = 0, ii = attrs.length; i < ii; i++) {
-      var attr = attrs[i];
-      map[attr.name] = attr.value;
-    }
-    return map;
-  }
-
-
-  /**
-   * Escapes all potentially dangerous characters, so that the
-   * resulting string can be safely inserted into attribute or
-   * element text.
-   * @param value
-   * @returns {string} escaped text
-   */
-  function encodeEntities(value) {
-    return value.
-      replace(/&/g, '&amp;').
-      replace(SURROGATE_PAIR_REGEXP, function(value) {
-        var hi = value.charCodeAt(0);
-        var low = value.charCodeAt(1);
-        return '&#' + (((hi - 0xD800) * 0x400) + (low - 0xDC00) + 0x10000) + ';';
-      }).
-      replace(NON_ALPHANUMERIC_REGEXP, function(value) {
-        return '&#' + value.charCodeAt(0) + ';';
-      }).
-      replace(/</g, '&lt;').
-      replace(/>/g, '&gt;');
-  }
-
-  /**
-   * create an HTML/XML writer which writes to buffer
-   * @param {Array} buf use buf.join('') to get out sanitized html string
-   * @returns {object} in the form of {
-   *     start: function(tag, attrs) {},
-   *     end: function(tag) {},
-   *     chars: function(text) {},
-   *     comment: function(text) {}
-   * }
-   */
-  function htmlSanitizeWriterImpl(buf, uriValidator) {
-    var ignoreCurrentElement = false;
-    var out = bind(buf, buf.push);
-    return {
-      start: function(tag, attrs) {
-        tag = lowercase(tag);
-        if (!ignoreCurrentElement && blockedElements[tag]) {
-          ignoreCurrentElement = tag;
-        }
-        if (!ignoreCurrentElement && validElements[tag] === true) {
-          out('<');
-          out(tag);
-          forEach(attrs, function(value, key) {
-            var lkey = lowercase(key);
-            var isImage = (tag === 'img' && lkey === 'src') || (lkey === 'background');
-            if (validAttrs[lkey] === true &&
-              (uriAttrs[lkey] !== true || uriValidator(value, isImage))) {
-              out(' ');
-              out(key);
-              out('="');
-              out(encodeEntities(value));
-              out('"');
-            }
-          });
-          out('>');
-        }
-      },
-      end: function(tag) {
-        tag = lowercase(tag);
-        if (!ignoreCurrentElement && validElements[tag] === true && voidElements[tag] !== true) {
-          out('</');
-          out(tag);
-          out('>');
-        }
-        if (tag == ignoreCurrentElement) {
-          ignoreCurrentElement = false;
-        }
-      },
-      chars: function(chars) {
-        if (!ignoreCurrentElement) {
-          out(encodeEntities(chars));
-        }
-      }
-    };
-  }
-
-
-  /**
-   * When IE9-11 comes across an unknown namespaced attribute e.g. 'xlink:foo' it adds 'xmlns:ns1' attribute to declare
-   * ns1 namespace and prefixes the attribute with 'ns1' (e.g. 'ns1:xlink:foo'). This is undesirable since we don't want
-   * to allow any of these custom attributes. This method strips them all.
-   *
-   * @param node Root element to process
-   */
-  function stripCustomNsAttrs(node) {
-    if (node.nodeType === window.Node.ELEMENT_NODE) {
-      var attrs = node.attributes;
-      for (var i = 0, l = attrs.length; i < l; i++) {
-        var attrNode = attrs[i];
-        var attrName = attrNode.name.toLowerCase();
-        if (attrName === 'xmlns:ns1' || attrName.lastIndexOf('ns1:', 0) === 0) {
-          node.removeAttributeNode(attrNode);
-          i--;
-          l--;
-        }
-      }
-    }
-
-    var nextNode = node.firstChild;
-    if (nextNode) {
-      stripCustomNsAttrs(nextNode);
-    }
-
-    nextNode = node.nextSibling;
-    if (nextNode) {
-      stripCustomNsAttrs(nextNode);
-    }
-  }
-}
-
-function sanitizeText(chars) {
-  var buf = [];
-  var writer = htmlSanitizeWriter(buf, noop);
-  writer.chars(chars);
-  return buf.join('');
-}
-
-
-// define ngSanitize module and register $sanitize service
-angular.module('ngSanitize', []).provider('$sanitize', $SanitizeProvider);
-
-/**
- * @ngdoc filter
- * @name linky
- * @kind function
- *
- * @description
- * Finds links in text input and turns them into html links. Supports `http/https/ftp/mailto` and
- * plain email address links.
- *
- * Requires the {@link ngSanitize `ngSanitize`} module to be installed.
- *
- * @param {string} text Input text.
- * @param {string} target Window (`_blank|_self|_parent|_top`) or named frame to open links in.
- * @param {object|function(url)} [attributes] Add custom attributes to the link element.
- *
- *    Can be one of:
- *
- *    - `object`: A map of attributes
- *    - `function`: Takes the url as a parameter and returns a map of attributes
- *
- *    If the map of attributes contains a value for `target`, it overrides the value of
- *    the target parameter.
- *
- *
- * @returns {string} Html-linkified and {@link $sanitize sanitized} text.
- *
- * @usage
-   <span ng-bind-html="linky_expression | linky"></span>
- *
- * @example
-   <example module="linkyExample" deps="angular-sanitize.js">
-     <file name="index.html">
-       <div ng-controller="ExampleController">
-       Snippet: <textarea ng-model="snippet" cols="60" rows="3"></textarea>
-       <table>
-         <tr>
-           <th>Filter</th>
-           <th>Source</th>
-           <th>Rendered</th>
-         </tr>
-         <tr id="linky-filter">
-           <td>linky filter</td>
-           <td>
-             <pre>&lt;div ng-bind-html="snippet | linky"&gt;<br>&lt;/div&gt;</pre>
-           </td>
-           <td>
-             <div ng-bind-html="snippet | linky"></div>
-           </td>
-         </tr>
-         <tr id="linky-target">
-          <td>linky target</td>
-          <td>
-            <pre>&lt;div ng-bind-html="snippetWithSingleURL | linky:'_blank'"&gt;<br>&lt;/div&gt;</pre>
-          </td>
-          <td>
-            <div ng-bind-html="snippetWithSingleURL | linky:'_blank'"></div>
-          </td>
-         </tr>
-         <tr id="linky-custom-attributes">
-          <td>linky custom attributes</td>
-          <td>
-            <pre>&lt;div ng-bind-html="snippetWithSingleURL | linky:'_self':{rel: 'nofollow'}"&gt;<br>&lt;/div&gt;</pre>
-          </td>
-          <td>
-            <div ng-bind-html="snippetWithSingleURL | linky:'_self':{rel: 'nofollow'}"></div>
-          </td>
-         </tr>
-         <tr id="escaped-html">
-           <td>no filter</td>
-           <td><pre>&lt;div ng-bind="snippet"&gt;<br>&lt;/div&gt;</pre></td>
-           <td><div ng-bind="snippet"></div></td>
-         </tr>
-       </table>
-     </file>
-     <file name="script.js">
-       angular.module('linkyExample', ['ngSanitize'])
-         .controller('ExampleController', ['$scope', function($scope) {
-           $scope.snippet =
-             'Pretty text with some links:\n'+
-             'http://angularjs.org/,\n'+
-             'mailto:us@somewhere.org,\n'+
-             'another@somewhere.org,\n'+
-             'and one more: ftp://127.0.0.1/.';
-           $scope.snippetWithSingleURL = 'http://angularjs.org/';
-         }]);
-     </file>
-     <file name="protractor.js" type="protractor">
-       it('should linkify the snippet with urls', function() {
-         expect(element(by.id('linky-filter')).element(by.binding('snippet | linky')).getText()).
-             toBe('Pretty text with some links: http://angularjs.org/, us@somewhere.org, ' +
-                  'another@somewhere.org, and one more: ftp://127.0.0.1/.');
-         expect(element.all(by.css('#linky-filter a')).count()).toEqual(4);
-       });
-
-       it('should not linkify snippet without the linky filter', function() {
-         expect(element(by.id('escaped-html')).element(by.binding('snippet')).getText()).
-             toBe('Pretty text with some links: http://angularjs.org/, mailto:us@somewhere.org, ' +
-                  'another@somewhere.org, and one more: ftp://127.0.0.1/.');
-         expect(element.all(by.css('#escaped-html a')).count()).toEqual(0);
-       });
-
-       it('should update', function() {
-         element(by.model('snippet')).clear();
-         element(by.model('snippet')).sendKeys('new http://link.');
-         expect(element(by.id('linky-filter')).element(by.binding('snippet | linky')).getText()).
-             toBe('new http://link.');
-         expect(element.all(by.css('#linky-filter a')).count()).toEqual(1);
-         expect(element(by.id('escaped-html')).element(by.binding('snippet')).getText())
-             .toBe('new http://link.');
-       });
-
-       it('should work with the target property', function() {
-        expect(element(by.id('linky-target')).
-            element(by.binding("snippetWithSingleURL | linky:'_blank'")).getText()).
-            toBe('http://angularjs.org/');
-        expect(element(by.css('#linky-target a')).getAttribute('target')).toEqual('_blank');
-       });
-
-       it('should optionally add custom attributes', function() {
-        expect(element(by.id('linky-custom-attributes')).
-            element(by.binding("snippetWithSingleURL | linky:'_self':{rel: 'nofollow'}")).getText()).
-            toBe('http://angularjs.org/');
-        expect(element(by.css('#linky-custom-attributes a')).getAttribute('rel')).toEqual('nofollow');
-       });
-     </file>
-   </example>
- */
-angular.module('ngSanitize').filter('linky', ['$sanitize', function($sanitize) {
-  var LINKY_URL_REGEXP =
-        /((ftp|https?):\/\/|(www\.)|(mailto:)?[A-Za-z0-9._%+-]+@)\S*[^\s.;,(){}<>"\u201d\u2019]/i,
-      MAILTO_REGEXP = /^mailto:/i;
-
-  var linkyMinErr = angular.$$minErr('linky');
-  var isDefined = angular.isDefined;
-  var isFunction = angular.isFunction;
-  var isObject = angular.isObject;
-  var isString = angular.isString;
-
-  return function(text, target, attributes) {
-    if (text == null || text === '') return text;
-    if (!isString(text)) throw linkyMinErr('notstring', 'Expected string but received: {0}', text);
-
-    var attributesFn =
-      isFunction(attributes) ? attributes :
-      isObject(attributes) ? function getAttributesObject() {return attributes;} :
-      function getEmptyAttributesObject() {return {};};
-
-    var match;
-    var raw = text;
-    var html = [];
-    var url;
-    var i;
-    while ((match = raw.match(LINKY_URL_REGEXP))) {
-      // We can not end in these as they are sometimes found at the end of the sentence
-      url = match[0];
-      // if we did not match ftp/http/www/mailto then assume mailto
-      if (!match[2] && !match[4]) {
-        url = (match[3] ? 'http://' : 'mailto:') + url;
-      }
-      i = match.index;
-      addText(raw.substr(0, i));
-      addLink(url, match[0].replace(MAILTO_REGEXP, ''));
-      raw = raw.substring(i + match[0].length);
-    }
-    addText(raw);
-    return $sanitize(html.join(''));
-
-    function addText(text) {
-      if (!text) {
-        return;
-      }
-      html.push(sanitizeText(text));
-    }
-
-    function addLink(url, text) {
-      var key, linkAttributes = attributesFn(url);
-      html.push('<a ');
-
-      for (key in linkAttributes) {
-        html.push(key + '="' + linkAttributes[key] + '" ');
-      }
-
-      if (isDefined(target) && !('target' in linkAttributes)) {
-        html.push('target="',
-                  target,
-                  '" ');
-      }
-      html.push('href="',
-                url.replace(/"/g, '&quot;'),
-                '">');
-      addText(text);
-      html.push('</a>');
-    }
-  };
-}]);
-
-
-})(window, window.angular);
+module.exports = "<ui-view>\n    <div class=\"row\">\n        <div class=\"col-xs-12 col-sm-7 col-md-7 col-lg-4\">\n            <h1 class=\"page-title txt-color-blueDark\">\n                <i class=\"fa-fw fa fa-home\"></i>\n                Home\n            </h1>\n\t\t</div>\n\t</div>\n\n\t<section id=\"widget-grid\" class=\"\">\n\t\t<div class=\"row\">\n\t\t\t<article class=\"col-xs-12 col-sm-12 col-md-12 col-lg-12\">\n\t\t\t\t<div class=\"jarviswidget\" id=\"wid-id-0\">\n\t\t\t\t\t<header>\n\t\t\t\t\t\t<span class=\"widget-icon\"> <i class=\"fa fa-cogs\"></i> </span>\n\t\t\t\t\t\t<h2>Widget de ejemplo</h2>\n\t\t\t\t\t</header>\n\t\t\t\t\t<div>\n\t\t\t\t\t\t<div class=\"jarviswidget-editbox\">\n\t\t\t\t\t\t\t<input class=\"form-control\" type=\"text\">\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div class=\"widget-body\">\n\t\t\t\t\t\t\tContenido de ejemplo\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</article>\n\t\t</div>\n\t\t<div class=\"row\">\n\t\t\t<div class=\"col-sm-12\">\n\t\t\t</div>\n\t\t</div>\n\t</section>\n</ui-view>\n";
+
+/***/ },
+/* 58 */
+/***/ function(module, exports) {
+
+module.exports = "<ui-view>\n    <section class=\"\" style=\"padding-top: 100px;\">\n        <div class=\"row\">\n            <article class=\"col-md-4 col-md-offset-4\">\n                <div class=\"jarviswidget jarviswidget-color-darken\" id=\"wid-id-0\">\n                    <header>\n                        <span class=\"widget-icon\"> <i class=\"fa fa-key\"></i> </span>\n                        <h2>Login</h2>\n                    </header>\n                    <div>\n                        <div class=\"jarviswidget-editbox\">\n                            <input class=\"form-control\" type=\"text\">\n                        </div>\n                        <div class=\"widget-body no-padding\">\n\n\n                            <form role=\"form\" method=\"POST\" novalidate class=\"smart-form client-form\">\n\n                                <fieldset>\n                                    \n                                    <section>\n                                        <label class=\"label control-label\" for=\"email\">E-mail Address</label>\n                                        <label class=\"input\" ng-class=\"{'state-error': vm.hasError('email')}\"> <i class=\"icon-append fa fa-user\"></i>\n                                            <input ng-model=\"vm.user.email\" id=\"email\" type=\"email\" name=\"email\">\n                                            <b class=\"tooltip tooltip-top-right\"><i class=\"fa fa-user txt-color-teal\"></i> Ingresar correo/usuario</b>\n                                        </label>\n                                        <em ng-if=\"vm.hasError('email')\" class=\"help-block\">\n                                            {{ vm.errors.email[0] }}\n                                        </em>\n                                    </section>\n\n                                    <section>\n                                        <label class=\"label control-label\">Password</label>\n                                        <label class=\"input\" ng-class=\"{'state-error': vm.hasError('email')}\"> <i class=\"icon-append fa fa-lock\"></i>\n                                            <input ng-model=\"vm.user.password\" id=\"password\" type=\"password\" name=\"password\">\n                                            <b class=\"tooltip tooltip-top-right\"><i class=\"fa fa-lock txt-color-teal\"></i> Ingresa tu password</b> \n                                        </label>\n                                        <em ng-if=\"vm.hasError('password')\" class=\"help-block\">\n                                            {{ vm.errors.password[0] }}\n                                        </em>\n                                        \n                                        <div class=\"note\">\n                                            <a href=\"\">Olvidó password?</a>\n                                        </div>\n                                    </section>\n\n                                    <section>\n                                        <label class=\"checkbox\">\n                                            <input type=\"checkbox\" name=\"remember\" checked=\"\">\n                                            <i></i>Recordarme</label>\n                                    </section>\n\n\n                                </fieldset>\n                                <footer>\n                                    <button ng-click=\"vm.login()\" type=\"submit\" class=\"btn btn-primary\">\n                                        Enviar\n                                    </button>\n                                </footer>\n                            </form>\n                        </div>\n                    </div>\n                </div>\n            </article>\n        </div>\n        <div class=\"row\">\n            <div class=\"col-sm-12\">\n            </div>\n        </div>\n    </section>\n<!--     <div class=\"container\">\n        <div class=\"row\">\n            <div class=\"col-md-8 col-md-offset-2\">\n                <div class=\"panel panel-default\">\n                    <div class=\"panel-heading\">Login prueba</div>\n                    <div class=\"panel-body\">\n                        <form class=\"form-horizontal\" role=\"form\" method=\"POST\" novalidate>\n\n                            <div class=\"form-group\" ng-class=\"{'has-error': vm.hasError('email')}\">\n                                <label for=\"email\" class=\"col-md-4 control-label\">E-Mail Address</label>\n\n                                <div class=\"col-md-6\">\n                                    <input ng-model=\"vm.user.email\" id=\"email\" type=\"email\" class=\"form-control\" name=\"email\">\n                                    <span ng-if=\"vm.hasError('email')\" class=\"help-block\">\n                                        <strong>{{ vm.errors.email[0] }}</strong>\n                                    </span>\n                                </div>\n                            </div>\n\n                            <div class=\"form-group\"  ng-class=\"{'has-error': vm.hasError('password')}\">\n                                <label for=\"password\" class=\"col-md-4 control-label\">Password</label>\n\n                                <div class=\"col-md-6\">\n                                    <input ng-model=\"vm.user.password\" id=\"password\" type=\"password\" class=\"form-control\" name=\"password\">\n                                    <span ng-if=\"vm.hasError('password')\" class=\"help-block\">\n                                        <strong>{{ vm.errors.password[0] }}</strong>\n                                    </span>\n                                </div>\n                            </div>\n\n                            <div class=\"form-group\">\n                                <div class=\"col-md-8 col-md-offset-4\">\n                                    <button ng-click=\"vm.login()\" type=\"submit\" class=\"btn btn-primary\">\n                                        Login\n                                    </button>\n                                </div>\n                            </div>\n\n                        </form>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div> -->\n</ui-view>\n";
+
+/***/ },
+/* 59 */
+/***/ function(module, exports) {
+
+module.exports = "<ui-view>\n    <div class=\"container\">\n        <div class=\"row\">\n            <div class=\"col-md-8 col-md-offset-2\">\n                <div class=\"panel panel-default\">\n                    <div class=\"panel-heading\">Registrar</div>\n                    <div class=\"panel-body\">\n                        <form class=\"form-horizontal\" role=\"form\" novalidate>\n\n                            <div class=\"form-group\" ng-class=\"{'has-error': vm.hasError('name')}\">\n                                <label for=\"name\" class=\"col-md-4 control-label\">Name</label>\n                                <div class=\"col-md-6\">\n                                    <input ng-model=\"vm.user.name\" type=\"text\" class=\"form-control\" name=\"name\">\n                                    <span ng-if=\"vm.hasError('name')\" class=\"help-block\">\n                                        <strong>{{ vm.errors.name[0] }}</strong>\n                                    </span>\n                                </div>\n                            </div>\n\n                            <div class=\"form-group\" ng-class=\"{'has-error': vm.hasError('email')}\">\n                                <label for=\"email\" class=\"col-md-4 control-label\">E-Mail Address</label>\n                                <div class=\"col-md-6\">\n                                    <input ng-model=\"vm.user.email\" id=\"email\" type=\"email\" class=\"form-control\" name=\"email\">\n                                    <span ng-if=\"vm.hasError('email')\" class=\"help-block\">\n                                        <strong>{{ vm.errors.email[0] }}</strong>\n                                    </span>\n                                </div>\n                            </div>\n\n                            <div class=\"form-group\" ng-class=\"{'has-error': vm.hasError('password')}\">\n                                <label for=\"password\" class=\"col-md-4 control-label\">Password</label>\n                                <div class=\"col-md-6\">\n                                    <input ng-model=\"vm.user.password\" type=\"password\" class=\"form-control\" name=\"password\">\n                                    <span ng-if=\"vm.hasError('password')\" class=\"help-block\">\n                                        <strong>{{ vm.errors.password[0] }}</strong>\n                                    </span>\n                                </div>\n                            </div>\n\n                            <div class=\"form-group\" ng-class=\"{'has-error': vm.hasError('password_confirmation')}\">\n                                <label for=\"password\" class=\"col-md-4 control-label\">Confirma Password</label>\n                                <div class=\"col-md-6\">\n                                    <input ng-model=\"vm.user.password_confirmation\" type=\"password\" class=\"form-control\" name=\"password\">\n                                    <span ng-if=\"vm.hasError('password_confirmation')\" class=\"help-block\">\n                                        <strong>{{ vm.errors.password_confirmation[0] }}</strong>\n                                    </span>\n                                </div>\n                            </div>\n\n\n                            <div class=\"form-group\">\n                                <div class=\"col-md-8 col-md-offset-4\">\n                                    <button ng-click=\"vm.submit()\" type=\"submit\" class=\"btn btn-primary\">\n                                        Login\n                                    </button>\n                                </div>\n                            </div>\n\n                        </form>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n</ui-view>\n";
+
+/***/ },
+/* 60 */
+/***/ function(module, exports) {
+
+module.exports = "<!-- #HEADER -->\n<header id=\"header\">\n    <div id=\"logo-group\">\n\n        <span id=\"logo\"> <img src=\"/img/logo1.png\" alt=\"SmartAdmin\"> </span>\n\n        <!-- Note: The activity badge color changes when clicked and resets the number to 0\n        Suggestion: You may want to set a flag when this happens to tick off all checked messages / notifications -->\n        <span id=\"activity\" class=\"activity-dropdown\"> <i class=\"fa fa-user\"></i> <b class=\"badge\"> 0 </b> </span>\n\n        <!-- AJAX-DROPDOWN : control this dropdown height, look and feel from the LESS variable file -->\n        <div class=\"ajax-dropdown\">\n\n            <!-- the ID links are fetched via AJAX to the ajax container \"ajax-notifications\" -->\n            <div class=\"btn-group btn-group-justified\" data-toggle=\"buttons\">\n                <label class=\"btn btn-default\">\n                    <input type=\"radio\" name=\"activity\" id=\"ajax/notify/mail.html\">\n                    Msgs (14) </label>\n                <label class=\"btn btn-default\">\n                    <input type=\"radio\" name=\"activity\" id=\"ajax/notify/notifications.html\">\n                    notify (3) </label>\n                <label class=\"btn btn-default\">\n                    <input type=\"radio\" name=\"activity\" id=\"ajax/notify/tasks.html\">\n                    Tasks (4) </label>\n            </div>\n\n            <!-- notification content -->\n            <div class=\"ajax-notifications custom-scroll\">\n\n                <div class=\"alert alert-transparent\">\n                    <h4>Click a button to show messages here</h4>\n                    This blank page message helps protect your privacy, or you can show the first message here automatically.\n                </div>\n\n                <i class=\"fa fa-lock fa-4x fa-border\"></i>\n\n            </div>\n            <!-- end notification content -->\n\n            <!-- footer: refresh area -->\n            <span> Last updated on: 12/12/2013 9:43AM\n                <button type=\"button\" data-loading-text=\"<i class='fa fa-refresh fa-spin'></i> Loading...\" class=\"btn btn-xs btn-default pull-right\">\n                    <i class=\"fa fa-refresh\"></i>\n            </button> </span>\n            <!-- end footer -->\n\n        </div>\n        <!-- END AJAX-DROPDOWN -->\n    </div>\n\n    <div class=\"pull-right\">\n\n        <div id=\"hide-menu\" class=\"btn-header pull-right\">\n            <span> <a href=\"javascript:void(0);\" data-action=\"toggleMenu\" title=\"Collapse Menu\"><i class=\"fa fa-reorder\"></i></a> </span>\n        </div>\n\n        <!-- #MOBILE -->\n        <!-- Top menu profile link : this shows only when top menu is active -->\n        <ul id=\"mobile-profile-img\" class=\"header-dropdown-list hidden-xs padding-5\">\n            <li class=\"\">\n                <a href=\"#\" class=\"dropdown-toggle no-margin userdropdown\" data-toggle=\"dropdown\">\n                    <img src=\"/img/avatars/sunny.png\" class=\"online\" />\n                </a>\n                <ul class=\"dropdown-menu pull-right\">\n                    <li>\n                        <a href=\"javascript:void(0);\" class=\"padding-10 padding-top-0 padding-bottom-0\"><i class=\"fa fa-cog\"></i> Setting</a>\n                    </li>\n                    <li class=\"divider\"></li>\n                    <li>\n                        <a href=\"#ajax/profile.html\" class=\"padding-10 padding-top-0 padding-bottom-0\"> <i class=\"fa fa-user\"></i> <u>P</u>rofile</a>\n                    </li>\n                    <li class=\"divider\"></li>\n                    <li>\n                        <a href=\"javascript:void(0);\" class=\"padding-10 padding-top-0 padding-bottom-0\" data-action=\"toggleShortcut\"><i class=\"fa fa-arrow-down\"></i> <u>S</u>hortcut</a>\n                    </li>\n                    <li class=\"divider\"></li>\n                    <li>\n                        <a href=\"javascript:void(0);\" class=\"padding-10 padding-top-0 padding-bottom-0\" data-action=\"launchFullscreen\"><i class=\"fa fa-arrows-alt\"></i> Full <u>S</u>creen</a>\n                    </li>\n                    <li class=\"divider\"></li>\n                    <li>\n                        <a ui-sref=\"logout\" class=\"padding-10 padding-top-5 padding-bottom-5\" data-action=\"userLogout\"><i class=\"fa fa-sign-out fa-lg\"></i> <strong><u>L</u>ogout</strong></a>\n                    </li>\n                </ul>\n            </li>\n        </ul>\n\n        <!-- logout button -->\n        <div id=\"logout\" class=\"btn-header transparent pull-right\">\n            <span> <a ui-sref=\"logout\" title=\"Sign Out\" data-action=\"userLogout\" data-logout-msg=\"You can improve your security further after logging out by closing this opened browser\"><i class=\"fa fa-sign-out\"></i></a> </span>\n        </div>\n    </div>\n\n</header>\n\n<!-- Note: This width of the aside area can be adjusted through LESS/SASS variables -->\n<aside id=\"left-panel\">\n\n    <!-- User info -->\n    <div class=\"login-info\">\n        <span>\n\n            <a href=\"javascript:void(0);\" id=\"show-shortcut\" data-action=\"toggleShortcut\">\n                <img src=\"/img/avatars/sunny.png\" class=\"online\" />\n                <span>\n                    {{ vm.user.name }}\n                </span>\n                <i class=\"fa fa-angle-down\"></i>\n            </a>\n\n        </span>\n    </div>\n\n    <nav>\n        <ul data-smart-menu>\n            <li ui-sref-active=\"active\">\n                <a ui-sref=\"app.home\"><i class=\"fa fa-lg fa-fw fa-home\"></i> <span class=\"menu-item-parent\">Home</span></a>\n            </li>\n            <li ui-sref-active=\"active\">\n                <a ui-sref=\"app.dashboard\"><i class=\"fa fa-lg fa-fw fa-dashboard\"></i> <span class=\"menu-item-parent\">Dashboard</span></a>\n            </li>\n            <li data-menu-collapse ui-sref-active=\"active\">\n                <a href=\"#\"><i class=\"fa fa-lg fa-fw fa-cogs\"></i> <span class=\"menu-item-parent\">Administración</span></a>\n                <ul>\n                    <li>\n                        <a data-ui-sref=\"app.users\"><i class=\"fa fa-users\"></i> Usuarios</a>\n                    </li>\n                    <li>\n                        <a data-ui-sref=\"app.roles\"><i class=\"fa fa-lock\"></i> Roles</a>\n                    </li>\n                </ul>\n            </li>\n        </ul>\n    </nav>\n\n    <span class=\"minifyme\" data-action=\"minifyMenu\"> <i class=\"fa fa-arrow-circle-left hit\"></i> </span>\n</aside>\n\n<!-- #MAIN PANEL -->\n<div id=\"main\" role=\"main\">\n\n    <!-- RIBBON -->\n    <div id=\"ribbon\">\n         <state-breadcrumbs></state-breadcrumbs>\n    </div>\n\n    <div id=\"content\">\n        <div ui-view></div>\n    </div>\n\n</div>\n\n<div class=\"page-footer\">\n    <div class=\"row\">\n        <div class=\"col-xs-12 col-sm-6\">\n            <span class=\"txt-color-white\">Boilerplate <span class=\"hidden-xs\"> - {{ config('app.name', 'Laravel') }}</span> ©2016</span>\n        </div>\n    </div>\n</div>\n";
+
+/***/ },
+/* 61 */
+/***/ function(module, exports) {
+
+module.exports = "<ui-view>\n    <div class='row'>\n        <div class='pull-right'>\n            <a ui-sref=\"app.roles.create\" class='btn btn-primary'>Nuevo Rol</a>\n        </div>\n    </div>\n    <br>\n\n    <div class='row'>\n        <div class=\"panel panel-default\">\n            <div class=\"panel-heading\">Roles</div>\n\n            <div class=\"panel-body\">\n                <table class='table'>\n                    <thead>\n                        <tr>\n                            <th>Nombre</th>\n                            <th>Nombre publico o legible</th>\n                            <th>Permisos</th>\n                            <th class='action-column'>Acciones</th>\n                        </tr>\n                    </thead>\n                    <tbody>\n                        <tr>\n                            <td> <input ng-model=\"vm.search.name\" ng-blur=\"vm.filter()\" ng-enter=\"vm.filter()\" type=\"text\" class=\"form-control\" placeholder=\"nombre\"></input> </td>\n                            <td> <input ng-model=\"vm.search.label\" ng-blur=\"vm.filter()\" ng-enter=\"vm.filter()\" type=\"text\" class=\"form-control\" placeholder=\"label\"></input> </td>\n                            <td> <input ng-model=\"vm.search.permissions\" ng-blur=\"vm.filter()\" ng-enter=\"vm.filter()\" type=\"text\" class=\"form-control\" placeholder=\"permiso\"></input> </td>\n                            <td></td>\n                        </tr>\n                        <tr ng-repeat=\"role in vm.roles\">\n                            <td>{{ ::role.name }}</td>\n                            <td>{{ ::role.label }}</td>\n                            <td>\n                                <span ng-repeat=\"permission in role.permissions\">\n                                    <span class=\"label label-primary\">{{ ::permission.label }}</span>\n                                </span>\n                            </td>\n                            <td>\n                                <a ui-sref=\"app.roles.edit({id: role.id})\" class=\"btn btn-success btn-sm\">Editar</a>\n                                <a ng-click=\"vm.destroy(role.id, $index)\" class=\"btn btn-danger btn-sm\">Eliminar</a>\n                            </td>\n                        </tr>\n                    </tbody>\n                </table>\n\n                <div ng-if='vm.reload' class='text-center'>\n                    <i class=\"fa fa-2x fa-spinner fa-spin\"></i>\n                </div>\n\n                <div ng-hide=\"vm.reload\" ng-if=\"vm.roles | isEmpty\" class='text-center'>\n                    Sin resultados\n                </div>\n\n                <div ng-hide=\"vm.reload\" ng-if=\"! (vm.roles | isEmpty)\" class='text-center'>\n                    <uib-pagination items-per-page=\"vm.itemsPerPage\" total-items=\"vm.totalItems\" ng-model=\"vm.search.page\" ng-change=\"vm.filter()\"></uib-pagination>\n                </div>\n\n            </div>\n        </div>\n    </div>\n</ui-view>\n\n";
+
+/***/ },
+/* 62 */
+/***/ function(module, exports) {
+
+module.exports = "<ui-view>\n    <div class='row'>\n        <div class='pull-right'>\n            <a ui-sref='app.users.create' class='btn btn-primary'>Nuevo Usuario</a>\n        </div>\n    </div>\n    <br>\n\n    <div class='row'>\n        <div class=\"panel panel-default\">\n            <div class=\"panel-heading\">Usuarios</div>\n\n            <div class=\"panel-body\">\n                <table class='table'>\n                    <thead>\n                        <tr>\n                            <th>Nombre</th>\n                            <th>Email</th>\n                            <th>Roles</th>\n                            <th class='action-column'>Acciones</th>\n                        </tr>\n                    </thead>\n                    <tbody>\n                        <tr>\n                            <td> <input ng-model=\"vm.search.name\" ng-blur=\"vm.filter()\" ng-enter=\"vm.filter()\" type=\"text\" class=\"form-control\" placeholder=\"nombre\"></input> </td>\n                            <td> <input ng-model=\"vm.search.email\" ng-blur=\"vm.filter()\" ng-enter=\"vm.filter()\" type=\"text\" class=\"form-control\" placeholder=\"email\"></input> </td>\n                            <td> <input ng-model=\"vm.search.roles\" ng-blur=\"vm.filter()\" ng-enter=\"vm.filter()\" type=\"text\" class=\"form-control\" placeholder=\"rol\"></input> </td>\n                            <td></td>\n                        </tr>\n                        <tr ng-repeat=\"user in vm.users\">\n                            <td>{{ ::user.name }}</td>\n                            <td>{{ ::user.email }}</td>\n                            <td>\n                                <span ng-repeat=\"role in user.roles\">\n                                    <span class='label label-primary'>{{ ::role.label }}</span>\n                                </span>\n                            </td>\n                            <td>\n                                <a ui-sref=\"app.users.edit({id: user.id})\" class=\"btn btn-success btn-sm\">Editar</a>\n                                <a ng-click=\"vm.destroy(user.id, $index)\" class='btn btn-danger btn-sm'>Eliminar</a>\n                            </td>\n                        </tr>\n                    </tbody>\n                </table>\n\n                <div ng-if='vm.reload' class='text-center'>\n                    <i class=\"fa fa-2x fa-spinner fa-spin\"></i>\n                </div>\n\n                <div ng-hide=\"vm.reload\" ng-if=\"vm.users | isEmpty\" class='text-center'>\n                    Sin resultados\n                </div>\n\n                <div ng-hide=\"vm.reload\" ng-if=\"! (vm.users | isEmpty)\" class='text-center'>\n                    <uib-pagination items-per-page=\"vm.itemsPerPage\" total-items=\"vm.totalItems\" ng-model=\"vm.search.page\" ng-change=\"vm.filter()\"></uib-pagination>\n                </div>\n\n            </div>\n        </div>\n    </div>\n</ui-view>\n";
+
+/***/ },
+/* 63 */
+/***/ function(module, exports, __webpack_require__) {
+
+window._ = __webpack_require__(17);
+window.$ = window.jQuery = __webpack_require__(3);
+__webpack_require__(26)
+__webpack_require__(15);
+__webpack_require__(16);
+__webpack_require__(9);
+__webpack_require__(10);
+__webpack_require__(11);
+__webpack_require__(12);
+__webpack_require__(14);
+__webpack_require__(13);
+__webpack_require__(18);
+__webpack_require__(19);
+__webpack_require__(20);
+
+angular.module('app', [
+  'angular-loading-bar',
+  'ngAnimate',
+  'ngSanitize',
+  'oitozero.ngSweetAlert',
+  'satellizer',
+  'toastr',
+  'ui.router',
+  'ui.select',
+])
+.run(["$rootScope", "$log", function($rootScope, $log) {
+	$rootScope.$on('$stateChangeError',
+		function(event, toState, toParams, fromState, fromParams, error) {
+			$log.error('error', error);
+		});
+}])
+.config(__webpack_require__(29))
+.config(["$authProvider", function($authProvider) {
+	$authProvider.loginUrl = '/login';
+  $authProvider.signupUrl = '/register';
+}])
+.directive('smartMenu', __webpack_require__(23))
+.directive('stateBreadcrumbs', __webpack_require__(24))
+.directive('ngEnter', __webpack_require__(22))
+.filter('isEmpty', __webpack_require__(25))
+.controller('NavBarController', __webpack_require__(21))
+.service('ApiService', __webpack_require__(30))
+.service('Confirm', __webpack_require__(31))
+.service('UserService', __webpack_require__(32))
+.service('RoleService', __webpack_require__(28))
+.service('PermissionService', __webpack_require__(27))
 
 
 /***/ }

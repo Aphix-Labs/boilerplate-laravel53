@@ -98,7 +98,54 @@ module.exports = function OnConfig($stateProvider, $locationProvider, $urlRouter
           });
         }
       },
+    })
+
+    .state('app.roles', {
+      url: '/roles?page&name&label&permissions',
+      controller: require('./roles/ListController'),
+      controllerAs: 'vm',
+      template: require('./roles/views/index.html'),
+      resolve: {
+        roles: function(RoleService, $stateParams) {
+          return RoleService.filterResources($stateParams).then(function(data) {
+            return data.data;
+          });
+        }
+      }
+    })
+
+    .state('app.roles.create', {
+      url: '/create',
+      controller: require('./roles/CreateController'),
+      controllerAs: 'vm',
+      template: require('./roles/views/form.html'),
+      resolve: {
+        permissions: function(PermissionService) {
+          return PermissionService.all().then(function(data) {
+            return data.data;
+          });
+        }
+      }
+    })
+
+    .state('app.roles.edit', {
+      url: '/edit/:id',
+      controllerAs: 'vm',
+      controller: require('./roles/EditController'),
+      template: require('./roles/views/form.html'),
+      resolve: {
+        role: function(RoleService, $stateParams) {
+          return RoleService.getResource($stateParams.id).then(function(data) {
+            return data.data;
+          });
+        },
+        permissions: function(PermissionService) {
+          return PermissionService.all().then(function(data) {
+            return data.data;
+          });
+        }
+      }
     });
 
-  $urlRouterProvider.otherwise('/home');
+  $urlRouterProvider.otherwise('/login');
 };

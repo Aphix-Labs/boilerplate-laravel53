@@ -9,4 +9,5 @@ Route::group(['middleware' => 'auth:api', 'namespace' => 'Api'], function () {
 
     Route::resources(['users' => 'UsersController']);
     Route::resources(['roles' => 'RolesController']);
+    Route::get('permissions', 'PermissionsController@index');
 });

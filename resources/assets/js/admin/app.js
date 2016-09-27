@@ -43,3 +43,4 @@ angular.module('app', [
 .service('Confirm', require('./services/Confirm'))
 .service('UserService', require('./users/UserService'))
 .service('RoleService', require('./roles/RoleService'))
+.service('PermissionService', require('./permissions/PermissionService'))
