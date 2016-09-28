@@ -37943,13 +37943,39 @@ module.exports = ["ApiService", function (ApiService) {
 module.exports = ["$stateProvider", "$locationProvider", "$urlRouterProvider", function OnConfig($stateProvider, $locationProvider, $urlRouterProvider) {
   'ngInject';
 
+  /**
+    * Helper auth functions
+    */
+  var skipIfLoggedIn = function($q, $auth, $location) {
+    var deferred = $q.defer();
+    if ($auth.isAuthenticated()) {
+      $location.path('/home');
+    } else {
+      deferred.resolve();
+    }
+    return deferred.promise;
+  };
+  skipIfLoggedIn.$inject = ["$q", "$auth", "$location"];
+
+  var loginRequired = function($q, $location, $auth) {
+    var deferred = $q.defer();
+    if ($auth.isAuthenticated()) {
+      return deferred.resolve();
+    }
+    return $location.path('/login');
+  };
+  loginRequired.$inject = ["$q", "$location", "$auth"];
+
   $stateProvider
   // auth
     .state('login', {
       url: '/login',
       controller: __webpack_require__(49),
       controllerAs: 'vm',
-      template: __webpack_require__(60)
+      template: __webpack_require__(60),
+      resolve: {
+        skipIfLoggedIn: skipIfLoggedIn
+      }
     })
 
     .state('logout', {
@@ -37962,7 +37988,10 @@ module.exports = ["$stateProvider", "$locationProvider", "$urlRouterProvider", f
       url: '/register',
       controller: __webpack_require__(51),
       controllerAs: 'vm',
-      template: __webpack_require__(61)
+      template: __webpack_require__(61),
+      resolve: {
+        skipIfLoggedIn: skipIfLoggedIn
+      }
     })
 
   // application
@@ -37972,6 +38001,7 @@ module.exports = ["$stateProvider", "$locationProvider", "$urlRouterProvider", f
       controller: ["user", function(user) { this.user = user }],
       controllerAs: 'vm',
       resolve: {
+        loginRequired: loginRequired,
         user: ["UserService", "$auth", function(UserService, $auth) {
           return UserService.me().then(function (data) {
             return data.data;
@@ -38089,7 +38119,7 @@ module.exports = ["$stateProvider", "$locationProvider", "$urlRouterProvider", f
       }
     });
 
-  $urlRouterProvider.otherwise('/login');
+  $urlRouterProvider.otherwise('/home');
 }];
 
 

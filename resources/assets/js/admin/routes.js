@@ -1,13 +1,37 @@
 module.exports = function OnConfig($stateProvider, $locationProvider, $urlRouterProvider) {
   'ngInject';
 
+  /**
+    * Helper auth functions
+    */
+  var skipIfLoggedIn = function($q, $auth, $location) {
+    var deferred = $q.defer();
+    if ($auth.isAuthenticated()) {
+      $location.path('/home');
+    } else {
+      deferred.resolve();
+    }
+    return deferred.promise;
+  };
+
+  var loginRequired = function($q, $location, $auth) {
+    var deferred = $q.defer();
+    if ($auth.isAuthenticated()) {
+      return deferred.resolve();
+    }
+    return $location.path('/login');
+  };
+
   $stateProvider
   // auth
     .state('login', {
       url: '/login',
       controller: require('./auth/LoginController'),
       controllerAs: 'vm',
-      template: require('./auth/login.html')
+      template: require('./auth/login.html'),
+      resolve: {
+        skipIfLoggedIn: skipIfLoggedIn
+      }
     })
 
     .state('logout', {
@@ -20,7 +44,10 @@ module.exports = function OnConfig($stateProvider, $locationProvider, $urlRouter
       url: '/register',
       controller: require('./auth/RegisterController'),
       controllerAs: 'vm',
-      template: require('./auth/register.html')
+      template: require('./auth/register.html'),
+      resolve: {
+        skipIfLoggedIn: skipIfLoggedIn
+      }
     })
 
   // application
@@ -30,6 +57,7 @@ module.exports = function OnConfig($stateProvider, $locationProvider, $urlRouter
       controller: function(user) { this.user = user },
       controllerAs: 'vm',
       resolve: {
+        loginRequired: loginRequired,
         user: function(UserService, $auth) {
           return UserService.me().then((data) => {
             return data.data;
@@ -147,5 +175,5 @@ module.exports = function OnConfig($stateProvider, $locationProvider, $urlRouter
       }
     });
 
-  $urlRouterProvider.otherwise('/login');
+  $urlRouterProvider.otherwise('/home');
 };
