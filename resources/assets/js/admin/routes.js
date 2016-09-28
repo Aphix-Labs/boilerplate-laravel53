@@ -54,7 +54,7 @@ module.exports = function OnConfig($stateProvider, $locationProvider, $urlRouter
     })
 
     .state('app.users', {
-      url: '/users?page&name&roles',
+      url: '/users?page&name&email&roles',
       controller: require('./users/ListController'),
       controllerAs: 'vm',
       template: require('./users/views/index.html'),

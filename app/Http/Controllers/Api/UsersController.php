@@ -5,14 +5,15 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 
 use App\User;
+use App\Filters\UserFilter;
 use App\Http\Requests;
 use App\Http\Controllers\ApiController;
 
 class UsersController extends ApiController
 {
-    public function index()
+    public function index(UserFilter $filter)
     {
-        return User::with('roles')->paginate();
+        return User::with('roles')->filter($filter)->paginate();
     }
 
     public function show(User $user)

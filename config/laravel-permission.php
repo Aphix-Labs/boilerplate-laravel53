@@ -40,7 +40,7 @@ return [
         |
         */
 
-        'role' => Spatie\Permission\Models\Role::class,
+        'role' => App\Role::class,
 
     ],
 

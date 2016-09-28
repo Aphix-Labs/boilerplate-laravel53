@@ -37996,7 +37996,7 @@ module.exports = ["$stateProvider", "$locationProvider", "$urlRouterProvider", f
     })
 
     .state('app.users', {
-      url: '/users?page&name&roles',
+      url: '/users?page&name&email&roles',
       controller: __webpack_require__(57),
       controllerAs: 'vm',
       template: __webpack_require__(64),

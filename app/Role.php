@@ -2,9 +2,9 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use App\Filters\Filterable;
 
-class Role extends Model
+class Role extends \Spatie\Permission\Models\Role
 {
-    //
+    use Filterable;
 }
