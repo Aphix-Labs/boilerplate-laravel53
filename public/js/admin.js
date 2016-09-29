@@ -37946,25 +37946,16 @@ module.exports = ["$stateProvider", "$locationProvider", "$urlRouterProvider", f
   /**
     * Helper auth functions
     */
-  var skipIfLoggedIn = function($q, $auth, $location) {
+  var skipIfLoggedIn = function($q, $auth, $state) {
     var deferred = $q.defer();
     if ($auth.isAuthenticated()) {
-      $location.path('/home');
+      $state.go('app.home');
     } else {
       deferred.resolve();
     }
     return deferred.promise;
   };
-  skipIfLoggedIn.$inject = ["$q", "$auth", "$location"];
-
-  var loginRequired = function($q, $location, $auth) {
-    var deferred = $q.defer();
-    if ($auth.isAuthenticated()) {
-      return deferred.resolve();
-    }
-    return $location.path('/login');
-  };
-  loginRequired.$inject = ["$q", "$location", "$auth"];
+  skipIfLoggedIn.$inject = ["$q", "$auth", "$state"];
 
   $stateProvider
   // auth
@@ -38001,10 +37992,13 @@ module.exports = ["$stateProvider", "$locationProvider", "$urlRouterProvider", f
       controller: ["user", function(user) { this.user = user }],
       controllerAs: 'vm',
       resolve: {
-        loginRequired: loginRequired,
-        user: ["UserService", "$auth", function(UserService, $auth) {
+        user: ["UserService", "$auth", "toastr", "$state", function(UserService, $auth, toastr, $state) {
           return UserService.me().then(function (data) {
             return data.data;
+          }, function (error) {
+            $auth.removeToken();
+            toastr.error(error.data.error, 'Estado!');
+            $state.go('login');
           });
         }]
       },
@@ -38117,9 +38111,14 @@ module.exports = ["$stateProvider", "$locationProvider", "$urlRouterProvider", f
           });
         }]
       }
+    })
+
+    .state('root', {
+      url: '/',
+      external: true
     });
 
-  $urlRouterProvider.otherwise('/home');
+  $urlRouterProvider.otherwise('/login');
 }];
 
 

@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 
-Route::group(['middleware' => 'auth:api', 'namespace' => 'Api'], function () {
+Route::group(['middleware' => ['auth:api', 'admin'], 'namespace' => 'Api'], function () {
     Route::get('/me', function (Request $request) {
         return $request->user();
     });

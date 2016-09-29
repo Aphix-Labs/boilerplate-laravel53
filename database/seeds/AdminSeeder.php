@@ -15,7 +15,7 @@ class AdminSeeder extends Seeder
         $user = User::firstOrCreate([
             'name' => 'admin',
             'email' => 'admin@admin.cl',
-            'password' => bcrypt('123')
+            'password' => '123'
         ]);
 
         if (! $user->hasRole('admin')) {
