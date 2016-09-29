@@ -34,7 +34,7 @@ angular.module('app', [
 .config(require('./routes.js'))
 .config(function($authProvider, uibPaginationConfig) {
 	$authProvider.loginUrl = '/login';
-  // $authProvider.signupUrl = '/register';
+  $authProvider.signupUrl = '/register';
   uibPaginationConfig.previousText = 'Previo';
   uibPaginationConfig.nextText = 'Siguiente';
 })
@@ -46,5 +46,3 @@ angular.module('app', [
 .service('ApiService', require('./services/ApiService'))
 .service('Confirm', require('./services/Confirm'))
 .service('UserService', require('./users/UserService'))
-.service('RoleService', require('./roles/RoleService'))
-.service('PermissionService', require('./permissions/PermissionService'))

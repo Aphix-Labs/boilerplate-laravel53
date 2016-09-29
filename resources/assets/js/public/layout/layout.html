@@ -2,7 +2,11 @@
 <header id="header">
     <div id="logo-group">
 
-        <span id="logo"> <img src="/img/logo1.png" alt="SmartAdmin"> </span>
+        <span id="logo"> <img src="/img/logo2.png" alt="SmartAdmin"> </span>
+
+        <!-- Note: The activity badge color changes when clicked and resets the number to 0
+        Suggestion: You may want to set a flag when this happens to tick off all checked messages / notifications -->
+        <span id="activity" class="activity-dropdown"> <i class="fa fa-user"></i> <b class="badge"> 0 </b> </span>
 
         <!-- AJAX-DROPDOWN : control this dropdown height, look and feel from the LESS variable file -->
         <div class="ajax-dropdown">
@@ -59,19 +63,11 @@
                 </a>
                 <ul class="dropdown-menu pull-right">
                     <li>
-                        <a href="javascript:void(0);" class="padding-10 padding-top-0 padding-bottom-0"><i class="fa fa-cog"></i> Setting</a>
+                        <a href="#" class="padding-10 padding-top-0 padding-bottom-0"><i class="fa fa-cog"></i> Setting</a>
                     </li>
                     <li class="divider"></li>
                     <li>
-                        <a href="#ajax/profile.html" class="padding-10 padding-top-0 padding-bottom-0"> <i class="fa fa-user"></i> <u>P</u>rofile</a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a href="javascript:void(0);" class="padding-10 padding-top-0 padding-bottom-0" data-action="toggleShortcut"><i class="fa fa-arrow-down"></i> <u>S</u>hortcut</a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a href="javascript:void(0);" class="padding-10 padding-top-0 padding-bottom-0" data-action="launchFullscreen"><i class="fa fa-arrows-alt"></i> Full <u>S</u>creen</a>
+                        <a href="#" class="padding-10 padding-top-0 padding-bottom-0"> <i class="fa fa-user"></i> <u>P</u>rofile</a>
                     </li>
                     <li class="divider"></li>
                     <li>
@@ -114,17 +110,6 @@
             </li>
             <li ui-sref-active="active">
                 <a ui-sref="app.dashboard"><i class="fa fa-lg fa-fw fa-dashboard"></i> <span class="menu-item-parent">Dashboard</span></a>
-            </li>
-            <li data-menu-collapse ui-sref-active="active">
-                <a href="#"><i class="fa fa-lg fa-fw fa-cogs"></i> <span class="menu-item-parent">Administración</span></a>
-                <ul>
-                    <li>
-                        <a data-ui-sref="app.users"><i class="fa fa-users"></i> Usuarios</a>
-                    </li>
-                    <li>
-                        <a data-ui-sref="app.roles"><i class="fa fa-lock"></i> Roles</a>
-                    </li>
-                </ul>
             </li>
         </ul>
     </nav>

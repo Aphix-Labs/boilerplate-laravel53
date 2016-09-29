@@ -1,6 +1,10 @@
 <?php
 
 Route::get('/', function () {
+    return view('home');
+});
+
+Route::get('/app', function () {
     return view('public');
 });
 

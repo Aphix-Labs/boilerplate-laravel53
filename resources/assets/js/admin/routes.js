@@ -4,10 +4,11 @@ module.exports = function OnConfig($stateProvider, $locationProvider, $urlRouter
   /**
     * Helper auth functions
     */
-  var skipIfLoggedIn = function($q, $auth, $state) {
+  var skipIfLoggedIn = function($q, $auth, $location) {
     var deferred = $q.defer();
     if ($auth.isAuthenticated()) {
-      $state.go('app.home');
+      console.log('ok');
+      $location.path('/home');
     } else {
       deferred.resolve();
     }
@@ -30,16 +31,6 @@ module.exports = function OnConfig($stateProvider, $locationProvider, $urlRouter
       url: '/logout',
       controller: require('./auth/LogoutController'),
       template: '<div></div>'
-    })
-
-    .state('register', {
-      url: '/register',
-      controller: require('./auth/RegisterController'),
-      controllerAs: 'vm',
-      template: require('./auth/register.html'),
-      resolve: {
-        skipIfLoggedIn: skipIfLoggedIn
-      }
     })
 
   // application

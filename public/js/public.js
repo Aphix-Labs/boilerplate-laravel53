@@ -61,7 +61,7 @@
 /******/ 	__webpack_require__.p = "";
 
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 63);
+/******/ 	return __webpack_require__(__webpack_require__.s = 53);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -286,7 +286,7 @@ var _defaultParams2 = _interopRequireWildcard(_defaultParams);
  * Add modal + overlay to DOM
  */
 
-var _injectedHTML = __webpack_require__(45);
+var _injectedHTML = __webpack_require__(41);
 
 var _injectedHTML2 = _interopRequireWildcard(_injectedHTML);
 
@@ -10630,9 +10630,9 @@ return jQuery;
 
 'use strict'
 
-var base64 = __webpack_require__(40)
-var ieee754 = __webpack_require__(42)
-var isArray = __webpack_require__(41)
+var base64 = __webpack_require__(36)
+var ieee754 = __webpack_require__(38)
+var isArray = __webpack_require__(37)
 
 exports.Buffer = Buffer
 exports.SlowBuffer = SlowBuffer
@@ -12509,42 +12509,30 @@ module.exports = g;
 
 /***/ },
 /* 7 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-module.exports = "<div class='row'>\n    <div class=\"col-sm-12 col-md-12 col-lg-12\">\n        <div class=\"jarviswidget jarviswidget-color-blueDark\" id=\"role-form\">\n            <header>\n                <span class=\"widget-icon\"> <i class=\"fa\" ng-class=\"{'fa-plus': vm.action == 'Crear', 'fa-edit': vm.action == 'Editar'}\"></i> </span>\n                <h2>{{ vm.action }} Rol</h2>\n            </header>\n\n            <div>\n                <div class=\"widget-body\">\n                    <form class=\"form-horizontal\" role=\"form\" method=\"POST\">\n                        <div class=\"form-group\" ng-class=\"{'has-error': vm.hasError('name')}\">\n                            <label class=\"col-md-4 control-label\">Name</label>\n\n                            <div class=\"col-md-6\">\n                                <input type=\"text\" class=\"form-control\" ng-model=\"vm.data.name\">\n\n                                <span ng-if=\"vm.hasError('name')\" class=\"help-block\">\n                                    <strong>{{ vm.errors.name[0] }}</strong>\n                                </span>\n                            </div>\n                        </div>\n\n                        <div class=\"form-group\" ng-class=\"{'has-error': vm.hasError('label')}\">\n                            <label class=\"col-md-4 control-label\">Nombre legible</label>\n\n                            <div class=\"col-md-6\">\n                                <input type=\"text\" class=\"form-control\" ng-model=\"vm.data.label\">\n\n                                <span ng-if=\"vm.hasError('label')\" class=\"help-block\">\n                                    <strong>{{ vm.errors.label[0] }}</strong>\n                                </span>\n                            </div>\n                        </div>\n\n                        <div class=\"form-group\" ng-class=\"{'has-error': vm.hasError('permissions')}\">\n                            <label class=\"col-md-4 control-label\">Permisos</label>\n\n                            <div class=\"col-md-6\">\n\n                                <ui-select multiple ng-model=\"vm.data.permissions\">\n                                    <ui-select-match placeholder=\"Selecciona permisos...\">\n                                        {{$item.label}}\n                                    </ui-select-match>\n                                    <ui-select-choices repeat=\"permission.id as permission in (vm.permissions | filter: $select.search) track by $index\">\n                                        <span ng-bind=\"permission.label \"></span>\n                                    </ui-select-choices>\n                                </ui-select>\n\n                                <span ng-if=\"vm.hasError('permissions')\" class=\"help-block\">\n                                    <strong>{{ vm.errors.permissions[0] }}</strong>\n                                </span>\n                            </div>\n                        </div>\n\n                        <div class=\"form-group\">\n                            <div class=\"col-md-6 col-md-offset-4\">\n                                <button ng-click=\"vm.submitForm()\" class=\"btn btn-primary\">\n                                    <i ng-class=\"{'fa-key': !vm.formIsSubmit, 'fa-spinner fa-spin': vm.formIsSubmit }\" class=\"fa fa-btn \"></i> {{vm.action}}\n                                </button>\n                            </div>\n                        </div>\n                    </form>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>\n";
+__webpack_require__(30);
+module.exports = 'ngAnimate';
+
 
 /***/ },
 /* 8 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-module.exports = "<div class='row'>\n    <div class=\"col-sm-12 col-md-12 col-lg-12\">\n        <div class=\"jarviswidget jarviswidget-color-blueDark\" id=\"user-form\">\n            <header>\n                <span class=\"widget-icon\"> <i class=\"fa\" ng-class=\"{'fa-plus': vm.action == 'Crear', 'fa-edit': vm.action == 'Editar'}\"></i> </span>\n                <h2>{{ vm.action }} Usuario</h2>\n            </header>\n\n            <div>\n                <div class=\"widget-body\">\n                    <form class=\"form-horizontal\" role=\"form\" method=\"POST\" novalidate>\n\n                        <div class=\"form-group\" ng-class=\"{'has-error': vm.hasError('name')}\">\n                            <label class=\"col-md-4 control-label\">Name</label>\n\n                            <div class=\"col-md-6\">\n                                <input type=\"text\" class=\"form-control\" ng-model=\"vm.data.name\">\n\n                                <span ng-if=\"vm.hasError('name')\" class=\"help-block\">\n                                    <strong>{{ vm.errors.name[0] }}</strong>\n                                </span>\n                            </div>\n                        </div>\n\n                        <div class=\"form-group\" ng-class=\"{'has-error': vm.hasError('email')}\">\n                            <label class=\"col-md-4 control-label\">E-Mail Address</label>\n\n                            <div class=\"col-md-6\">\n                                <input type=\"text\" class=\"form-control\" ng-model=\"vm.data.email\">\n\n                                <span ng-if=\"vm.hasError('email')\" class=\"help-block\">\n                                    <strong>{{ vm.errors.email[0] }}</strong>\n                                </span>\n                            </div>\n                        </div>\n\n                        <div class=\"form-group\" ng-class=\"{'has-error': vm.hasError('password')}\">\n                            <label class=\"col-md-4 control-label\">Password</label>\n\n                            <div class=\"col-md-6\">\n                                <input type=\"password\" class=\"form-control\" ng-model=\"vm.data.password\">\n\n                                <span ng-if=\"vm.hasError('password')\" class=\"help-block\">\n                                    <strong>{{ vm.errors.password[0] }}</strong>\n                                </span>\n                            </div>\n                        </div>\n\n                        <div class=\"form-group\" ng-class=\"{'has-error': vm.hasError('password_confirmation')}\">\n                            <label class=\"col-md-4 control-label\">Confirm Password</label>\n\n                            <div class=\"col-md-6\">\n                                <input type=\"password\" class=\"form-control\" ng-model=\"vm.data.password_confirmation\">\n\n                                <span ng-if=\"vm.hasError('password_confirmation')\" class=\"help-block\">\n                                    <strong>{{ vm.errors.password_confirmation[0] }}</strong>\n                                </span>\n                            </div>\n                        </div>\n\n                        <div class=\"form-group\" ng-class=\"{'has-error': vm.hasError('roles')}\">\n                            <label class=\"col-md-4 control-label\">Roles</label>\n\n                            <div class=\"col-md-6\">\n\n                                <ui-select multiple ng-model=\"vm.data.roles\">\n                                    <ui-select-match placeholder=\"Selecciona roles...\">\n                                        {{$item.label}}\n                                    </ui-select-match>\n                                    <ui-select-choices repeat=\"role.name as role in (vm.roles | filter: $select.search) track by $index\">\n                                        <span ng-bind=\"role.label\"></span>\n                                    </ui-select-choices>\n                                </ui-select>\n\n                                <span ng-if=\"vm.hasError('roles')\" class=\"help-block\">\n                                    <strong>{{ vm.errors.roles[0] }}</strong>\n                                </span>\n                            </div>\n                        </div>\n\n                        <div class=\"form-group\">\n                            <div class=\"col-md-6 col-md-offset-4\">\n                                <button ng-click=\"vm.submitForm()\" class=\"btn btn-primary\">\n                                    <i ng-class=\"{'fa-user': !vm.formIsSubmit, 'fa-spinner fa-spin': vm.formIsSubmit }\" class=\"fa fa-btn \"></i> {{ vm.action }}\n                                </button>\n                            </div>\n                        </div>\n                    </form>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>\n";
+__webpack_require__(31);
+module.exports = 'angular-loading-bar';
+
 
 /***/ },
 /* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
-__webpack_require__(34);
-module.exports = 'ngAnimate';
-
-
-/***/ },
-/* 10 */
-/***/ function(module, exports, __webpack_require__) {
-
-__webpack_require__(35);
-module.exports = 'angular-loading-bar';
-
-
-/***/ },
-/* 11 */
-/***/ function(module, exports, __webpack_require__) {
-
-__webpack_require__(36);
+__webpack_require__(32);
 module.exports = 'ngSanitize';
 
 
 /***/ },
-/* 12 */
+/* 10 */
 /***/ function(module, exports) {
 
 "use strict";
@@ -12615,25 +12603,25 @@ angular.module('oitozero.ngSweetAlert', [])
 
 
 /***/ },
-/* 13 */
+/* 11 */
 /***/ function(module, exports, __webpack_require__) {
 
-__webpack_require__(37);
+__webpack_require__(33);
 module.exports = 'toastr';
 
 
 
 /***/ },
-/* 14 */
+/* 12 */
 /***/ function(module, exports, __webpack_require__) {
 
-__webpack_require__(38);
+__webpack_require__(34);
 
 module.exports = 'ui.bootstrap';
 
 
 /***/ },
-/* 15 */
+/* 13 */
 /***/ function(module, exports) {
 
 /**
@@ -17220,15 +17208,15 @@ angular.module('ui.router.state')
 })(window, window.angular);
 
 /***/ },
-/* 16 */
+/* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
-__webpack_require__(39);
+__webpack_require__(35);
 module.exports = angular;
 
 
 /***/ },
-/* 17 */
+/* 15 */
 /***/ function(module, exports) {
 
 /*!
@@ -19617,7 +19605,7 @@ if (typeof jQuery === 'undefined') {
 
 
 /***/ },
-/* 18 */
+/* 16 */
 /***/ function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, module) {var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -36376,10 +36364,10 @@ if (typeof jQuery === 'undefined') {
   }
 }.call(this));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6), __webpack_require__(48)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6), __webpack_require__(44)(module)))
 
 /***/ },
-/* 19 */
+/* 17 */
 /***/ function(module, exports, __webpack_require__) {
 
 /**
@@ -37344,7 +37332,7 @@ if (typeof jQuery === 'undefined') {
 
 
 /***/ },
-/* 20 */
+/* 18 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37379,9 +37367,9 @@ var _sweetAlertInitialize$getModal$getOverlay$getInput$setFocusStyle$openModal$r
 
 // Handle button events and keyboard events
 
-var _handleButton$handleConfirm$handleCancel = __webpack_require__(43);
+var _handleButton$handleConfirm$handleCancel = __webpack_require__(39);
 
-var _handleKeyDown = __webpack_require__(44);
+var _handleKeyDown = __webpack_require__(40);
 
 var _handleKeyDown2 = _interopRequireWildcard(_handleKeyDown);
 
@@ -37391,7 +37379,7 @@ var _defaultParams = __webpack_require__(5);
 
 var _defaultParams2 = _interopRequireWildcard(_defaultParams);
 
-var _setParameters = __webpack_require__(46);
+var _setParameters = __webpack_require__(42);
 
 var _setParameters2 = _interopRequireWildcard(_setParameters);
 
@@ -37653,15 +37641,15 @@ if (typeof window !== 'undefined') {
 module.exports = exports['default'];
 
 /***/ },
-/* 21 */
+/* 19 */
 /***/ function(module, exports, __webpack_require__) {
 
-__webpack_require__(47);
+__webpack_require__(43);
 module.exports = 'ui.select';
 
 
 /***/ },
-/* 22 */
+/* 20 */
 /***/ function(module, exports) {
 
 module.exports = ["$scope", "$auth", function($scope, $auth) {
@@ -37675,7 +37663,7 @@ module.exports = ["$scope", "$auth", function($scope, $auth) {
 
 
 /***/ },
-/* 23 */
+/* 21 */
 /***/ function(module, exports) {
 
 module.exports = function () {
@@ -37694,7 +37682,7 @@ module.exports = function () {
 
 
 /***/ },
-/* 24 */
+/* 22 */
 /***/ function(module, exports, __webpack_require__) {
 
 module.exports = ["$state", "$rootScope", function ($state, $rootScope) {
@@ -37797,7 +37785,7 @@ module.exports = ["$state", "$rootScope", function ($state, $rootScope) {
 
 
 /***/ },
-/* 25 */
+/* 23 */
 /***/ function(module, exports) {
 
 module.exports =  ["$rootScope", "$state", function ($rootScope, $state) {
@@ -37854,7 +37842,7 @@ module.exports =  ["$rootScope", "$state", function ($rootScope, $state) {
 
 
 /***/ },
-/* 26 */
+/* 24 */
 /***/ function(module, exports) {
 
 module.exports = function() {
@@ -37872,7 +37860,7 @@ module.exports = function() {
 
 
 /***/ },
-/* 27 */
+/* 25 */
 /***/ function(module, exports) {
 
 $.root_ = $('body');
@@ -37911,33 +37899,7 @@ function minifyMenu($this) {
 
 
 /***/ },
-/* 28 */
-/***/ function(module, exports) {
-
-module.exports = ["$http", "$q", function ($http, $q) {
-  'ngInject';
-
-  this.all = function () {
-    return $http.get('/api/permissions');
-  };
-}];
-
-
-/***/ },
-/* 29 */
-/***/ function(module, exports) {
-
-module.exports = ["ApiService", function (ApiService) {
-  'ngInject';
-
-  angular.extend(this, ApiService);
-
-  this.resource = 'roles';
-}];
-
-
-/***/ },
-/* 30 */
+/* 26 */
 /***/ function(module, exports, __webpack_require__) {
 
 module.exports = ["$stateProvider", "$locationProvider", "$urlRouterProvider", function OnConfig($stateProvider, $locationProvider, $urlRouterProvider) {
@@ -37949,7 +37911,6 @@ module.exports = ["$stateProvider", "$locationProvider", "$urlRouterProvider", f
   var skipIfLoggedIn = function($q, $auth, $location) {
     var deferred = $q.defer();
     if ($auth.isAuthenticated()) {
-      console.log('ok');
       $location.path('/home');
     } else {
       deferred.resolve();
@@ -37962,9 +37923,9 @@ module.exports = ["$stateProvider", "$locationProvider", "$urlRouterProvider", f
   // auth
     .state('login', {
       url: '/login',
-      controller: __webpack_require__(49),
+      controller: __webpack_require__(45),
       controllerAs: 'vm',
-      template: __webpack_require__(59),
+      template: __webpack_require__(50),
       resolve: {
         skipIfLoggedIn: skipIfLoggedIn
       }
@@ -37972,14 +37933,24 @@ module.exports = ["$stateProvider", "$locationProvider", "$urlRouterProvider", f
 
     .state('logout', {
       url: '/logout',
-      controller: __webpack_require__(50),
+      controller: __webpack_require__(46),
       template: '<div></div>'
+    })
+
+    .state('register', {
+      url: '/register',
+      controller: __webpack_require__(47),
+      controllerAs: 'vm',
+      template: __webpack_require__(51),
+      resolve: {
+        skipIfLoggedIn: skipIfLoggedIn
+      }
     })
 
   // application
     .state('app', {
       abstract: true,
-      template: __webpack_require__(60),
+      template: __webpack_require__(52),
       controller: ["user", function(user) { this.user = user }],
       controllerAs: 'vm',
       resolve: {
@@ -37999,122 +37970,23 @@ module.exports = ["$stateProvider", "$locationProvider", "$urlRouterProvider", f
       url: '/home',
       controller: ["$auth", function($auth) { this.isAuthenticated = $auth.isAuthenticated }],
       controllerAs: 'vm',
-      template: __webpack_require__(58)
+      template: __webpack_require__(49)
     })
 
     .state('app.dashboard', {
       url: '/dashboard',
-      template: __webpack_require__(57),
+      template: __webpack_require__(48),
       data: {
         title: 'dashboard'
       }
     })
-
-    .state('app.users', {
-      url: '/users?page&name&email&roles',
-      controller: __webpack_require__(56),
-      controllerAs: 'vm',
-      template: __webpack_require__(62),
-      resolve: {
-        users: ["UserService", "$stateParams", function(UserService, $stateParams) {
-          return UserService.filterResources($stateParams).then(function(data) {
-            return data.data;
-          });
-        }]
-      }
-    })
-
-    .state('app.users.create', {
-      url: '/create',
-      controller: __webpack_require__(54),
-      controllerAs: 'vm',
-      template: __webpack_require__(8),
-      resolve : {
-        roles: ["RoleService", function(RoleService) {
-          return RoleService.getResources().then(function(data) {
-            return data.data.data;
-          });
-        }]
-      }
-    })
-
-    .state('app.users.edit', {
-      url: '/edit/:id',
-      controller: __webpack_require__(55),
-      controllerAs: 'vm',
-      template: __webpack_require__(8),
-      resolve: {
-        data: ["UserService", "$stateParams", function(UserService, $stateParams) {
-          return UserService.getResource($stateParams.id).then(function(data) {
-            return data.data;
-          });
-        }],
-        roles: ["RoleService", function(RoleService) {
-          return RoleService.getResources().then(function(data) {
-            return data.data.data;
-          });
-        }]
-      },
-    })
-
-    .state('app.roles', {
-      url: '/roles?page&name&label&permissions',
-      controller: __webpack_require__(53),
-      controllerAs: 'vm',
-      template: __webpack_require__(61),
-      resolve: {
-        roles: ["RoleService", "$stateParams", function(RoleService, $stateParams) {
-          return RoleService.filterResources($stateParams).then(function(data) {
-            return data.data;
-          });
-        }]
-      }
-    })
-
-    .state('app.roles.create', {
-      url: '/create',
-      controller: __webpack_require__(51),
-      controllerAs: 'vm',
-      template: __webpack_require__(7),
-      resolve: {
-        permissions: ["PermissionService", function(PermissionService) {
-          return PermissionService.all().then(function(data) {
-            return data.data;
-          });
-        }]
-      }
-    })
-
-    .state('app.roles.edit', {
-      url: '/edit/:id',
-      controllerAs: 'vm',
-      controller: __webpack_require__(52),
-      template: __webpack_require__(7),
-      resolve: {
-        role: ["RoleService", "$stateParams", function(RoleService, $stateParams) {
-          return RoleService.getResource($stateParams.id).then(function(data) {
-            return data.data;
-          });
-        }],
-        permissions: ["PermissionService", function(PermissionService) {
-          return PermissionService.all().then(function(data) {
-            return data.data;
-          });
-        }]
-      }
-    })
-
-    .state('root', {
-      url: '/',
-      external: true
-    });
 
   $urlRouterProvider.otherwise('/login');
 }];
 
 
 /***/ },
-/* 31 */
+/* 27 */
 /***/ function(module, exports) {
 
 module.exports = ["$http", function($http) {
@@ -38161,7 +38033,7 @@ module.exports = ["$http", function($http) {
 
 
 /***/ },
-/* 32 */
+/* 28 */
 /***/ function(module, exports) {
 
 module.exports = ["SweetAlert", function (SweetAlert) {
@@ -38188,13 +38060,11 @@ module.exports = ["SweetAlert", function (SweetAlert) {
 
 
 /***/ },
-/* 33 */
+/* 29 */
 /***/ function(module, exports) {
 
-module.exports = ["ApiService", "$http", function (ApiService, $http) {
+module.exports = ["$http", function ($http) {
   'ngInject';
-  angular.extend(this, ApiService);
-  this.resource = 'users';
 
   this.me = function () {
     return $http.get('/api/me');
@@ -38203,7 +38073,7 @@ module.exports = ["ApiService", "$http", function (ApiService, $http) {
 
 
 /***/ },
-/* 34 */
+/* 30 */
 /***/ function(module, exports) {
 
 /**
@@ -42348,7 +42218,7 @@ angular.module('ngAnimate', [], function initAngularHelpers() {
 
 
 /***/ },
-/* 35 */
+/* 31 */
 /***/ function(module, exports) {
 
 /*! 
@@ -42695,7 +42565,7 @@ angular.module('cfp.loadingBar', [])
 
 
 /***/ },
-/* 36 */
+/* 32 */
 /***/ function(module, exports) {
 
 /**
@@ -43439,7 +43309,7 @@ angular.module('ngSanitize').filter('linky', ['$sanitize', function($sanitize) {
 
 
 /***/ },
-/* 37 */
+/* 33 */
 /***/ function(module, exports) {
 
 (function() {
@@ -43953,7 +43823,7 @@ angular.module("toastr").run(["$templateCache", function($templateCache) {$templ
 $templateCache.put("directives/toast/toast.html","<div class=\"{{toastClass}} {{toastType}}\" ng-click=\"tapToast()\">\n  <div ng-switch on=\"allowHtml\">\n    <div ng-switch-default ng-if=\"title\" class=\"{{titleClass}}\" aria-label=\"{{title}}\">{{title}}</div>\n    <div ng-switch-default class=\"{{messageClass}}\" aria-label=\"{{message}}\">{{message}}</div>\n    <div ng-switch-when=\"true\" ng-if=\"title\" class=\"{{titleClass}}\" ng-bind-html=\"title\"></div>\n    <div ng-switch-when=\"true\" class=\"{{messageClass}}\" ng-bind-html=\"message\"></div>\n  </div>\n  <progress-bar ng-if=\"progressBar\"></progress-bar>\n</div>\n");}]);
 
 /***/ },
-/* 38 */
+/* 34 */
 /***/ function(module, exports) {
 
 /*
@@ -51504,7 +51374,7 @@ angular.module('ui.bootstrap.timepicker').run(function() {!angular.$$csp().noInl
 angular.module('ui.bootstrap.typeahead').run(function() {!angular.$$csp().noInlineStyle && !angular.$$uibTypeaheadCss && angular.element(document).find('head').prepend('<style type="text/css">[uib-typeahead-popup].dropdown-menu{display:block;}</style>'); angular.$$uibTypeaheadCss = true; });
 
 /***/ },
-/* 39 */
+/* 35 */
 /***/ function(module, exports) {
 
 /**
@@ -83319,7 +83189,7 @@ $provide.value("$locale", {
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
 
 /***/ },
-/* 40 */
+/* 36 */
 /***/ function(module, exports) {
 
 "use strict";
@@ -83435,7 +83305,7 @@ function fromByteArray (uint8) {
 
 
 /***/ },
-/* 41 */
+/* 37 */
 /***/ function(module, exports) {
 
 var toString = {}.toString;
@@ -83446,7 +83316,7 @@ module.exports = Array.isArray || function (arr) {
 
 
 /***/ },
-/* 42 */
+/* 38 */
 /***/ function(module, exports) {
 
 exports.read = function (buffer, offset, isLE, mLen, nBytes) {
@@ -83536,7 +83406,7 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
 
 
 /***/ },
-/* 43 */
+/* 39 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -83677,7 +83547,7 @@ exports['default'] = {
 module.exports = exports['default'];
 
 /***/ },
-/* 44 */
+/* 40 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -83762,7 +83632,7 @@ exports['default'] = handleKeyDown;
 module.exports = exports['default'];
 
 /***/ },
-/* 45 */
+/* 41 */
 /***/ function(module, exports) {
 
 "use strict";
@@ -83810,7 +83680,7 @@ exports["default"] = injectedHTML;
 module.exports = exports["default"];
 
 /***/ },
-/* 46 */
+/* 42 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -84041,7 +83911,7 @@ exports['default'] = setParameters;
 module.exports = exports['default'];
 
 /***/ },
-/* 47 */
+/* 43 */
 /***/ function(module, exports) {
 
 /*!
@@ -86402,7 +86272,7 @@ $templateCache.put("selectize/no-choice.tpl.html","<div class=\"ui-select-no-cho
 $templateCache.put("selectize/select.tpl.html","<div class=\"ui-select-container selectize-control single\" ng-class=\"{\'open\': $select.open}\"><div class=\"selectize-input\" ng-class=\"{\'focus\': $select.open, \'disabled\': $select.disabled, \'selectize-focus\' : $select.focus}\" ng-click=\"$select.open && !$select.searchEnabled ? $select.toggle($event) : $select.activate()\"><div class=\"ui-select-match\"></div><input type=\"search\" autocomplete=\"off\" tabindex=\"-1\" class=\"ui-select-search ui-select-toggle\" ng-class=\"{\'ui-select-search-hidden\':!$select.searchEnabled}\" ng-click=\"$select.toggle($event)\" placeholder=\"{{$select.placeholder}}\" ng-model=\"$select.search\" ng-hide=\"!$select.isEmpty() && !$select.open\" ng-disabled=\"$select.disabled\" aria-label=\"{{ $select.baseTitle }}\"></div><div class=\"ui-select-choices\"></div><div class=\"ui-select-no-choice\"></div></div>");}]);
 
 /***/ },
-/* 48 */
+/* 44 */
 /***/ function(module, exports) {
 
 module.exports = function(module) {
@@ -86428,7 +86298,7 @@ module.exports = function(module) {
 
 
 /***/ },
-/* 49 */
+/* 45 */
 /***/ function(module, exports) {
 
 module.exports = ["$auth", "$http", "$state", "toastr", function ($auth, $http, $state, toastr) {
@@ -86457,7 +86327,7 @@ module.exports = ["$auth", "$http", "$state", "toastr", function ($auth, $http, 
 
 
 /***/ },
-/* 50 */
+/* 46 */
 /***/ function(module, exports) {
 
 module.exports = ["$state", "$auth", "toastr", function($state, $auth, toastr) {
@@ -86475,320 +86345,84 @@ module.exports = ["$state", "$auth", "toastr", function($state, $auth, toastr) {
 
 
 /***/ },
-/* 51 */
+/* 47 */
 /***/ function(module, exports) {
 
-module.exports = ["RoleService", "$state", "toastr", "permissions", function (RoleService, $state, toastr, permissions) {
+module.exports = ["$auth", "$http", "$state", "toastr", function ($auth, $http, $state, toastr) {
   'ngInject';
+
   var vm = this;
-
-  vm.action = 'Crear';
-
-  vm.data = {
-    name:  '',
-    label: '',
-    permissions: []
-  };
-
-  vm.permissions = permissions;
-
+  vm.user = {};
   vm.errors = {};
 
-  vm.formIsSubmit = false;
-
-  this.hasError = function(property) {
-    if (vm.errors.hasOwnProperty(property)) {
-      return true;
-    }
-    return false;
-  };
-
-  this.submitForm = function () {
-    vm.formIsSubmit = true;
-
-    RoleService.createResource(vm.data)
-    .then(function(data) {
-      toastr.success(data.data.message, 'Estado!');
-      $state.go('app.roles', {}, {reload: true});
-    })
-    .catch(function(errors) {
-      vm.errors = errors.data;
-    }).finally(function() {
-      vm.formIsSubmit = false;
-    });
-  };
-}];
-
-
-/***/ },
-/* 52 */
-/***/ function(module, exports) {
-
-module.exports = ["role", "permissions", "RoleService", "$state", "$stateParams", "toastr", function (role, permissions, RoleService, $state, $stateParams, toastr) {
-  'ngInject';
-  var vm = this;
-
-  vm.action = 'Editar';
-
-  vm.data =  role;
-
-  vm.permissions = permissions;
-
-  vm.errors = {};
-
-  vm.formIsSubmit = false;
-
-  this.hasError = function(property) {
-    if (vm.errors.hasOwnProperty(property)) {
-      return true;
-    }
-    return false;
-  };
-
-  this.submitForm = function () {
-    vm.formIsSubmit = true;
-
-    RoleService.updateResource(vm.getId(), vm.data)
-      .then(function(role) {
-        toastr.success(role.data.message, 'Estado!');
-        $state.go('app.roles', {}, {reload: true});
+  vm.submit = function () {
+    $auth.signup(vm.user)
+      .then(function (response) {
+        $auth.setToken(response);
+        $state.go('app.home');
+        toastr.info('Se ha creado tu cuenta exitosamente y se ha iniciado sesión');
       })
-      .catch(function(errors) {
-        vm.errors = errors.data;
-      }).finally(function() {
-        vm.formIsSubmit = false;
+      .catch(function (response) {
+        vm.errors = response.data;
       });
+  }
+
+  this.hasError = function (property) {
+    return vm.errors.hasOwnProperty(property) ? true : false;
   };
 
-  this.getId = function () {
-    return $stateParams.id;
-  };
 }];
 
 
 /***/ },
-/* 53 */
-/***/ function(module, exports) {
-
-module.exports = ["roles", "RoleService", "toastr", "Confirm", "$state", "$stateParams", function (roles, RoleService, toastr, Confirm, $state, $stateParams) {
-  'ngInject';
-  var vm = this;
-  vm.roles = roles.data;
-  vm.totalItems = roles.total;
-  vm.itemsPerPage = roles.per_page;
-  vm.search = $stateParams;
-  vm.search.page = roles.current_page;
-  vm.reload = false;
-
-  vm.filter = function() {
-    $state.go('.', vm.search, {reload: true});
-    vm.reload = true;
-  };
-
-  vm.destroy = function (data, index) {
-    Confirm.destroy(function() {
-      vm.deleteRole(data, index);
-    });
-  };
-
-  vm.deleteRole = function (id, index) {
-    RoleService.deleteResource(id)
-    .then(function(data) {
-      toastr.success(data.data.message, 'Estado!');
-      vm.removeFromRoles(index);
-    })
-    .catch(function(errors) {
-      vm.errors = errors.data;
-    });
-  };
-
-  vm.removeFromRoles = function (index) {
-    vm.roles.splice(index, 1);
-  };
-}];
-
-
-/***/ },
-/* 54 */
-/***/ function(module, exports) {
-
-module.exports = ["roles", "UserService", "$state", "toastr", function (roles, UserService, $state, toastr) {
-  'ngInject';
-  var vm = this;
-  vm.action = 'Crear';
-  vm.roles = roles;
-  vm.errors = {};
-  vm.formIsSubmit = false;
-  vm.data = {
-    name:  '',
-    email: '',
-    password: '',
-    password_confirmation: '',
-    roles: []
-  };
-
-  this.hasError = function(property) {
-    if (vm.errors.hasOwnProperty(property)) {
-      return true;
-    }
-    return false;
-  };
-
-  this.submitForm = function () {
-    vm.formIsSubmit = true;
-
-    UserService.createResource(vm.data)
-      .then(function(data) {
-        toastr.success(data.data.message, 'Estado!');
-        $state.go('app.users', {}, {reload: true});
-      })
-      .catch(function(errors) {
-        vm.errors = errors.data;
-      }).finally(function() {
-        vm.formIsSubmit = false;
-      });
-  };
-}];
-
-
-/***/ },
-/* 55 */
-/***/ function(module, exports) {
-
-module.exports = ["data", "roles", "UserService", "$state", "$stateParams", "toastr", function (data, roles, UserService, $state, $stateParams, toastr) {
-  'ngInject';
-  var vm = this;
-  vm.action = 'Editar';
-  vm.data =  data;
-  vm.roles = roles;
-  vm.errors = {};
-  vm.formIsSubmit = false;
-
-  this.hasError = function(property) {
-    if (vm.errors.hasOwnProperty(property)) {
-      return true;
-    }
-    return false;
-  };
-
-  this.submitForm = function () {
-    vm.formIsSubmit = true;
-
-    UserService.updateResource(vm.getId(), vm.data)
-      .then(function(data) {
-        toastr.success(data.data.message, 'Estado!');
-        $state.go('app.users', {}, {reload: true});
-      })
-      .catch(function(errors) {
-        vm.errors = errors.data;
-      }).finally(function() {
-        vm.formIsSubmit = false;
-      });
-  };
-
-  this.getId = function () {
-    return $stateParams.id;
-  };
-}];
-
-
-/***/ },
-/* 56 */
-/***/ function(module, exports) {
-
-module.exports = ["users", "UserService", "toastr", "Confirm", "$state", "$stateParams", function (users, UserService, toastr, Confirm, $state, $stateParams) {
-  'ngInject';
-  var vm = this;
-  vm.users = users.data;
-  vm.totalItems = users.total;
-  vm.itemsPerPage = users.per_page;
-  vm.search = $stateParams;
-  vm.search.page = users.current_page;
-  vm.reload = false;
-
-  vm.filter = function () {
-    $state.go('.', vm.search, {reload: true});
-    vm.reload = true;
-  };
-
-  vm.destroy = function (id, index) {
-    Confirm.destroy(function() {
-      vm.deleteUser(id, index);
-    });
-  };
-
-  vm.deleteUser = function (id, index) {
-    UserService.deleteResource(id)
-      .then(function(data) {
-        toastr.success(data.data.message, 'Estado!');
-        vm.removeFromUsers(index);
-      })
-      .catch(function(errors) {
-        vm.errors = errors.data;
-      });
-  };
-
-  vm.removeFromUsers = function (index) {
-    vm.users.splice(index, 1);
-  };
-}];
-
-
-/***/ },
-/* 57 */
+/* 48 */
 /***/ function(module, exports) {
 
 module.exports = "<ui-view>\n    <div class=\"row\">\n        <div class=\"col-xs-12 col-sm-7 col-md-7 col-lg-4\">\n            <h1 class=\"page-title txt-color-blueDark\">\n                <i class=\"fa-fw fa fa-home\"></i>\n                Dashboard\n            </h1>\n        </div>\n    </div>\n</ui-view>\n";
 
 /***/ },
-/* 58 */
+/* 49 */
 /***/ function(module, exports) {
 
 module.exports = "<ui-view>\n    <div class=\"row\">\n        <div class=\"col-xs-12 col-sm-7 col-md-7 col-lg-4\">\n            <h1 class=\"page-title txt-color-blueDark\">\n                <i class=\"fa-fw fa fa-home\"></i>\n                Home\n            </h1>\n\t\t</div>\n\t</div>\n\n\t<section id=\"widget-grid\" class=\"\">\n\t\t<div class=\"row\">\n\t\t\t<article class=\"col-xs-12 col-sm-12 col-md-12 col-lg-12\">\n\t\t\t\t<div class=\"jarviswidget\" id=\"wid-id-0\">\n\t\t\t\t\t<header>\n\t\t\t\t\t\t<span class=\"widget-icon\"> <i class=\"fa fa-cogs\"></i> </span>\n\t\t\t\t\t\t<h2>Widget de ejemplo</h2>\n\t\t\t\t\t</header>\n\t\t\t\t\t<div>\n\t\t\t\t\t\t<div class=\"jarviswidget-editbox\">\n\t\t\t\t\t\t\t<input class=\"form-control\" type=\"text\">\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div class=\"widget-body\">\n\t\t\t\t\t\t\tContenido de ejemplo\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</article>\n\t\t</div>\n\t\t<div class=\"row\">\n\t\t\t<div class=\"col-sm-12\">\n\t\t\t</div>\n\t\t</div>\n\t</section>\n</ui-view>\n";
 
 /***/ },
-/* 59 */
+/* 50 */
 /***/ function(module, exports) {
 
 module.exports = "<ui-view>\n    <section class=\"\" style=\"padding-top: 100px;\">\n        <div class=\"row\">\n            <article class=\"col-md-4 col-md-offset-4\">\n                <div class=\"jarviswidget jarviswidget-color-darken\" id=\"wid-id-0\">\n                    <header>\n                        <span class=\"widget-icon\"> <i class=\"fa fa-key\"></i> </span>\n                        <h2>Login</h2>\n                    </header>\n                    <div>\n                        <div class=\"jarviswidget-editbox\">\n                            <input class=\"form-control\" type=\"text\">\n                        </div>\n                        <div class=\"widget-body no-padding\">\n\n\n                            <form role=\"form\" method=\"POST\" novalidate class=\"smart-form client-form\">\n\n                                <fieldset>\n                                    \n                                    <section>\n                                        <label class=\"label control-label\" for=\"email\">E-mail Address</label>\n                                        <label class=\"input\" ng-class=\"{'state-error': vm.hasError('email')}\"> <i class=\"icon-append fa fa-user\"></i>\n                                            <input ng-model=\"vm.user.email\" id=\"email\" type=\"email\" name=\"email\">\n                                            <b class=\"tooltip tooltip-top-right\"><i class=\"fa fa-user txt-color-teal\"></i> Ingresar correo/usuario</b>\n                                        </label>\n                                        <em ng-if=\"vm.hasError('email')\" class=\"help-block\">\n                                            {{ vm.errors.email[0] }}\n                                        </em>\n                                    </section>\n\n                                    <section>\n                                        <label class=\"label control-label\">Password</label>\n                                        <label class=\"input\" ng-class=\"{'state-error': vm.hasError('email')}\"> <i class=\"icon-append fa fa-lock\"></i>\n                                            <input ng-model=\"vm.user.password\" id=\"password\" type=\"password\" name=\"password\">\n                                            <b class=\"tooltip tooltip-top-right\"><i class=\"fa fa-lock txt-color-teal\"></i> Ingresa tu password</b> \n                                        </label>\n                                        <em ng-if=\"vm.hasError('password')\" class=\"help-block\">\n                                            {{ vm.errors.password[0] }}\n                                        </em>\n                                        \n                                        <div class=\"note\">\n                                            <a href=\"\">Olvidó password?</a>\n                                        </div>\n                                    </section>\n\n                                    <section>\n                                        <label class=\"checkbox\">\n                                            <input type=\"checkbox\" name=\"remember\" checked=\"\">\n                                            <i></i>Recordarme</label>\n                                    </section>\n\n\n                                </fieldset>\n                                <footer>\n                                    <button ng-click=\"vm.login()\" type=\"submit\" class=\"btn btn-primary\">\n                                        Enviar\n                                    </button>\n                                </footer>\n                            </form>\n                        </div>\n                    </div>\n                </div>\n            </article>\n        </div>\n        <div class=\"row\">\n            <div class=\"col-sm-12\">\n            </div>\n        </div>\n    </section>\n<!--     <div class=\"container\">\n        <div class=\"row\">\n            <div class=\"col-md-8 col-md-offset-2\">\n                <div class=\"panel panel-default\">\n                    <div class=\"panel-heading\">Login prueba</div>\n                    <div class=\"panel-body\">\n                        <form class=\"form-horizontal\" role=\"form\" method=\"POST\" novalidate>\n\n                            <div class=\"form-group\" ng-class=\"{'has-error': vm.hasError('email')}\">\n                                <label for=\"email\" class=\"col-md-4 control-label\">E-Mail Address</label>\n\n                                <div class=\"col-md-6\">\n                                    <input ng-model=\"vm.user.email\" id=\"email\" type=\"email\" class=\"form-control\" name=\"email\">\n                                    <span ng-if=\"vm.hasError('email')\" class=\"help-block\">\n                                        <strong>{{ vm.errors.email[0] }}</strong>\n                                    </span>\n                                </div>\n                            </div>\n\n                            <div class=\"form-group\"  ng-class=\"{'has-error': vm.hasError('password')}\">\n                                <label for=\"password\" class=\"col-md-4 control-label\">Password</label>\n\n                                <div class=\"col-md-6\">\n                                    <input ng-model=\"vm.user.password\" id=\"password\" type=\"password\" class=\"form-control\" name=\"password\">\n                                    <span ng-if=\"vm.hasError('password')\" class=\"help-block\">\n                                        <strong>{{ vm.errors.password[0] }}</strong>\n                                    </span>\n                                </div>\n                            </div>\n\n                            <div class=\"form-group\">\n                                <div class=\"col-md-8 col-md-offset-4\">\n                                    <button ng-click=\"vm.login()\" type=\"submit\" class=\"btn btn-primary\">\n                                        Login\n                                    </button>\n                                </div>\n                            </div>\n\n                        </form>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div> -->\n</ui-view>\n";
 
 /***/ },
-/* 60 */
+/* 51 */
 /***/ function(module, exports) {
 
-module.exports = "<!-- #HEADER -->\n<header id=\"header\">\n    <div id=\"logo-group\">\n\n        <span id=\"logo\"> <img src=\"/img/logo1.png\" alt=\"SmartAdmin\"> </span>\n\n        <!-- AJAX-DROPDOWN : control this dropdown height, look and feel from the LESS variable file -->\n        <div class=\"ajax-dropdown\">\n\n            <!-- the ID links are fetched via AJAX to the ajax container \"ajax-notifications\" -->\n            <div class=\"btn-group btn-group-justified\" data-toggle=\"buttons\">\n                <label class=\"btn btn-default\">\n                    <input type=\"radio\" name=\"activity\" id=\"ajax/notify/mail.html\">\n                    Msgs (14) </label>\n                <label class=\"btn btn-default\">\n                    <input type=\"radio\" name=\"activity\" id=\"ajax/notify/notifications.html\">\n                    notify (3) </label>\n                <label class=\"btn btn-default\">\n                    <input type=\"radio\" name=\"activity\" id=\"ajax/notify/tasks.html\">\n                    Tasks (4) </label>\n            </div>\n\n            <!-- notification content -->\n            <div class=\"ajax-notifications custom-scroll\">\n\n                <div class=\"alert alert-transparent\">\n                    <h4>Click a button to show messages here</h4>\n                    This blank page message helps protect your privacy, or you can show the first message here automatically.\n                </div>\n\n                <i class=\"fa fa-lock fa-4x fa-border\"></i>\n\n            </div>\n            <!-- end notification content -->\n\n            <!-- footer: refresh area -->\n            <span> Last updated on: 12/12/2013 9:43AM\n                <button type=\"button\" data-loading-text=\"<i class='fa fa-refresh fa-spin'></i> Loading...\" class=\"btn btn-xs btn-default pull-right\">\n                    <i class=\"fa fa-refresh\"></i>\n            </button> </span>\n            <!-- end footer -->\n\n        </div>\n        <!-- END AJAX-DROPDOWN -->\n    </div>\n\n    <div class=\"pull-right\">\n\n        <div id=\"hide-menu\" class=\"btn-header pull-right\">\n            <span> <a href=\"javascript:void(0);\" data-action=\"toggleMenu\" title=\"Collapse Menu\"><i class=\"fa fa-reorder\"></i></a> </span>\n        </div>\n\n        <!-- #MOBILE -->\n        <!-- Top menu profile link : this shows only when top menu is active -->\n        <ul id=\"mobile-profile-img\" class=\"header-dropdown-list hidden-xs padding-5\">\n            <li class=\"\">\n                <a href=\"#\" class=\"dropdown-toggle no-margin userdropdown\" data-toggle=\"dropdown\">\n                    <img src=\"/img/avatars/sunny.png\" class=\"online\" />\n                </a>\n                <ul class=\"dropdown-menu pull-right\">\n                    <li>\n                        <a href=\"javascript:void(0);\" class=\"padding-10 padding-top-0 padding-bottom-0\"><i class=\"fa fa-cog\"></i> Setting</a>\n                    </li>\n                    <li class=\"divider\"></li>\n                    <li>\n                        <a href=\"#ajax/profile.html\" class=\"padding-10 padding-top-0 padding-bottom-0\"> <i class=\"fa fa-user\"></i> <u>P</u>rofile</a>\n                    </li>\n                    <li class=\"divider\"></li>\n                    <li>\n                        <a href=\"javascript:void(0);\" class=\"padding-10 padding-top-0 padding-bottom-0\" data-action=\"toggleShortcut\"><i class=\"fa fa-arrow-down\"></i> <u>S</u>hortcut</a>\n                    </li>\n                    <li class=\"divider\"></li>\n                    <li>\n                        <a href=\"javascript:void(0);\" class=\"padding-10 padding-top-0 padding-bottom-0\" data-action=\"launchFullscreen\"><i class=\"fa fa-arrows-alt\"></i> Full <u>S</u>creen</a>\n                    </li>\n                    <li class=\"divider\"></li>\n                    <li>\n                        <a ui-sref=\"logout\" class=\"padding-10 padding-top-5 padding-bottom-5\" data-action=\"userLogout\"><i class=\"fa fa-sign-out fa-lg\"></i> <strong><u>L</u>ogout</strong></a>\n                    </li>\n                </ul>\n            </li>\n        </ul>\n\n        <!-- logout button -->\n        <div id=\"logout\" class=\"btn-header transparent pull-right\">\n            <span> <a ui-sref=\"logout\" title=\"Sign Out\" data-action=\"userLogout\"><i class=\"fa fa-sign-out\"></i></a> </span>\n        </div>\n    </div>\n\n</header>\n\n<!-- Note: This width of the aside area can be adjusted through LESS/SASS variables -->\n<aside id=\"left-panel\">\n\n    <!-- User info -->\n    <div class=\"login-info\">\n        <span>\n\n            <a href=\"javascript:void(0);\" id=\"show-shortcut\" data-action=\"toggleShortcut\">\n                <img src=\"/img/avatars/sunny.png\" class=\"online\" />\n                <span>\n                    {{ vm.user.name }}\n                </span>\n                <i class=\"fa fa-angle-down\"></i>\n            </a>\n\n        </span>\n    </div>\n\n    <nav>\n        <ul data-smart-menu>\n            <li ui-sref-active=\"active\">\n                <a ui-sref=\"app.home\"><i class=\"fa fa-lg fa-fw fa-home\"></i> <span class=\"menu-item-parent\">Home</span></a>\n            </li>\n            <li ui-sref-active=\"active\">\n                <a ui-sref=\"app.dashboard\"><i class=\"fa fa-lg fa-fw fa-dashboard\"></i> <span class=\"menu-item-parent\">Dashboard</span></a>\n            </li>\n            <li data-menu-collapse ui-sref-active=\"active\">\n                <a href=\"#\"><i class=\"fa fa-lg fa-fw fa-cogs\"></i> <span class=\"menu-item-parent\">Administración</span></a>\n                <ul>\n                    <li>\n                        <a data-ui-sref=\"app.users\"><i class=\"fa fa-users\"></i> Usuarios</a>\n                    </li>\n                    <li>\n                        <a data-ui-sref=\"app.roles\"><i class=\"fa fa-lock\"></i> Roles</a>\n                    </li>\n                </ul>\n            </li>\n        </ul>\n    </nav>\n\n    <span class=\"minifyme\" data-action=\"minifyMenu\"> <i class=\"fa fa-arrow-circle-left hit\"></i> </span>\n</aside>\n\n<!-- #MAIN PANEL -->\n<div id=\"main\" role=\"main\">\n\n    <!-- RIBBON -->\n    <div id=\"ribbon\">\n         <state-breadcrumbs></state-breadcrumbs>\n    </div>\n\n    <div id=\"content\">\n        <div ui-view></div>\n    </div>\n\n</div>\n\n<div class=\"page-footer\">\n    <div class=\"row\">\n        <div class=\"col-xs-12 col-sm-6\">\n            <span class=\"txt-color-white\">Boilerplate <span class=\"hidden-xs\"> - {{ config('app.name', 'Laravel') }}</span> ©2016</span>\n        </div>\n    </div>\n</div>\n";
+module.exports = "<ui-view>\n    <div class=\"container\">\n        <div class=\"row\">\n            <div class=\"col-md-8 col-md-offset-2\">\n                <div class=\"panel panel-default\">\n                    <div class=\"panel-heading\">Registrar</div>\n                    <div class=\"panel-body\">\n                        <form class=\"form-horizontal\" role=\"form\" novalidate>\n\n                            <div class=\"form-group\" ng-class=\"{'has-error': vm.hasError('name')}\">\n                                <label for=\"name\" class=\"col-md-4 control-label\">Name</label>\n                                <div class=\"col-md-6\">\n                                    <input ng-model=\"vm.user.name\" type=\"text\" class=\"form-control\" name=\"name\">\n                                    <span ng-if=\"vm.hasError('name')\" class=\"help-block\">\n                                        <strong>{{ vm.errors.name[0] }}</strong>\n                                    </span>\n                                </div>\n                            </div>\n\n                            <div class=\"form-group\" ng-class=\"{'has-error': vm.hasError('email')}\">\n                                <label for=\"email\" class=\"col-md-4 control-label\">E-Mail Address</label>\n                                <div class=\"col-md-6\">\n                                    <input ng-model=\"vm.user.email\" id=\"email\" type=\"email\" class=\"form-control\" name=\"email\">\n                                    <span ng-if=\"vm.hasError('email')\" class=\"help-block\">\n                                        <strong>{{ vm.errors.email[0] }}</strong>\n                                    </span>\n                                </div>\n                            </div>\n\n                            <div class=\"form-group\" ng-class=\"{'has-error': vm.hasError('password')}\">\n                                <label for=\"password\" class=\"col-md-4 control-label\">Password</label>\n                                <div class=\"col-md-6\">\n                                    <input ng-model=\"vm.user.password\" type=\"password\" class=\"form-control\" name=\"password\">\n                                    <span ng-if=\"vm.hasError('password')\" class=\"help-block\">\n                                        <strong>{{ vm.errors.password[0] }}</strong>\n                                    </span>\n                                </div>\n                            </div>\n\n                            <div class=\"form-group\" ng-class=\"{'has-error': vm.hasError('password_confirmation')}\">\n                                <label for=\"password\" class=\"col-md-4 control-label\">Confirma Password</label>\n                                <div class=\"col-md-6\">\n                                    <input ng-model=\"vm.user.password_confirmation\" type=\"password\" class=\"form-control\" name=\"password\">\n                                    <span ng-if=\"vm.hasError('password_confirmation')\" class=\"help-block\">\n                                        <strong>{{ vm.errors.password_confirmation[0] }}</strong>\n                                    </span>\n                                </div>\n                            </div>\n\n\n                            <div class=\"form-group\">\n                                <div class=\"col-md-8 col-md-offset-4\">\n                                    <button ng-click=\"vm.submit()\" type=\"submit\" class=\"btn btn-primary\">\n                                        Login\n                                    </button>\n                                </div>\n                            </div>\n\n                        </form>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n</ui-view>\n";
 
 /***/ },
-/* 61 */
+/* 52 */
 /***/ function(module, exports) {
 
-module.exports = "<ui-view>\n    <div class='row'>\n        <div class=\"col-sm-12 col-md-12 col-lg-12\">\n            <div class='pull-right'>\n                <a ui-sref=\"app.roles.create\" class='btn btn-primary'>Nuevo Rol</a>\n            </div>\n        </div>\n    </div>\n\n    <br>\n\n    <div class='row'>\n        <article class=\"col-sm-12 col-md-12 col-lg-12\">\n            <div class=\"jarviswidget jarviswidget-color-blueDark\" id=\"roles-table\">\n                <header>\n                    <span class=\"widget-icon\"> <i class=\"fa fa-table\"></i> </span>\n                    <h2>Roles</h2>\n                </header>\n\n                <div>\n                    <div class=\"widget-body\">\n                        <table class='table table-bordered'>\n                            <thead>\n                                <tr>\n                                    <th>Nombre</th>\n                                    <th>Nombre publico o legible</th>\n                                    <th>Permisos</th>\n                                    <th class='action-column'>Acciones</th>\n                                </tr>\n                            </thead>\n                            <tbody>\n                                <tr>\n                                    <td> <input ng-model=\"vm.search.name\" ng-blur=\"vm.filter()\" ng-enter=\"vm.filter()\" type=\"text\" class=\"form-control\" placeholder=\"nombre\"></input> </td>\n                                    <td> <input ng-model=\"vm.search.label\" ng-blur=\"vm.filter()\" ng-enter=\"vm.filter()\" type=\"text\" class=\"form-control\" placeholder=\"label\"></input> </td>\n                                    <td> <input ng-model=\"vm.search.permissions\" ng-blur=\"vm.filter()\" ng-enter=\"vm.filter()\" type=\"text\" class=\"form-control\" placeholder=\"permiso\"></input> </td>\n                                    <td></td>\n                                </tr>\n                                <tr ng-repeat=\"role in vm.roles\">\n                                    <td>{{ ::role.name }}</td>\n                                    <td>{{ ::role.label }}</td>\n                                    <td>\n                                        <span ng-repeat=\"permission in role.permissions\">\n                                            <span class=\"label label-primary\">{{ ::permission.label }}</span>\n                                        </span>\n                                    </td>\n                                    <td>\n                                        <a ui-sref=\"app.roles.edit({id: role.id})\" class=\"btn btn-warning btn-xs\"><i class='fa fa-pencil'></i></a>\n                                        <a ng-click=\"vm.destroy(role.id, $index)\" class='btn btn-danger btn-xs'><i class='fa fa-trash'></i></a>\n                                    </td>\n                                </tr>\n                            </tbody>\n                        </table>\n\n                        <div ng-if='vm.reload' class='text-center'>\n                            <i class=\"fa fa-2x fa-spinner fa-spin\"></i>\n                        </div>\n\n                        <div ng-hide=\"vm.reload\" ng-if=\"vm.roles | isEmpty\" class='text-center'>\n                            Sin resultados\n                        </div>\n\n                        <div ng-hide=\"vm.reload\" ng-if=\"! (vm.roles | isEmpty)\" class='text-center'>\n                            <ul uib-pagination items-per-page=\"vm.itemsPerPage\" total-items=\"vm.totalItems\" ng-model=\"vm.search.page\" ng-change=\"vm.filter()\"></ul>\n                        </div>\n\n                    </div>\n                </div>\n            </div>\n        </article>\n    </div>\n</ui-view>\n";
+module.exports = "<!-- #HEADER -->\n<header id=\"header\">\n    <div id=\"logo-group\">\n\n        <span id=\"logo\"> <img src=\"/img/logo2.png\" alt=\"SmartAdmin\"> </span>\n\n        <!-- Note: The activity badge color changes when clicked and resets the number to 0\n        Suggestion: You may want to set a flag when this happens to tick off all checked messages / notifications -->\n        <span id=\"activity\" class=\"activity-dropdown\"> <i class=\"fa fa-user\"></i> <b class=\"badge\"> 0 </b> </span>\n\n        <!-- AJAX-DROPDOWN : control this dropdown height, look and feel from the LESS variable file -->\n        <div class=\"ajax-dropdown\">\n\n            <!-- the ID links are fetched via AJAX to the ajax container \"ajax-notifications\" -->\n            <div class=\"btn-group btn-group-justified\" data-toggle=\"buttons\">\n                <label class=\"btn btn-default\">\n                    <input type=\"radio\" name=\"activity\" id=\"ajax/notify/mail.html\">\n                    Msgs (14) </label>\n                <label class=\"btn btn-default\">\n                    <input type=\"radio\" name=\"activity\" id=\"ajax/notify/notifications.html\">\n                    notify (3) </label>\n                <label class=\"btn btn-default\">\n                    <input type=\"radio\" name=\"activity\" id=\"ajax/notify/tasks.html\">\n                    Tasks (4) </label>\n            </div>\n\n            <!-- notification content -->\n            <div class=\"ajax-notifications custom-scroll\">\n\n                <div class=\"alert alert-transparent\">\n                    <h4>Click a button to show messages here</h4>\n                    This blank page message helps protect your privacy, or you can show the first message here automatically.\n                </div>\n\n                <i class=\"fa fa-lock fa-4x fa-border\"></i>\n\n            </div>\n            <!-- end notification content -->\n\n            <!-- footer: refresh area -->\n            <span> Last updated on: 12/12/2013 9:43AM\n                <button type=\"button\" data-loading-text=\"<i class='fa fa-refresh fa-spin'></i> Loading...\" class=\"btn btn-xs btn-default pull-right\">\n                    <i class=\"fa fa-refresh\"></i>\n            </button> </span>\n            <!-- end footer -->\n\n        </div>\n        <!-- END AJAX-DROPDOWN -->\n    </div>\n\n    <div class=\"pull-right\">\n\n        <div id=\"hide-menu\" class=\"btn-header pull-right\">\n            <span> <a href=\"javascript:void(0);\" data-action=\"toggleMenu\" title=\"Collapse Menu\"><i class=\"fa fa-reorder\"></i></a> </span>\n        </div>\n\n        <!-- #MOBILE -->\n        <!-- Top menu profile link : this shows only when top menu is active -->\n        <ul id=\"mobile-profile-img\" class=\"header-dropdown-list hidden-xs padding-5\">\n            <li class=\"\">\n                <a href=\"#\" class=\"dropdown-toggle no-margin userdropdown\" data-toggle=\"dropdown\">\n                    <img src=\"/img/avatars/sunny.png\" class=\"online\" />\n                </a>\n                <ul class=\"dropdown-menu pull-right\">\n                    <li>\n                        <a href=\"#\" class=\"padding-10 padding-top-0 padding-bottom-0\"><i class=\"fa fa-cog\"></i> Setting</a>\n                    </li>\n                    <li class=\"divider\"></li>\n                    <li>\n                        <a href=\"#\" class=\"padding-10 padding-top-0 padding-bottom-0\"> <i class=\"fa fa-user\"></i> <u>P</u>rofile</a>\n                    </li>\n                    <li class=\"divider\"></li>\n                    <li>\n                        <a ui-sref=\"logout\" class=\"padding-10 padding-top-5 padding-bottom-5\" data-action=\"userLogout\"><i class=\"fa fa-sign-out fa-lg\"></i> <strong><u>L</u>ogout</strong></a>\n                    </li>\n                </ul>\n            </li>\n        </ul>\n\n        <!-- logout button -->\n        <div id=\"logout\" class=\"btn-header transparent pull-right\">\n            <span> <a ui-sref=\"logout\" title=\"Sign Out\" data-action=\"userLogout\"><i class=\"fa fa-sign-out\"></i></a> </span>\n        </div>\n    </div>\n\n</header>\n\n<!-- Note: This width of the aside area can be adjusted through LESS/SASS variables -->\n<aside id=\"left-panel\">\n\n    <!-- User info -->\n    <div class=\"login-info\">\n        <span>\n\n            <a href=\"javascript:void(0);\" id=\"show-shortcut\" data-action=\"toggleShortcut\">\n                <img src=\"/img/avatars/sunny.png\" class=\"online\" />\n                <span>\n                    {{ vm.user.name }}\n                </span>\n                <i class=\"fa fa-angle-down\"></i>\n            </a>\n\n        </span>\n    </div>\n\n    <nav>\n        <ul data-smart-menu>\n            <li ui-sref-active=\"active\">\n                <a ui-sref=\"app.home\"><i class=\"fa fa-lg fa-fw fa-home\"></i> <span class=\"menu-item-parent\">Home</span></a>\n            </li>\n            <li ui-sref-active=\"active\">\n                <a ui-sref=\"app.dashboard\"><i class=\"fa fa-lg fa-fw fa-dashboard\"></i> <span class=\"menu-item-parent\">Dashboard</span></a>\n            </li>\n        </ul>\n    </nav>\n\n    <span class=\"minifyme\" data-action=\"minifyMenu\"> <i class=\"fa fa-arrow-circle-left hit\"></i> </span>\n</aside>\n\n<!-- #MAIN PANEL -->\n<div id=\"main\" role=\"main\">\n\n    <!-- RIBBON -->\n    <div id=\"ribbon\">\n         <state-breadcrumbs></state-breadcrumbs>\n    </div>\n\n    <div id=\"content\">\n        <div ui-view></div>\n    </div>\n\n</div>\n\n<div class=\"page-footer\">\n    <div class=\"row\">\n        <div class=\"col-xs-12 col-sm-6\">\n            <span class=\"txt-color-white\">Boilerplate <span class=\"hidden-xs\"> - {{ config('app.name', 'Laravel') }}</span> ©2016</span>\n        </div>\n    </div>\n</div>\n";
 
 /***/ },
-/* 62 */
-/***/ function(module, exports) {
-
-module.exports = "<ui-view>\n    <div class='row'>\n        <div class=\"col-sm-12 col-md-12 col-lg-12\">\n            <div class='pull-right'>\n                <a ui-sref='app.users.create' class='btn btn-primary'>Nuevo Usuario</a>\n            </div>\n        </div>\n    </div>\n\n    <br>\n\n    <div class='row'>\n        <article class=\"col-sm-12 col-md-12 col-lg-12\">\n            <div class=\"jarviswidget jarviswidget-color-blueDark\" id=\"users-table\">\n                <header>\n                    <span class=\"widget-icon\"> <i class=\"fa fa-table\"></i> </span>\n                    <h2>Listado usuarios</h2>\n                </header>\n\n                <div>\n                    <div class=\"widget-body\">\n                        <table class='table table-bordered'>\n                            <thead>\n                                <tr>\n                                    <th>Nombre</th>\n                                    <th>Email</th>\n                                    <th>Roles</th>\n                                    <th class='action-column'>Acciones</th>\n                                </tr>\n                            </thead>\n                            <tbody>\n                                <tr>\n                                    <td> <input ng-model=\"vm.search.name\" ng-blur=\"vm.filter()\" ng-enter=\"vm.filter()\" type=\"text\" class=\"form-control\" placeholder=\"nombre\"></input> </td>\n                                    <td> <input ng-model=\"vm.search.email\" ng-blur=\"vm.filter()\" ng-enter=\"vm.filter()\" type=\"text\" class=\"form-control\" placeholder=\"email\"></input> </td>\n                                    <td> <input ng-model=\"vm.search.roles\" ng-blur=\"vm.filter()\" ng-enter=\"vm.filter()\" type=\"text\" class=\"form-control\" placeholder=\"rol\"></input> </td>\n                                    <td></td>\n                                </tr>\n                                <tr ng-repeat=\"user in vm.users\">\n                                    <td>{{ ::user.name }}</td>\n                                    <td>{{ ::user.email }}</td>\n                                    <td>\n                                        <span ng-repeat=\"role in user.roles\">\n                                            <span class='label label-primary'>{{ ::role.label }}</span>\n                                        </span>\n                                    </td>\n                                    <td>\n                                        <a ui-sref=\"app.users.edit({id: user.id})\" class=\"btn btn-warning btn-xs\"><i class='fa fa-pencil'></i></a>\n                                        <a ng-click=\"vm.destroy(user.id, $index)\" class='btn btn-danger btn-xs'><i class='fa fa-trash'></i></a>\n                                    </td>\n                                </tr>\n                            </tbody>\n                        </table>\n\n                        <div ng-if='vm.reload' class='text-center'>\n                            <i class=\"fa fa-2x fa-spinner fa-spin\"></i>\n                        </div>\n\n                        <div ng-hide=\"vm.reload\" ng-if=\"vm.users | isEmpty\" class='text-center'>\n                            Sin resultados\n                        </div>\n\n                        <div ng-hide=\"vm.reload\" ng-if=\"! (vm.users | isEmpty)\" class='text-center'>\n                            <ul uib-pagination items-per-page=\"vm.itemsPerPage\" total-items=\"vm.totalItems\" ng-model=\"vm.search.page\" ng-change=\"vm.filter()\"></ul>\n                        </div>\n\n                    </div>\n                </div>\n            </div>\n        </article>\n    </div>\n</ui-view>\n";
-
-/***/ },
-/* 63 */
+/* 53 */
 /***/ function(module, exports, __webpack_require__) {
 
-window._ = __webpack_require__(18);
+window._ = __webpack_require__(16);
 window.$ = window.jQuery = __webpack_require__(3);
-__webpack_require__(27)
-__webpack_require__(16);
-__webpack_require__(17);
-__webpack_require__(9);
-__webpack_require__(10);
-__webpack_require__(11);
-__webpack_require__(12);
+__webpack_require__(25)
 __webpack_require__(14);
 __webpack_require__(15);
+__webpack_require__(7);
+__webpack_require__(8);
+__webpack_require__(9);
+__webpack_require__(10);
+__webpack_require__(12);
 __webpack_require__(13);
+__webpack_require__(11);
+__webpack_require__(17);
+__webpack_require__(18);
 __webpack_require__(19);
-__webpack_require__(20);
-__webpack_require__(21);
 
 angular.module('app', [
   'angular-loading-bar',
@@ -86807,23 +86441,21 @@ angular.module('app', [
 			$log.error('error', error);
 		});
 }])
-.config(__webpack_require__(30))
+.config(__webpack_require__(26))
 .config(["$authProvider", "uibPaginationConfig", function($authProvider, uibPaginationConfig) {
 	$authProvider.loginUrl = '/login';
-  // $authProvider.signupUrl = '/register';
+  $authProvider.signupUrl = '/register';
   uibPaginationConfig.previousText = 'Previo';
   uibPaginationConfig.nextText = 'Siguiente';
 }])
-.directive('smartMenu', __webpack_require__(24))
-.directive('stateBreadcrumbs', __webpack_require__(25))
-.directive('ngEnter', __webpack_require__(23))
-.filter('isEmpty', __webpack_require__(26))
-.controller('NavBarController', __webpack_require__(22))
-.service('ApiService', __webpack_require__(31))
-.service('Confirm', __webpack_require__(32))
-.service('UserService', __webpack_require__(33))
-.service('RoleService', __webpack_require__(29))
-.service('PermissionService', __webpack_require__(28))
+.directive('smartMenu', __webpack_require__(22))
+.directive('stateBreadcrumbs', __webpack_require__(23))
+.directive('ngEnter', __webpack_require__(21))
+.filter('isEmpty', __webpack_require__(24))
+.controller('NavBarController', __webpack_require__(20))
+.service('ApiService', __webpack_require__(27))
+.service('Confirm', __webpack_require__(28))
+.service('UserService', __webpack_require__(29))
 
 
 /***/ }
