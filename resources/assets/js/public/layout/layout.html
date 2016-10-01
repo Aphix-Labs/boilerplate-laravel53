@@ -1,51 +1,40 @@
-<!-- #HEADER -->
 <header id="header">
     <div id="logo-group">
 
         <span id="logo"> <img src="/img/logo2.png" alt="SmartAdmin"> </span>
 
-        <!-- Note: The activity badge color changes when clicked and resets the number to 0
-        Suggestion: You may want to set a flag when this happens to tick off all checked messages / notifications -->
-        <span id="activity" class="activity-dropdown"> <i class="fa fa-user"></i> <b class="badge"> 0 </b> </span>
+		<!-- notifications -->
+        <span notifications-toggle id="activity" class="activity-dropdown">
+            <i class="fa fa-user"></i> <b class="badge" ng-class="{'bg-color-red': vm.unreadNotificationsSize > 0}"> {{ vm.unreadNotificationsSize }}</b>
+        </span>
 
-        <!-- AJAX-DROPDOWN : control this dropdown height, look and feel from the LESS variable file -->
         <div class="ajax-dropdown">
-
-            <!-- the ID links are fetched via AJAX to the ajax container "ajax-notifications" -->
             <div class="btn-group btn-group-justified" data-toggle="buttons">
                 <label class="btn btn-default">
-                    <input type="radio" name="activity" id="ajax/notify/mail.html">
-                    Msgs (14) </label>
-                <label class="btn btn-default">
-                    <input type="radio" name="activity" id="ajax/notify/notifications.html">
-                    notify (3) </label>
-                <label class="btn btn-default">
-                    <input type="radio" name="activity" id="ajax/notify/tasks.html">
-                    Tasks (4) </label>
+                    <input type="radio" name="activity">
+                    Notificaciones ({{ vm.notificationsSize }}) </label>
             </div>
 
             <!-- notification content -->
             <div class="ajax-notifications custom-scroll">
 
-                <div class="alert alert-transparent">
-                    <h4>Click a button to show messages here</h4>
-                    This blank page message helps protect your privacy, or you can show the first message here automatically.
-                </div>
+                <ul class="notification-body">
+                    <li ng-repeat="notification in vm.user.notifications">
+                        <span class="padding-10" ng-class="{unread : !notification.read_at}">
+                            <em class="badge padding-5 no-border-radius bg-color-blueLight pull-left margin-right-5">
+                                <i class="fa {{notification.data.icon}} fa-fw fa-2x"></i>
+                            </em>
 
-                <i class="fa fa-lock fa-4x fa-border"></i>
-
+                            <span>
+                                {{notification.data.message}}
+                                <br>
+                                <span class="pull-right font-xs text-muted"><i>{{notification.time}}</i></span>
+                            </span>
+                        </span>
+                    </li>
+                </ul>
             </div>
-            <!-- end notification content -->
-
-            <!-- footer: refresh area -->
-            <span> Last updated on: 12/12/2013 9:43AM
-                <button type="button" data-loading-text="<i class='fa fa-refresh fa-spin'></i> Loading..." class="btn btn-xs btn-default pull-right">
-                    <i class="fa fa-refresh"></i>
-            </button> </span>
-            <!-- end footer -->
-
         </div>
-        <!-- END AJAX-DROPDOWN -->
     </div>
 
     <div class="pull-right">
@@ -77,7 +66,7 @@
             </li>
         </ul>
 
-        <!-- logout button -->
+        <!-- logout -->
         <div id="logout" class="btn-header transparent pull-right">
             <span> <a ui-sref="logout" title="Sign Out" data-action="userLogout"><i class="fa fa-sign-out"></i></a> </span>
         </div>
@@ -85,7 +74,6 @@
 
 </header>
 
-<!-- Note: This width of the aside area can be adjusted through LESS/SASS variables -->
 <aside id="left-panel">
 
     <!-- User info -->
@@ -117,10 +105,8 @@
     <span class="minifyme" data-action="minifyMenu"> <i class="fa fa-arrow-circle-left hit"></i> </span>
 </aside>
 
-<!-- #MAIN PANEL -->
 <div id="main" role="main">
 
-    <!-- RIBBON -->
     <div id="ribbon">
          <state-breadcrumbs></state-breadcrumbs>
     </div>

@@ -41,6 +41,7 @@ angular.module('app', [
 .directive('smartMenu', require('./directives/smartMenu'))
 .directive('stateBreadcrumbs', require('./directives/stateBreadcrumbs'))
 .directive('ngEnter', require('./directives/NgEnter'))
+.directive('notificationsToggle', require('./directives/notificationsToggle'))
 .filter('isEmpty', require('./filters/IsEmpty'))
 .controller('NavBarController', require('./app/NavBarController'))
 .service('ApiService', require('./services/ApiService'))

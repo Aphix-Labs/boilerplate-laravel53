@@ -46,7 +46,13 @@ module.exports = function OnConfig($stateProvider, $locationProvider, $urlRouter
     .state('app', {
       abstract: true,
       template: require('./layout/layout.html'),
-      controller: function(user) { this.user = user },
+      controller: function(user) {
+        this.user = user;
+        this.notificationsSize = _.size(user.notifications);
+        this.unreadNotificationsSize = _.size(_.filter(user.notifications, function(n) {
+          return ! n.read_at;
+        }));
+      },
       controllerAs: 'vm',
       resolve: {
         user: function(UserService, $auth, toastr, $state) {

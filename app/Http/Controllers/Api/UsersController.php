@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 
 use App\User;
+use App\Notifications\WelcomeNotification;
 use App\Filters\UserFilter;
 use App\Http\Requests;
 use App\Http\Controllers\ApiController;
@@ -33,7 +34,9 @@ class UsersController extends ApiController
             'roles.*'  => 'exists:roles,name'
         ]);
 
-        User::create($request->all())->syncRoles($request->roles);
+        $user = User::create($request->all())->syncRoles($request->roles);
+
+        $user->notify(new WelcomeNotification);
 
         return $this->respondStore();
     }

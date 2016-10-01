@@ -61,7 +61,7 @@
 /******/ 	__webpack_require__.p = "";
 
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 53);
+/******/ 	return __webpack_require__(__webpack_require__.s = 54);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -286,7 +286,7 @@ var _defaultParams2 = _interopRequireWildcard(_defaultParams);
  * Add modal + overlay to DOM
  */
 
-var _injectedHTML = __webpack_require__(41);
+var _injectedHTML = __webpack_require__(42);
 
 var _injectedHTML2 = _interopRequireWildcard(_injectedHTML);
 
@@ -10630,9 +10630,9 @@ return jQuery;
 
 'use strict'
 
-var base64 = __webpack_require__(36)
-var ieee754 = __webpack_require__(38)
-var isArray = __webpack_require__(37)
+var base64 = __webpack_require__(37)
+var ieee754 = __webpack_require__(39)
+var isArray = __webpack_require__(38)
 
 exports.Buffer = Buffer
 exports.SlowBuffer = SlowBuffer
@@ -12511,7 +12511,7 @@ module.exports = g;
 /* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
-__webpack_require__(30);
+__webpack_require__(31);
 module.exports = 'ngAnimate';
 
 
@@ -12519,7 +12519,7 @@ module.exports = 'ngAnimate';
 /* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
-__webpack_require__(31);
+__webpack_require__(32);
 module.exports = 'angular-loading-bar';
 
 
@@ -12527,7 +12527,7 @@ module.exports = 'angular-loading-bar';
 /* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
-__webpack_require__(32);
+__webpack_require__(33);
 module.exports = 'ngSanitize';
 
 
@@ -12606,7 +12606,7 @@ angular.module('oitozero.ngSweetAlert', [])
 /* 11 */
 /***/ function(module, exports, __webpack_require__) {
 
-__webpack_require__(33);
+__webpack_require__(34);
 module.exports = 'toastr';
 
 
@@ -12615,7 +12615,7 @@ module.exports = 'toastr';
 /* 12 */
 /***/ function(module, exports, __webpack_require__) {
 
-__webpack_require__(34);
+__webpack_require__(35);
 
 module.exports = 'ui.bootstrap';
 
@@ -17211,7 +17211,7 @@ angular.module('ui.router.state')
 /* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
-__webpack_require__(35);
+__webpack_require__(36);
 module.exports = angular;
 
 
@@ -19622,7 +19622,7 @@ if (typeof jQuery === 'undefined') {
   var undefined;
 
   /** Used as the semantic version number. */
-  var VERSION = '4.15.0';
+  var VERSION = '4.16.1';
 
   /** Used as the size to enable large array optimizations. */
   var LARGE_ARRAY_SIZE = 200;
@@ -19632,6 +19632,9 @@ if (typeof jQuery === 'undefined') {
 
   /** Used to stand-in for `undefined` hash values. */
   var HASH_UNDEFINED = '__lodash_hash_undefined__';
+
+  /** Used as the maximum memoize cache size. */
+  var MAX_MEMOIZE_SIZE = 500;
 
   /** Used as the internal argument placeholder. */
   var PLACEHOLDER = '__lodash_placeholder__';
@@ -19657,7 +19660,7 @@ if (typeof jQuery === 'undefined') {
       DEFAULT_TRUNC_OMISSION = '...';
 
   /** Used to detect hot functions by number of calls within a span of milliseconds. */
-  var HOT_COUNT = 150,
+  var HOT_COUNT = 500,
       HOT_SPAN = 16;
 
   /** Used to indicate the type of lazy iteratees. */
@@ -19726,8 +19729,8 @@ if (typeof jQuery === 'undefined') {
       reEmptyStringTrailing = /(__e\(.*?\)|\b__t\)) \+\n'';/g;
 
   /** Used to match HTML entities and HTML characters. */
-  var reEscapedHtml = /&(?:amp|lt|gt|quot|#39|#96);/g,
-      reUnescapedHtml = /[&<>"'`]/g,
+  var reEscapedHtml = /&(?:amp|lt|gt|quot|#39);/g,
+      reUnescapedHtml = /[&<>"']/g,
       reHasEscapedHtml = RegExp(reEscapedHtml.source),
       reHasUnescapedHtml = RegExp(reUnescapedHtml.source);
 
@@ -19773,9 +19776,6 @@ if (typeof jQuery === 'undefined') {
 
   /** Used to match `RegExp` flags from their coerced string values. */
   var reFlags = /\w*$/;
-
-  /** Used to detect hexadecimal string values. */
-  var reHasHexPrefix = /^0x/i;
 
   /** Used to detect bad signed hexadecimal string values. */
   var reIsBadHex = /^[-+]0x[0-9a-f]+$/i;
@@ -19971,7 +19971,7 @@ if (typeof jQuery === 'undefined') {
     '\u017a': 'z',  '\u017c': 'z', '\u017e': 'z',
     '\u0132': 'IJ', '\u0133': 'ij',
     '\u0152': 'Oe', '\u0153': 'oe',
-    '\u0149': "'n", '\u017f': 'ss'
+    '\u0149': "'n", '\u017f': 's'
   };
 
   /** Used to map characters to HTML entities. */
@@ -19980,8 +19980,7 @@ if (typeof jQuery === 'undefined') {
     '<': '&lt;',
     '>': '&gt;',
     '"': '&quot;',
-    "'": '&#39;',
-    '`': '&#96;'
+    "'": '&#39;'
   };
 
   /** Used to map HTML entities to characters. */
@@ -19990,8 +19989,7 @@ if (typeof jQuery === 'undefined') {
     '&lt;': '<',
     '&gt;': '>',
     '&quot;': '"',
-    '&#39;': "'",
-    '&#96;': '`'
+    '&#39;': "'"
   };
 
   /** Used to escape characters for inclusion in compiled string literals. */
@@ -20432,18 +20430,9 @@ if (typeof jQuery === 'undefined') {
    * @returns {number} Returns the index of the matched value, else `-1`.
    */
   function baseIndexOf(array, value, fromIndex) {
-    if (value !== value) {
-      return baseFindIndex(array, baseIsNaN, fromIndex);
-    }
-    var index = fromIndex - 1,
-        length = array.length;
-
-    while (++index < length) {
-      if (array[index] === value) {
-        return index;
-      }
-    }
-    return -1;
+    return value === value
+      ? strictIndexOf(array, value, fromIndex)
+      : baseFindIndex(array, baseIsNaN, fromIndex);
   }
 
   /**
@@ -20648,7 +20637,7 @@ if (typeof jQuery === 'undefined') {
   }
 
   /**
-   * Checks if a cache value for `key` exists.
+   * Checks if a `cache` value for `key` exists.
    *
    * @private
    * @param {Object} cache The cache to query.
@@ -20706,7 +20695,7 @@ if (typeof jQuery === 'undefined') {
 
     while (length--) {
       if (array[length] === placeholder) {
-        result++;
+        ++result;
       }
     }
     return result;
@@ -20774,25 +20763,6 @@ if (typeof jQuery === 'undefined') {
    */
   function hasUnicodeWord(string) {
     return reHasUnicodeWord.test(string);
-  }
-
-  /**
-   * Checks if `value` is a host object in IE < 9.
-   *
-   * @private
-   * @param {*} value The value to check.
-   * @returns {boolean} Returns `true` if `value` is a host object, else `false`.
-   */
-  function isHostObject(value) {
-    // Many host objects are `Object` objects that can coerce to strings
-    // despite having improperly defined `toString` methods.
-    var result = false;
-    if (value != null && typeof value.toString != 'function') {
-      try {
-        result = !!(value + '');
-      } catch (e) {}
-    }
-    return result;
   }
 
   /**
@@ -20903,6 +20873,48 @@ if (typeof jQuery === 'undefined') {
   }
 
   /**
+   * A specialized version of `_.indexOf` which performs strict equality
+   * comparisons of values, i.e. `===`.
+   *
+   * @private
+   * @param {Array} array The array to inspect.
+   * @param {*} value The value to search for.
+   * @param {number} fromIndex The index to search from.
+   * @returns {number} Returns the index of the matched value, else `-1`.
+   */
+  function strictIndexOf(array, value, fromIndex) {
+    var index = fromIndex - 1,
+        length = array.length;
+
+    while (++index < length) {
+      if (array[index] === value) {
+        return index;
+      }
+    }
+    return -1;
+  }
+
+  /**
+   * A specialized version of `_.lastIndexOf` which performs strict equality
+   * comparisons of values, i.e. `===`.
+   *
+   * @private
+   * @param {Array} array The array to inspect.
+   * @param {*} value The value to search for.
+   * @param {number} fromIndex The index to search from.
+   * @returns {number} Returns the index of the matched value, else `-1`.
+   */
+  function strictLastIndexOf(array, value, fromIndex) {
+    var index = fromIndex + 1;
+    while (index--) {
+      if (array[index] === value) {
+        return index;
+      }
+    }
+    return index;
+  }
+
+  /**
    * Gets the number of symbols in `string`.
    *
    * @private
@@ -20947,7 +20959,7 @@ if (typeof jQuery === 'undefined') {
   function unicodeSize(string) {
     var result = reUnicode.lastIndex = 0;
     while (reUnicode.test(string)) {
-      result++;
+      ++result;
     }
     return result;
   }
@@ -21002,17 +21014,10 @@ if (typeof jQuery === 'undefined') {
    * lodash.isFunction(lodash.bar);
    * // => true
    *
-   * // Use `context` to stub `Date#getTime` use in `_.now`.
-   * var stubbed = _.runInContext({
-   *   'Date': function() {
-   *     return { 'getTime': stubGetTime };
-   *   }
-   * });
-   *
    * // Create a suped-up `defer` in Node.js.
    * var defer = _.runInContext({ 'setTimeout': setImmediate }).defer;
    */
-  function runInContext(context) {
+  var runInContext = (function runInContext(context) {
     context = context ? _.defaults(root.Object(), context, _.pick(root, contextProps)) : root;
 
     /** Built-in constructor references. */
@@ -21072,6 +21077,7 @@ if (typeof jQuery === 'undefined') {
     var Buffer = moduleExports ? context.Buffer : undefined,
         Symbol = context.Symbol,
         Uint8Array = context.Uint8Array,
+        defineProperty = Object.defineProperty,
         getPrototype = overArg(Object.getPrototypeOf, Object),
         iteratorSymbol = Symbol ? Symbol.iterator : undefined,
         objectCreate = Object.create,
@@ -21094,6 +21100,7 @@ if (typeof jQuery === 'undefined') {
         nativeKeys = overArg(Object.keys, Object),
         nativeMax = Math.max,
         nativeMin = Math.min,
+        nativeNow = Date.now,
         nativeParseInt = context.parseInt,
         nativeRandom = Math.random,
         nativeReverse = arrayProto.reverse;
@@ -21104,21 +21111,11 @@ if (typeof jQuery === 'undefined') {
         Promise = getNative(context, 'Promise'),
         Set = getNative(context, 'Set'),
         WeakMap = getNative(context, 'WeakMap'),
-        nativeCreate = getNative(Object, 'create');
-
-    /* Used to set `toString` methods. */
-    var defineProperty = (function() {
-      var func = getNative(Object, 'defineProperty'),
-          name = getNative.name;
-
-      return (name && name.length > 2) ? func : undefined;
-    }());
+        nativeCreate = getNative(Object, 'create'),
+        nativeDefineProperty = getNative(Object, 'defineProperty');
 
     /** Used to store function metadata. */
     var metaMap = WeakMap && new WeakMap;
-
-    /** Detect if properties shadowing those on `Object.prototype` are non-enumerable. */
-    var nonEnumShadows = !propertyIsEnumerable.call({ 'valueOf': 1 }, 'valueOf');
 
     /** Used to lookup unminified function names. */
     var realNames = {};
@@ -21509,6 +21506,7 @@ if (typeof jQuery === 'undefined') {
      */
     function hashClear() {
       this.__data__ = nativeCreate ? nativeCreate(null) : {};
+      this.size = 0;
     }
 
     /**
@@ -21522,7 +21520,9 @@ if (typeof jQuery === 'undefined') {
      * @returns {boolean} Returns `true` if the entry was removed, else `false`.
      */
     function hashDelete(key) {
-      return this.has(key) && delete this.__data__[key];
+      var result = this.has(key) && delete this.__data__[key];
+      this.size -= result ? 1 : 0;
+      return result;
     }
 
     /**
@@ -21569,6 +21569,7 @@ if (typeof jQuery === 'undefined') {
      */
     function hashSet(key, value) {
       var data = this.__data__;
+      this.size += this.has(key) ? 0 : 1;
       data[key] = (nativeCreate && value === undefined) ? HASH_UNDEFINED : value;
       return this;
     }
@@ -21611,6 +21612,7 @@ if (typeof jQuery === 'undefined') {
      */
     function listCacheClear() {
       this.__data__ = [];
+      this.size = 0;
     }
 
     /**
@@ -21635,6 +21637,7 @@ if (typeof jQuery === 'undefined') {
       } else {
         splice.call(data, index, 1);
       }
+      --this.size;
       return true;
     }
 
@@ -21682,6 +21685,7 @@ if (typeof jQuery === 'undefined') {
           index = assocIndexOf(data, key);
 
       if (index < 0) {
+        ++this.size;
         data.push([key, value]);
       } else {
         data[index][1] = value;
@@ -21726,6 +21730,7 @@ if (typeof jQuery === 'undefined') {
      * @memberOf MapCache
      */
     function mapCacheClear() {
+      this.size = 0;
       this.__data__ = {
         'hash': new Hash,
         'map': new (Map || ListCache),
@@ -21743,7 +21748,9 @@ if (typeof jQuery === 'undefined') {
      * @returns {boolean} Returns `true` if the entry was removed, else `false`.
      */
     function mapCacheDelete(key) {
-      return getMapData(this, key)['delete'](key);
+      var result = getMapData(this, key)['delete'](key);
+      this.size -= result ? 1 : 0;
+      return result;
     }
 
     /**
@@ -21783,7 +21790,11 @@ if (typeof jQuery === 'undefined') {
      * @returns {Object} Returns the map cache instance.
      */
     function mapCacheSet(key, value) {
-      getMapData(this, key).set(key, value);
+      var data = getMapData(this, key),
+          size = data.size;
+
+      data.set(key, value);
+      this.size += data.size == size ? 0 : 1;
       return this;
     }
 
@@ -21858,7 +21869,8 @@ if (typeof jQuery === 'undefined') {
      * @param {Array} [entries] The key-value pairs to cache.
      */
     function Stack(entries) {
-      this.__data__ = new ListCache(entries);
+      var data = this.__data__ = new ListCache(entries);
+      this.size = data.size;
     }
 
     /**
@@ -21870,6 +21882,7 @@ if (typeof jQuery === 'undefined') {
      */
     function stackClear() {
       this.__data__ = new ListCache;
+      this.size = 0;
     }
 
     /**
@@ -21882,7 +21895,11 @@ if (typeof jQuery === 'undefined') {
      * @returns {boolean} Returns `true` if the entry was removed, else `false`.
      */
     function stackDelete(key) {
-      return this.__data__['delete'](key);
+      var data = this.__data__,
+          result = data['delete'](key);
+
+      this.size = data.size;
+      return result;
     }
 
     /**
@@ -21922,16 +21939,18 @@ if (typeof jQuery === 'undefined') {
      * @returns {Object} Returns the stack cache instance.
      */
     function stackSet(key, value) {
-      var cache = this.__data__;
-      if (cache instanceof ListCache) {
-        var pairs = cache.__data__;
+      var data = this.__data__;
+      if (data instanceof ListCache) {
+        var pairs = data.__data__;
         if (!Map || (pairs.length < LARGE_ARRAY_SIZE - 1)) {
           pairs.push([key, value]);
+          this.size = ++data.size;
           return this;
         }
-        cache = this.__data__ = new MapCache(pairs);
+        data = this.__data__ = new MapCache(pairs);
       }
-      cache.set(key, value);
+      data.set(key, value);
+      this.size = data.size;
       return this;
     }
 
@@ -21972,6 +21991,44 @@ if (typeof jQuery === 'undefined') {
     }
 
     /**
+     * A specialized version of `_.sample` for arrays without support for iteratee
+     * shorthands.
+     *
+     * @private
+     * @param {Array} array The array to sample.
+     * @returns {*} Returns the random element.
+     */
+    function arraySample(array) {
+      var length = array.length;
+      return length ? array[baseRandom(0, length - 1)] : undefined;
+    }
+
+    /**
+     * A specialized version of `_.sampleSize` for arrays.
+     *
+     * @private
+     * @param {Array} array The array to sample.
+     * @param {number} n The number of elements to sample.
+     * @returns {Array} Returns the random elements.
+     */
+    function arraySampleSize(array, n) {
+      var result = arrayShuffle(array);
+      result.length = baseClamp(n, 0, result.length);
+      return result;
+    }
+
+    /**
+     * A specialized version of `_.shuffle` for arrays.
+     *
+     * @private
+     * @param {Array} array The array to shuffle.
+     * @returns {Array} Returns the new shuffled array.
+     */
+    function arrayShuffle(array) {
+      return shuffleSelf(copyArray(array));
+    }
+
+    /**
      * Used by `_.defaults` to customize its `_.assignIn` use.
      *
      * @private
@@ -22001,7 +22058,7 @@ if (typeof jQuery === 'undefined') {
     function assignMergeValue(object, key, value) {
       if ((value !== undefined && !eq(object[key], value)) ||
           (typeof key == 'number' && value === undefined && !(key in object))) {
-        object[key] = value;
+        baseAssignValue(object, key, value);
       }
     }
 
@@ -22019,7 +22076,7 @@ if (typeof jQuery === 'undefined') {
       var objValue = object[key];
       if (!(hasOwnProperty.call(object, key) && eq(objValue, value)) ||
           (value === undefined && !(key in object))) {
-        object[key] = value;
+        baseAssignValue(object, key, value);
       }
     }
 
@@ -22070,6 +22127,28 @@ if (typeof jQuery === 'undefined') {
      */
     function baseAssign(object, source) {
       return object && copyObject(source, keys(source), object);
+    }
+
+    /**
+     * The base implementation of `assignValue` and `assignMergeValue` without
+     * value checks.
+     *
+     * @private
+     * @param {Object} object The object to modify.
+     * @param {string} key The key of the property to assign.
+     * @param {*} value The value to assign.
+     */
+    function baseAssignValue(object, key, value) {
+      if (key == '__proto__' && defineProperty) {
+        defineProperty(object, key, {
+          'configurable': true,
+          'enumerable': true,
+          'value': value,
+          'writable': true
+        });
+      } else {
+        object[key] = value;
+      }
     }
 
     /**
@@ -22152,9 +22231,6 @@ if (typeof jQuery === 'undefined') {
           return cloneBuffer(value, isDeep);
         }
         if (tag == objectTag || tag == argsTag || (isFunc && !object)) {
-          if (isHostObject(value)) {
-            return object ? value : {};
-          }
           result = initCloneObject(isFunc ? {} : value);
           if (!isDeep) {
             return copySymbols(value, baseAssign(result, value));
@@ -22798,8 +22874,8 @@ if (typeof jQuery === 'undefined') {
         othTag = getTag(other);
         othTag = othTag == argsTag ? objectTag : othTag;
       }
-      var objIsObj = objTag == objectTag && !isHostObject(object),
-          othIsObj = othTag == objectTag && !isHostObject(other),
+      var objIsObj = objTag == objectTag,
+          othIsObj = othTag == objectTag,
           isSameTag = objTag == othTag;
 
       if (isSameTag && !objIsObj) {
@@ -22904,7 +22980,7 @@ if (typeof jQuery === 'undefined') {
       if (!isObject(value) || isMasked(value)) {
         return false;
       }
-      var pattern = (isFunction(value) || isHostObject(value)) ? reIsNative : reIsHostCtor;
+      var pattern = isFunction(value) ? reIsNative : reIsHostCtor;
       return pattern.test(toSource(value));
     }
 
@@ -23262,7 +23338,7 @@ if (typeof jQuery === 'undefined') {
             value = object[key];
 
         if (predicate(value, key)) {
-          result[key] = value;
+          baseAssignValue(result, key, value);
         }
       }
       return result;
@@ -23428,24 +23504,7 @@ if (typeof jQuery === 'undefined') {
      * @returns {Function} Returns the new function.
      */
     function baseRest(func, start) {
-      start = nativeMax(start === undefined ? (func.length - 1) : start, 0);
-      return function() {
-        var args = arguments,
-            index = -1,
-            length = nativeMax(args.length - start, 0),
-            array = Array(length);
-
-        while (++index < length) {
-          array[index] = args[start + index];
-        }
-        index = -1;
-        var otherArgs = Array(start + 1);
-        while (++index < start) {
-          otherArgs[index] = args[index];
-        }
-        otherArgs[start] = array;
-        return apply(func, this, otherArgs);
-      };
+      return setToString(overRest(func, start, identity), func + '');
     }
 
     /**
@@ -23489,7 +23548,7 @@ if (typeof jQuery === 'undefined') {
     }
 
     /**
-     * The base implementation of `setData` without support for hot loop detection.
+     * The base implementation of `setData` without support for hot loop shorting.
      *
      * @private
      * @param {Function} func The function to associate metadata with.
@@ -23499,6 +23558,23 @@ if (typeof jQuery === 'undefined') {
     var baseSetData = !metaMap ? identity : function(func, data) {
       metaMap.set(func, data);
       return func;
+    };
+
+    /**
+     * The base implementation of `setToString` without support for hot loop shorting.
+     *
+     * @private
+     * @param {Function} func The function to modify.
+     * @param {Function} string The `toString` result.
+     * @returns {Function} Returns `func`.
+     */
+    var baseSetToString = !nativeDefineProperty ? identity : function(func, string) {
+      return nativeDefineProperty(func, 'toString', {
+        'configurable': true,
+        'enumerable': false,
+        'value': constant(string),
+        'writable': true
+      });
     };
 
     /**
@@ -23916,6 +23992,17 @@ if (typeof jQuery === 'undefined') {
     }
 
     /**
+     * A `baseRest` alias which can be replaced with `identity` by module
+     * replacement plugins.
+     *
+     * @private
+     * @type {Function}
+     * @param {Function} func The function to apply a rest parameter to.
+     * @returns {Function} Returns the new function.
+     */
+    var castRest = baseRest;
+
+    /**
      * Casts `array` to a slice if it's needed.
      *
      * @private
@@ -24229,6 +24316,7 @@ if (typeof jQuery === 'undefined') {
      * @returns {Object} Returns `object`.
      */
     function copyObject(source, props, object, customizer) {
+      var isNew = !object;
       object || (object = {});
 
       var index = -1,
@@ -24241,7 +24329,14 @@ if (typeof jQuery === 'undefined') {
           ? customizer(object[key], source[key], key, object, source)
           : undefined;
 
-        assignValue(object, key, newValue === undefined ? source[key] : newValue);
+        if (newValue === undefined) {
+          newValue = source[key];
+        }
+        if (isNew) {
+          baseAssignValue(object, key, newValue);
+        } else {
+          assignValue(object, key, newValue);
+        }
       }
       return object;
     }
@@ -24522,9 +24617,7 @@ if (typeof jQuery === 'undefined') {
      * @returns {Function} Returns the new flow function.
      */
     function createFlow(fromRight) {
-      return baseRest(function(funcs) {
-        funcs = baseFlatten(funcs, 1);
-
+      return flatRest(function(funcs) {
         var length = funcs.length,
             index = length,
             prereq = LodashWrapper.prototype.thru;
@@ -24711,11 +24804,8 @@ if (typeof jQuery === 'undefined') {
      * @returns {Function} Returns the new over function.
      */
     function createOver(arrayFunc) {
-      return baseRest(function(iteratees) {
-        iteratees = (iteratees.length == 1 && isArray(iteratees[0]))
-          ? arrayMap(iteratees[0], baseUnary(getIteratee()))
-          : arrayMap(baseFlatten(iteratees, 1), baseUnary(getIteratee()));
-
+      return flatRest(function(iteratees) {
+        iteratees = arrayMap(iteratees, baseUnary(getIteratee()));
         return baseRest(function(args) {
           var thisArg = this;
           return arrayFunc(iteratees, function(iteratee) {
@@ -25060,9 +25150,9 @@ if (typeof jQuery === 'undefined') {
         // Recursively compare arrays (susceptible to call stack limits).
         if (seen) {
           if (!arraySome(other, function(othValue, othIndex) {
-                if (!seen.has(othIndex) &&
+                if (!cacheHas(seen, othIndex) &&
                     (arrValue === othValue || equalFunc(arrValue, othValue, customizer, bitmask, stack))) {
-                  return seen.add(othIndex);
+                  return seen.push(othIndex);
                 }
               })) {
             result = false;
@@ -25243,6 +25333,17 @@ if (typeof jQuery === 'undefined') {
     }
 
     /**
+     * A specialized version of `baseRest` which flattens the rest array.
+     *
+     * @private
+     * @param {Function} func The function to apply a rest parameter to.
+     * @returns {Function} Returns the new function.
+     */
+    function flatRest(func) {
+      return setToString(overRest(func, undefined, flatten), func + '');
+    }
+
+    /**
      * Creates an array of own enumerable property names and symbols of `object`.
      *
      * @private
@@ -25410,8 +25511,7 @@ if (typeof jQuery === 'undefined') {
      */
     var getTag = baseGetTag;
 
-    // Fallback for data views, maps, sets, and weak maps in IE 11,
-    // for data views in Edge < 14, and promises in Node.js.
+    // Fallback for data views, maps, sets, and weak maps in IE 11 and promises in Node.js < 6.
     if ((DataView && getTag(new DataView(new ArrayBuffer(1))) != dataViewTag) ||
         (Map && getTag(new Map) != mapTag) ||
         (Promise && getTag(Promise.resolve()) != promiseTag) ||
@@ -25487,9 +25587,9 @@ if (typeof jQuery === 'undefined') {
     function hasPath(object, path, hasFunc) {
       path = isKey(path, object) ? [path] : castPath(path);
 
-      var result,
-          index = -1,
-          length = path.length;
+      var index = -1,
+          length = path.length,
+          result = false;
 
       while (++index < length) {
         var key = toKey(path[index]);
@@ -25498,10 +25598,10 @@ if (typeof jQuery === 'undefined') {
         }
         object = object[key];
       }
-      if (result) {
+      if (result || ++index != length) {
         return result;
       }
-      var length = object ? object.length : 0;
+      length = object ? object.length : 0;
       return !!length && isLength(length) && isIndex(key, length) &&
         (isArray(object) || isArguments(object));
     }
@@ -25596,9 +25696,11 @@ if (typeof jQuery === 'undefined') {
      * @returns {string} Returns the modified source.
      */
     function insertWrapDetails(source, details) {
-      var length = details.length,
-          lastIndex = length - 1;
-
+      var length = details.length;
+      if (!length) {
+        return source;
+      }
+      var lastIndex = length - 1;
       details[lastIndex] = (length > 1 ? '& ' : '') + details[lastIndex];
       details = details.join(length > 2 ? ', ' : ' ');
       return source.replace(reWrapComment, '{\n/* [wrapped with ' + details + '] */\n');
@@ -25778,6 +25880,26 @@ if (typeof jQuery === 'undefined') {
     }
 
     /**
+     * A specialized version of `_.memoize` which clears the memoized function's
+     * cache when it exceeds `MAX_MEMOIZE_SIZE`.
+     *
+     * @private
+     * @param {Function} func The function to have its output memoized.
+     * @returns {Function} Returns the new memoized function.
+     */
+    function memoizeCapped(func) {
+      var result = memoize(func, function(key) {
+        if (cache.size === MAX_MEMOIZE_SIZE) {
+          cache.clear();
+        }
+        return key;
+      });
+
+      var cache = result.cache;
+      return result;
+    }
+
+    /**
      * Merges the function metadata of `source` into `data`.
      *
      * Merging metadata reduces the number of wrappers used to invoke a function.
@@ -25891,6 +26013,36 @@ if (typeof jQuery === 'undefined') {
     }
 
     /**
+     * A specialized version of `baseRest` which transforms the rest array.
+     *
+     * @private
+     * @param {Function} func The function to apply a rest parameter to.
+     * @param {number} [start=func.length-1] The start position of the rest parameter.
+     * @param {Function} transform The rest array transform.
+     * @returns {Function} Returns the new function.
+     */
+    function overRest(func, start, transform) {
+      start = nativeMax(start === undefined ? (func.length - 1) : start, 0);
+      return function() {
+        var args = arguments,
+            index = -1,
+            length = nativeMax(args.length - start, 0),
+            array = Array(length);
+
+        while (++index < length) {
+          array[index] = args[start + index];
+        }
+        index = -1;
+        var otherArgs = Array(start + 1);
+        while (++index < start) {
+          otherArgs[index] = args[index];
+        }
+        otherArgs[start] = transform(array);
+        return apply(func, this, otherArgs);
+      };
+    }
+
+    /**
      * Gets the parent value at `path` of `object`.
      *
      * @private
@@ -25938,25 +26090,7 @@ if (typeof jQuery === 'undefined') {
      * @param {*} data The metadata.
      * @returns {Function} Returns `func`.
      */
-    var setData = (function() {
-      var count = 0,
-          lastCalled = 0;
-
-      return function(key, value) {
-        var stamp = now(),
-            remaining = HOT_SPAN - (stamp - lastCalled);
-
-        lastCalled = stamp;
-        if (remaining > 0) {
-          if (++count >= HOT_COUNT) {
-            return key;
-          }
-        } else {
-          count = 0;
-        }
-        return baseSetData(key, value);
-      };
-    }());
+    var setData = shortOut(baseSetData);
 
     /**
      * A simple wrapper around the global [`setTimeout`](https://mdn.io/setTimeout).
@@ -25971,6 +26105,16 @@ if (typeof jQuery === 'undefined') {
     };
 
     /**
+     * Sets the `toString` method of `func` to return `string`.
+     *
+     * @private
+     * @param {Function} func The function to modify.
+     * @param {Function} string The `toString` result.
+     * @returns {Function} Returns `func`.
+     */
+    var setToString = shortOut(baseSetToString);
+
+    /**
      * Sets the `toString` method of `wrapper` to mimic the source of `reference`
      * with wrapper details in a comment at the top of the source body.
      *
@@ -25980,14 +26124,61 @@ if (typeof jQuery === 'undefined') {
      * @param {number} bitmask The bitmask flags. See `createWrap` for more details.
      * @returns {Function} Returns `wrapper`.
      */
-    var setWrapToString = !defineProperty ? identity : function(wrapper, reference, bitmask) {
+    function setWrapToString(wrapper, reference, bitmask) {
       var source = (reference + '');
-      return defineProperty(wrapper, 'toString', {
-        'configurable': true,
-        'enumerable': false,
-        'value': constant(insertWrapDetails(source, updateWrapDetails(getWrapDetails(source), bitmask)))
-      });
-    };
+      return setToString(wrapper, insertWrapDetails(source, updateWrapDetails(getWrapDetails(source), bitmask)));
+    }
+
+    /**
+     * Creates a function that'll short out and invoke `identity` instead
+     * of `func` when it's called `HOT_COUNT` or more times in `HOT_SPAN`
+     * milliseconds.
+     *
+     * @private
+     * @param {Function} func The function to restrict.
+     * @returns {Function} Returns the new shortable function.
+     */
+    function shortOut(func) {
+      var count = 0,
+          lastCalled = 0;
+
+      return function() {
+        var stamp = nativeNow(),
+            remaining = HOT_SPAN - (stamp - lastCalled);
+
+        lastCalled = stamp;
+        if (remaining > 0) {
+          if (++count >= HOT_COUNT) {
+            return arguments[0];
+          }
+        } else {
+          count = 0;
+        }
+        return func.apply(undefined, arguments);
+      };
+    }
+
+    /**
+     * A specialized version of `arrayShuffle` which mutates `array`.
+     *
+     * @private
+     * @param {Array} array The array to shuffle.
+     * @returns {Array} Returns `array`.
+     */
+    function shuffleSelf(array) {
+      var index = -1,
+          length = array.length,
+          lastIndex = length - 1;
+
+      while (++index < length) {
+        var rand = baseRandom(index, lastIndex),
+            value = array[rand];
+
+        array[rand] = array[index];
+        array[index] = value;
+      }
+      return array;
+    }
 
     /**
      * Converts `string` to a property path array.
@@ -25996,7 +26187,7 @@ if (typeof jQuery === 'undefined') {
      * @param {string} string The string to convert.
      * @returns {Array} Returns the property path array.
      */
-    var stringToPath = memoize(function(string) {
+    var stringToPath = memoizeCapped(function(string) {
       string = toString(string);
 
       var result = [];
@@ -26177,24 +26368,25 @@ if (typeof jQuery === 'undefined') {
     function concat() {
       var arguments$1 = arguments;
 
-      var length = arguments.length,
-          args = Array(length ? length - 1 : 0),
+      var length = arguments.length;
+      if (!length) {
+        return [];
+      }
+      var args = Array(length - 1),
           array = arguments[0],
           index = length;
 
       while (index--) {
         args[index - 1] = arguments$1[index];
       }
-      return length
-        ? arrayPush(isArray(array) ? copyArray(array) : [array], baseFlatten(args, 1))
-        : [];
+      return arrayPush(isArray(array) ? copyArray(array) : [array], baseFlatten(args, 1));
     }
 
     /**
      * Creates an array of `array` values not included in the other given arrays
      * using [`SameValueZero`](http://ecma-international.org/ecma-262/7.0/#sec-samevaluezero)
-     * for equality comparisons. The order of result values is determined by the
-     * order they occur in the first array.
+     * for equality comparisons. The order and references of result values are
+     * determined by the first array.
      *
      * **Note:** Unlike `_.pullAll`, this method returns a new array.
      *
@@ -26220,8 +26412,9 @@ if (typeof jQuery === 'undefined') {
     /**
      * This method is like `_.difference` except that it accepts `iteratee` which
      * is invoked for each element of `array` and `values` to generate the criterion
-     * by which they're compared. Result values are chosen from the first array.
-     * The iteratee is invoked with one argument: (value).
+     * by which they're compared. The order and references of result values are
+     * determined by the first array. The iteratee is invoked with one argument:
+     * (value).
      *
      * **Note:** Unlike `_.pullAllBy`, this method returns a new array.
      *
@@ -26254,9 +26447,9 @@ if (typeof jQuery === 'undefined') {
 
     /**
      * This method is like `_.difference` except that it accepts `comparator`
-     * which is invoked to compare elements of `array` to `values`. Result values
-     * are chosen from the first array. The comparator is invoked with two arguments:
-     * (arrVal, othVal).
+     * which is invoked to compare elements of `array` to `values`. The order and
+     * references of result values are determined by the first array. The comparator
+     * is invoked with two arguments: (arrVal, othVal).
      *
      * **Note:** Unlike `_.pullAllWith`, this method returns a new array.
      *
@@ -26750,8 +26943,8 @@ if (typeof jQuery === 'undefined') {
     /**
      * Creates an array of unique values that are included in all given arrays
      * using [`SameValueZero`](http://ecma-international.org/ecma-262/7.0/#sec-samevaluezero)
-     * for equality comparisons. The order of result values is determined by the
-     * order they occur in the first array.
+     * for equality comparisons. The order and references of result values are
+     * determined by the first array.
      *
      * @static
      * @memberOf _
@@ -26774,8 +26967,9 @@ if (typeof jQuery === 'undefined') {
     /**
      * This method is like `_.intersection` except that it accepts `iteratee`
      * which is invoked for each element of each `arrays` to generate the criterion
-     * by which they're compared. Result values are chosen from the first array.
-     * The iteratee is invoked with one argument: (value).
+     * by which they're compared. The order and references of result values are
+     * determined by the first array. The iteratee is invoked with one argument:
+     * (value).
      *
      * @static
      * @memberOf _
@@ -26809,9 +27003,9 @@ if (typeof jQuery === 'undefined') {
 
     /**
      * This method is like `_.intersection` except that it accepts `comparator`
-     * which is invoked to compare elements of `arrays`. Result values are chosen
-     * from the first array. The comparator is invoked with two arguments:
-     * (arrVal, othVal).
+     * which is invoked to compare elements of `arrays`. The order and references
+     * of result values are determined by the first array. The comparator is
+     * invoked with two arguments: (arrVal, othVal).
      *
      * @static
      * @memberOf _
@@ -26909,21 +27103,11 @@ if (typeof jQuery === 'undefined') {
       var index = length;
       if (fromIndex !== undefined) {
         index = toInteger(fromIndex);
-        index = (
-          index < 0
-            ? nativeMax(length + index, 0)
-            : nativeMin(index, length - 1)
-        ) + 1;
+        index = index < 0 ? nativeMax(length + index, 0) : nativeMin(index, length - 1);
       }
-      if (value !== value) {
-        return baseFindIndex(array, baseIsNaN, index - 1, true);
-      }
-      while (index--) {
-        if (array[index] === value) {
-          return index;
-        }
-      }
-      return -1;
+      return value === value
+        ? strictLastIndexOf(array, value, index)
+        : baseFindIndex(array, baseIsNaN, index, true);
     }
 
     /**
@@ -27085,9 +27269,7 @@ if (typeof jQuery === 'undefined') {
      * console.log(pulled);
      * // => ['b', 'd']
      */
-    var pullAt = baseRest(function(array, indexes) {
-      indexes = baseFlatten(indexes, 1);
-
+    var pullAt = flatRest(function(array, indexes) {
       var length = array ? array.length : 0,
           result = baseAt(array, indexes);
 
@@ -27662,8 +27844,9 @@ if (typeof jQuery === 'undefined') {
     /**
      * Creates a duplicate-free version of an array, using
      * [`SameValueZero`](http://ecma-international.org/ecma-262/7.0/#sec-samevaluezero)
-     * for equality comparisons, in which only the first occurrence of each
-     * element is kept.
+     * for equality comparisons, in which only the first occurrence of each element
+     * is kept. The order of result values is determined by the order they occur
+     * in the array.
      *
      * @static
      * @memberOf _
@@ -27685,7 +27868,9 @@ if (typeof jQuery === 'undefined') {
     /**
      * This method is like `_.uniq` except that it accepts `iteratee` which is
      * invoked for each element in `array` to generate the criterion by which
-     * uniqueness is computed. The iteratee is invoked with one argument: (value).
+     * uniqueness is computed. The order of result values is determined by the
+     * order they occur in the array. The iteratee is invoked with one argument:
+     * (value).
      *
      * @static
      * @memberOf _
@@ -27712,8 +27897,9 @@ if (typeof jQuery === 'undefined') {
 
     /**
      * This method is like `_.uniq` except that it accepts `comparator` which
-     * is invoked to compare elements of `array`. The comparator is invoked with
-     * two arguments: (arrVal, othVal).
+     * is invoked to compare elements of `array`. The order of result values is
+     * determined by the order they occur in the array.The comparator is invoked
+     * with two arguments: (arrVal, othVal).
      *
      * @static
      * @memberOf _
@@ -27855,8 +28041,9 @@ if (typeof jQuery === 'undefined') {
     /**
      * This method is like `_.xor` except that it accepts `iteratee` which is
      * invoked for each element of each `arrays` to generate the criterion by
-     * which by which they're compared. The iteratee is invoked with one argument:
-     * (value).
+     * which by which they're compared. The order of result values is determined
+     * by the order they occur in the arrays. The iteratee is invoked with one
+     * argument: (value).
      *
      * @static
      * @memberOf _
@@ -27885,8 +28072,9 @@ if (typeof jQuery === 'undefined') {
 
     /**
      * This method is like `_.xor` except that it accepts `comparator` which is
-     * invoked to compare elements of `arrays`. The comparator is invoked with
-     * two arguments: (arrVal, othVal).
+     * invoked to compare elements of `arrays`. The order of result values is
+     * determined by the order they occur in the arrays. The comparator is invoked
+     * with two arguments: (arrVal, othVal).
      *
      * @static
      * @memberOf _
@@ -28103,8 +28291,7 @@ if (typeof jQuery === 'undefined') {
      * _(object).at(['a[0].b.c', 'a[1]']).value();
      * // => [3, 4]
      */
-    var wrapperAt = baseRest(function(paths) {
-      paths = baseFlatten(paths, 1);
+    var wrapperAt = flatRest(function(paths) {
       var length = paths.length,
           start = length ? paths[0] : 0,
           value = this.__wrapped__,
@@ -28369,7 +28556,11 @@ if (typeof jQuery === 'undefined') {
      * // => { '3': 2, '5': 1 }
      */
     var countBy = createAggregator(function(result, value, key) {
-      hasOwnProperty.call(result, key) ? ++result[key] : (result[key] = 1);
+      if (hasOwnProperty.call(result, key)) {
+        ++result[key];
+      } else {
+        baseAssignValue(result, key, 1);
+      }
     });
 
     /**
@@ -28624,7 +28815,7 @@ if (typeof jQuery === 'undefined') {
      * @see _.forEachRight
      * @example
      *
-     * _([1, 2]).forEach(function(value) {
+     * _.forEach([1, 2], function(value) {
      *   console.log(value);
      * });
      * // => Logs `1` then `2`.
@@ -28692,7 +28883,7 @@ if (typeof jQuery === 'undefined') {
       if (hasOwnProperty.call(result, key)) {
         result[key].push(value);
       } else {
-        result[key] = [value];
+        baseAssignValue(result, key, [value]);
       }
     });
 
@@ -28805,7 +28996,7 @@ if (typeof jQuery === 'undefined') {
      * // => { 'left': { 'dir': 'left', 'code': 97 }, 'right': { 'dir': 'right', 'code': 100 } }
      */
     var keyBy = createAggregator(function(result, value, key) {
-      result[key] = value;
+      baseAssignValue(result, key, value);
     });
 
     /**
@@ -29065,10 +29256,7 @@ if (typeof jQuery === 'undefined') {
      * // => 2
      */
     function sample(collection) {
-      var array = isArrayLike(collection) ? collection : values(collection),
-          length = array.length;
-
-      return length > 0 ? array[baseRandom(0, length - 1)] : undefined;
+      return arraySample(isArrayLike(collection) ? collection : values(collection));
     }
 
     /**
@@ -29092,25 +29280,12 @@ if (typeof jQuery === 'undefined') {
      * // => [2, 3, 1]
      */
     function sampleSize(collection, n, guard) {
-      var index = -1,
-          result = toArray(collection),
-          length = result.length,
-          lastIndex = length - 1;
-
       if ((guard ? isIterateeCall(collection, n, guard) : n === undefined)) {
         n = 1;
       } else {
-        n = baseClamp(toInteger(n), 0, length);
+        n = toInteger(n);
       }
-      while (++index < n) {
-        var rand = baseRandom(index, lastIndex),
-            value = result[rand];
-
-        result[rand] = result[index];
-        result[index] = value;
-      }
-      result.length = n;
-      return result;
+      return arraySampleSize(isArrayLike(collection) ? collection : values(collection), n);
     }
 
     /**
@@ -29129,7 +29304,10 @@ if (typeof jQuery === 'undefined') {
      * // => [4, 1, 3, 2]
      */
     function shuffle(collection) {
-      return sampleSize(collection, MAX_ARRAY_LENGTH);
+      return shuffleSelf(isArrayLike(collection)
+        ? copyArray(collection)
+        : values(collection)
+      );
     }
 
     /**
@@ -29234,16 +29412,11 @@ if (typeof jQuery === 'undefined') {
      *   { 'user': 'barney', 'age': 34 }
      * ];
      *
-     * _.sortBy(users, function(o) { return o.user; });
+     * _.sortBy(users, [function(o) { return o.user; }]);
      * // => objects for [['barney', 36], ['barney', 34], ['fred', 48], ['fred', 40]]
      *
      * _.sortBy(users, ['user', 'age']);
      * // => objects for [['barney', 34], ['barney', 36], ['fred', 40], ['fred', 48]]
-     *
-     * _.sortBy(users, 'user', function(o) {
-     *   return Math.floor(o.age / 10);
-     * });
-     * // => objects for [['barney', 36], ['barney', 34], ['fred', 48], ['fred', 40]]
      */
     var sortBy = baseRest(function(collection, iteratees) {
       if (collection == null) {
@@ -29758,7 +29931,7 @@ if (typeof jQuery === 'undefined') {
      * _.defer(function(text) {
      *   console.log(text);
      * }, 'deferred');
-     * // => Logs 'deferred' after one or more milliseconds.
+     * // => Logs 'deferred' after one millisecond.
      */
     var defer = baseRest(function(func, args) {
       return baseDelay(func, 1, args);
@@ -29866,14 +30039,14 @@ if (typeof jQuery === 'undefined') {
           return cache.get(key);
         }
         var result = func.apply(this, args);
-        memoized.cache = cache.set(key, result);
+        memoized.cache = cache.set(key, result) || cache;
         return result;
       };
       memoized.cache = new (memoize.Cache || MapCache);
       return memoized;
     }
 
-    // Assign cache to `_.memoize`.
+    // Expose `MapCache`.
     memoize.Cache = MapCache;
 
     /**
@@ -29965,7 +30138,7 @@ if (typeof jQuery === 'undefined') {
      * func(10, 5);
      * // => [100, 10]
      */
-    var overArgs = baseRest(function(func, transforms) {
+    var overArgs = castRest(function(func, transforms) {
       transforms = (transforms.length == 1 && isArray(transforms[0]))
         ? arrayMap(transforms[0], baseUnary(getIteratee()))
         : arrayMap(baseFlatten(transforms, 1), baseUnary(getIteratee()));
@@ -30081,8 +30254,8 @@ if (typeof jQuery === 'undefined') {
      * rearged('b', 'c', 'a')
      * // => ['a', 'b', 'c']
      */
-    var rearg = baseRest(function(func, indexes) {
-      return createWrap(func, REARG_FLAG, undefined, undefined, undefined, baseFlatten(indexes, 1));
+    var rearg = flatRest(function(func, indexes) {
+      return createWrap(func, REARG_FLAG, undefined, undefined, undefined, indexes);
     });
 
     /**
@@ -30758,7 +30931,7 @@ if (typeof jQuery === 'undefined') {
      * // => false
      */
     function isElement(value) {
-      return !!value && value.nodeType === 1 && isObjectLike(value) && !isPlainObject(value);
+      return value != null && value.nodeType === 1 && isObjectLike(value) && !isPlainObject(value);
     }
 
     /**
@@ -30804,7 +30977,7 @@ if (typeof jQuery === 'undefined') {
       if (tag == mapTag || tag == setTag) {
         return !value.size;
       }
-      if (nonEnumShadows || isPrototype(value)) {
+      if (isPrototype(value)) {
         return !nativeKeys(value).length;
       }
       for (var key in value) {
@@ -31053,7 +31226,7 @@ if (typeof jQuery === 'undefined') {
      */
     function isObject(value) {
       var type = typeof value;
-      return !!value && (type == 'object' || type == 'function');
+      return value != null && (type == 'object' || type == 'function');
     }
 
     /**
@@ -31081,7 +31254,7 @@ if (typeof jQuery === 'undefined') {
      * // => false
      */
     function isObjectLike(value) {
-      return !!value && typeof value == 'object';
+      return value != null && typeof value == 'object';
     }
 
     /**
@@ -31345,8 +31518,7 @@ if (typeof jQuery === 'undefined') {
      * // => true
      */
     function isPlainObject(value) {
-      if (!isObjectLike(value) ||
-          objectToString.call(value) != objectTag || isHostObject(value)) {
+      if (!isObjectLike(value) || objectToString.call(value) != objectTag) {
         return false;
       }
       var proto = getPrototype(value);
@@ -31903,7 +32075,7 @@ if (typeof jQuery === 'undefined') {
      * // => { 'a': 1, 'c': 3 }
      */
     var assign = createAssigner(function(object, source) {
-      if (nonEnumShadows || isPrototype(source) || isArrayLike(source)) {
+      if (isPrototype(source) || isArrayLike(source)) {
         copyObject(source, keys(source), object);
         return;
       }
@@ -32031,9 +32203,7 @@ if (typeof jQuery === 'undefined') {
      * _.at(object, ['a[0].b.c', 'a[1]']);
      * // => [3, 4]
      */
-    var at = baseRest(function(object, paths) {
-      return baseAt(object, baseFlatten(paths, 1));
-    });
+    var at = flatRest(baseAt);
 
     /**
      * Creates an object that inherits from the `prototype` object. If a
@@ -32636,7 +32806,7 @@ if (typeof jQuery === 'undefined') {
       iteratee = getIteratee(iteratee, 3);
 
       baseForOwn(object, function(value, key, object) {
-        result[iteratee(value, key, object)] = value;
+        baseAssignValue(result, iteratee(value, key, object), value);
       });
       return result;
     }
@@ -32674,7 +32844,7 @@ if (typeof jQuery === 'undefined') {
       iteratee = getIteratee(iteratee, 3);
 
       baseForOwn(object, function(value, key, object) {
-        result[key] = iteratee(value, key, object);
+        baseAssignValue(result, key, iteratee(value, key, object));
       });
       return result;
     }
@@ -32718,7 +32888,7 @@ if (typeof jQuery === 'undefined') {
      * This method is like `_.merge` except that it accepts `customizer` which
      * is invoked to produce the merged values of the destination and source
      * properties. If `customizer` returns `undefined`, merging is handled by the
-     * method instead. The `customizer` is invoked with seven arguments:
+     * method instead. The `customizer` is invoked with six arguments:
      * (objValue, srcValue, key, object, source, stack).
      *
      * **Note:** This method mutates `object`.
@@ -32768,11 +32938,11 @@ if (typeof jQuery === 'undefined') {
      * _.omit(object, ['a', 'c']);
      * // => { 'b': '2' }
      */
-    var omit = baseRest(function(object, props) {
+    var omit = flatRest(function(object, props) {
       if (object == null) {
         return {};
       }
-      props = arrayMap(baseFlatten(props, 1), toKey);
+      props = arrayMap(props, toKey);
       return basePick(object, baseDifference(getAllKeysIn(object), props));
     });
 
@@ -32817,8 +32987,8 @@ if (typeof jQuery === 'undefined') {
      * _.pick(object, ['a', 'c']);
      * // => { 'a': 1, 'c': 3 }
      */
-    var pick = baseRest(function(object, props) {
-      return object == null ? {} : basePick(object, arrayMap(baseFlatten(props, 1), toKey));
+    var pick = flatRest(function(object, props) {
+      return object == null ? {} : basePick(object, arrayMap(props, toKey));
     });
 
     /**
@@ -33472,8 +33642,8 @@ if (typeof jQuery === 'undefined') {
     }
 
     /**
-     * Converts the characters "&", "<", ">", '"', "'", and "\`" in `string` to
-     * their corresponding HTML entities.
+     * Converts the characters "&", "<", ">", '"', and "'" in `string` to their
+     * corresponding HTML entities.
      *
      * **Note:** No other characters are escaped. To escape additional
      * characters use a third-party library like [_he_](https://mths.be/he).
@@ -33483,12 +33653,6 @@ if (typeof jQuery === 'undefined') {
      * unless they're part of a tag or unquoted attribute value. See
      * [Mathias Bynens's article](https://mathiasbynens.be/notes/ambiguous-ampersands)
      * (under "semi-related fun fact") for more details.
-     *
-     * Backticks are escaped because in IE < 9, they can break out of
-     * attribute values or HTML comments. See [#59](https://html5sec.org/#59),
-     * [#102](https://html5sec.org/#102), [#108](https://html5sec.org/#108), and
-     * [#133](https://html5sec.org/#133) of the
-     * [HTML5 Security Cheatsheet](https://html5sec.org/) for more details.
      *
      * When working with HTML you should always
      * [quote attribute values](http://wonko.com/post/html-escaping) to reduce
@@ -33732,15 +33896,12 @@ if (typeof jQuery === 'undefined') {
      * // => [6, 8, 10]
      */
     function parseInt(string, radix, guard) {
-      // Chrome fails to trim leading <BOM> whitespace characters.
-      // See https://bugs.chromium.org/p/v8/issues/detail?id=3109 for more details.
       if (guard || radix == null) {
         radix = 0;
       } else if (radix) {
         radix = +radix;
       }
-      string = toString(string).replace(reTrim, '');
-      return nativeParseInt(string, radix || (reHasHexPrefix.test(string) ? 16 : 10));
+      return nativeParseInt(toString(string), radix || 0);
     }
 
     /**
@@ -33979,7 +34140,8 @@ if (typeof jQuery === 'undefined') {
      * compiled({ 'user': 'barney' });
      * // => 'hello barney!'
      *
-     * // Use the ES delimiter as an alternative to the default "interpolate" delimiter.
+     * // Use the ES template literal delimiter as an "interpolate" delimiter.
+     * // Disable support by replacing the "interpolate" delimiter.
      * var compiled = _.template('hello ${ user }!');
      * compiled({ 'user': 'pebbles' });
      * // => 'hello pebbles!'
@@ -34380,7 +34542,7 @@ if (typeof jQuery === 'undefined') {
 
     /**
      * The inverse of `_.escape`; this method converts the HTML entities
-     * `&amp;`, `&lt;`, `&gt;`, `&quot;`, `&#39;`, and `&#96;` in `string` to
+     * `&amp;`, `&lt;`, `&gt;`, `&quot;`, and `&#39;` in `string` to
      * their corresponding characters.
      *
      * **Note:** No other HTML entities are unescaped. To unescape additional
@@ -34534,10 +34696,10 @@ if (typeof jQuery === 'undefined') {
      * jQuery(element).on('click', view.click);
      * // => Logs 'clicked docs' when clicked.
      */
-    var bindAll = baseRest(function(object, methodNames) {
-      arrayEach(baseFlatten(methodNames, 1), function(key) {
+    var bindAll = flatRest(function(object, methodNames) {
+      arrayEach(methodNames, function(key) {
         key = toKey(key);
-        object[key] = bind(object[key], object);
+        baseAssignValue(object, key, bind(object[key], object));
       });
       return object;
     });
@@ -36330,7 +36492,7 @@ if (typeof jQuery === 'undefined') {
       lodash.prototype[iteratorSymbol] = wrapperToIterator;
     }
     return lodash;
-  }
+  });
 
   /*--------------------------------------------------------------------------*/
 
@@ -36364,7 +36526,7 @@ if (typeof jQuery === 'undefined') {
   }
 }.call(this));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6), __webpack_require__(44)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6), __webpack_require__(45)(module)))
 
 /***/ },
 /* 17 */
@@ -37367,9 +37529,9 @@ var _sweetAlertInitialize$getModal$getOverlay$getInput$setFocusStyle$openModal$r
 
 // Handle button events and keyboard events
 
-var _handleButton$handleConfirm$handleCancel = __webpack_require__(39);
+var _handleButton$handleConfirm$handleCancel = __webpack_require__(40);
 
-var _handleKeyDown = __webpack_require__(40);
+var _handleKeyDown = __webpack_require__(41);
 
 var _handleKeyDown2 = _interopRequireWildcard(_handleKeyDown);
 
@@ -37379,7 +37541,7 @@ var _defaultParams = __webpack_require__(5);
 
 var _defaultParams2 = _interopRequireWildcard(_defaultParams);
 
-var _setParameters = __webpack_require__(42);
+var _setParameters = __webpack_require__(43);
 
 var _setParameters2 = _interopRequireWildcard(_setParameters);
 
@@ -37644,7 +37806,7 @@ module.exports = exports['default'];
 /* 19 */
 /***/ function(module, exports, __webpack_require__) {
 
-__webpack_require__(43);
+__webpack_require__(44);
 module.exports = 'ui.select';
 
 
@@ -37683,6 +37845,51 @@ module.exports = function () {
 
 /***/ },
 /* 22 */
+/***/ function(module, exports) {
+
+module.exports = ["$log", "$http", function ($log, $http) {
+	'ngInject'
+
+	var link = function($scope,$element, attrs){
+		var ajax_dropdown = null;
+
+		$element.on('click',function(){
+			var badge = $(this).find('.badge');
+
+			if (badge.hasClass('bg-color-red')) {
+				badge.removeClass('bg-color-red').text(0);
+        $http.post('/api/markNotificationsAsRead');
+			}
+
+			ajax_dropdown = $(this).next('.ajax-dropdown');
+
+			if (!ajax_dropdown.is(':visible')) {
+				ajax_dropdown.fadeIn(150);
+				$(this).addClass('active');
+			} else {
+				ajax_dropdown.fadeOut(150);
+				$(this).removeClass('active');
+			}
+
+		});
+
+		$(document).mouseup(function(e) {
+			if (ajax_dropdown && !ajax_dropdown.is(e.target) && ajax_dropdown.has(e.target).length === 0) {
+				ajax_dropdown.fadeOut(150);
+				$element.removeClass('active');
+			}
+		});
+	}
+
+	return {
+		restrict: 'EA',
+		link: link
+	}
+}];
+
+
+/***/ },
+/* 23 */
 /***/ function(module, exports, __webpack_require__) {
 
 module.exports = ["$state", "$rootScope", function ($state, $rootScope) {
@@ -37785,7 +37992,7 @@ module.exports = ["$state", "$rootScope", function ($state, $rootScope) {
 
 
 /***/ },
-/* 23 */
+/* 24 */
 /***/ function(module, exports) {
 
 module.exports =  ["$rootScope", "$state", function ($rootScope, $state) {
@@ -37842,7 +38049,7 @@ module.exports =  ["$rootScope", "$state", function ($rootScope, $state) {
 
 
 /***/ },
-/* 24 */
+/* 25 */
 /***/ function(module, exports) {
 
 module.exports = function() {
@@ -37860,7 +38067,7 @@ module.exports = function() {
 
 
 /***/ },
-/* 25 */
+/* 26 */
 /***/ function(module, exports) {
 
 $.root_ = $('body');
@@ -37899,7 +38106,7 @@ function minifyMenu($this) {
 
 
 /***/ },
-/* 26 */
+/* 27 */
 /***/ function(module, exports, __webpack_require__) {
 
 module.exports = ["$stateProvider", "$locationProvider", "$urlRouterProvider", function OnConfig($stateProvider, $locationProvider, $urlRouterProvider) {
@@ -37923,9 +38130,9 @@ module.exports = ["$stateProvider", "$locationProvider", "$urlRouterProvider", f
   // auth
     .state('login', {
       url: '/login',
-      controller: __webpack_require__(45),
+      controller: __webpack_require__(46),
       controllerAs: 'vm',
-      template: __webpack_require__(50),
+      template: __webpack_require__(51),
       resolve: {
         skipIfLoggedIn: skipIfLoggedIn
       }
@@ -37933,15 +38140,15 @@ module.exports = ["$stateProvider", "$locationProvider", "$urlRouterProvider", f
 
     .state('logout', {
       url: '/logout',
-      controller: __webpack_require__(46),
+      controller: __webpack_require__(47),
       template: '<div></div>'
     })
 
     .state('register', {
       url: '/register',
-      controller: __webpack_require__(47),
+      controller: __webpack_require__(48),
       controllerAs: 'vm',
-      template: __webpack_require__(51),
+      template: __webpack_require__(52),
       resolve: {
         skipIfLoggedIn: skipIfLoggedIn
       }
@@ -37950,8 +38157,14 @@ module.exports = ["$stateProvider", "$locationProvider", "$urlRouterProvider", f
   // application
     .state('app', {
       abstract: true,
-      template: __webpack_require__(52),
-      controller: ["user", function(user) { this.user = user }],
+      template: __webpack_require__(53),
+      controller: ["user", function(user) {
+        this.user = user;
+        this.notificationsSize = _.size(user.notifications);
+        this.unreadNotificationsSize = _.size(_.filter(user.notifications, function(n) {
+          return ! n.read_at;
+        }));
+      }],
       controllerAs: 'vm',
       resolve: {
         user: ["UserService", "$auth", "toastr", "$state", function(UserService, $auth, toastr, $state) {
@@ -37970,12 +38183,12 @@ module.exports = ["$stateProvider", "$locationProvider", "$urlRouterProvider", f
       url: '/home',
       controller: ["$auth", function($auth) { this.isAuthenticated = $auth.isAuthenticated }],
       controllerAs: 'vm',
-      template: __webpack_require__(49)
+      template: __webpack_require__(50)
     })
 
     .state('app.dashboard', {
       url: '/dashboard',
-      template: __webpack_require__(48),
+      template: __webpack_require__(49),
       data: {
         title: 'dashboard'
       }
@@ -37986,7 +38199,7 @@ module.exports = ["$stateProvider", "$locationProvider", "$urlRouterProvider", f
 
 
 /***/ },
-/* 27 */
+/* 28 */
 /***/ function(module, exports) {
 
 module.exports = ["$http", function($http) {
@@ -38033,7 +38246,7 @@ module.exports = ["$http", function($http) {
 
 
 /***/ },
-/* 28 */
+/* 29 */
 /***/ function(module, exports) {
 
 module.exports = ["SweetAlert", function (SweetAlert) {
@@ -38060,7 +38273,7 @@ module.exports = ["SweetAlert", function (SweetAlert) {
 
 
 /***/ },
-/* 29 */
+/* 30 */
 /***/ function(module, exports) {
 
 module.exports = ["$http", function ($http) {
@@ -38073,7 +38286,7 @@ module.exports = ["$http", function ($http) {
 
 
 /***/ },
-/* 30 */
+/* 31 */
 /***/ function(module, exports) {
 
 /**
@@ -42218,7 +42431,7 @@ angular.module('ngAnimate', [], function initAngularHelpers() {
 
 
 /***/ },
-/* 31 */
+/* 32 */
 /***/ function(module, exports) {
 
 /*! 
@@ -42565,7 +42778,7 @@ angular.module('cfp.loadingBar', [])
 
 
 /***/ },
-/* 32 */
+/* 33 */
 /***/ function(module, exports) {
 
 /**
@@ -43309,7 +43522,7 @@ angular.module('ngSanitize').filter('linky', ['$sanitize', function($sanitize) {
 
 
 /***/ },
-/* 33 */
+/* 34 */
 /***/ function(module, exports) {
 
 (function() {
@@ -43823,7 +44036,7 @@ angular.module("toastr").run(["$templateCache", function($templateCache) {$templ
 $templateCache.put("directives/toast/toast.html","<div class=\"{{toastClass}} {{toastType}}\" ng-click=\"tapToast()\">\n  <div ng-switch on=\"allowHtml\">\n    <div ng-switch-default ng-if=\"title\" class=\"{{titleClass}}\" aria-label=\"{{title}}\">{{title}}</div>\n    <div ng-switch-default class=\"{{messageClass}}\" aria-label=\"{{message}}\">{{message}}</div>\n    <div ng-switch-when=\"true\" ng-if=\"title\" class=\"{{titleClass}}\" ng-bind-html=\"title\"></div>\n    <div ng-switch-when=\"true\" class=\"{{messageClass}}\" ng-bind-html=\"message\"></div>\n  </div>\n  <progress-bar ng-if=\"progressBar\"></progress-bar>\n</div>\n");}]);
 
 /***/ },
-/* 34 */
+/* 35 */
 /***/ function(module, exports) {
 
 /*
@@ -51374,7 +51587,7 @@ angular.module('ui.bootstrap.timepicker').run(function() {!angular.$$csp().noInl
 angular.module('ui.bootstrap.typeahead').run(function() {!angular.$$csp().noInlineStyle && !angular.$$uibTypeaheadCss && angular.element(document).find('head').prepend('<style type="text/css">[uib-typeahead-popup].dropdown-menu{display:block;}</style>'); angular.$$uibTypeaheadCss = true; });
 
 /***/ },
-/* 35 */
+/* 36 */
 /***/ function(module, exports) {
 
 /**
@@ -83189,7 +83402,7 @@ $provide.value("$locale", {
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
 
 /***/ },
-/* 36 */
+/* 37 */
 /***/ function(module, exports) {
 
 "use strict";
@@ -83305,7 +83518,7 @@ function fromByteArray (uint8) {
 
 
 /***/ },
-/* 37 */
+/* 38 */
 /***/ function(module, exports) {
 
 var toString = {}.toString;
@@ -83316,7 +83529,7 @@ module.exports = Array.isArray || function (arr) {
 
 
 /***/ },
-/* 38 */
+/* 39 */
 /***/ function(module, exports) {
 
 exports.read = function (buffer, offset, isLE, mLen, nBytes) {
@@ -83406,7 +83619,7 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
 
 
 /***/ },
-/* 39 */
+/* 40 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -83547,7 +83760,7 @@ exports['default'] = {
 module.exports = exports['default'];
 
 /***/ },
-/* 40 */
+/* 41 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -83632,7 +83845,7 @@ exports['default'] = handleKeyDown;
 module.exports = exports['default'];
 
 /***/ },
-/* 41 */
+/* 42 */
 /***/ function(module, exports) {
 
 "use strict";
@@ -83680,7 +83893,7 @@ exports["default"] = injectedHTML;
 module.exports = exports["default"];
 
 /***/ },
-/* 42 */
+/* 43 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -83911,7 +84124,7 @@ exports['default'] = setParameters;
 module.exports = exports['default'];
 
 /***/ },
-/* 43 */
+/* 44 */
 /***/ function(module, exports) {
 
 /*!
@@ -86272,7 +86485,7 @@ $templateCache.put("selectize/no-choice.tpl.html","<div class=\"ui-select-no-cho
 $templateCache.put("selectize/select.tpl.html","<div class=\"ui-select-container selectize-control single\" ng-class=\"{\'open\': $select.open}\"><div class=\"selectize-input\" ng-class=\"{\'focus\': $select.open, \'disabled\': $select.disabled, \'selectize-focus\' : $select.focus}\" ng-click=\"$select.open && !$select.searchEnabled ? $select.toggle($event) : $select.activate()\"><div class=\"ui-select-match\"></div><input type=\"search\" autocomplete=\"off\" tabindex=\"-1\" class=\"ui-select-search ui-select-toggle\" ng-class=\"{\'ui-select-search-hidden\':!$select.searchEnabled}\" ng-click=\"$select.toggle($event)\" placeholder=\"{{$select.placeholder}}\" ng-model=\"$select.search\" ng-hide=\"!$select.isEmpty() && !$select.open\" ng-disabled=\"$select.disabled\" aria-label=\"{{ $select.baseTitle }}\"></div><div class=\"ui-select-choices\"></div><div class=\"ui-select-no-choice\"></div></div>");}]);
 
 /***/ },
-/* 44 */
+/* 45 */
 /***/ function(module, exports) {
 
 module.exports = function(module) {
@@ -86298,7 +86511,7 @@ module.exports = function(module) {
 
 
 /***/ },
-/* 45 */
+/* 46 */
 /***/ function(module, exports) {
 
 module.exports = ["$auth", "$http", "$state", "toastr", function ($auth, $http, $state, toastr) {
@@ -86327,7 +86540,7 @@ module.exports = ["$auth", "$http", "$state", "toastr", function ($auth, $http, 
 
 
 /***/ },
-/* 46 */
+/* 47 */
 /***/ function(module, exports) {
 
 module.exports = ["$state", "$auth", "toastr", function($state, $auth, toastr) {
@@ -86345,7 +86558,7 @@ module.exports = ["$state", "$auth", "toastr", function($state, $auth, toastr) {
 
 
 /***/ },
-/* 47 */
+/* 48 */
 /***/ function(module, exports) {
 
 module.exports = ["$auth", "$http", "$state", "toastr", function ($auth, $http, $state, toastr) {
@@ -86375,42 +86588,42 @@ module.exports = ["$auth", "$http", "$state", "toastr", function ($auth, $http, 
 
 
 /***/ },
-/* 48 */
+/* 49 */
 /***/ function(module, exports) {
 
 module.exports = "<ui-view>\n    <div class=\"row\">\n        <div class=\"col-xs-12 col-sm-7 col-md-7 col-lg-4\">\n            <h1 class=\"page-title txt-color-blueDark\">\n                <i class=\"fa-fw fa fa-home\"></i>\n                Dashboard\n            </h1>\n        </div>\n    </div>\n</ui-view>\n";
 
 /***/ },
-/* 49 */
+/* 50 */
 /***/ function(module, exports) {
 
 module.exports = "<ui-view>\n    <div class=\"row\">\n        <div class=\"col-xs-12 col-sm-7 col-md-7 col-lg-4\">\n            <h1 class=\"page-title txt-color-blueDark\">\n                <i class=\"fa-fw fa fa-home\"></i>\n                Home\n            </h1>\n\t\t</div>\n\t</div>\n\n\t<section id=\"widget-grid\" class=\"\">\n\t\t<div class=\"row\">\n\t\t\t<article class=\"col-xs-12 col-sm-12 col-md-12 col-lg-12\">\n\t\t\t\t<div class=\"jarviswidget\" id=\"wid-id-0\">\n\t\t\t\t\t<header>\n\t\t\t\t\t\t<span class=\"widget-icon\"> <i class=\"fa fa-cogs\"></i> </span>\n\t\t\t\t\t\t<h2>Widget de ejemplo</h2>\n\t\t\t\t\t</header>\n\t\t\t\t\t<div>\n\t\t\t\t\t\t<div class=\"jarviswidget-editbox\">\n\t\t\t\t\t\t\t<input class=\"form-control\" type=\"text\">\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div class=\"widget-body\">\n\t\t\t\t\t\t\tContenido de ejemplo\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</article>\n\t\t</div>\n\t\t<div class=\"row\">\n\t\t\t<div class=\"col-sm-12\">\n\t\t\t</div>\n\t\t</div>\n\t</section>\n</ui-view>\n";
 
 /***/ },
-/* 50 */
+/* 51 */
 /***/ function(module, exports) {
 
 module.exports = "<ui-view>\n    <section class=\"\" style=\"padding-top: 100px;\">\n        <div class=\"row\">\n            <article class=\"col-md-4 col-md-offset-4\">\n                <div class=\"jarviswidget jarviswidget-color-darken\" id=\"wid-id-0\">\n                    <header>\n                        <span class=\"widget-icon\"> <i class=\"fa fa-key\"></i> </span>\n                        <h2>Login</h2>\n                    </header>\n                    <div>\n                        <div class=\"jarviswidget-editbox\">\n                            <input class=\"form-control\" type=\"text\">\n                        </div>\n                        <div class=\"widget-body no-padding\">\n\n\n                            <form role=\"form\" method=\"POST\" novalidate class=\"smart-form client-form\">\n\n                                <fieldset>\n                                    \n                                    <section>\n                                        <label class=\"label control-label\" for=\"email\">E-mail Address</label>\n                                        <label class=\"input\" ng-class=\"{'state-error': vm.hasError('email')}\"> <i class=\"icon-append fa fa-user\"></i>\n                                            <input ng-model=\"vm.user.email\" id=\"email\" type=\"email\" name=\"email\">\n                                            <b class=\"tooltip tooltip-top-right\"><i class=\"fa fa-user txt-color-teal\"></i> Ingresar correo/usuario</b>\n                                        </label>\n                                        <em ng-if=\"vm.hasError('email')\" class=\"help-block\">\n                                            {{ vm.errors.email[0] }}\n                                        </em>\n                                    </section>\n\n                                    <section>\n                                        <label class=\"label control-label\">Password</label>\n                                        <label class=\"input\" ng-class=\"{'state-error': vm.hasError('email')}\"> <i class=\"icon-append fa fa-lock\"></i>\n                                            <input ng-model=\"vm.user.password\" id=\"password\" type=\"password\" name=\"password\">\n                                            <b class=\"tooltip tooltip-top-right\"><i class=\"fa fa-lock txt-color-teal\"></i> Ingresa tu password</b> \n                                        </label>\n                                        <em ng-if=\"vm.hasError('password')\" class=\"help-block\">\n                                            {{ vm.errors.password[0] }}\n                                        </em>\n                                        \n                                        <div class=\"note\">\n                                            <a href=\"\">Olvidó password?</a>\n                                        </div>\n                                    </section>\n\n                                    <section>\n                                        <label class=\"checkbox\">\n                                            <input type=\"checkbox\" name=\"remember\" checked=\"\">\n                                            <i></i>Recordarme</label>\n                                    </section>\n\n\n                                </fieldset>\n                                <footer>\n                                    <button ng-click=\"vm.login()\" type=\"submit\" class=\"btn btn-primary\">\n                                        Enviar\n                                    </button>\n                                </footer>\n                            </form>\n                        </div>\n                    </div>\n                </div>\n            </article>\n        </div>\n        <div class=\"row\">\n            <div class=\"col-sm-12\">\n            </div>\n        </div>\n    </section>\n<!--     <div class=\"container\">\n        <div class=\"row\">\n            <div class=\"col-md-8 col-md-offset-2\">\n                <div class=\"panel panel-default\">\n                    <div class=\"panel-heading\">Login prueba</div>\n                    <div class=\"panel-body\">\n                        <form class=\"form-horizontal\" role=\"form\" method=\"POST\" novalidate>\n\n                            <div class=\"form-group\" ng-class=\"{'has-error': vm.hasError('email')}\">\n                                <label for=\"email\" class=\"col-md-4 control-label\">E-Mail Address</label>\n\n                                <div class=\"col-md-6\">\n                                    <input ng-model=\"vm.user.email\" id=\"email\" type=\"email\" class=\"form-control\" name=\"email\">\n                                    <span ng-if=\"vm.hasError('email')\" class=\"help-block\">\n                                        <strong>{{ vm.errors.email[0] }}</strong>\n                                    </span>\n                                </div>\n                            </div>\n\n                            <div class=\"form-group\"  ng-class=\"{'has-error': vm.hasError('password')}\">\n                                <label for=\"password\" class=\"col-md-4 control-label\">Password</label>\n\n                                <div class=\"col-md-6\">\n                                    <input ng-model=\"vm.user.password\" id=\"password\" type=\"password\" class=\"form-control\" name=\"password\">\n                                    <span ng-if=\"vm.hasError('password')\" class=\"help-block\">\n                                        <strong>{{ vm.errors.password[0] }}</strong>\n                                    </span>\n                                </div>\n                            </div>\n\n                            <div class=\"form-group\">\n                                <div class=\"col-md-8 col-md-offset-4\">\n                                    <button ng-click=\"vm.login()\" type=\"submit\" class=\"btn btn-primary\">\n                                        Login\n                                    </button>\n                                </div>\n                            </div>\n\n                        </form>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div> -->\n</ui-view>\n";
 
 /***/ },
-/* 51 */
+/* 52 */
 /***/ function(module, exports) {
 
 module.exports = "<ui-view>\n    <div class=\"container\">\n        <div class=\"row\">\n            <div class=\"col-md-8 col-md-offset-2\">\n                <div class=\"panel panel-default\">\n                    <div class=\"panel-heading\">Registrar</div>\n                    <div class=\"panel-body\">\n                        <form class=\"form-horizontal\" role=\"form\" novalidate>\n\n                            <div class=\"form-group\" ng-class=\"{'has-error': vm.hasError('name')}\">\n                                <label for=\"name\" class=\"col-md-4 control-label\">Name</label>\n                                <div class=\"col-md-6\">\n                                    <input ng-model=\"vm.user.name\" type=\"text\" class=\"form-control\" name=\"name\">\n                                    <span ng-if=\"vm.hasError('name')\" class=\"help-block\">\n                                        <strong>{{ vm.errors.name[0] }}</strong>\n                                    </span>\n                                </div>\n                            </div>\n\n                            <div class=\"form-group\" ng-class=\"{'has-error': vm.hasError('email')}\">\n                                <label for=\"email\" class=\"col-md-4 control-label\">E-Mail Address</label>\n                                <div class=\"col-md-6\">\n                                    <input ng-model=\"vm.user.email\" id=\"email\" type=\"email\" class=\"form-control\" name=\"email\">\n                                    <span ng-if=\"vm.hasError('email')\" class=\"help-block\">\n                                        <strong>{{ vm.errors.email[0] }}</strong>\n                                    </span>\n                                </div>\n                            </div>\n\n                            <div class=\"form-group\" ng-class=\"{'has-error': vm.hasError('password')}\">\n                                <label for=\"password\" class=\"col-md-4 control-label\">Password</label>\n                                <div class=\"col-md-6\">\n                                    <input ng-model=\"vm.user.password\" type=\"password\" class=\"form-control\" name=\"password\">\n                                    <span ng-if=\"vm.hasError('password')\" class=\"help-block\">\n                                        <strong>{{ vm.errors.password[0] }}</strong>\n                                    </span>\n                                </div>\n                            </div>\n\n                            <div class=\"form-group\" ng-class=\"{'has-error': vm.hasError('password_confirmation')}\">\n                                <label for=\"password\" class=\"col-md-4 control-label\">Confirma Password</label>\n                                <div class=\"col-md-6\">\n                                    <input ng-model=\"vm.user.password_confirmation\" type=\"password\" class=\"form-control\" name=\"password\">\n                                    <span ng-if=\"vm.hasError('password_confirmation')\" class=\"help-block\">\n                                        <strong>{{ vm.errors.password_confirmation[0] }}</strong>\n                                    </span>\n                                </div>\n                            </div>\n\n\n                            <div class=\"form-group\">\n                                <div class=\"col-md-8 col-md-offset-4\">\n                                    <button ng-click=\"vm.submit()\" type=\"submit\" class=\"btn btn-primary\">\n                                        Login\n                                    </button>\n                                </div>\n                            </div>\n\n                        </form>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n</ui-view>\n";
 
 /***/ },
-/* 52 */
+/* 53 */
 /***/ function(module, exports) {
 
-module.exports = "<!-- #HEADER -->\n<header id=\"header\">\n    <div id=\"logo-group\">\n\n        <span id=\"logo\"> <img src=\"/img/logo2.png\" alt=\"SmartAdmin\"> </span>\n\n        <!-- Note: The activity badge color changes when clicked and resets the number to 0\n        Suggestion: You may want to set a flag when this happens to tick off all checked messages / notifications -->\n        <span id=\"activity\" class=\"activity-dropdown\"> <i class=\"fa fa-user\"></i> <b class=\"badge\"> 0 </b> </span>\n\n        <!-- AJAX-DROPDOWN : control this dropdown height, look and feel from the LESS variable file -->\n        <div class=\"ajax-dropdown\">\n\n            <!-- the ID links are fetched via AJAX to the ajax container \"ajax-notifications\" -->\n            <div class=\"btn-group btn-group-justified\" data-toggle=\"buttons\">\n                <label class=\"btn btn-default\">\n                    <input type=\"radio\" name=\"activity\" id=\"ajax/notify/mail.html\">\n                    Msgs (14) </label>\n                <label class=\"btn btn-default\">\n                    <input type=\"radio\" name=\"activity\" id=\"ajax/notify/notifications.html\">\n                    notify (3) </label>\n                <label class=\"btn btn-default\">\n                    <input type=\"radio\" name=\"activity\" id=\"ajax/notify/tasks.html\">\n                    Tasks (4) </label>\n            </div>\n\n            <!-- notification content -->\n            <div class=\"ajax-notifications custom-scroll\">\n\n                <div class=\"alert alert-transparent\">\n                    <h4>Click a button to show messages here</h4>\n                    This blank page message helps protect your privacy, or you can show the first message here automatically.\n                </div>\n\n                <i class=\"fa fa-lock fa-4x fa-border\"></i>\n\n            </div>\n            <!-- end notification content -->\n\n            <!-- footer: refresh area -->\n            <span> Last updated on: 12/12/2013 9:43AM\n                <button type=\"button\" data-loading-text=\"<i class='fa fa-refresh fa-spin'></i> Loading...\" class=\"btn btn-xs btn-default pull-right\">\n                    <i class=\"fa fa-refresh\"></i>\n            </button> </span>\n            <!-- end footer -->\n\n        </div>\n        <!-- END AJAX-DROPDOWN -->\n    </div>\n\n    <div class=\"pull-right\">\n\n        <div id=\"hide-menu\" class=\"btn-header pull-right\">\n            <span> <a href=\"javascript:void(0);\" data-action=\"toggleMenu\" title=\"Collapse Menu\"><i class=\"fa fa-reorder\"></i></a> </span>\n        </div>\n\n        <!-- #MOBILE -->\n        <!-- Top menu profile link : this shows only when top menu is active -->\n        <ul id=\"mobile-profile-img\" class=\"header-dropdown-list hidden-xs padding-5\">\n            <li class=\"\">\n                <a href=\"#\" class=\"dropdown-toggle no-margin userdropdown\" data-toggle=\"dropdown\">\n                    <img src=\"/img/avatars/sunny.png\" class=\"online\" />\n                </a>\n                <ul class=\"dropdown-menu pull-right\">\n                    <li>\n                        <a href=\"#\" class=\"padding-10 padding-top-0 padding-bottom-0\"><i class=\"fa fa-cog\"></i> Setting</a>\n                    </li>\n                    <li class=\"divider\"></li>\n                    <li>\n                        <a href=\"#\" class=\"padding-10 padding-top-0 padding-bottom-0\"> <i class=\"fa fa-user\"></i> <u>P</u>rofile</a>\n                    </li>\n                    <li class=\"divider\"></li>\n                    <li>\n                        <a ui-sref=\"logout\" class=\"padding-10 padding-top-5 padding-bottom-5\" data-action=\"userLogout\"><i class=\"fa fa-sign-out fa-lg\"></i> <strong><u>L</u>ogout</strong></a>\n                    </li>\n                </ul>\n            </li>\n        </ul>\n\n        <!-- logout button -->\n        <div id=\"logout\" class=\"btn-header transparent pull-right\">\n            <span> <a ui-sref=\"logout\" title=\"Sign Out\" data-action=\"userLogout\"><i class=\"fa fa-sign-out\"></i></a> </span>\n        </div>\n    </div>\n\n</header>\n\n<!-- Note: This width of the aside area can be adjusted through LESS/SASS variables -->\n<aside id=\"left-panel\">\n\n    <!-- User info -->\n    <div class=\"login-info\">\n        <span>\n\n            <a href=\"javascript:void(0);\" id=\"show-shortcut\" data-action=\"toggleShortcut\">\n                <img src=\"/img/avatars/sunny.png\" class=\"online\" />\n                <span>\n                    {{ vm.user.name }}\n                </span>\n                <i class=\"fa fa-angle-down\"></i>\n            </a>\n\n        </span>\n    </div>\n\n    <nav>\n        <ul data-smart-menu>\n            <li ui-sref-active=\"active\">\n                <a ui-sref=\"app.home\"><i class=\"fa fa-lg fa-fw fa-home\"></i> <span class=\"menu-item-parent\">Home</span></a>\n            </li>\n            <li ui-sref-active=\"active\">\n                <a ui-sref=\"app.dashboard\"><i class=\"fa fa-lg fa-fw fa-dashboard\"></i> <span class=\"menu-item-parent\">Dashboard</span></a>\n            </li>\n        </ul>\n    </nav>\n\n    <span class=\"minifyme\" data-action=\"minifyMenu\"> <i class=\"fa fa-arrow-circle-left hit\"></i> </span>\n</aside>\n\n<!-- #MAIN PANEL -->\n<div id=\"main\" role=\"main\">\n\n    <!-- RIBBON -->\n    <div id=\"ribbon\">\n         <state-breadcrumbs></state-breadcrumbs>\n    </div>\n\n    <div id=\"content\">\n        <div ui-view></div>\n    </div>\n\n</div>\n\n<div class=\"page-footer\">\n    <div class=\"row\">\n        <div class=\"col-xs-12 col-sm-6\">\n            <span class=\"txt-color-white\">Boilerplate <span class=\"hidden-xs\"> - {{ config('app.name', 'Laravel') }}</span> ©2016</span>\n        </div>\n    </div>\n</div>\n";
+module.exports = "<header id=\"header\">\n    <div id=\"logo-group\">\n\n        <span id=\"logo\"> <img src=\"/img/logo2.png\" alt=\"SmartAdmin\"> </span>\n\n\t\t<!-- notifications -->\n        <span notifications-toggle id=\"activity\" class=\"activity-dropdown\">\n            <i class=\"fa fa-user\"></i> <b class=\"badge\" ng-class=\"{'bg-color-red': vm.unreadNotificationsSize > 0}\"> {{ vm.unreadNotificationsSize }}</b>\n        </span>\n\n        <div class=\"ajax-dropdown\">\n            <div class=\"btn-group btn-group-justified\" data-toggle=\"buttons\">\n                <label class=\"btn btn-default\">\n                    <input type=\"radio\" name=\"activity\">\n                    Notificaciones ({{ vm.notificationsSize }}) </label>\n            </div>\n\n            <!-- notification content -->\n            <div class=\"ajax-notifications custom-scroll\">\n\n                <ul class=\"notification-body\">\n                    <li ng-repeat=\"notification in vm.user.notifications\">\n                        <span class=\"padding-10\" ng-class=\"{unread : !notification.read_at}\">\n                            <em class=\"badge padding-5 no-border-radius bg-color-blueLight pull-left margin-right-5\">\n                                <i class=\"fa {{notification.data.icon}} fa-fw fa-2x\"></i>\n                            </em>\n\n                            <span>\n                                {{notification.data.message}}\n                                <br>\n                                <span class=\"pull-right font-xs text-muted\"><i>{{notification.time}}</i></span>\n                            </span>\n                        </span>\n                    </li>\n                </ul>\n            </div>\n        </div>\n    </div>\n\n    <div class=\"pull-right\">\n\n        <div id=\"hide-menu\" class=\"btn-header pull-right\">\n            <span> <a href=\"javascript:void(0);\" data-action=\"toggleMenu\" title=\"Collapse Menu\"><i class=\"fa fa-reorder\"></i></a> </span>\n        </div>\n\n        <!-- #MOBILE -->\n        <!-- Top menu profile link : this shows only when top menu is active -->\n        <ul id=\"mobile-profile-img\" class=\"header-dropdown-list hidden-xs padding-5\">\n            <li class=\"\">\n                <a href=\"#\" class=\"dropdown-toggle no-margin userdropdown\" data-toggle=\"dropdown\">\n                    <img src=\"/img/avatars/sunny.png\" class=\"online\" />\n                </a>\n                <ul class=\"dropdown-menu pull-right\">\n                    <li>\n                        <a href=\"#\" class=\"padding-10 padding-top-0 padding-bottom-0\"><i class=\"fa fa-cog\"></i> Setting</a>\n                    </li>\n                    <li class=\"divider\"></li>\n                    <li>\n                        <a href=\"#\" class=\"padding-10 padding-top-0 padding-bottom-0\"> <i class=\"fa fa-user\"></i> <u>P</u>rofile</a>\n                    </li>\n                    <li class=\"divider\"></li>\n                    <li>\n                        <a ui-sref=\"logout\" class=\"padding-10 padding-top-5 padding-bottom-5\" data-action=\"userLogout\"><i class=\"fa fa-sign-out fa-lg\"></i> <strong><u>L</u>ogout</strong></a>\n                    </li>\n                </ul>\n            </li>\n        </ul>\n\n        <!-- logout -->\n        <div id=\"logout\" class=\"btn-header transparent pull-right\">\n            <span> <a ui-sref=\"logout\" title=\"Sign Out\" data-action=\"userLogout\"><i class=\"fa fa-sign-out\"></i></a> </span>\n        </div>\n    </div>\n\n</header>\n\n<aside id=\"left-panel\">\n\n    <!-- User info -->\n    <div class=\"login-info\">\n        <span>\n\n            <a href=\"javascript:void(0);\" id=\"show-shortcut\" data-action=\"toggleShortcut\">\n                <img src=\"/img/avatars/sunny.png\" class=\"online\" />\n                <span>\n                    {{ vm.user.name }}\n                </span>\n                <i class=\"fa fa-angle-down\"></i>\n            </a>\n\n        </span>\n    </div>\n\n    <nav>\n        <ul data-smart-menu>\n            <li ui-sref-active=\"active\">\n                <a ui-sref=\"app.home\"><i class=\"fa fa-lg fa-fw fa-home\"></i> <span class=\"menu-item-parent\">Home</span></a>\n            </li>\n            <li ui-sref-active=\"active\">\n                <a ui-sref=\"app.dashboard\"><i class=\"fa fa-lg fa-fw fa-dashboard\"></i> <span class=\"menu-item-parent\">Dashboard</span></a>\n            </li>\n        </ul>\n    </nav>\n\n    <span class=\"minifyme\" data-action=\"minifyMenu\"> <i class=\"fa fa-arrow-circle-left hit\"></i> </span>\n</aside>\n\n<div id=\"main\" role=\"main\">\n\n    <div id=\"ribbon\">\n         <state-breadcrumbs></state-breadcrumbs>\n    </div>\n\n    <div id=\"content\">\n        <div ui-view></div>\n    </div>\n\n</div>\n\n<div class=\"page-footer\">\n    <div class=\"row\">\n        <div class=\"col-xs-12 col-sm-6\">\n            <span class=\"txt-color-white\">Boilerplate <span class=\"hidden-xs\"> - {{ config('app.name', 'Laravel') }}</span> ©2016</span>\n        </div>\n    </div>\n</div>\n";
 
 /***/ },
-/* 53 */
+/* 54 */
 /***/ function(module, exports, __webpack_require__) {
 
 window._ = __webpack_require__(16);
 window.$ = window.jQuery = __webpack_require__(3);
-__webpack_require__(25)
+__webpack_require__(26)
 __webpack_require__(14);
 __webpack_require__(15);
 __webpack_require__(7);
@@ -86441,21 +86654,22 @@ angular.module('app', [
 			$log.error('error', error);
 		});
 }])
-.config(__webpack_require__(26))
+.config(__webpack_require__(27))
 .config(["$authProvider", "uibPaginationConfig", function($authProvider, uibPaginationConfig) {
 	$authProvider.loginUrl = '/login';
   $authProvider.signupUrl = '/register';
   uibPaginationConfig.previousText = 'Previo';
   uibPaginationConfig.nextText = 'Siguiente';
 }])
-.directive('smartMenu', __webpack_require__(22))
-.directive('stateBreadcrumbs', __webpack_require__(23))
+.directive('smartMenu', __webpack_require__(23))
+.directive('stateBreadcrumbs', __webpack_require__(24))
 .directive('ngEnter', __webpack_require__(21))
-.filter('isEmpty', __webpack_require__(24))
+.directive('notificationsToggle', __webpack_require__(22))
+.filter('isEmpty', __webpack_require__(25))
 .controller('NavBarController', __webpack_require__(20))
-.service('ApiService', __webpack_require__(27))
-.service('Confirm', __webpack_require__(28))
-.service('UserService', __webpack_require__(29))
+.service('ApiService', __webpack_require__(28))
+.service('Confirm', __webpack_require__(29))
+.service('UserService', __webpack_require__(30))
 
 
 /***/ }
