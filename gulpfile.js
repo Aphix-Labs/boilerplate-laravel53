@@ -1,70 +1,45 @@
-const elixir = require('laravel-elixir');
+var elixir = require('laravel-elixir');
+require('laravel-elixir-browserify-official');
 
 elixir.config.sourcemaps = false;
-
-elixir(mix => {
-
-  initConfig(elixir);
-
-  admin(mix);
-
-  public(mix);
-
-  if (elixir.config.production) {
-    mix.version([
-      'css/admin.css',
-      'js/admin.js',
-    ])
-  }
+elixir.config.js.browserify.transformers.push({
+    name: 'browserify-ngannotate',
+    options: {}
 });
 
-function initConfig(elixir) {
+elixir(function(mix) {
 
-  elixir.webpack.mergeConfig({
-    module: {
-      loaders: [{
-        test: /\.html$/,
-        loader: 'html'
-      }, {
-        test: /\.js$/,
-        loaders: ['ng-annotate']
-      }]
-    }
-  })
-};
-
-function admin(mix) {
+  // admin
   mix.sass([
     'admin.scss',
     './node_modules/angular-toastr/dist/angular-toastr.min.css',
     './node_modules/angular-loading-bar/build/loading-bar.min.css',
-    './node_modules/ui-select/dist/select.min.css',
-  ], './resources/assets/temp/css/admin.css')
-
-  mix.styles([
-    '../temp/css/admin.css',
-    '../sass/vendor/smartadmin-production-plugins.min.css',
-    '../sass/vendor/smartadmin-production.min.css',
-    '../sass/vendor/smartadmin-skins.min.css',
+    './node_modules/ui-select/dist/select.css',
+    '/vendor/smartadmin/smartadmin-production-plugins.scss',
+    '/vendor/smartadmin/smartadmin-production.scss',
+    '/vendor/smartadmin/smartadmin-skins.scss',
   ], 'public/css/admin.css')
 
-  mix.webpack('/admin/app.js', 'public/js/admin.js')
-};
+  mix.browserify('admin/app.js', 'public/js/admin.js');
 
-function public(mix) {
+  // public
   mix.sass([
     'public.scss',
     './node_modules/angular-toastr/dist/angular-toastr.min.css',
     './node_modules/angular-loading-bar/build/loading-bar.min.css',
-    './node_modules/ui-select/dist/select.min.css',
-  ], './resources/assets/temp/css/public.css')
-
-  mix.styles([
-    '../temp/css/public.css',
-    '../sass/vendor/smartadmin-production-plugins.min.css',
-    '../sass/vendor/smartadmin-production.min.css',
-    '../sass/vendor/smartadmin-skins.min.css',
+    './node_modules/ui-select/dist/select.css',
+    '/vendor/smartadmin/smartadmin-production-plugins.scss',
+    '/vendor/smartadmin/smartadmin-production.scss',
+    '/vendor/smartadmin/smartadmin-skins.scss',
   ], 'public/css/public.css')
 
-  mix.webpack('/public/app.js', 'public/js/public.js')
-}
+  mix.browserify('public/app.js', 'public/js/public.js');
+
+	// versioning
+  mix.version([
+    'js/public.js',
+    'js/admin.js',
+    'css/admin.css',
+    'css/public.css',
+  ])
+});

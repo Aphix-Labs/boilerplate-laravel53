@@ -6,11 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>{{ config('app.name', 'Laravel') }}</title>
-		@if (App::environment('local'))
-			<link rel="stylesheet" href="css/admin.css">
-		@else
-			<link rel="stylesheet" href="{{ elixir('css/admin.css') }}">
-		@endif
+        <link rel="stylesheet" href="{{ elixir('css/admin.css') }}">
         <!-- #GOOGLE FONT -->
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,300,400,700">
         <script>
@@ -21,10 +17,6 @@
     </head>
     <body ng-app='app' ng-strict-di class='smart-style-2 ng-cloak'>
         <div ui-view></div>
-        @if (App::environment('local'))
-            <script src="js/admin.js"></script>
-        @else
-            <script src="{{ elixir('js/admin.js') }}"></script>
-        @endif
+        <script src="{{ elixir('js/admin.js') }}"></script>
     </body>
 </html>
