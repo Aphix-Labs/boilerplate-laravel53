@@ -23,13 +23,37 @@
                         </div>
 
                         <div class="form-group" ng-class="{'has-error': vm.hasError('email')}">
-                            <label class="col-md-4 control-label">E-Mail Address</label>
+                            <label class="col-md-4 control-label">E-Mail</label>
 
                             <div class="col-md-6">
                                 <input type="text" class="form-control" ng-model="vm.data.email">
 
                                 <span ng-if="vm.hasError('email')" class="help-block">
                                     <strong>{{ vm.errors.email[0] }}</strong>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-group" ng-class="{'has-error': vm.hasError('cargo')}">
+                            <label class="col-md-4 control-label">Cargo</label>
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" ng-model="vm.data.cargo">
+
+                                <span ng-if="vm.hasError('cargo')" class="help-block">
+                                    <strong>{{ vm.errors.cargo[0] }}</strong>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-group" ng-class="{'has-error': vm.hasError('telefono')}">
+                            <label class="col-md-4 control-label">Telefono</label>
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" ng-model="vm.data.telefono">
+
+                                <span ng-if="vm.hasError('telefono')" class="help-block">
+                                    <strong>{{ vm.errors.telefono[0] }}</strong>
                                 </span>
                             </div>
                         </div>
@@ -47,7 +71,7 @@
                         </div>
 
                         <div class="form-group" ng-class="{'has-error': vm.hasError('password_confirmation')}">
-                            <label class="col-md-4 control-label">Confirm Password</label>
+                            <label class="col-md-4 control-label">Confirmar Password</label>
 
                             <div class="col-md-6">
                                 <input type="password" class="form-control" ng-model="vm.data.password_confirmation">

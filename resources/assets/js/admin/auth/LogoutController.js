@@ -1,4 +1,4 @@
-module.exports = function($state, $auth, toastr) {
+module.exports = function($state, $auth, toastr, AclService) {
   'ngInject';
 
 	if (!$auth.isAuthenticated()) {
@@ -6,6 +6,7 @@ module.exports = function($state, $auth, toastr) {
 	}
 
 	$auth.logout().then(() => {
+    AclService.flushRoles();
 		toastr.info('Ha sido cerrada tu sesión');
 		$state.go('login');
 	});

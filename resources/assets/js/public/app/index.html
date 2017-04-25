@@ -8,23 +8,25 @@
 		</div>
 	</div>
 
-	<section id="widget-grid" class="">
+	<section class="">
 		<div class="row">
 			<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-				<div class="jarviswidget" id="wid-id-0">
-					<header>
-						<span class="widget-icon"> <i class="fa fa-cogs"></i> </span>
-						<h2>Widget de ejemplo</h2>
-					</header>
-					<div>
-						<div class="jarviswidget-editbox">
-							<input class="form-control" type="text">
-						</div>
-						<div class="widget-body">
-							Contenido de ejemplo
-						</div>
-					</div>
-				</div>
+
+                <div class="jarviswidget" ng-repeat="data in vm.data">
+                    <header>
+                        <span class="widget-icon"> <i class="fa fa-map-marker"></i> </span>
+                        <h2>{{ data.punto }}</h2>
+                    </header>
+                    <div>
+                        <div class="jarviswidget-editbox">
+                            <input class="form-control" type="text">
+                        </div>
+                        <div class="widget-body">
+                            Bienvenido!
+                        </div>
+                    </div>
+                </div>
+
 			</article>
 		</div>
 		<div class="row">

@@ -12,14 +12,28 @@ class AdminSeeder extends Seeder
      */
     public function run()
     {
-        $user = User::firstOrCreate([
-            'name' => 'admin',
-            'email' => 'admin@admin.cl',
-            'password' => '123'
+        $superAdmin = User::firstOrCreate([
+            'name' => 'super admin',
+            'email' => 'super@admin.cl',
+            'password' => '123',
+            'cargo' => 'Super Administrar',
+            'telefono' => '123123123'
         ]);
 
-        if (! $user->hasRole('admin')) {
-            $user->assignRole('admin');
+        if (! $superAdmin->hasRole('super-admin')) {
+            $superAdmin->assignRole('super-admin');
+        }
+
+        $admin = User::firstOrCreate([
+            'name' => 'admin',
+            'email' => 'admin@admin.cl',
+            'password' => '123',
+            'cargo' => 'Administrar',
+            'telefono' => '22222222'
+        ]);
+
+        if (! $admin->hasRole('admin')) {
+            $admin->assignRole('admin');
         }
     }
 }

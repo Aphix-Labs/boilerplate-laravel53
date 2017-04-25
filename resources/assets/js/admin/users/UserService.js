@@ -4,6 +4,6 @@ module.exports = function (ApiService, $http) {
   this.resource = 'users';
 
   this.me = () => {
-    return $http.get('/api/me');
+    return $http.get('/api/admin/me');
   };
 };

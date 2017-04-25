@@ -1,14 +1,16 @@
-module.exports = function (users, UserService, toastr, Confirm, $state, $stateParams) {
+module.exports = function (users, UserService, toastr, Confirm, $state, $stateParams, AclService) {
   'ngInject';
   var vm = this;
   vm.users = users.data;
   vm.totalItems = users.total;
   vm.itemsPerPage = users.per_page;
   vm.search = $stateParams;
-  vm.search.page = users.current_page;
+  vm.page = users.current_page;
   vm.reload = false;
+  vm.hasRole = AclService.hasRole;
 
-  vm.filter = function () {
+  vm.filter = function (page) {
+    vm.search.page = page || 1;
     $state.go('.', vm.search, {reload: true});
     vm.reload = true;
   };

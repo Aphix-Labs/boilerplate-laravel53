@@ -15,6 +15,11 @@ class ApiController extends Controller
         return response()->json($data, $this->getStatusCode(), $headers);
     }
 
+    public function respondIndex($query)
+    {
+        return request()->has('page') ? $query->paginate() : $query->get();
+    }
+
     public function respondWithValidationErrors(array $errors)
     {
         return $this->setStatusCode(Response::HTTP_UNPROCESSABLE_ENTITY)->respond([
@@ -52,7 +57,7 @@ class ApiController extends Controller
             ]);
     }
 
-    public function setStatusCode(int $statusCode)
+    public function setStatusCode($statusCode)
     {
         $this->statusCode = $statusCode;
         return $this;

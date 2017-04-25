@@ -24,14 +24,14 @@
 	list-style: none;
 	margin: 10px 0 0;
 	padding: 0;
-	text-align: right; 
+	text-align: right;
 }
 
 	#sparks li {
 		display: inline-block;
 		max-height: 47px;
 		overflow: hidden;
-		text-align: left; 
+		text-align: left;
 		box-sizing:content-box;
 		-moz-box-sizing:content-box;
 		-webkit-box-sizing:content-box;
@@ -40,55 +40,56 @@
 		#sparks li h5 {
 			color: #555;
 			float: left;
-			font-size: 11px;
+			font-size: 18px;
 			font-weight: normal;
-			margin: -3px 0 0 0;
+			// margin: -3px 0 0 0;
+			margin: 0 0 0 0;
 			padding: 0;
 			border: none;
-			text-transform: uppercase; 
+			text-transform: uppercase;
 		}
 
 		#sparks li span {
 			color: #636363;
-			display: block; 
+			display: block;
 		}
 
 	#sparks li {
 		border-left: 1px dotted #c7c7c7;
-		padding: 0 10px; 
+		padding: 0 10px;
 	}
 
-		#sparks li:last-child { 
-			padding-right: 0; 
+		#sparks li:last-child {
+			padding-right: 0;
 		}
 
 		#sparks li:first-child {
 			border-left: none;
-			padding-left: 0; 
+			padding-left: 0;
 		}
 
-.sparks-info { 
-	min-width: 70px; 
+.sparks-info {
+	min-width: 70px;
 }
 
 	.sparks-info span {
 		font-size: 18px;
 		line-height: 20px;
 		margin: 0;
-		text-transform: none; 
+		text-transform: none;
 	}
 
 	.sparks-info .sparkline {
 		display: block;
 		float: right;
-		margin: 3px 0 0 20px; 
+		margin: 3px 0 0 20px;
 	}
 
 /* width 100% */
 
 [data-sparkline-width="100%"] > canvas {
 	width:100% !important;
-} 	
+}
 
 /* adjustment */
 .dataTable [data-sparkline-width="100%"]>canvas {

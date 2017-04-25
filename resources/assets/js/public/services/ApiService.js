@@ -2,17 +2,19 @@ module.exports = function($http) {
 	'ngInject';
 	this.resource = '';
 
-	this.filterResources = function(params) {
-		var queryParams = buildQueryParams(params);
+	this.filterResources = function(params, paginate = true) {
+		var queryParams = buildQueryParams(params, paginate);
 		return $http.get('/api/' + this.resource + queryParams);
 	};
 
-	this.getResources = function() {
-		return $http.get('/api/' + this.resource);
+	this.getResources = function(columns) {
+    var queryParams = columns ? '?columns=' + columns : '';
+    return $http.get('/api/' + this.resource + queryParams);
 	};
 
-	this.getResource = function(id) {
-		return $http.get('/api/' + this.resource + '/' + id);
+	this.getResource = function(id, queryParams) {
+    var nestedResource = queryParams ? '?with=' + queryParams : '';
+		return $http.get('/api/' + this.resource + '/' + id + nestedResource);
 	};
 
 	this.createResource = function(data) {
@@ -27,9 +29,9 @@ module.exports = function($http) {
 		return $http.put('/api/' + this.resource + '/' + id, data, {ignoreLoadingBar: true});
 	};
 
-	function buildQueryParams(params) {
+	function buildQueryParams(params, paginate) {
 		var page = params.page || 1;
-		var query = '?page=' + page;
+		var query = paginate ? '?page=' + page : '?';
 
 		for (var paramKey in params) {
 			if (paramKey !== 'page' && params[paramKey] !== undefined) {

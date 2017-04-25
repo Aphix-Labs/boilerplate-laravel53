@@ -12,11 +12,20 @@
         <script>
             window.Laravel = <?php echo json_encode([
                 'csrfToken' => csrf_token(),
+                // 'assetsImage' => asset(''),
             ]); ?>
         </script>
     </head>
-    <body ng-app='app' ng-strict-di class='smart-style-4 ng-cloak'>
+    <body ng-app='app' ng-strict-di class='ng-cloak'>
         <div ui-view></div>
         <script src="{{ elixir('js/public.js') }}"></script>
+        <script>
+            angular.module('app').run(['toastr', function(toastr) {
+                var wasPasswordReset = '{{ session("status")  }}';
+                if (wasPasswordReset) {
+                    toastr.success(wasPasswordReset, 'Cambio exitoso de contraseña');
+                }
+            }]);
+        </script>
     </body>
 </html>

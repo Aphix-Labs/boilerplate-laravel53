@@ -1,9 +1,9 @@
 module.exports = function OnConfig($stateProvider, $locationProvider, $urlRouterProvider) {
   'ngInject';
 
-  /**
-    * Helper auth functions
-    */
+    /**
+     * Helper auth functions
+     */
   var skipIfLoggedIn = function($q, $auth, $location) {
     var deferred = $q.defer();
     if ($auth.isAuthenticated()) {
@@ -46,7 +46,8 @@ module.exports = function OnConfig($stateProvider, $locationProvider, $urlRouter
     .state('app', {
       abstract: true,
       template: require('./layout/layout.html'),
-      controller: function(user) {
+      controller: function(user, AclService) {
+        this.hasRole = AclService.hasRole;
         this.user = user;
         this.notificationsSize = _.size(user.notifications);
         this.unreadNotificationsSize = _.size(_.filter(user.notifications, function(n) {
@@ -55,30 +56,56 @@ module.exports = function OnConfig($stateProvider, $locationProvider, $urlRouter
       },
       controllerAs: 'vm',
       resolve: {
-        user: function(UserService, $auth, toastr, $state) {
+        user: function(UserService, AclService, toastr, $auth, $state) {
+          if (window.currentUser) {
+            return window.currentUser;
+          }
+          // attach roles and user
           return UserService.me().then((data) => {
+            _.flatMap(_.flatMap(data.data.roles), 'name').forEach(function(rol) {
+              AclService.attachRole(rol);
+            });
+            window.currentUser = data.data;
             return data.data;
           }, (error) => {
+            window.currentUser = null;
             $auth.removeToken();
             toastr.error(error.data.error, 'Estado!');
             $state.go('login');
           });
+          return window.currentUser;
         }
-      },
+      }
     })
 
     .state('app.home', {
       url: '/home',
-      controller: function($auth) { this.isAuthenticated = $auth.isAuthenticated },
+      controller: function($auth, data) {
+        this.isAuthenticated = $auth.isAuthenticated;
+        this.data = data;
+      },
       controllerAs: 'vm',
-      template: require('./app/index.html')
+      data: {
+        title: 'Inicio'
+      },
+      template: require('./app/index.html'),
+      resolve: {
+        data: function($http) {
+          return [];
+          // return $http.get('/api/dashboard').then(function(data) {
+          //   return data.data;
+          // });
+        }
+      }
     })
 
-    .state('app.dashboard', {
-      url: '/dashboard',
-      template: require('./app/dashboard.html'),
+    .state('app.profile', {
+      url: '/profile',
+      controller: require('./profile/ProfileController'),
+      controllerAs: 'vm',
+      template: require('./profile/form.html'),
       data: {
-        title: 'dashboard'
+        title: 'Perfil'
       }
     })
 

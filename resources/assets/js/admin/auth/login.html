@@ -17,9 +17,9 @@
                             <form role="form" method="POST" novalidate class="smart-form client-form">
 
                                 <fieldset>
-                                    
+
                                     <section>
-                                        <label class="label control-label" for="email">E-mail Address</label>
+                                        <label class="label control-label" for="email">E-mail</label>
                                         <label class="input" ng-class="{'state-error': vm.hasError('email')}"> <i class="icon-append fa fa-user"></i>
                                             <input ng-model="vm.user.email" id="email" type="email" name="email">
                                             <b class="tooltip tooltip-top-right"><i class="fa fa-user txt-color-teal"></i> Ingresar correo/usuario</b>
@@ -33,23 +33,12 @@
                                         <label class="label control-label">Password</label>
                                         <label class="input" ng-class="{'state-error': vm.hasError('email')}"> <i class="icon-append fa fa-lock"></i>
                                             <input ng-model="vm.user.password" id="password" type="password" name="password">
-                                            <b class="tooltip tooltip-top-right"><i class="fa fa-lock txt-color-teal"></i> Ingresa tu password</b> 
+                                            <b class="tooltip tooltip-top-right"><i class="fa fa-lock txt-color-teal"></i> Ingresa tu password</b>
                                         </label>
                                         <em ng-if="vm.hasError('password')" class="help-block">
                                             {{ vm.errors.password[0] }}
                                         </em>
-                                        
-                                        <div class="note">
-                                            <a href="">Olvidó password?</a>
-                                        </div>
                                     </section>
-
-                                    <section>
-                                        <label class="checkbox">
-                                            <input type="checkbox" name="remember" checked="">
-                                            <i></i>Recordarme</label>
-                                    </section>
-
 
                                 </fieldset>
                                 <footer>
@@ -68,48 +57,4 @@
             </div>
         </div>
     </section>
-<!--     <div class="container">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Login prueba</div>
-                    <div class="panel-body">
-                        <form class="form-horizontal" role="form" method="POST" novalidate>
-
-                            <div class="form-group" ng-class="{'has-error': vm.hasError('email')}">
-                                <label for="email" class="col-md-4 control-label">E-Mail Address</label>
-
-                                <div class="col-md-6">
-                                    <input ng-model="vm.user.email" id="email" type="email" class="form-control" name="email">
-                                    <span ng-if="vm.hasError('email')" class="help-block">
-                                        <strong>{{ vm.errors.email[0] }}</strong>
-                                    </span>
-                                </div>
-                            </div>
-
-                            <div class="form-group"  ng-class="{'has-error': vm.hasError('password')}">
-                                <label for="password" class="col-md-4 control-label">Password</label>
-
-                                <div class="col-md-6">
-                                    <input ng-model="vm.user.password" id="password" type="password" class="form-control" name="password">
-                                    <span ng-if="vm.hasError('password')" class="help-block">
-                                        <strong>{{ vm.errors.password[0] }}</strong>
-                                    </span>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="col-md-8 col-md-offset-4">
-                                    <button ng-click="vm.login()" type="submit" class="btn btn-primary">
-                                        Login
-                                    </button>
-                                </div>
-                            </div>
-
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
 </ui-view>

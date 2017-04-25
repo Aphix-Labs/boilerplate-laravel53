@@ -43,6 +43,11 @@ return [
 
     'disks' => [
 
+        'guias_disk' => [
+            'driver' => 'local',
+            'root' => public_path('guias'),
+        ],
+
         'local' => [
             'driver' => 'local',
             'root' => storage_path('app'),

@@ -25,7 +25,7 @@ module.exports = function (role, permissions, RoleService, $state, $stateParams,
     RoleService.updateResource(vm.getId(), vm.data)
       .then(function(role) {
         toastr.success(role.data.message, 'Estado!');
-        $state.go('app.roles', {}, {reload: true});
+        $state.go('app.roles.index', {}, {reload: true});
       })
       .catch(function(errors) {
         vm.errors = errors.data;

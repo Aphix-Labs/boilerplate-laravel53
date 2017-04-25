@@ -2,46 +2,7 @@
 <header id="header">
     <div id="logo-group">
 
-        <span id="logo"> <img src="/img/logo1.png" alt="SmartAdmin"> </span>
-
-        <!-- AJAX-DROPDOWN : control this dropdown height, look and feel from the LESS variable file -->
-        <div class="ajax-dropdown">
-
-            <!-- the ID links are fetched via AJAX to the ajax container "ajax-notifications" -->
-            <div class="btn-group btn-group-justified" data-toggle="buttons">
-                <label class="btn btn-default">
-                    <input type="radio" name="activity" id="ajax/notify/mail.html">
-                    Msgs (14) </label>
-                <label class="btn btn-default">
-                    <input type="radio" name="activity" id="ajax/notify/notifications.html">
-                    notify (3) </label>
-                <label class="btn btn-default">
-                    <input type="radio" name="activity" id="ajax/notify/tasks.html">
-                    Tasks (4) </label>
-            </div>
-
-            <!-- notification content -->
-            <div class="ajax-notifications custom-scroll">
-
-                <div class="alert alert-transparent">
-                    <h4>Click a button to show messages here</h4>
-                    This blank page message helps protect your privacy, or you can show the first message here automatically.
-                </div>
-
-                <i class="fa fa-lock fa-4x fa-border"></i>
-
-            </div>
-            <!-- end notification content -->
-
-            <!-- footer: refresh area -->
-            <span> Last updated on: 12/12/2013 9:43AM
-                <button type="button" data-loading-text="<i class='fa fa-refresh fa-spin'></i> Loading..." class="btn btn-xs btn-default pull-right">
-                    <i class="fa fa-refresh"></i>
-            </button> </span>
-            <!-- end footer -->
-
-        </div>
-        <!-- END AJAX-DROPDOWN -->
+        <span id="logo" style="margin-top:5px"> <img src="/img/logo.png" style="width:90px" alt="logo"> </span>
     </div>
 
     <div class="pull-right">
@@ -55,7 +16,7 @@
         <ul id="mobile-profile-img" class="header-dropdown-list hidden-xs padding-5">
             <li class="">
                 <a href="#" class="dropdown-toggle no-margin userdropdown" data-toggle="dropdown">
-                    <img src="/img/avatars/sunny.png" class="online" />
+                    <img src="/img/avatars/male.png" class="online" />
                 </a>
                 <ul class="dropdown-menu pull-right">
                     <li>
@@ -97,11 +58,10 @@
         <span>
 
             <a href="javascript:void(0);" id="show-shortcut" data-action="toggleShortcut">
-                <img src="/img/avatars/sunny.png" class="online" />
+                <img src="/img/avatars/male.png" class="online" />
                 <span>
                     {{ vm.user.name }}
                 </span>
-                <i class="fa fa-angle-down"></i>
             </a>
 
         </span>
@@ -112,17 +72,23 @@
             <li ui-sref-active="active">
                 <a ui-sref="app.home"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">Home</span></a>
             </li>
-            <li ui-sref-active="active">
-                <a ui-sref="app.dashboard"><i class="fa fa-lg fa-fw fa-dashboard"></i> <span class="menu-item-parent">Dashboard</span></a>
-            </li>
-            <li data-menu-collapse ui-sref-active="active">
+            <li data-menu-collapse>
                 <a href="#"><i class="fa fa-lg fa-fw fa-cogs"></i> <span class="menu-item-parent">Administración</span></a>
                 <ul>
                     <li>
-                        <a data-ui-sref="app.users"><i class="fa fa-users"></i> Usuarios</a>
+                        <a data-ui-sref="app.regions.index" ui-sref-active="{'active': 'app.regions'}"><i class="fa fa-cogs"></i> Regiones</a>
                     </li>
                     <li>
-                        <a data-ui-sref="app.roles"><i class="fa fa-lock"></i> Roles</a>
+                        <a data-ui-sref="app.serviciosSalud.index" ui-sref-active="{'active': 'app.serviciosSalud'}"><i class="fa fa-cogs"></i> Servicios de Salud</a>
+                    </li>
+                    <li>
+                        <a data-ui-sref="app.comunas.index" ui-sref-active="{'active': 'app.comunas'}"><i class="fa fa-cogs"></i> Comunas</a>
+                    </li>
+                    <li>
+                        <a data-ui-sref="app.establecimientos.index" ui-sref-active="{'active': 'app.establecimientos'}"><i class="fa fa-cogs"></i> Establecimientos</a>
+                    </li>
+                    <li>
+                        <a data-ui-sref="app.users.index" ui-sref-active="{'active': 'app.users'}"><i class="fa fa-users"></i> Usuarios</a>
                     </li>
                 </ul>
             </li>
@@ -149,7 +115,7 @@
 <div class="page-footer">
     <div class="row">
         <div class="col-xs-12 col-sm-6">
-            <span class="txt-color-white">Boilerplate <span class="hidden-xs"> - {{ config('app.name', 'Laravel') }}</span> ©2016</span>
+            <span class="txt-color-white">Sistema X - © Organización Y</span>
         </div>
     </div>
 </div>

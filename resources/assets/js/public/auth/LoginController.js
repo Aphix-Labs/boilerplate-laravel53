@@ -1,6 +1,5 @@
 module.exports = function ($auth, $http, $state, toastr) {
   'ngInject';
-
   var vm = this;
   vm.user = {};
   vm.errors = {};
@@ -19,5 +18,4 @@ module.exports = function ($auth, $http, $state, toastr) {
   this.hasError = (property) => {
     return vm.errors.hasOwnProperty(property) ? true : false;
   };
-
 };

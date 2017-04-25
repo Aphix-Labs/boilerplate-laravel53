@@ -14,7 +14,7 @@ module.exports = function ($state, $rootScope) {
 
       } else {
 
-        $body.hasClass('mobile-view-activated')
+        $body.hasClass('mobile-view-activated');
 
         // toggle open
         $this.toggleClass('open');
@@ -63,34 +63,39 @@ module.exports = function ($state, $rootScope) {
             .find('>a').append('<b class="collapse-sign"><em class="fa fa-plus-square-o"></em></b>');
 
           // initialization toggle
-          if ($li.find('li.active').length) {
+          if ($li.find('a.active').length) {
             $li.smartCollapseToggle();
-            $li.find('li.active').parents('li').addClass('active');
+            $li.find('a.active').parents('li').addClass('active');
           }
         });
       }
-      bindEvents();
 
-      // click on route link
-      element.on('click', 'a[data-ui-sref]', function (e) {
-        // collapse all siblings to element parents and remove active markers
-        $(this)
-          .parents('li').addClass('active')
-          .each(function () {
-            $(this).siblings('li.open').smartCollapseToggle();
-            $(this).siblings('li').removeClass('active')
-          });
+      $(document).ready(function() {
+        bindEvents();
 
-        if ($body.hasClass('mobile-view-activated')) {
-          $rootScope.$broadcast('requestToggleMenu');
-        }
-      });
+        // click on route link
+        element.on('click', 'a[data-ui-sref]', function (e) {
+          $('nav  li.active').removeClass('active');
+
+          // collapse all siblings to element parents and remove active markers
+          $(this)
+            .parents('li').addClass('active')
+            .each(function () {
+              $(this).siblings('li.open').smartCollapseToggle();
+              $(this).siblings('li').removeClass('active')
+            });
+
+          if ($body.hasClass('mobile-view-activated')) {
+            $rootScope.$broadcast('requestToggleMenu');
+          }
+        });
 
 
-      scope.$on('$smartLayoutMenuOnTop', function (event, menuOnTop) {
-        if (menuOnTop) {
-          $collapsible.filter('.open').smartCollapseToggle();
-        }
+        scope.$on('$smartLayoutMenuOnTop', function (event, menuOnTop) {
+          if (menuOnTop) {
+            $collapsible.filter('.open').smartCollapseToggle();
+          }
+        });
       });
     }
   }

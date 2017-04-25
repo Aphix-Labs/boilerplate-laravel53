@@ -1,7 +1,7 @@
 <?php
 
 Route::get('/', function () {
-    return view('home');
+    return view('public');
 });
 
 Route::get('/app', function () {
@@ -13,5 +13,15 @@ Route::get('/admin', function () {
 });
 
 Route::post('register', 'Auth\RegisterController@register');
-Route::post('login', 'Auth\LoginController@login');
-/* Auth::routes(); */
+Route::post('login', ['middleware' => 'throttle:20,1', 'uses' => 'Auth\LoginController@login']);
+Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm');
+Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm');
+Route::post('password/reset', 'Auth\ResetPasswordController@reset');
+Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');
+/* Route::auth(); */
+
+/* Route::any('{all}', function() { */
+/*     return redirect('/'); */
+/* })->where('all', '(.*)');; */
+
+

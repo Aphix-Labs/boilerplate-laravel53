@@ -1,6 +1,7 @@
 var elixir = require('laravel-elixir');
 require('laravel-elixir-browserify-official');
 
+elixir.config.notifications = false;
 elixir.config.sourcemaps = false;
 elixir.config.js.browserify.transformers.push({
     name: 'browserify-ngannotate',

@@ -33,6 +33,11 @@ abstract class QueryFilter
         }
     }
 
+    private function columns($columns = '*')
+    {
+        return $this->builder->select(explode(',', $columns));
+    }
+
     private function filters()
     {
         return $this->request->all();

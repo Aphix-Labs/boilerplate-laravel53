@@ -17,14 +17,26 @@ class WelcomeNotification extends Notification
 
     public function via($notifiable)
     {
-        return ['database'];
+        return ['database', 'mail'];
     }
 
     public function toDatabase($notifiable)
     {
         return [
-            'message' => 'Bienvenido al sistema ' . config('app.name', 'Laravel'),
+            'message' => 'Bienvenido al sistema ' . config('app.name'),
             'icon' => 'fa-user'
         ];
+    }
+
+    public function toMail($notifiable)
+    {
+        $url = url('/');
+
+        return (new MailMessage)
+            ->subject('[Sistema] Bienvenido al sistema X')
+            ->greeting('Bienvenido!')
+            ->line('Tu cuenta en el sistema ha sido creado')
+            ->line('Desde hoy podrás solicitar productos al ingresar al siguiente link')
+            ->action('Sistema x', $url);
     }
 }

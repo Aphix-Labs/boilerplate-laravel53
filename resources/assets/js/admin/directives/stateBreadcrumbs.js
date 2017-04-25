@@ -4,11 +4,11 @@ module.exports =  function ($rootScope, $state) {
 	return {
 		restrict: 'EA',
 		replace: true,
-		template: '<ol class="breadcrumb"><li>Home</li></ol>',
+		template: '<ol class="breadcrumb"></ol>',
 		link: function (scope, element) {
 
 			function setBreadcrumbs(breadcrumbs) {
-				var html = '<li>Home</li>';
+				var html = '';
 				angular.forEach(breadcrumbs, function (crumb) {
 					html += '<li>' + crumb + '</li>'
 				});

@@ -13,7 +13,13 @@ class PermissionsAndRoleSeeder extends Seeder
      */
     public function run()
     {
-        // permissions
+        $this->createPermissions();
+        $this->rolSuperAdmin();
+        $this->rolAdmin();
+    }
+
+    private function createPermissions()
+    {
         $permissions = [
             [
                 'name' => 'admin_users',
@@ -24,20 +30,31 @@ class PermissionsAndRoleSeeder extends Seeder
                 'label' => 'Administrar Roles'
             ]
         ];
+
         foreach ($permissions as $permission) {
             Permission::firstOrCreate($permission);
         }
+    }
 
-        // create admin role
-        $roleAdmin = Role::firstOrCreate([
-            'name' => 'admin',
-            'label' => 'Administrador del sistema'
+    private function rolSuperAdmin()
+    {
+        $superAdmin = Role::firstOrCreate([
+            'name' => 'super-admin',
+            'label' => 'Super Administrador'
         ]);
 
         foreach (Permission::all() as $permission) {
-            if (! $roleAdmin->hasPermissionTo($permission)) {
-                $roleAdmin->givePermissionTo($permission->name);
+            if (! $superAdmin->hasPermissionTo($permission)) {
+                $superAdmin->givePermissionTo($permission->name);
             }
         }
+    }
+
+    private function rolAdmin()
+    {
+        $admin = Role::firstOrCreate([
+            'name' => 'admin',
+            'label' => 'Administrador'
+        ]);
     }
 }

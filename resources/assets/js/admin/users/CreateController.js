@@ -26,7 +26,7 @@ module.exports = function (roles, UserService, $state, toastr) {
     UserService.createResource(vm.data)
       .then(function(data) {
         toastr.success(data.data.message, 'Estado!');
-        $state.go('app.users', {}, {reload: true});
+        $state.go('app.users.index', {}, {reload: true});
       })
       .catch(function(errors) {
         vm.errors = errors.data;

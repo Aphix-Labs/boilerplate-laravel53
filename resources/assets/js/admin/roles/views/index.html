@@ -35,7 +35,7 @@
                                     <td> <input ng-model="vm.search.permissions" ng-blur="vm.filter()" ng-enter="vm.filter()" type="text" class="form-control" placeholder="permiso"></input> </td>
                                     <td></td>
                                 </tr>
-                                <tr ng-repeat="role in vm.roles">
+                                <tr ng-repeat="role in vm.roles" ng-hide="vm.reload">
                                     <td>{{ ::role.name }}</td>
                                     <td>{{ ::role.label }}</td>
                                     <td>
@@ -60,7 +60,7 @@
                         </div>
 
                         <div ng-hide="vm.reload" ng-if="! (vm.roles | isEmpty)" class='text-center'>
-                            <ul uib-pagination items-per-page="vm.itemsPerPage" total-items="vm.totalItems" ng-model="vm.search.page" ng-change="vm.filter()"></ul>
+                            <ul uib-pagination items-per-page="vm.itemsPerPage" max-size="10" boundary-link-numbers="true" rotate="false" force-ellipses="true" total-items="vm.totalItems" ng-model="vm.search.page" ng-change="vm.filter()"></ul>
                         </div>
 
                     </div>
